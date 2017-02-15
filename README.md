@@ -1,2 +1,2 @@
 # eCom
-2. semesterprojekt
+2. Semesterprojekt
