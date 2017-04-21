@@ -1,4 +1,4 @@
 # eCom
-2. semesterprojekt
+2. Semesterprojekt
 
-Dette er en test
+er der nogen der forstår gitkraken?
