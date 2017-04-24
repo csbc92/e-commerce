@@ -1,8 +1,8 @@
 package ecompim.PIMPersistence;
 
+import ecompim.Product.DetailedProduct;
 import ecompim.Product.Product;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -12,6 +12,6 @@ public interface IPIMPersistence {
 
     public HashMap<Integer, Product> fetchProductOverview();
 
-    public Product fetchProduct(int productID);
+    public DetailedProduct fetchProduct(int productID);
 
 }
