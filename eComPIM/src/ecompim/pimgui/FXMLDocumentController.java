@@ -10,14 +10,18 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
 /**
  *
  * @author JV
  */
 public class FXMLDocumentController implements Initializable {
-    
+
+    public TextField searchTextField;
+    public Button searchButton;
+    public ListView productListView;
+    public TreeView categoryTreeView;
     @FXML
     private Label label;
     
@@ -30,6 +34,8 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
+    public void searchButtonHandler(ActionEvent actionEvent) {
+    }
 }
