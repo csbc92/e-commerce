@@ -16,7 +16,7 @@ public class PIMManager implements IPIM {
 
     @Override
     public DetailedProduct fetchProduct(int productID) {
-        return (DetailedProduct) persistance.fetchProduct(productID);
+        return  persistance.fetchProduct(productID);
     }
 
     @Override
