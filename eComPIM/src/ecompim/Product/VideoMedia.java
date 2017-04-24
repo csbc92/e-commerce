@@ -12,6 +12,6 @@ public class VideoMedia implements IDisplayable {
 
     @Override
     public void show() {
-
+        throw new UnsupportedOperationException();
     }
 }

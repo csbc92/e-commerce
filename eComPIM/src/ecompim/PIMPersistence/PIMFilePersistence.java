@@ -1,5 +1,7 @@
 package ecompim.PIMPersistence;
 
+import ecompim.Product.Product;
+
 import java.io.File;
 import java.util.HashMap;
 
