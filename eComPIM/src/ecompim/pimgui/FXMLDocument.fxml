@@ -49,10 +49,6 @@
               </rowConstraints>
                <children>
                   <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-                     <children>
-                        <Button mnemonicParsing="false" text="Hjem" />
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" text="Gem" />
-                     </children>
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
