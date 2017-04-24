@@ -1,9 +1,12 @@
 package ecomweb.WEBBusinessLayer;
 
+import ecompim
+
 /**
  * Created by Vedsted on 24-04-2017.
  */
-public class WebManager implements IWebBusinessLogic {
+public class WebManager implements IWebManager {
+
 
     @Override
     public Product getProduct(int productID) {
