@@ -44,11 +44,11 @@ public class PIMManager implements IPIM {
 
     @Override
     public void changeProductAttribute(int productID, String attribute, String newValue) {
-        
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void saveChanges() {
-
+        throw new UnsupportedOperationException();
     }
 }
