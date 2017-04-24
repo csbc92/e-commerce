@@ -1,5 +1,7 @@
 package ecompim.PIMPersistence;
 
+import ecompim.Product.Product;
+
 import java.util.HashMap;
 
 /**
@@ -17,7 +19,7 @@ public class PIMPersistenceFacade {
         ipimPersistence = new PIMDBPersistence(connectionString, username, password);
     }
 
-    public HashMap<int, Product> fetchProductOverview() {
+    public HashMap<Integer, Product> fetchProductOverview() {
         throw new UnsupportedOperationException();
     }
 

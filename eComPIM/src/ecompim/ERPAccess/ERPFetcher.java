@@ -1,6 +1,9 @@
 package ecompim.ERPAccess;
 
+import ecompim.Product.Product;
+
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Vedsted on 24-04-2017.
