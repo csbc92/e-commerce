@@ -98,3 +98,5 @@ nbdist/
 # End of https://www.gitignore.io/api/java,netbeans,intellij
 
 eComWEB/\.idea/workspace\.xml
+
+eComPIM/\.idea/workspace\.xml
