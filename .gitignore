@@ -96,3 +96,5 @@ nbdist/
 .nb-gradle/
 
 # End of https://www.gitignore.io/api/java,netbeans,intellij
+
+eComWEB/\.idea/workspace\.xml
