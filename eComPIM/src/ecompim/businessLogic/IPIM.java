@@ -1,4 +1,4 @@
-package businessLogic;
+package ecompim.businessLogic;
 
 import ecompim.Product.Product;
 
