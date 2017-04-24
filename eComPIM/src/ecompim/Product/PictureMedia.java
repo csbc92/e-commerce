@@ -12,6 +12,6 @@ public class PictureMedia implements IDisplayable {
 
     @Override
     public void show() {
-
+        throw new UnsupportedOperationException();
     }
 }
