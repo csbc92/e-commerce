@@ -13,4 +13,5 @@ public interface IPIM extends IProductFetcher {
     public void changeProductAttribute(int productID, String attribute, String newValue);
     public void saveChanges();
 
+    public void saveERPProducts();
 }
