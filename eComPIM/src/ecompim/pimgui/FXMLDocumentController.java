@@ -54,12 +54,13 @@ public class FXMLDocumentController implements Initializable {
 
     private void setListViewContents(HashMap<Integer,Product> products){
         nameList = new ArrayList<>();
-        oList.setAll(nameList);
-        productListView.setItems(oList);
         for (Product p: products.values()
-             ) {
+                ) {
             nameList.add(p.getProductName());
         }
+        oList.setAll(nameList);
+        productListView.setItems(oList);
+
 
 
     }

@@ -23,13 +23,20 @@ public class PIMFilePersistence implements IPIMPersistence {
     public HashMap<Integer, Product> fetchProductOverview() {
         HashMap<Integer, Product> products = new HashMap<>();
 
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(productFile))) {
+        try (FileInputStream fis = new FileInputStream(productFile);
+             ObjectInputStream objectInputStream = new ObjectInputStream(fis)) {
+
             Product p;
 
-            while ((p = (Product) objectInputStream.readObject()) != null) {
-                products.put(p.getProductID(), p);
+            while (fis.available() > 0) {
+                if ((p = (Product) objectInputStream.readObject()) != null) {
+                    products.put(p.getProductID(), p);
+                }
             }
 
+
+        } catch (EOFException e) {
+            e.printStackTrace();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -43,8 +50,7 @@ public class PIMFilePersistence implements IPIMPersistence {
     }
 
     /**
-     * @param products
-     * takes map in and writes it to product file
+     * @param products takes map in and writes it to product file
      */
     @Override
     public void storeProducts(Map<Integer, Product> products) {
