@@ -22,7 +22,7 @@ public class ERPFetcher {
     }
 
     private void fetchProducts() {
-
+        ERPDummyDB.getProducts();
     }
 
 }
