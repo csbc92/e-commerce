@@ -1,9 +1,10 @@
 package ecompim.Product;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 
-public class DetailedProduct extends Product {
+public class DetailedProduct extends Product implements Serializable {
 
     private String longDescription;
     private HashMap<String,String> technicalDetails;
