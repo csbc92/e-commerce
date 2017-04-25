@@ -22,7 +22,7 @@ public class PIMPersistenceFacade {
     }
 
     public HashMap<Integer, Product> fetchProductOverview() {
-        throw new UnsupportedOperationException();
+       return ipimPersistence.fetchProductOverview();
     }
 
     public DetailedProduct fetchProduct(int productID) {
