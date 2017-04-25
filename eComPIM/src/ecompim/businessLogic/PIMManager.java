@@ -1,6 +1,7 @@
 package ecompim.businessLogic;
 
 
+import ecompim.ERPAccess.ERPDummyDB;
 import ecompim.Product.*;
 import ecompim.PIMPersistence.PIMPersistenceFacade;
 import java.util.ArrayList;
@@ -45,6 +46,8 @@ public class PIMManager implements IPIM {
         return persistance.fetchProductOverview();
     }
 
+
+
     @Override
     public void changeProductAttribute(int productID, String attribute, String newValue) {
         throw new UnsupportedOperationException();
@@ -53,5 +56,10 @@ public class PIMManager implements IPIM {
     @Override
     public void saveChanges() {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void saveERPProducts() {
+        persistance.storeProducts(ERPDummyDB.getProducts());
     }
 }
