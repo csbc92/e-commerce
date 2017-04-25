@@ -1,5 +1,6 @@
 package ecompim.PIMPersistence;
 
+import ecompim.Product.DetailedProduct;
 import ecompim.Product.Product;
 
 import java.sql.Connection;
@@ -38,7 +39,7 @@ public class PIMDBPersistence implements IPIMPersistence{
     }
 
     @Override
-    public Product fetchProduct(int productID) {
+    public DetailedProduct fetchProduct(int productID) {
         return null;
     }
 }

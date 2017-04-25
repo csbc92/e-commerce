@@ -1,5 +1,6 @@
 package ecompim.PIMPersistence;
 
+import ecompim.Product.DetailedProduct;
 import ecompim.Product.Product;
 
 import java.io.File;
@@ -23,7 +24,7 @@ public class PIMFilePersistence implements IPIMPersistence{
     }
 
     @Override
-    public Product fetchProduct(int productID) {
+    public DetailedProduct fetchProduct(int productID) {
         return null;
     }
 
