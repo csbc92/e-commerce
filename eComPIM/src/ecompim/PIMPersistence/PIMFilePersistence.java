@@ -42,6 +42,10 @@ public class PIMFilePersistence implements IPIMPersistence {
         return null;
     }
 
+    /**
+     * @param products
+     * takes map in and writes it to product file
+     */
     @Override
     public void storeProducts(Map<Integer, Product> products) {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(productFile, false))) {
