@@ -95,7 +95,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </HBox>
-                  <HBox GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="SOMETIMES">
+                  <HBox spacing="20.0" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="SOMETIMES">
                      <children>
                         <VBox>
                            <children>
@@ -146,7 +146,7 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <VBox prefHeight="431.0" prefWidth="466.0" spacing="5.0">
+                        <VBox prefHeight="431.0" prefWidth="466.0" spacing="10.0">
                            <children>
                               <Label text="Beskrivelse:" />
                               <TextArea />
@@ -164,9 +164,8 @@
                               <ListView prefWidth="222.0" />
                               <HBox alignment="CENTER" spacing="10.0">
                                  <children>
-                                    <Label text="Tiljøj:" />
-                                    <TextField />
-                                    <Button mnemonicParsing="false" text="Button" />
+                                    <TextField prefHeight="25.0" prefWidth="120.0" />
+                                    <Button mnemonicParsing="false" text="Tilføj" />
                                  </children>
                                  <padding>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
