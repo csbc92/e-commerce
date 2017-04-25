@@ -4,6 +4,7 @@ import ecompim.Product.DetailedProduct;
 import ecompim.Product.Product;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Vedsted on 24-04-2017.
@@ -26,5 +27,9 @@ public class PIMPersistenceFacade {
 
     public DetailedProduct fetchProduct(int productID) {
         throw new UnsupportedOperationException();
+    }
+
+    public void storeProducts(Map<Integer, Product> products) {
+        ipimPersistence.storeProducts(products);
     }
 }
