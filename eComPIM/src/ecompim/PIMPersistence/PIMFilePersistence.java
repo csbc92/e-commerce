@@ -31,15 +31,11 @@ public class PIMFilePersistence implements IPIMPersistence {
 
     @Override
     public void storeProducts(Map<Integer, Product> products) {
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(productFile, false);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(productFile, false));){
 
             for (Product p : products.values()) {
                 objectOutputStream.writeObject(p);
             }
-
-            objectOutputStream.close();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -47,6 +43,4 @@ public class PIMFilePersistence implements IPIMPersistence {
             e.printStackTrace();
         }
     }
-
-
 }
