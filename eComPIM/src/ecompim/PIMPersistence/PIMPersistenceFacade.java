@@ -26,7 +26,7 @@ public class PIMPersistenceFacade {
     }
 
     public DetailedProduct fetchProduct(int productID) {
-        throw new UnsupportedOperationException();
+        return ipimPersistence.fetchProduct(productID);
     }
 
     public void storeProducts(Map<Integer, Product> products) {
