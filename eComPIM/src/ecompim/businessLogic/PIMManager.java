@@ -13,6 +13,9 @@ public class PIMManager implements IPIM {
 
     PIMPersistenceFacade persistance;
 
+    public PIMManager() {
+        persistance = new PIMPersistenceFacade("/data/file.dat");
+    }
 
     @Override
     public DetailedProduct fetchProduct(int productID) {

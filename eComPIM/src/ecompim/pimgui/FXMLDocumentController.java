@@ -11,22 +11,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-
+import ecompim.businessLogic.PIMManager;
+import ecompim.businessLogic.IPIM;
 /**
  *
  * @author JV
  */
 public class FXMLDocumentController implements Initializable {
 
-    public TextField searchTextField;
-    public Button searchButton;
-    public ListView productListView;
-    public TreeView categoryTreeView;
-
+    private TextField searchTextField;
+    private Button searchButton;
+    private ListView productListView;
+    private TreeView categoryTreeView;
+    private IPIM manager;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       manager = new PIMManager();
     }
 
     public void searchButtonHandler(ActionEvent actionEvent) {
