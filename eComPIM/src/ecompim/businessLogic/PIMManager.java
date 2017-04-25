@@ -14,6 +14,9 @@ public class PIMManager implements IPIM {
 
     PIMPersistenceFacade persistance;
 
+    public PIMManager() {
+        persistance = new PIMPersistenceFacade("data/file.dat");
+    }
 
     @Override
     public DetailedProduct fetchProduct(int productID) {
@@ -39,7 +42,7 @@ public class PIMManager implements IPIM {
     }
 
     @Override
-    public HashMap<Integer, Product> fetchProducts() {
+    public HashMap<Integer, Product> fetchProductOverview() {
         return persistance.fetchProductOverview();
     }
 
