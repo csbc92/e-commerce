@@ -22,14 +22,7 @@ public class FXMLDocumentController implements Initializable {
     public Button searchButton;
     public ListView productListView;
     public TreeView categoryTreeView;
-    @FXML
-    private Label label;
-    
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
