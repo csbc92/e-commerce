@@ -42,7 +42,7 @@ public class PIMManager implements IPIM {
     }
 
     @Override
-    public HashMap<Integer, Product> fetchProducts() {
+    public HashMap<Integer, Product> fetchProductOverview() {
         return persistance.fetchProductOverview();
     }
 

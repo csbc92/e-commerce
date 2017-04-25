@@ -9,7 +9,7 @@ import java.util.HashMap;
  */
 public interface IPIM extends IProductFetcher {
 
-    public HashMap<Integer,Product> fetchProducts();
+    public HashMap<Integer,Product> fetchProductOverview();
     public void changeProductAttribute(int productID, String attribute, String newValue);
     public void saveChanges();
 

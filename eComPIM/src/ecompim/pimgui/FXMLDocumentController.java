@@ -6,9 +6,11 @@
 package ecompim.pimgui;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+
+import ecompim.Product.Product;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import ecompim.businessLogic.PIMManager;
@@ -24,12 +26,21 @@ public class FXMLDocumentController implements Initializable {
     private ListView productListView;
     private TreeView categoryTreeView;
     private IPIM manager;
+    private HashMap<Integer,Product> products;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        manager = new PIMManager();
+       manager.saveERPProducts();
+       products = manager.fetchProductOverview();
+       setListViewContents(products);
+
     }
 
     public void searchButtonHandler(ActionEvent actionEvent) {
+    }
+
+    private void setListViewContents(HashMap<Integer,Product> products){
+
     }
 }
