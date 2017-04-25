@@ -39,14 +39,14 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <GridPane VBox.vgrow="SOMETIMES">
+            <GridPane gridLinesVisible="true" VBox.vgrow="SOMETIMES">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="635.0" minWidth="10.0" prefWidth="271.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1013.0" minWidth="10.0" prefWidth="1009.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="270.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="1000.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="343.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="651.0" minHeight="10.0" prefHeight="651.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="650.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="271.0" spacing="10.0">
