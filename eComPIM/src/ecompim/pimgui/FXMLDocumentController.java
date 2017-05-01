@@ -20,6 +20,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import ecompim.businessLogic.PIMManager;
 import ecompim.businessLogic.IPIM;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+
 /**
  *
  * @author JV
@@ -27,18 +31,32 @@ import ecompim.businessLogic.IPIM;
 public class FXMLDocumentController implements Initializable {
 
     @FXML
+    public ListView lvProducts;
+    @FXML
+    public GridPane gpviewPoduct;
+    @FXML
+    public GridPane gpOverview;
+    public Label labID;
+    public Label labName;
+    public ImageView imgvPic;
+    public TextField tfBuyPrice;
+    public TextField tfMargin;
+    public TextField tfSalesPrice;
+    public RadioButton rbPublic;
+    public ToggleGroup publicityStatus;
+    public RadioButton rbHidden;
+    public TextArea tfDesc;
+    @FXML
     private TextField searchTextField;
     @FXML
     private Button searchButton;
-    @FXML
-    private ListView productListView;
     @FXML
     private TreeView categoryTreeView;
 
     private IPIM manager;
     private HashMap<Integer,Product> products;
-    private ArrayList<String> nameList;
-    private ObservableList<String> oList= FXCollections.observableArrayList();
+    private ArrayList<Product> productList;
+    private ObservableList<Product> oList= FXCollections.observableArrayList();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -46,6 +64,7 @@ public class FXMLDocumentController implements Initializable {
        manager.saveERPProducts();
        products = manager.fetchProductOverview();
        setListViewContents(products);
+       gpviewPoduct.setVisible(false);
     }
 
     @FXML
@@ -53,15 +72,28 @@ public class FXMLDocumentController implements Initializable {
     }
 
     private void setListViewContents(HashMap<Integer,Product> products){
-        nameList = new ArrayList<>();
-        for (Product p: products.values()
-                ) {
-            nameList.add(p.getProductName());
-        }
-        oList.setAll(nameList);
-        productListView.setItems(oList);
+        productList = new ArrayList<>();
+        productList.addAll(products.values());
+        oList.setAll(productList);
+        lvProducts.setItems(oList);
 
 
+
+    }
+
+    @FXML
+    public void lvClickedHandler(MouseEvent mouseEvent) {
+        int id = ((Product) lvProducts.getSelectionModel().getSelectedItem()).getProductID();
+        System.out.println(id);
+        this.viewProduct(id);
+    }
+
+    private void viewProduct(int productID) {
+        gpviewPoduct.setVisible(true);
+        gpOverview.setVisible(false);
+
+        Product product = manager.fetchProduct(productID);
+        
 
     }
 }
