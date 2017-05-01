@@ -36,15 +36,25 @@ public class FXMLDocumentController implements Initializable {
     public GridPane gpviewPoduct;
     @FXML
     public GridPane gpOverview;
+    @FXML
     public Label labID;
+    @FXML
     public Label labName;
+    @FXML
     public ImageView imgvPic;
+    @FXML
     public TextField tfBuyPrice;
+    @FXML
     public TextField tfMargin;
+    @FXML
     public TextField tfSalesPrice;
+    @FXML
     public RadioButton rbPublic;
+    @FXML
     public ToggleGroup publicityStatus;
+    @FXML
     public RadioButton rbHidden;
+    @FXML
     public TextArea tfDesc;
     @FXML
     private TextField searchTextField;

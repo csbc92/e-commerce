@@ -11,7 +11,7 @@ public interface IPIM extends IProductFetcher {
 
     public HashMap<Integer,Product> fetchProductOverview();
     public void changeProductAttribute(int productID, String attribute, String newValue);
-    public void saveChanges();
+    public void saveChanges(Product product);
 
     public void saveERPProducts();
 }

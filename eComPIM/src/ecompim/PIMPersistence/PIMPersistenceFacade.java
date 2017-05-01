@@ -32,4 +32,8 @@ public class PIMPersistenceFacade {
     public void storeProducts(Map<Integer, Product> products) {
         ipimPersistence.storeProducts(products);
     }
+
+    public void saveProduct(Product product) {
+        ipimPersistence.saveProduct(product);
+    }
 }
