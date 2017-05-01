@@ -8,7 +8,6 @@ package ecompim.pimgui;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Observable;
 import java.util.ResourceBundle;
 
 import ecompim.Product.Product;
@@ -65,6 +64,7 @@ public class FXMLDocumentController implements Initializable {
        products = manager.fetchProductOverview();
        setListViewContents(products);
        gpviewPoduct.setVisible(false);
+       gpOverview.setVisible(true);
     }
 
     @FXML
@@ -83,17 +83,21 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     public void lvClickedHandler(MouseEvent mouseEvent) {
-        int id = ((Product) lvProducts.getSelectionModel().getSelectedItem()).getProductID();
-        System.out.println(id);
-        this.viewProduct(id);
+        Product p = ((Product) lvProducts.getSelectionModel().getSelectedItem()); // Hvis vi har et produkt her
+        System.out.println(p.getProductID());                                       //Hvorfor skal vi så hente det igen
+        this.viewProduct(p.getProductID());                   //Især, hvis vi ikke engang kan hente et detailed produkt
     }
 
     private void viewProduct(int productID) {
-        gpviewPoduct.setVisible(true);
+        gpviewPoduct.setVisible(true); // Change scene
         gpOverview.setVisible(false);
 
-        Product product = manager.fetchProduct(productID);
-        
+        Product product = manager.fetchProduct(productID); // Fetch product
+
+        //Set values on gui
+        labID.setText(String.valueOf(product.getProductID()));
+        labName.setText(product.getName());
+        tfDesc.setText(product.getShortDescription());
 
     }
 }

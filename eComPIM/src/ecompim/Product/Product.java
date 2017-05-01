@@ -49,7 +49,7 @@ public class Product implements Serializable{
         return salePrice;
     }
 
-    public String getProductName() {
+    public String getName() {
         return productName;
     }
 

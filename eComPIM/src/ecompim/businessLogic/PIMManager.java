@@ -1,7 +1,6 @@
 package ecompim.businessLogic;
 
 
-import ecompim.ERPAccess.ERPDummyDB;
 import ecompim.ERPAccess.ERPFetcher;
 import ecompim.Product.*;
 import ecompim.PIMPersistence.PIMPersistenceFacade;
@@ -29,7 +28,7 @@ public class PIMManager implements IPIM {
        HashMap<Integer,Product> products = persistance.fetchProductOverview();
        ArrayList<Product> toReturn = new ArrayList<>();
         for (Product p: products.values() ) {
-            if (String.valueOf(p.getProductID()).equalsIgnoreCase(searchCriteria) || p.getProductName().equalsIgnoreCase(searchCriteria)){ // TODO more criteria support
+            if (String.valueOf(p.getProductID()).equalsIgnoreCase(searchCriteria) || p.getName().equalsIgnoreCase(searchCriteria)){ // TODO more criteria support
 
                 toReturn.add(p);
             }
