@@ -17,4 +17,6 @@ public interface IPIMPersistence {
 
     public void storeProducts(Map<Integer, Product> products);
 
+    public void saveProduct(Product product);
+
 }

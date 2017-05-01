@@ -49,5 +49,10 @@ public class PIMDBPersistence implements IPIMPersistence{
         throw new UnsupportedOperationException();
     }
 
+    @Override
+    public void saveProduct(Product product) {
+        throw new UnsupportedOperationException();
+    }
+
 
 }

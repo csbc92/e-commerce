@@ -64,4 +64,11 @@ public class PIMFilePersistence implements IPIMPersistence {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void saveProduct(Product product) {
+        Map<Integer, Product> temp = fetchProductOverview();
+        temp.put(product.getProductID(), product);
+        storeProducts(temp);
+    }
 }

@@ -54,8 +54,8 @@ public class PIMManager implements IPIM {
     }
 
     @Override
-    public void saveChanges() {
-        throw new UnsupportedOperationException();
+    public void saveChanges(Product product) {
+        persistance.saveProduct(product);
     }
 
     @Override
