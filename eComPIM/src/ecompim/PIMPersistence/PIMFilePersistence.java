@@ -53,7 +53,7 @@ public class PIMFilePersistence implements IPIMPersistence {
      * @param products takes map in and writes it to product file
      */
     @Override
-    public void storeProducts(Map<Integer, Product> products) {
+    public void storeProducts(Map<Integer, DetailedProduct> products) {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(productFile, false))) {
 
             for (Product p : products.values()) {
@@ -66,8 +66,8 @@ public class PIMFilePersistence implements IPIMPersistence {
     }
 
     @Override
-    public void saveProduct(Product product) {
-        Map<Integer, Product> temp = fetchProductOverview();
+    public void saveProduct(DetailedProduct product) {
+        Map<Integer, DetailedProduct> temp = fetchDetailedProducts();
         temp.put(product.getProductID(), product);
         storeProducts(temp);
     }

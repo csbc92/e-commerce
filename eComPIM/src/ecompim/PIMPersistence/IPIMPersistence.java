@@ -15,8 +15,8 @@ public interface IPIMPersistence {
 
     public DetailedProduct fetchProduct(int productID);
 
-    public void storeProducts(Map<Integer, Product> products);
+    public void storeProducts(Map<Integer, DetailedProduct> products);
 
-    public void saveProduct(Product product);
+    public void saveProduct(DetailedProduct product);
 
 }
