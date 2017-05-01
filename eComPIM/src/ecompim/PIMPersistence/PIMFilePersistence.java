@@ -19,24 +19,20 @@ public class PIMFilePersistence implements IPIMPersistence {
         productFile = new File(filePath);
     }
 
-    @Override
-    public HashMap<Integer, Product> fetchProductOverview() {
-        HashMap<Integer, Product> products = new HashMap<>();
+    public HashMap<Integer, DetailedProduct> fetchDetailedProducts() {
+        HashMap<Integer, DetailedProduct> products = new HashMap<>();
 
         try (FileInputStream fis = new FileInputStream(productFile);
              ObjectInputStream objectInputStream = new ObjectInputStream(fis)) {
 
-            Product p;
+            DetailedProduct p;
 
             while (fis.available() > 0) {
-                if ((p = (Product) objectInputStream.readObject()) != null) {
+                if ((p = (DetailedProduct) objectInputStream.readObject()) != null) {
                     products.put(p.getProductID(), p);
                 }
             }
-
-
-        } catch (EOFException e) {
-            e.printStackTrace();
+            
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -45,8 +41,16 @@ public class PIMFilePersistence implements IPIMPersistence {
     }
 
     @Override
+    public HashMap<Integer, Product> fetchProductOverview() {
+        HashMap<Integer, Product> products = new HashMap<>();
+        products.putAll(fetchDetailedProducts());
+
+        return products;
+    }
+
+    @Override
     public DetailedProduct fetchProduct(int productID) {
-         return (DetailedProduct) fetchProductOverview().get(productID); // skal sgu nok returne et Detailed product, men jaaa.
+        return (DetailedProduct) fetchProductOverview().get(productID); // skal sgu nok returne et Detailed product, men jaaa.
     }
 
     /**
