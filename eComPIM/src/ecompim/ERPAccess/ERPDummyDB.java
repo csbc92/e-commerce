@@ -1,5 +1,6 @@
 package ecompim.ERPAccess;
 
+import ecompim.Product.DetailedProduct;
 import ecompim.Product.Product;
 
 import java.util.HashMap;
@@ -10,29 +11,29 @@ import java.util.Map;
  */
 public class ERPDummyDB {
 
-    public static Map<Integer, Product> getProducts() {
-        Map<Integer, Product> products = new HashMap<>();
+    public static Map<Integer, DetailedProduct> getProducts() {
+        Map<Integer, DetailedProduct> products = new HashMap<>();
 
 
-        products.put(1, new Product(1, "MSI Z270I Gaming Pro Carbon AC, S-1151\n" +
-                "Bundkort, mini-ITX, Z270, DDR4, 1xPCIe-x16, M.2, WiFi, Mystic Light Sync", 1649, "MSI Z270I Gaming Pro Carbon AC", 50));
-        products.get(1).setRating(4.2);
-        products.get(1).setTags(new String[]{"hardware", "motherboard", "msi"});
+        products.put(1, new DetailedProduct(1, "MSI Z270I Gaming Pro Carbon AC, S-1151\n" +
+                "Bundkort, mini-ITX, Z270, DDR4, 1xPCIe-x16, M.2, WiFi, Mystic Light Sync", 1649, "MSI Z270I Gaming Pro Carbon AC", 50,3,4,5,5));
+       // products.get(1).setRating(4.2);
+        //products.get(1).setTags(new String[]{"hardware", "motherboard", "msi"});
 
-        products.put(2, new Product(2, "AMD Ryzen 7 1700 Processor\n" +
-                "Socket-AM4, 8-Core, 16-Thread, 3.0/3.7GHz, 65W, inkl. køler", 2690, "AMD Ryzen 7 1700", 34));
-        products.get(2).setRating(3.8);
-        products.get(2).setTags(new String[]{"hardware", "cpu", "ryzen", "amd"});
+        products.put(2, new DetailedProduct(2, "AMD Ryzen 7 1700 Processor\n" +
+                "Socket-AM4, 8-Core, 16-Thread, 3.0/3.7GHz, 65W, inkl. køler", 2690, "AMD Ryzen 7 1700", 34,43,56,22,1));
+        //products.get(2).setRating(3.8);
+        //products.get(2).setTags(new String[]{"hardware", "cpu", "ryzen", "amd"});
 
-        products.put(3, new Product(3, "Corsair Obsidian 900D Big Tower Sort\n" +
-                "Blæsere: 3x 120mm Front, 1x 140mm Bag, M/E-ATX, m-ITX, HPTX, USB2.0/3, Vindue", 2999, "Corsair Obsidian 900D", 16));
-        products.get(3).setRating(4.0);
-        products.get(3).setTags(new String[]{"hardware", "cabinet", "corsair", "giant"});
-
-        products.put(4, new Product(4, "MSI GeForce GTX 1080 Ti Sea Hawk X\n" +
-                "Grafikkort, PCI-Express 3.0, 11GB GDDR5X, 1544/1657MHz, Water cooled, Pascal", 7790, "MSI GeForce GTX 1080 Ti Sea Hawk X", 6));
-        products.get(4).setRating(4.8);
-        products.get(4).setTags(new String[]{"hardware", "graphics", "msi", "1080", "gtx"});
+//        products.put(3, new Product(3, "Corsair Obsidian 900D Big Tower Sort\n" +
+//                "Blæsere: 3x 120mm Front, 1x 140mm Bag, M/E-ATX, m-ITX, HPTX, USB2.0/3, Vindue", 2999, "Corsair Obsidian 900D", 16));
+//        products.get(3).setRating(4.0);
+//        products.get(3).setTags(new String[]{"hardware", "cabinet", "corsair", "giant"});
+//
+//        products.put(4, new Product(4, "MSI GeForce GTX 1080 Ti Sea Hawk X\n" +
+//                "Grafikkort, PCI-Express 3.0, 11GB GDDR5X, 1544/1657MHz, Water cooled, Pascal", 7790, "MSI GeForce GTX 1080 Ti Sea Hawk X", 6));
+//        products.get(4).setRating(4.8);
+//        products.get(4).setTags(new String[]{"hardware", "graphics", "msi", "1080", "gtx"});
 
 
         //TODO Products may be added here

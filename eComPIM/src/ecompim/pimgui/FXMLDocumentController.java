@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+import ecompim.Product.DetailedProduct;
 import ecompim.Product.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -102,7 +103,7 @@ public class FXMLDocumentController implements Initializable {
         gpviewPoduct.setVisible(true); // Change scene
         gpOverview.setVisible(false);
 
-        Product product = manager.fetchProduct(productID); // Fetch product
+        DetailedProduct product = manager.fetchProduct(productID); // Fetch product
 
         //Set values on gui
         labID.setText(String.valueOf(product.getProductID()));

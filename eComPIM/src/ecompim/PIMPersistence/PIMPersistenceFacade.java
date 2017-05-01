@@ -29,11 +29,11 @@ public class PIMPersistenceFacade {
         return ipimPersistence.fetchProduct(productID);
     }
 
-    public void storeProducts(Map<Integer, Product> products) {
+    public void storeProducts(Map<Integer, DetailedProduct> products) {
         ipimPersistence.storeProducts(products);
     }
 
-    public void saveProduct(Product product) {
+    public void saveProduct(DetailedProduct product) {
         ipimPersistence.saveProduct(product);
     }
 }
