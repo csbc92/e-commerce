@@ -60,7 +60,7 @@ public class PIMFilePersistence implements IPIMPersistence {
     public void storeProducts(Map<Integer, DetailedProduct> products) {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(productFile, false))) {
 
-            for (Product p : products.values()) {
+            for (DetailedProduct p : products.values()) {
                 objectOutputStream.writeObject(p);
             }
 
