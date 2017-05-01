@@ -54,7 +54,7 @@ public class PIMManager implements IPIM {
     }
 
     @Override
-    public void saveChanges(Product product) {
+    public void saveChanges(DetailedProduct product) {
         persistance.saveProduct(product);
     }
 

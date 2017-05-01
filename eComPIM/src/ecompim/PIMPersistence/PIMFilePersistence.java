@@ -50,7 +50,7 @@ public class PIMFilePersistence implements IPIMPersistence {
 
     @Override
     public DetailedProduct fetchProduct(int productID) {
-        return (DetailedProduct) fetchProductOverview().get(productID); // skal sgu nok returne et Detailed product, men jaaa.
+        return  fetchDetailedProducts().get(productID);
     }
 
     /**

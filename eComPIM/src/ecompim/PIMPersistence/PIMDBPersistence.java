@@ -45,12 +45,12 @@ public class PIMDBPersistence implements IPIMPersistence{
     }
 
     @Override
-    public void storeProducts(Map<Integer, Product> products) {
+    public void storeProducts(Map<Integer, DetailedProduct> products) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public void saveProduct(Product product) {
+    public void saveProduct(DetailedProduct product) {
         throw new UnsupportedOperationException();
     }
 

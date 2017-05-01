@@ -1,5 +1,6 @@
 package ecompim.businessLogic;
 
+import ecompim.Product.DetailedProduct;
 import ecompim.Product.Product;
 
 import java.util.HashMap;
@@ -11,7 +12,7 @@ public interface IPIM extends IProductFetcher {
 
     public HashMap<Integer,Product> fetchProductOverview();
     public void changeProductAttribute(int productID, String attribute, String newValue);
-    public void saveChanges(Product product);
+    public void saveChanges(DetailedProduct product);
 
     public void saveERPProducts();
 }
