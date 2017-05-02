@@ -12,14 +12,18 @@ public class DetailedProduct extends Product implements Serializable {
     private double height;
     private double length;
     private double width;
+    private double margin;
+    private double costPrice;
 
 
-    public DetailedProduct(int productID, String shortDescription, double salePrice, String productName, int stock, double weight, double height, double length, double width) {
-        super(productID, shortDescription, salePrice, productName, stock);
+    public DetailedProduct(int productID, String shortDescription, double costPrice, String productName, int stock, double weight, double height, double length, double width) {
+        super(productID, shortDescription, costPrice, productName, stock);
         this.weight = weight;
         this.height = height;
         this.length = length;
         this.width = width;
+        this.costPrice = costPrice;
+        this.margin = 0;
     }
 
     public String getLongDescription() {
@@ -52,6 +56,18 @@ public class DetailedProduct extends Product implements Serializable {
 
     public double getWidth() {
         return width;
+    }
+
+    public double getMargin() {
+        return margin;
+    }
+
+    public double getCostPrice() {
+        return costPrice;
+    }
+
+    public void setMargin(double margin) {
+        this.margin = margin;
     }
 
     /*@Override
