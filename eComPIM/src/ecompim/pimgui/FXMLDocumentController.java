@@ -44,7 +44,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public ImageView imgvPic;
     @FXML
-    public TextField tfBuyPrice;
+    public TextField tfCostPrice;
     @FXML
     public TextField tfMargin;
     @FXML
@@ -68,6 +68,7 @@ public class FXMLDocumentController implements Initializable {
     private HashMap<Integer,Product> products;
     private ArrayList<Product> productList;
     //private ObservableList<Product> oList= FXCollections.observableArrayList();
+    private DetailedProduct currentProduct;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -113,21 +114,33 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     public void lvClickedHandler(MouseEvent mouseEvent) {
-        Product p = ((Product) lvProducts.getSelectionModel().getSelectedItem()); // Hvis vi har et produkt her
-        System.out.println(p.getProductID());                                       //Hvorfor skal vi så hente det igen
-        this.viewProduct(p.getProductID());                   //Især, hvis vi ikke engang kan hente et detailed produkt
+        this.viewProduct(((Product) lvProducts.getSelectionModel().getSelectedItem()).getProductID());
     }
 
     private void viewProduct(int productID) {
         gpviewPoduct.setVisible(true); // Change scene
         gpOverview.setVisible(false);
 
-        DetailedProduct product = manager.fetchProduct(productID); // Fetch product
+        currentProduct = manager.fetchProduct(productID); // Fetch currentProduct
 
         //Set values on gui
-        labID.setText(String.valueOf(product.getProductID()));
-        labName.setText(product.getName());
-        tfDesc.setText(product.getShortDescription());
+        labID.setText(String.valueOf(currentProduct.getProductID()));
+        labName.setText(currentProduct.getName());
+        tfDesc.setText(currentProduct.getLongDescription());
 
+        tfCostPrice.setText(String.valueOf(currentProduct.getCostPrice()));
+        tfMargin.setText(String.valueOf(currentProduct.getMargin()));
+        tfSalesPrice.setText(String.valueOf(currentProduct.getSalePrice()));
+
+    }
+
+    @FXML
+    public void butBackHandler(ActionEvent actionEvent) {
+        viewOverview();
+    }
+
+    private void viewOverview() {
+        gpOverview.setVisible(true);
+        gpviewPoduct.setVisible(false);
     }
 }
