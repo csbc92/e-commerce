@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ecompim.pimgui;
+package ecompim.PIMGUI;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -23,6 +23,7 @@ import ecompim.businessLogic.IPIM;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.util.Callback;
 
 /**
  *
@@ -31,15 +32,15 @@ import javafx.scene.layout.GridPane;
 public class FXMLDocumentController implements Initializable {
 
     @FXML
-    public ListView lvProducts;
+    private ListView<Product> lvProducts;
     @FXML
-    public GridPane gpviewPoduct;
+    private GridPane gpviewPoduct;
     @FXML
-    public GridPane gpOverview;
+    private GridPane gpOverview;
     @FXML
-    public Label labID;
+    private Label labID;
     @FXML
-    public Label labName;
+    private Label labName;
     @FXML
     public ImageView imgvPic;
     @FXML
@@ -55,7 +56,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public RadioButton rbHidden;
     @FXML
-    public TextArea tfDesc;
+    private TextArea tfDesc;
     @FXML
     private TextField searchTextField;
     @FXML
@@ -66,30 +67,48 @@ public class FXMLDocumentController implements Initializable {
     private IPIM manager;
     private HashMap<Integer,Product> products;
     private ArrayList<Product> productList;
-    private ObservableList<Product> oList= FXCollections.observableArrayList();
+    //private ObservableList<Product> oList= FXCollections.observableArrayList();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        manager = new PIMManager();
-       manager.saveERPProducts();
-       products = manager.fetchProductOverview();
-       setListViewContents(products);
+       setListViewContents(manager.fetchProductOverview());
        gpviewPoduct.setVisible(false);
        gpOverview.setVisible(true);
     }
+
 
     @FXML
     public void searchButtonHandler(ActionEvent actionEvent) {
     }
 
+    /**
+     *
+     * @param products
+     * set the ListView for product overview
+     * this method is ran at startup!
+     */
     private void setListViewContents(HashMap<Integer,Product> products){
         productList = new ArrayList<>();
         productList.addAll(products.values());
-        oList.setAll(productList);
-        lvProducts.setItems(oList);
+        lvProducts.setItems(FXCollections.observableList(productList));
 
+        lvProducts.setCellFactory(new Callback<ListView<Product>, ListCell<Product>>() {
 
+            @Override
+            public ListCell<Product> call(ListView<Product> param) {
 
+                return new ListCell<Product>() {
+                    @Override
+                    protected void updateItem(Product p, boolean bln) {
+                        super.updateItem(p, bln);
+                        if (p != null) {
+                            setText(p.getShortDescription());
+                        }
+                    }
+                };
+            }
+        });
     }
 
     @FXML

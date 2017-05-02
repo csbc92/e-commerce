@@ -76,4 +76,9 @@ public class Product implements Serializable{
     public ArrayList<Category> getCategoryList() {
         return new ArrayList<>(categoryList);
     }
+
+    /*@Override
+    public String toString() {
+        return shortDescription;
+    }*/
 }

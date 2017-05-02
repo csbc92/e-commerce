@@ -53,4 +53,9 @@ public class DetailedProduct extends Product implements Serializable {
     public double getWidth() {
         return width;
     }
+
+    /*@Override
+    public String toString() {
+        return this.getShortDescription();
+    }*/
 }

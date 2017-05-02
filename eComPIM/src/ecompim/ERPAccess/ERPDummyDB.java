@@ -15,13 +15,13 @@ public class ERPDummyDB {
         Map<Integer, DetailedProduct> products = new HashMap<>();
 
 
-        products.put(1, new DetailedProduct(1, "MSI Z270I Gaming Pro Carbon AC, S-1151\n" +
-                "Bundkort, mini-ITX, Z270, DDR4, 1xPCIe-x16, M.2, WiFi, Mystic Light Sync", 1649, "MSI Z270I Gaming Pro Carbon AC", 50,3,4,5,5));
+        products.put(1, new DetailedProduct(1, "MSI Z270I Gaming Pro Carbon AC, S-1151" +
+                " Bundkort, mini-ITX, Z270, DDR4, 1xPCIe-x16, M.2, WiFi, Mystic Light Sync", 1649, "MSI Z270I Gaming Pro Carbon AC", 50,3,4,5,5));
        // products.get(1).setRating(4.2);
         //products.get(1).setTags(new String[]{"hardware", "motherboard", "msi"});
 
-        products.put(2, new DetailedProduct(2, "AMD Ryzen 7 1700 Processor\n" +
-                "Socket-AM4, 8-Core, 16-Thread, 3.0/3.7GHz, 65W, inkl. køler", 2690, "AMD Ryzen 7 1700", 34,43,56,22,1));
+        products.put(2, new DetailedProduct(2, "AMD Ryzen 7 1700 Processor" +
+                " Socket-AM4, 8-Core, 16-Thread, 3.0/3.7GHz, 65W, inkl. køler", 2690, "AMD Ryzen 7 1700", 34,43,56,22,1));
         //products.get(2).setRating(3.8);
         //products.get(2).setTags(new String[]{"hardware", "cpu", "ryzen", "amd"});
 
