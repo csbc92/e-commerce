@@ -2,6 +2,7 @@ package ecompim.PIMPersistence;
 
 import ecompim.Product.DetailedProduct;
 import ecompim.Product.Product;
+import ecompim.SQL.SQL;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,22 +15,9 @@ import java.util.Map;
  */
 public class PIMDBPersistence implements IPIMPersistence{
 
-    private Connection connection;
-    private String connectionString;
-    private String username;
-    private String password;
-
+    private SQL DB;
     public PIMDBPersistence(String connectionString, String username, String password) {
-        //"jdbc:postgresql://localhost:5432/<INSERT DATABASE HERE>"
-        this.connectionString = connectionString;
-        this.username = username;
-        this.password = password;
-
-        try {
-            connection = DriverManager.getConnection(connectionString, username, password);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        DB = new SQL(connectionString,username,password);
 
     }
 
