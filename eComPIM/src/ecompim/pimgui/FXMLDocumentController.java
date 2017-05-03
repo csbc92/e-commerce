@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ecompim.PIMGUI;
+package ecompim.pimgui;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,6 +21,7 @@ import javafx.scene.control.*;
 import ecompim.businessLogic.PIMManager;
 import ecompim.businessLogic.IPIM;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
@@ -114,7 +115,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     public void lvClickedHandler(MouseEvent mouseEvent) {
-        this.viewProduct(((Product) lvProducts.getSelectionModel().getSelectedItem()).getProductID());
+        this.viewProduct((lvProducts.getSelectionModel().getSelectedItem()).getProductID());
     }
 
     private void viewProduct(int productID) {
@@ -142,5 +143,29 @@ public class FXMLDocumentController implements Initializable {
     private void viewOverview() {
         gpOverview.setVisible(true);
         gpviewPoduct.setVisible(false);
+    }
+
+    @FXML
+    public void butOkHandler(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void butApplyHandler(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void butRevertHandler(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void tfMarginHandler(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void rbPublicityHandler(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void taDescOnKeyTypedHandler(KeyEvent keyEvent) {
     }
 }
