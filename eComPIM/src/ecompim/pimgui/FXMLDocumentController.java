@@ -10,10 +10,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-import ecompim.Product.DetailedProduct;
+
 import ecompim.Product.Product;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -57,7 +56,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public RadioButton rbHidden;
     @FXML
-    private TextArea tfDesc;
+    private TextArea taDesc;
     @FXML
     private TextField searchTextField;
     @FXML
@@ -123,7 +122,7 @@ public class FXMLDocumentController implements Initializable {
         //Set values on gui
         labID.setText(String.valueOf(manager.getCurrentProduct().getProductID()));
         labName.setText(manager.getCurrentProduct().getName());
-        tfDesc.setText(manager.getCurrentProduct().getLongDescription());
+        taDesc.setText(manager.getCurrentProduct().getLongDescription());
 
         if (manager.getCurrentProduct().isHidden()) {
             rbHidden.setSelected(true);
@@ -165,6 +164,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     public void tfMarginHandler(ActionEvent actionEvent) {
+        manager.getCurrentProduct().setMargin(Integer.parseInt(tfMargin.getText()));
     }
 
     @FXML
@@ -178,5 +178,13 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     public void taDescOnKeyTypedHandler(KeyEvent keyEvent) {
+        manager.getCurrentProduct().setLongDescription(taDesc.getText());
+    }
+
+    @FXML
+    public void tfMarginOnKeyTypedHandler(KeyEvent keyEvent) {
+        if(!Character.isDigit(keyEvent.getCharacter().charAt(0))){
+            keyEvent.consume();
+        }
     }
 }
