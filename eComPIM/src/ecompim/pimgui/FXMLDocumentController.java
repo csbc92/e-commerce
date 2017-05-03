@@ -65,6 +65,11 @@ public class FXMLDocumentController implements Initializable {
 
     private IPIM manager;
 
+    /**
+     * Initialises the PIM-system, displays the product overview.
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         manager = new PIMManager();
@@ -74,13 +79,22 @@ public class FXMLDocumentController implements Initializable {
     }
 
 
+    /**
+     * NOT DONE
+     * Does something when the search button is pressed
+     * @param actionEvent
+     */
     @FXML
     public void searchButtonHandler(ActionEvent actionEvent) {
     }
 
     /**
-     * @param products set the ListView for product overview
-     *                 this method is ran at startup!
+     * Fill the ListView for product overview.
+     * This method is ran at startup!
+     *
+     * @param products the products to display
+     *
+     *
      */
     private void setListViewContents(HashMap<Integer, Product> products) {
         ArrayList<Product> productList = new ArrayList<>();
@@ -105,11 +119,22 @@ public class FXMLDocumentController implements Initializable {
         });
     }
 
+    /**
+     * Changes the "scene" to viewing a product from the product overview
+     * Triggered when a product in the listview in the product overview is clicked
+     *
+     * @param mouseEvent
+     */
     @FXML
     public void lvClickedHandler(MouseEvent mouseEvent) {
         this.viewProduct((lvProducts.getSelectionModel().getSelectedItem()).getProductID());
     }
 
+    /**
+     * Changes the "scene" to viewing a product from the product overview.
+     * Fetches a detailed product from persistence and displays the product information.
+     * @param productID
+     */
     private void viewProduct(int productID) {
         gpviewPoduct.setVisible(true); // Change scene
         gpOverview.setVisible(false);
@@ -133,37 +158,59 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    /**
+     * Returns to the product overview.
+     * Triggered the the "Annuller" button is pressed.
+     * @param actionEvent
+     */
     @FXML
     public void butBackHandler(ActionEvent actionEvent) {
         viewOverview();
     }
 
+    /**
+     * Returns to the product overview
+     */
     private void viewOverview() {
         gpOverview.setVisible(true);
         gpviewPoduct.setVisible(false);
     }
 
+    /**
+     * Saves changes to the product currently being modified
+     * Returns to the product overview.
+     * @param actionEvent
+     */
     @FXML
     public void butOkHandler(ActionEvent actionEvent) {
         butApplyHandler(actionEvent);
         butBackHandler(actionEvent);
     }
 
+    /**
+     * Saves changes to the product currently being modified
+     * @param actionEvent
+     */
     @FXML
     public void butApplyHandler(ActionEvent actionEvent) {
         manager.saveChanges();
     }
 
+    /**
+     * Discards changes to the product currently being modified and shows the old product information
+     * @param actionEvent
+     */
     @FXML
     public void butRevertHandler(ActionEvent actionEvent) {
         viewProduct((lvProducts.getSelectionModel().getSelectedItem()).getProductID());
     }
 
-    @FXML
-    public void tfMarginHandler(ActionEvent actionEvent) {
 
-    }
-
+    /**
+     * Changes the publicity status of the product currently being modified.
+     * Triggered when a radiobutton is pressed
+     * @param actionEvent
+     */
     @FXML
     public void rbPublicityHandler(ActionEvent actionEvent) {
         if (actionEvent.getSource().equals(rbHidden)) {
@@ -173,11 +220,24 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     * Changes the long description of the product curently being modified
+     * Triggered when any char is entered in the text area
+     * @param keyEvent
+     */
     @FXML
     public void taDescOnKeyTypedHandler(KeyEvent keyEvent) {
         manager.getCurrentProduct().setLongDescription(taDesc.getText());
     }
 
+    /**
+     * Changes the profit margin of the product currently being modified
+     * re-calculates the sales price of the product
+     * chars that are not digits and not periods ('.') are ignored
+     *
+     * Triggered when any char is entered in the margin-text field
+     * @param keyEvent
+     */
     @FXML
     public void tfMarginOnKeyTypedHandler(KeyEvent keyEvent) {
 
@@ -187,7 +247,7 @@ public class FXMLDocumentController implements Initializable {
 
         } else {
             if (!Character.isDigit(keyEvent.getCharacter().charAt(0)) && !(keyEvent.getCharacter().charAt(0) == '.')) {
-  
+
                 keyEvent.consume();
                 manager.getCurrentProduct().setMargin(Double.parseDouble(tfMargin.getText()));
             } else {

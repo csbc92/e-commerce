@@ -4,6 +4,8 @@ package ecompim.businessLogic;
 import ecompim.ERPAccess.ERPFetcher;
 import ecompim.Product.*;
 import ecompim.PIMPersistence.PIMPersistenceFacade;
+
+import java.lang.annotation.Inherited;
 import java.util.ArrayList;
 import java.util.HashMap;
 

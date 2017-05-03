@@ -16,7 +16,12 @@ import javafx.stage.Stage;
  * @author JV
  */
 public class Main extends Application {
-    
+
+    /**
+     * Creates a stage and scene and makes those active
+     * @param stage
+     * @throws Exception
+     */
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -28,6 +33,7 @@ public class Main extends Application {
     }
 
     /**
+     * Launches the JavaFX Application
      * @param args the command line arguments
      */
     public static void main(String[] args) {
