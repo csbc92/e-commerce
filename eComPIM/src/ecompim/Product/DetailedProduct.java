@@ -24,6 +24,7 @@ public class DetailedProduct extends Product implements Serializable {
         this.width = width;
         this.costPrice = costPrice;
         this.margin = 0;
+        this.longDescription = shortDescription;
     }
 
     public String getLongDescription() {

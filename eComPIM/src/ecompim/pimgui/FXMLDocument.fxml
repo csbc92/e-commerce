@@ -105,7 +105,7 @@
                                  <children>
                                     <ImageView fx:id="imgvPic" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true">
                                        <image>
-                                          <Image url="@../../../../../../../Pictures/Wallpapers%20fra%20kamera/mere%20død.jpg" />
+                                          <Image url="@../../../lone.jpg" />
                                        </image>
                                     </ImageView>
                                     <HBox alignment="CENTER_LEFT" spacing="10.0">
