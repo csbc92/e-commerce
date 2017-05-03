@@ -189,7 +189,7 @@ public class FXMLDocumentController implements Initializable {
                 keyEvent.consume();
             }
 
-            manager.getCurrentProduct().setMargin(Double.parseDouble(tfMargin.getText()));
+            manager.getCurrentProduct().setMargin(Double.parseDouble(tfMargin.getText()+keyEvent.getCharacter()));
             tfSalesPrice.setText(String.valueOf(manager.getCurrentProduct().getSalePrice()));
         }
     }
