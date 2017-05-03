@@ -125,6 +125,12 @@ public class FXMLDocumentController implements Initializable {
         labName.setText(manager.getCurrentProduct().getName());
         tfDesc.setText(manager.getCurrentProduct().getLongDescription());
 
+        if (manager.getCurrentProduct().isHidden()) {
+            rbHidden.setSelected(true);
+        } else {
+            rbPublic.setSelected(true);
+        }
+
         tfCostPrice.setText(String.valueOf(manager.getCurrentProduct().getCostPrice()));
         tfMargin.setText(String.valueOf(manager.getCurrentProduct().getMargin()));
         tfSalesPrice.setText(String.valueOf(manager.getCurrentProduct().getSalePrice()));
@@ -143,14 +149,18 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     public void butOkHandler(ActionEvent actionEvent) {
+        butApplyHandler(actionEvent);
+        butBackHandler(actionEvent);
     }
 
     @FXML
     public void butApplyHandler(ActionEvent actionEvent) {
+        manager.saveChanges();
     }
 
     @FXML
     public void butRevertHandler(ActionEvent actionEvent) {
+        viewProduct((lvProducts.getSelectionModel().getSelectedItem()).getProductID());
     }
 
     @FXML
@@ -159,6 +169,11 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     public void rbPublicityHandler(ActionEvent actionEvent) {
+        if (actionEvent.getSource().equals(rbHidden)) {
+            manager.getCurrentProduct().setHidden(true);
+        } else {
+            manager.getCurrentProduct().setHidden(false);
+        }
     }
 
     @FXML
