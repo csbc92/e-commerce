@@ -180,17 +180,24 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     public void tfMarginOnKeyTypedHandler(KeyEvent keyEvent) {
+
         if (tfMargin.getText().isEmpty()) {
             manager.getCurrentProduct().setMargin(0);
             tfSalesPrice.setText(String.valueOf(manager.getCurrentProduct().getSalePrice()));
 
         } else {
-            if (!Character.isDigit(keyEvent.getCharacter().charAt(0))) {
+            if (!Character.isDigit(keyEvent.getCharacter().charAt(0)) && !(keyEvent.getCharacter().charAt(0) == '.')) {
+  
                 keyEvent.consume();
+                manager.getCurrentProduct().setMargin(Double.parseDouble(tfMargin.getText()));
+            } else {
+                try {
+                    manager.getCurrentProduct().setMargin(Double.parseDouble(tfMargin.getText() + keyEvent.getCharacter()));
+                } catch(NumberFormatException nfe) {
+                    System.out.println("Du må ikke have et tal med to punktummer i!");
+                }
+                tfSalesPrice.setText(String.valueOf(manager.getCurrentProduct().getSalePrice()));
             }
-
-            manager.getCurrentProduct().setMargin(Double.parseDouble(tfMargin.getText()+keyEvent.getCharacter()));
-            tfSalesPrice.setText(String.valueOf(manager.getCurrentProduct().getSalePrice()));
         }
     }
 }
