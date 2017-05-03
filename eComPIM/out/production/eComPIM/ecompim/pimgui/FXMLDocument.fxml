@@ -157,7 +157,7 @@
                               <VBox prefHeight="431.0" prefWidth="466.0" spacing="10.0">
                                  <children>
                                     <Label text="Beskrivelse:" />
-                                    <TextArea fx:id="tfDesc" onKeyTyped="#taDescOnKeyTypedHandler" />
+                                    <TextArea fx:id="taDesc" onKeyTyped="#taDescOnKeyTypedHandler" />
                                  </children>
                                  <HBox.margin>
                                     <Insets />

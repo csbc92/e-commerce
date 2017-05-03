@@ -10,7 +10,7 @@ public class Product implements Serializable{
     private boolean isHidden;
     private String[] tags;
     private String shortDescription;
-    private double salePrice;
+    protected double salePrice;
     private String productName;
     private int stock;
     private ArrayList<IDisplayable> mediaList;

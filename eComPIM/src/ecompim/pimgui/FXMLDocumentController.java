@@ -26,7 +26,6 @@ import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
 
 /**
- *
  * @author JV
  */
 public class FXMLDocumentController implements Initializable {
@@ -68,10 +67,10 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       manager = new PIMManager();
-       setListViewContents(manager.fetchProductOverview());
-       gpviewPoduct.setVisible(false);
-       gpOverview.setVisible(true);
+        manager = new PIMManager();
+        setListViewContents(manager.fetchProductOverview());
+        gpviewPoduct.setVisible(false);
+        gpOverview.setVisible(true);
     }
 
 
@@ -80,12 +79,10 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     *
-     * @param products
-     * set the ListView for product overview
-     * this method is ran at startup!
+     * @param products set the ListView for product overview
+     *                 this method is ran at startup!
      */
-    private void setListViewContents(HashMap<Integer,Product> products){
+    private void setListViewContents(HashMap<Integer, Product> products) {
         ArrayList<Product> productList = new ArrayList<>();
         productList.addAll(products.values());
         lvProducts.setItems(FXCollections.observableList(productList));
@@ -164,7 +161,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     public void tfMarginHandler(ActionEvent actionEvent) {
-        manager.getCurrentProduct().setMargin(Integer.parseInt(tfMargin.getText()));
+
     }
 
     @FXML
@@ -183,8 +180,17 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     public void tfMarginOnKeyTypedHandler(KeyEvent keyEvent) {
-        if(!Character.isDigit(keyEvent.getCharacter().charAt(0))){
-            keyEvent.consume();
+        if (tfMargin.getText().isEmpty()) {
+            manager.getCurrentProduct().setMargin(0);
+            tfSalesPrice.setText(String.valueOf(manager.getCurrentProduct().getSalePrice()));
+
+        } else {
+            if (!Character.isDigit(keyEvent.getCharacter().charAt(0))) {
+                keyEvent.consume();
+            }
+
+            manager.getCurrentProduct().setMargin(Double.parseDouble(tfMargin.getText()));
+            tfSalesPrice.setText(String.valueOf(manager.getCurrentProduct().getSalePrice()));
         }
     }
 }

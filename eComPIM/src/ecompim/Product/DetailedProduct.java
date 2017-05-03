@@ -68,6 +68,7 @@ public class DetailedProduct extends Product implements Serializable {
 
     public void setMargin(double margin) {
         this.margin = margin;
+        this.salePrice = costPrice + costPrice * margin/100;
     }
 
     /*@Override

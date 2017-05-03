@@ -17,6 +17,7 @@ public class PIMManager implements IPIM {
 
     public PIMManager() {
         persistance = new PIMPersistenceFacade("data/file.dat");
+        saveERPProducts();
     }
 
     @Override
