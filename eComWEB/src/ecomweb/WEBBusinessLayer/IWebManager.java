@@ -5,5 +5,5 @@ package ecomweb.WEBBusinessLayer;
  */
 public interface IWebManager {
 
-    public Product getProduct(int productID);
+    //public Product getProduct(int productID);
 }

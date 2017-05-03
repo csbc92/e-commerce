@@ -100,3 +100,13 @@ nbdist/
 eComWEB/\.idea/workspace\.xml
 
 eComPIM/\.idea/workspace\.xml
+
+eComPIM/nbproject/private/configs/Run_in_Browser\.properties
+
+eComPIM/nbproject/private/private\.properties
+
+eComWEB/nbproject/private/configs/Run_in_Browser\.properties
+
+eComWEB/nbproject/private/private\.properties
+
+eComWEB/nbproject/private/private\.xml
