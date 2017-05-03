@@ -65,11 +65,7 @@ public class FXMLDocumentController implements Initializable {
     private TreeView categoryTreeView;
 
     private IPIM manager;
-    private HashMap<Integer,Product> products;
-    private ArrayList<Product> productList;
-    //private ObservableList<Product> oList= FXCollections.observableArrayList();
-    private DetailedProduct currentProduct;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        manager = new PIMManager();
@@ -90,7 +86,7 @@ public class FXMLDocumentController implements Initializable {
      * this method is ran at startup!
      */
     private void setListViewContents(HashMap<Integer,Product> products){
-        productList = new ArrayList<>();
+        ArrayList<Product> productList = new ArrayList<>();
         productList.addAll(products.values());
         lvProducts.setItems(FXCollections.observableList(productList));
 
@@ -121,16 +117,16 @@ public class FXMLDocumentController implements Initializable {
         gpviewPoduct.setVisible(true); // Change scene
         gpOverview.setVisible(false);
 
-        currentProduct = manager.fetchProduct(productID); // Fetch currentProduct
+        manager.setCurrentProduct(productID);// sets currentProduct in manager
 
         //Set values on gui
-        labID.setText(String.valueOf(currentProduct.getProductID()));
-        labName.setText(currentProduct.getName());
-        tfDesc.setText(currentProduct.getLongDescription());
+        labID.setText(String.valueOf(manager.getCurrentProduct().getProductID()));
+        labName.setText(manager.getCurrentProduct().getName());
+        tfDesc.setText(manager.getCurrentProduct().getLongDescription());
 
-        tfCostPrice.setText(String.valueOf(currentProduct.getCostPrice()));
-        tfMargin.setText(String.valueOf(currentProduct.getMargin()));
-        tfSalesPrice.setText(String.valueOf(currentProduct.getSalePrice()));
+        tfCostPrice.setText(String.valueOf(manager.getCurrentProduct().getCostPrice()));
+        tfMargin.setText(String.valueOf(manager.getCurrentProduct().getMargin()));
+        tfSalesPrice.setText(String.valueOf(manager.getCurrentProduct().getSalePrice()));
 
     }
 

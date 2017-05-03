@@ -12,7 +12,8 @@ import java.util.HashMap;
  */
 public class PIMManager implements IPIM {
 
-    PIMPersistenceFacade persistance;
+    private PIMPersistenceFacade persistance;
+    private DetailedProduct currentProduct;
 
     public PIMManager() {
         persistance = new PIMPersistenceFacade("data/file.dat");
@@ -61,5 +62,15 @@ public class PIMManager implements IPIM {
     @Override
     public void saveERPProducts() {
         persistance.storeProducts(new ERPFetcher().getProducts());
+    }
+
+    @Override
+    public DetailedProduct getCurrentProduct() {
+        return this.currentProduct;
+    }
+
+    @Override
+    public void setCurrentProduct(int productID) {
+        currentProduct = fetchProduct(productID);
     }
 }
