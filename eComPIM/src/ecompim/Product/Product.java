@@ -2,13 +2,14 @@ package ecompim.Product;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 public class Product implements Serializable{
 
     private int productID;
     private double rating;
     private boolean isHidden;
-    private String[] tags;
+    private TreeSet<String> tags;
     private String shortDescription;
     protected double salePrice;
     private String productName;
@@ -23,6 +24,7 @@ public class Product implements Serializable{
         this.productName = productName;
         this.stock = stock;
         this.isHidden = true;
+        this.tags = new TreeSet<>();
     }
 
     public int getProductID() {
@@ -37,7 +39,7 @@ public class Product implements Serializable{
         return isHidden;
     }
 
-    public String[] getTags() {
+    public TreeSet<String> getTags() {
         return tags;
     }
 
@@ -65,8 +67,9 @@ public class Product implements Serializable{
         isHidden = hidden;
     }
 
-    public void setTags(String[] tags) {
-        this.tags = tags;
+    public void setTag(String tag) {
+        System.out.println(tag);
+        this.tags.add(tag);
     }
 
     public ArrayList<IDisplayable> getMediaList() {

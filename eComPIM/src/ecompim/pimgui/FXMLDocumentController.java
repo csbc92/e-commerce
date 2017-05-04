@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ecompim.pimgui;
+package ecompim.PIMGUI;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
 import ecompim.Product.Product;
@@ -30,6 +28,10 @@ import javafx.util.Callback;
  */
 public class FXMLDocumentController implements Initializable {
 
+    @FXML
+    public ListView lvTags;
+    @FXML
+    public TextField tfAddTag;
     @FXML
     private ListView<Product> lvProducts;
     @FXML
@@ -156,6 +158,9 @@ public class FXMLDocumentController implements Initializable {
         tfMargin.setText(String.valueOf(manager.getCurrentProduct().getMargin()));
         tfSalesPrice.setText(String.valueOf(manager.getCurrentProduct().getSalePrice()));
 
+        lvTags.setItems(FXCollections.observableList(new ArrayList<>(manager.getCurrentProduct().getTags())));
+        tfAddTag.clear();
+
     }
 
     /**
@@ -258,6 +263,16 @@ public class FXMLDocumentController implements Initializable {
                 }
                 tfSalesPrice.setText(String.valueOf(manager.getCurrentProduct().getSalePrice()));
             }
+        }
+    }
+
+    @FXML
+    public void addTagHandler(ActionEvent actionEvent) {
+        String tag = tfAddTag.getText();
+
+        if (tag != null) {
+            manager.getCurrentProduct().setTag(tag);
+            lvTags.setItems(FXCollections.observableList(new ArrayList<>(manager.getCurrentProduct().getTags())));
         }
     }
 }

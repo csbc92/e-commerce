@@ -29,6 +29,7 @@ public class PIMFilePersistence implements IPIMPersistence {
 
             while (fis.available() > 0) {
                 if ((p = (DetailedProduct) objectInputStream.readObject()) != null) {
+
                     products.put(p.getProductID(), p);
                 }
             }
