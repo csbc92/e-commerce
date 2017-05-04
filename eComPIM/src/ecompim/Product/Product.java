@@ -68,7 +68,6 @@ public class Product implements Serializable{
     }
 
     public void setTag(String tag) {
-        System.out.println(tag);
         this.tags.add(tag);
     }
 
