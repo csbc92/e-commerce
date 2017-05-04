@@ -31,7 +31,7 @@ public class ERPDummyDB {
         details = new HashMap<>();
         details.put("Manufacturer", "AMD");
         details.put("Generation", "Ryzen");
-
+        products.get(2).setTechnicalDetails(details);
         //products.get(2).setRating(3.8);
         //products.get(2).setTags(new String[]{"hardware", "cpu", "ryzen", "amd"});
 
