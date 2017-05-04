@@ -71,6 +71,10 @@ public class Product implements Serializable{
         this.tags.add(tag);
     }
 
+    public void removeTag(String tag) {
+        this.tags.remove(tag);
+    }
+
     public ArrayList<IDisplayable> getMediaList() {
         return new ArrayList<>(mediaList);
     }
