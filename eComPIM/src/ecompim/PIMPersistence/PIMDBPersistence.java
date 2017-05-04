@@ -7,6 +7,7 @@ import ecompim.SQL.SQL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +40,11 @@ public class PIMDBPersistence implements IPIMPersistence{
 
     @Override
     public void saveProduct(DetailedProduct product) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public HashMap<Integer,Product> searchProducts(String value) {
         throw new UnsupportedOperationException();
     }
 

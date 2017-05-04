@@ -4,6 +4,7 @@ import ecompim.Product.DetailedProduct;
 import ecompim.Product.Product;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +34,7 @@ public class PIMFilePersistence implements IPIMPersistence {
                     products.put(p.getProductID(), p);
                 }
             }
-            
+
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -51,7 +52,7 @@ public class PIMFilePersistence implements IPIMPersistence {
 
     @Override
     public DetailedProduct fetchProduct(int productID) {
-        return  fetchDetailedProducts().get(productID);
+        return fetchDetailedProducts().get(productID);
     }
 
     /**
@@ -75,5 +76,20 @@ public class PIMFilePersistence implements IPIMPersistence {
         Map<Integer, DetailedProduct> temp = fetchDetailedProducts();
         temp.put(product.getProductID(), product);
         storeProducts(temp);
+    }
+
+    @Override
+    public HashMap<Integer, Product> searchProducts(String value) {
+        HashMap<Integer, Product> products = fetchProductOverview();
+        HashMap<Integer, Product> toReturn = new HashMap<>();
+        for (Map.Entry<Integer, Product> entry : products.entrySet()) {
+            Product p = entry.getValue();
+            Integer key = entry.getKey();
+            if (String.valueOf(p.getProductID()).toLowerCase().contains(value.toLowerCase()) || p.getName().toLowerCase().contains(value.toLowerCase())) { // TODO more criteria support
+
+                toReturn.put(key,p);
+            }
+        }
+        return toReturn;
     }
 }

@@ -3,6 +3,7 @@ package ecompim.PIMPersistence;
 import ecompim.Product.DetailedProduct;
 import ecompim.Product.Product;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,5 +38,8 @@ public interface IPIMPersistence {
      * @param product the product that is to be saved.
      */
     public void saveProduct(DetailedProduct product);
+
+    //TODO: Tilføj dette til klassediagrammerne.
+    public HashMap<Integer, Product> searchProducts(String value);
 
 }

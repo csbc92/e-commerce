@@ -2,6 +2,9 @@ package ecompim.businessLogic;
 
 import ecompim.Product.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Created by victo on 2017-04-24.
  */
@@ -16,10 +19,10 @@ public interface IProductFetcher {
 
     /**
      *
-     * Fetches an array containing any product that matches the search criteria
+     * Fetches an arrayList containing any product that matches the search criteria
      * @param searchCriteria part or whole of the product name or description
-     * @return an array of non-detailed products
+     * @return an arrayList of non-detailed products
      */
-    public Product[] searchProducts(String searchCriteria);
+    public HashMap<Integer, Product> searchProducts(String searchCriteria);
 
 }

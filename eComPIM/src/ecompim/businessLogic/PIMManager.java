@@ -28,22 +28,27 @@ public class PIMManager implements IPIM {
     }
 
     @Override
-    public Product[] searchProducts(String searchCriteria) {
-       HashMap<Integer,Product> products = persistance.fetchProductOverview();
-       ArrayList<Product> toReturn = new ArrayList<>();
-        for (Product p: products.values() ) {
-            if (String.valueOf(p.getProductID()).equalsIgnoreCase(searchCriteria) || p.getName().equalsIgnoreCase(searchCriteria)){ // TODO more criteria support
+    public HashMap<Integer, Product> searchProducts(String searchCriteria) {
+        return persistance.searchProducts(searchCriteria);
 
-                toReturn.add(p);
-            }
-        }
 
-        Product[] returnArray = new Product[toReturn.size()];
-        for (int i = 0; i < toReturn.size(); i++) {
-            returnArray[i] = toReturn.get(i);
-        }
-        return returnArray;
-    }
+//       HashMap<Integer,Product> products = persistance.fetchProductOverview();
+//       ArrayList<Product> toReturn = new ArrayList<>();
+//        for (Product p: products.values() ) {
+//            if (String.valueOf(p.getProductID()).contains(searchCriteria) || p.getName().contains(searchCriteria)){ // TODO more criteria support
+//
+//                toReturn.add(p);
+//            }
+//        }
+//        //Hvorfor ikke bare anvende en Arrayliste?
+////        Product[] returnArray = new Product[toReturn.size()];
+////        for (int i = 0; i < toReturn.size(); i++) {
+////            returnArray[i] = toReturn.get(i);
+////        }
+//
+//        return toReturn;
+////        return returnArray;
+}
 
     @Override
     public HashMap<Integer, Product> fetchProductOverview() {
