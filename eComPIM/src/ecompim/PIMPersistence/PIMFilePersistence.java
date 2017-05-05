@@ -23,7 +23,8 @@ public class PIMFilePersistence implements IPIMPersistence {
 
         try {
             String fullPath = this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI().toString();
-            String fullFilePath = fullPath.substring(6,fullPath.indexOf("out"))+filePath;
+            String fullFilePath = fullPath.substring(5,fullPath.indexOf("out"))+filePath;
+            System.out.println(fullPath);
             productFile = new File(fullFilePath);
         } catch (URISyntaxException e) {
             e.printStackTrace();
