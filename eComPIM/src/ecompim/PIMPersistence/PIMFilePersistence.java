@@ -23,7 +23,11 @@ public class PIMFilePersistence implements IPIMPersistence {
 
         try {
             String fullPath = this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI().toString();
-            String fullFilePath = fullPath.substring(5,fullPath.indexOf("out"))+filePath;
+            int index = fullPath.indexOf("out"); //Dependant on what IDE the program is run from the path is different. Generally the .jar must be in an out or dist folder, with the data file outside of the out or dist folder.  
+            if(index == -1){
+                index = fullPath.indexOf("dist");
+            }
+            String fullFilePath = fullPath.substring(5,index)+filePath;
             System.out.println(fullPath);
             productFile = new File(fullFilePath);
         } catch (URISyntaxException e) {
