@@ -1,5 +1,6 @@
 package ecomweb.WEBBusinessLayer;
 
+import ecompim.Product.DetailedProduct;
 import ecompim.Product.Product;
 
 /**
@@ -7,5 +8,5 @@ import ecompim.Product.Product;
  */
 public interface IWebManager {
 
-    public Product getProduct(int productID);
+    public DetailedProduct getProduct(int productID);
 }
