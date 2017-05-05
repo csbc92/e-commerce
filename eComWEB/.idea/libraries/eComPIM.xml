@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="eComPIM">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../eComPIM/out/artifacts/eComPIM_jar/eComPIM.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

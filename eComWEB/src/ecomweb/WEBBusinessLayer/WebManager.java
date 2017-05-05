@@ -1,16 +1,18 @@
 package ecomweb.WEBBusinessLayer;
 
-//import
+
+
+import ecompim.Product.Product;
 
 /**
  * Created by Vedsted on 24-04-2017.
  */
-//public class WebManager implements IWebManager {
+public class WebManager implements IWebManager {
 
 
-//    @Override
-  //  public Product getProduct(int productID) {
-    //    return null;
-    //}
+    @Override
+  public Product getProduct(int productID) {
+     return null;
+  }
 
-//}
+}
