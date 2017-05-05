@@ -1,15 +1,4 @@
-/*
-
- * To change this license header, choose License Headers in Project Properties.
-
- * To change this template file, choose Tools | Templates
-
- * and open the template in the editor.
-
- */
-
 package ecompim.pimgui;
-
 
 import java.net.URL;
 import java.util.*;
@@ -36,7 +25,6 @@ import javafx.util.Callback;
  *
  * @author JV
  */
-
 public class FXMLDocumentController implements Initializable {
 
     private IPIM manager;
@@ -81,7 +69,6 @@ public class FXMLDocumentController implements Initializable {
     private TreeView categoryTreeView;
 
 
-
     /**
      * Initialises the PIM-system, displays the product overview.
      *
@@ -96,7 +83,6 @@ public class FXMLDocumentController implements Initializable {
         gpOverview.setVisible(true);
     }
 
-
     /**
      * NOT DONE
      * Does something when the search button is pressed
@@ -108,7 +94,6 @@ public class FXMLDocumentController implements Initializable {
         setListViewProducts(manager.searchProducts(searchTextField.getText()));
     }
 
-
     /**
      * Fill the ListView for product overview.
      * This method is ran at startup!
@@ -119,16 +104,28 @@ public class FXMLDocumentController implements Initializable {
         ArrayList<Product> productList = new ArrayList<>();
         productList.addAll(products.values());
         lvProducts.setItems(FXCollections.observableList(productList));
+
+        // Set the CellFactory that is resposible for rendering the data in each TableCell of the ListView
+        // Callback<P, R> where P is the argument type and R is the return type of the callback.
         lvProducts.setCellFactory(new Callback<ListView<Product>, ListCell<Product>>() {
+            // Implementation of the Callback-method that renders the data.
             @Override
             public ListCell<Product> call(ListView<Product> param) {
+                // The ListCell<Product> is extended as a new anonymous class and the updateItem-method is overridden.
                 return new ListCell<Product>() {
                     @Override
-                    protected void updateItem(Product p, boolean bln) {
-                        super.updateItem(p, bln);
-                        if (p != null) {
-                            setText(p.getShortDescription());
+                    protected void updateItem(Product item, boolean empty) {
+                        // super.updateItem(T, boolean) needs to be called to avoid graphical issues.
+                        super.updateItem(item, empty);
+                        // This is the recommended way to update the ListCell according to Java documentation
+                        // https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Cell.html#updateItem-T-boolean-
+                        if (empty || item == null) {
+                            setText(null);
+                            setGraphic(null);
+                        } else {
+                            setText(item.getShortDescription());
                         }
+
                     }
                 };
             }
@@ -186,7 +183,6 @@ public class FXMLDocumentController implements Initializable {
         setListViewStrings(lvTechDetails, manager.getCurrentProduct().getTechnicalDetails().keySet());
     }
 
-
     /**
      * Returns to the product overview.
      * <p>
@@ -199,7 +195,6 @@ public class FXMLDocumentController implements Initializable {
         viewOverview();
     }
 
-
     /**
      * Returns to the product overview
      */
@@ -207,7 +202,6 @@ public class FXMLDocumentController implements Initializable {
         gpOverview.setVisible(true);
         gpviewPoduct.setVisible(false);
     }
-
 
     /**
      * Saves changes to the product currently being modified
@@ -231,7 +225,6 @@ public class FXMLDocumentController implements Initializable {
         manager.saveChanges();
     }
 
-
     /**
      * Discards changes to the product currently being modified and shows the old product information
      *
@@ -241,7 +234,6 @@ public class FXMLDocumentController implements Initializable {
     public void butRevertHandler(ActionEvent actionEvent) {
         viewProduct((lvProducts.getSelectionModel().getSelectedItem()).getProductID());
     }
-
 
     /**
      * Changes the publicity status of the product currently being modified.
@@ -258,7 +250,6 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-
     /**
      * Changes the long description of the product curently being modified
      * <p>
@@ -270,7 +261,6 @@ public class FXMLDocumentController implements Initializable {
     public void taDescOnKeyTypedHandler(KeyEvent keyEvent) {
         manager.getCurrentProduct().setLongDescription(taDesc.getText());
     }
-
 
     /**
      * Changes the profit margin of the product currently being modified
