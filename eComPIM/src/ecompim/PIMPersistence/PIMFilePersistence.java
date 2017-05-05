@@ -4,6 +4,9 @@ import ecompim.Product.DetailedProduct;
 import ecompim.Product.Product;
 
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,11 +16,20 @@ import java.util.Map;
  */
 public class PIMFilePersistence implements IPIMPersistence {
 
-
     private File productFile;
 
+
     public PIMFilePersistence(String filePath) {
-        productFile = new File(filePath);
+
+        try {
+            String fullPath = this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI().toString();
+            String fullFilePath = fullPath.substring(6,fullPath.indexOf("out"))+filePath;
+            productFile = new File(fullFilePath);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public HashMap<Integer, DetailedProduct> fetchDetailedProducts() {
