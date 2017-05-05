@@ -19,7 +19,7 @@ public interface IProductFetcher {
 
     /**
      *
-     * Fetches an arrayList containing any product that matches the search criteria
+     * Fetches an HashMap containing any product that matches the search criteria
      * @param searchCriteria part or whole of the product name or description
      * @return an arrayList of non-detailed products
      */
