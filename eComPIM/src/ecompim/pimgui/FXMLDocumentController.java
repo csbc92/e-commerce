@@ -1,4 +1,4 @@
-﻿package ecompim.pimgui;
+package ecompim.pimgui;
 
 import java.net.URL;
 import java.util.*;
