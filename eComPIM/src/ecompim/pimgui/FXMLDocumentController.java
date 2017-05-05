@@ -283,7 +283,7 @@ public class FXMLDocumentController implements Initializable {
                 try {
                     manager.getCurrentProduct().setMargin(Double.parseDouble(tfMargin.getText() + keyEvent.getCharacter()));
                 } catch (NumberFormatException nfe) {
-                    System.out.println("Du må ikke have et tal med to punktummer i!");
+                    System.out.println("Du mÃ¥ ikke have et tal med to punktummer i!");
                 }
                 tfSalesPrice.setText(String.valueOf(manager.getCurrentProduct().getSalePrice()));
             }
