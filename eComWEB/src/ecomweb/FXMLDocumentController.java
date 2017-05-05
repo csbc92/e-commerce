@@ -7,6 +7,10 @@ package ecomweb;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import ecompim.Product.DetailedProduct;
+import ecomweb.WEBBusinessLayer.IWebManager;
+import ecomweb.WEBBusinessLayer.WebManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,8 +26,9 @@ import javafx.scene.image.ImageView;
  * @author JV
  */
 public class FXMLDocumentController implements Initializable {
-    
-    private Label label;
+    private IWebManager webManager;
+
+
     @FXML
     private ImageView ivProductImg;
     @FXML
@@ -51,14 +56,15 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TableColumn<?, ?> tcSpecifications2;
     
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       webManager = new WebManager();
+       //Test code to see the GUI works, and fetching products work
+        DetailedProduct product = webManager.getProduct(1);
+        lPrice.setText(""+product.getSalePrice());
+        lProductName.setText(product.getName());
+        lProductID.setText(""+product.getProductID());
     }    
     
 }
