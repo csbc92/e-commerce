@@ -20,10 +20,12 @@ public class PIMFilePersistence implements IPIMPersistence {
 
 
     public PIMFilePersistence(String filePath) {
-
+//        productFile = new File(filePath);
+//
+//      TODO: Dette virker ikke på stier, som indeholder mellemrum.
         try {
             String fullPath = this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI().toString();
-            int index = fullPath.indexOf("out"); //Dependant on what IDE the program is run from the path is different. Generally the .jar must be in an out or dist folder, with the data file outside of the out or dist folder.  
+            int index = fullPath.indexOf("out"); //Dependant on what IDE the program is run from the path is different. Generally the .jar must be in an out or dist folder, with the data file outside of the out or dist folder.
             if(index == -1){
                 index = fullPath.indexOf("dist");
             }
@@ -102,7 +104,8 @@ public class PIMFilePersistence implements IPIMPersistence {
         for (Map.Entry<Integer, Product> entry : products.entrySet()) {
             Product p = entry.getValue();
             Integer key = entry.getKey();
-            if (String.valueOf(p.getProductID()).toLowerCase().contains(value.toLowerCase()) || p.getName().toLowerCase().contains(value.toLowerCase())) { // TODO more criteria support
+            if (String.valueOf(p.getProductID()).toLowerCase().contains(value.toLowerCase()) || p.getName().toLowerCase().contains(value.toLowerCase())
+                    || String.valueOf(p.getProductID()).toLowerCase().contains(value.toLowerCase())) { // TODO more criteria support
 
                 toReturn.put(key,p);
             }
