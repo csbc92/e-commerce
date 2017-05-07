@@ -5,7 +5,13 @@ import ecompim.ERPAccess.ERPFetcher;
 import ecompim.Product.*;
 import ecompim.PIMPersistence.PIMPersistenceFacade;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.annotation.Inherited;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,14 +22,25 @@ public class PIMManager implements IPIM {
 
     private PIMPersistenceFacade persistance;
     private DetailedProduct currentProduct;
-
+    Thread netHandler;
     public PIMManager() {
         persistance = new PIMPersistenceFacade("data/file.dat");
         //saveERPProducts();
+        netHandler = new Thread(new NetHandler(this));
+        netHandler.setDaemon(true);
+        netHandler.start();
+
+
+
     }
 
     @Override
     public DetailedProduct fetchProduct(int productID) {
+        return  persistance.fetchProduct(productID);
+    }
+
+
+    public DetailedProduct fetchProductNet(int productID) {
         return  persistance.fetchProduct(productID);
     }
 
