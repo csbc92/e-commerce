@@ -9,7 +9,7 @@ import java.net.Socket;
 /**
  * Created by victo on 2017-05-07.
  */
-public class WebHandlerThread extends Thread {
+public class WebHandlerThread implements Runnable {
     private Socket socket;
     private int clientNumber;
     private IProductFetcher fetcher;
