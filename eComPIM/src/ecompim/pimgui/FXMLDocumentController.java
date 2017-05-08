@@ -123,7 +123,8 @@ public class FXMLDocumentController implements Initializable {
                             setText(null);
                             setGraphic(null);
                         } else {
-                            setText(item.getShortDescription());
+                            setText(item.getProductID() + " - " + item.getName());
+
                         }
 
                     }

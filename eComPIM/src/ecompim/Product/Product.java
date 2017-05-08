@@ -83,6 +83,14 @@ public class Product implements Serializable{
         return new ArrayList<>(categoryList);
     }
 
+    public void addCategory(String name) {
+        this.categoryList.add(new Category(name));
+    }
+    public void addCategory(String name, Category parent) {
+        this.categoryList.add(new Category(name, parent));
+
+    }
+
     /*@Override
     public String toString() {
         return shortDescription;
