@@ -8,6 +8,8 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -194,7 +196,12 @@
                         <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
                               <Label text="Tekniske detaljer" />
-                              <ListView fx:id="lvTechDetails" prefHeight="200.0" prefWidth="200.0" />
+                              <TableView fx:id="tblViewTechDetails" prefHeight="200.0" prefWidth="200.0">
+                                <columns>
+                                  <TableColumn editable="false" prefWidth="289.0" sortable="false" text="Egenskab" />
+                                  <TableColumn prefWidth="366.0" text="Beskrivelse" />
+                                </columns>
+                              </TableView>
                            </children>
                         </VBox>
                      </children>
