@@ -383,13 +383,14 @@ public class FXMLDocumentController implements Initializable {
         if (filter.isEmpty()) {
             return new TextFlow(new Text(text));
         }
-        
+        //TODO: Error ved søgning af flere ord, som IKKE er i samme rækkefølge
+        // Spørg Vinge
         int filterIndex = text.toLowerCase().indexOf(filter.toLowerCase());
         Text textBefore = new Text(text.substring(0, filterIndex));
         Text textAfter = new Text(text.substring(filterIndex + filter.length()));
         Text textFilter = new Text(text.substring(filterIndex,  filterIndex + filter.length())); //instead of "filter" to keep "case"
         textFilter.setFill(Color.BLACK);
-        textFilter.setFont(Font.font("Helvetica", FontWeight.BOLD, 12));
+        textFilter.setFont(Font.font("Helvetica", FontWeight.BOLD, 14));
         return new TextFlow(textBefore, textFilter, textAfter);
     }
 }
