@@ -18,8 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecomweb.FXMLDocumentController">
+<AnchorPane prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecomweb.FXMLDocumentController">
    <children>
       <GridPane prefHeight="900.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -64,7 +63,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnAddToCart" mnemonicParsing="false" prefHeight="40.0" prefWidth="162.0" text="Tilføj til kurv" />
+                  <Button fx:id="btnAddToCart" mnemonicParsing="false" onAction="#displayProduct" prefHeight="40.0" prefWidth="162.0" text="Tilføj til kurv" />
                   <Label fx:id="lStock" prefHeight="35.0" prefWidth="476.0" text="Lagerstatus">
                      <font>
                         <Font size="24.0" />

@@ -72,6 +72,8 @@ public class DetailedProduct extends Product implements Serializable {
         this.salePrice = costPrice + costPrice * margin/100;
     }
 
+
+
     /*@Override
     public String toString() {
         return this.getShortDescription();

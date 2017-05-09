@@ -60,11 +60,25 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        webManager = new WebManager();
-       //Test code to see the GUI works, and fetching products work
-        DetailedProduct product = webManager.getProduct(1);
-        lPrice.setText(""+product.getSalePrice());
+       displayProduct(1);
+
+
+    }
+
+    private void displayProduct(int productID){
+        //Test code to see the GUI works, and fetching products work
+        DetailedProduct product = webManager.getProduct(productID);
+        lPrice.setText(""+product.getSalePrice()); // Is this really the best way of converting a number to a string?
         lProductName.setText(product.getName());
         lProductID.setText(""+product.getProductID());
-    }    
-    
+        taLongDescription.setText(product.getLongDescription());
+
+    }
+
+
+    // For testing purposes the page will refresh, when the add to cart button is pressed
+    @FXML
+    public void displayProduct(ActionEvent actionEvent) {
+        displayProduct(1);
+    }
 }
