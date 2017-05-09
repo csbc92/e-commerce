@@ -192,10 +192,13 @@ public class FXMLDocumentController implements Initializable {
         //endregion
 
         // Add the technical details to an observable list and to the TableView
-        ObservableList<Map.Entry<String, String>> technicalDetailsEntries = FXCollections.observableArrayList(techDetailsMap.entrySet());
-        tblView.setItems(technicalDetailsEntries);
-        // Add the columns to the TableView
-        tblView.getColumns().setAll(techProperty, techDescription);
+        if (!techDetailsMap.isEmpty()) {
+            ObservableList<Map.Entry<String, String>> technicalDetailsEntries = FXCollections.observableArrayList(techDetailsMap.entrySet());
+            tblView.setItems(technicalDetailsEntries);
+            // Add the columns to the TableView
+            tblView.getColumns().setAll(techProperty, techDescription);
+
+        }
 
     }
 
