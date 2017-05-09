@@ -21,13 +21,13 @@ import static java.lang.Thread.sleep;
  * Created by Vedsted on 24-04-2017.
  */
 public class WebManager implements IWebManager{
-   // private IProductFetcher productFetcher;
+    private IProductFetcher productFetcher;
     private BufferedReader in;
     private PrintWriter out;
     private ObjectInputStream ois;
 
     public WebManager() {
-       // productFetcher = new PIMManager();
+        productFetcher = new PIMManager();
 
 
         try {
@@ -35,10 +35,6 @@ public class WebManager implements IWebManager{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
-
     }
 
     @Override
@@ -61,8 +57,6 @@ public class WebManager implements IWebManager{
             e.printStackTrace();
             return null;
        }
-
-
     }
 
     public void connectToServer() throws IOException {

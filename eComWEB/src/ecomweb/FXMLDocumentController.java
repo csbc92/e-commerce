@@ -6,11 +6,15 @@
 package ecomweb;
 
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import ecompim.Product.DetailedProduct;
-import ecomweb.WEBBusinessLayer.IWebManager;
-import ecomweb.WEBBusinessLayer.WebManager;
+import ecomweb.WEBBusinessLayer.*;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,12 +24,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.util.Callback;
 
 /**
  *
  * @author JV
  */
 public class FXMLDocumentController implements Initializable {
+
     private IWebManager webManager;
 
 
@@ -50,7 +56,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextArea taLongDescription;
     @FXML
-    private TableView<?> tabvSpecifications;
+    public TableView<Map.Entry<String, String>> tblViewTechDetails;
     @FXML
     private TableColumn<?, ?> tcSpecifications1;
     @FXML
@@ -72,6 +78,44 @@ public class FXMLDocumentController implements Initializable {
         lProductName.setText(product.getName());
         lProductID.setText(""+product.getProductID());
         taLongDescription.setText(product.getLongDescription());
+        populateTechnicalDetails(tblViewTechDetails, product);
+    }
+
+    /**
+     * Populates technical details into the specified TableView
+     * @param tblView
+     * @param product
+     */
+    private void populateTechnicalDetails(TableView<Map.Entry<String, String>> tblView, DetailedProduct product) {
+        // First string is the technical property, second string is the technical description
+        Map<String, String> techDetailsMap = product.getTechnicalDetails();
+
+        //region Column definitions..
+        // See this for reference: http://stackoverflow.com/questions/18618653/binding-hashmap-with-tableview-javafx
+        TableColumn<Map.Entry<String, String>, String> techProperty = new TableColumn<>("Egenskab");
+        techProperty.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Map.Entry<String, String>, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Map.Entry<String, String>, String> p) {
+                // use the key as first column
+                return new ReadOnlyStringWrapper(p.getValue().getKey());
+            }
+        });
+
+        TableColumn<Map.Entry<String, String>, String> techDescription = new TableColumn<>("Beskrivelse");
+        techDescription.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Map.Entry<String, String>, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Map.Entry<String, String>, String> p) {
+                // use the value as second column
+                return new ReadOnlyStringWrapper(p.getValue().getValue());
+            }
+        });
+        //endregion
+
+        // Add the technical details to an observable list and to the TableView
+        ObservableList<Map.Entry<String, String>> technicalDetailsEntries = FXCollections.observableArrayList(techDetailsMap.entrySet());
+        tblView.setItems(technicalDetailsEntries);
+        // Add the columns to the TableView
+        tblView.getColumns().setAll(techProperty, techDescription);
 
     }
 
