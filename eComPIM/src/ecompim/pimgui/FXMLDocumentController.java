@@ -20,6 +20,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
+import jdk.nashorn.internal.ir.IfNode;
 
 
 /**
@@ -52,7 +53,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField tfAddTag;
     @FXML
-    public TableView<Map.Entry<String,String>> tblViewTechDetails;
+    public TableView<Map.Entry<String, String>> tblViewTechDetails;
     @FXML
     private ListView<Product> lvProducts;
     @FXML
@@ -106,9 +107,17 @@ public class FXMLDocumentController implements Initializable {
      */
     private void setListViewProducts(HashMap<Integer, Product> products) {
         ArrayList<Product> productList = new ArrayList<>();
-        productList.addAll(products.values());
-        lvProducts.setItems(FXCollections.observableList(productList));
-
+        boolean matchFound;
+        if (products.isEmpty()) {
+            //TODO: Find en mere elegant måde at håndtere ingen resultater.
+            lvProducts.getItems().clear();
+            lvProducts.getItems().add(new Product(0, "", 0, "Ingen produkter", 0));
+            matchFound = false;
+        } else {
+            productList.addAll(products.values());
+            lvProducts.setItems(FXCollections.observableList(productList));
+            matchFound = true;
+        }
         // Set the CellFactory that is resposible for rendering the data in each TableCell of the ListView
         // Callback<P, R> where P is the argument type and R is the return type of the callback.
         lvProducts.setCellFactory(new Callback<ListView<Product>, ListCell<Product>>() {
@@ -127,10 +136,12 @@ public class FXMLDocumentController implements Initializable {
                             setText(null);
                             setGraphic(null);
                         } else {
-                            setText(item.getProductID() + " - " + item.getName());
-
+                            if (matchFound) {
+                                setText(item.getProductID() + " - " + item.getName());
+                            } else {
+                                setText(item.getName());
+                            }
                         }
-
                     }
                 };
             }
@@ -139,6 +150,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * Populates technical details into the specified TableView
+     *
      * @param tblView
      * @param product
      */
