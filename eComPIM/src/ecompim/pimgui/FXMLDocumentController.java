@@ -19,6 +19,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.util.Callback;
 import jdk.nashorn.internal.ir.IfNode;
 
@@ -137,8 +142,15 @@ public class FXMLDocumentController implements Initializable {
                             setGraphic(null);
                         } else {
                             if (matchFound) {
-                                setText(item.getProductID() + " - " + item.getName());
+                                setText(item.getName());
+                                Double rowHeight = lvProducts.getHeight();
+                                setGraphic(buildTextFlow(item.getProductID() + " - " + item.getName(), searchTextField.getText()));
+                                setHeight(rowHeight);
+                                setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+//                                setText(item.getProductID() + " - " + item.getName());
                             } else {
+
+
                                 setText(item.getName());
                             }
                         }
@@ -359,5 +371,25 @@ public class FXMLDocumentController implements Initializable {
             manager.getCurrentProduct().removeTag(tag);
             lvTags.setItems(FXCollections.observableList(new ArrayList<>(manager.getCurrentProduct().getTags())));
         }
+    }
+    /**
+     * Build TextFlow with selected text. Return "case" dependent.
+     *
+     * @param text - string with text
+     * @param filter - string to select in text
+     * @return - TextFlow
+     */
+    private TextFlow buildTextFlow(String text, String filter) {
+        if (filter.isEmpty()) {
+            return new TextFlow(new Text(text));
+        }
+        
+        int filterIndex = text.toLowerCase().indexOf(filter.toLowerCase());
+        Text textBefore = new Text(text.substring(0, filterIndex));
+        Text textAfter = new Text(text.substring(filterIndex + filter.length()));
+        Text textFilter = new Text(text.substring(filterIndex,  filterIndex + filter.length())); //instead of "filter" to keep "case"
+        textFilter.setFill(Color.BLACK);
+        textFilter.setFont(Font.font("Helvetica", FontWeight.BOLD, 12));
+        return new TextFlow(textBefore, textFilter, textAfter);
     }
 }
