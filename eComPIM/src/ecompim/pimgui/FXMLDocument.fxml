@@ -32,20 +32,20 @@
          <children>
             <MenuBar>
               <menus>
-                <Menu mnemonicParsing="false" text="File">
+                <Menu mnemonicParsing="false" text="Filer">
                   <items>
                         <MenuItem mnemonicParsing="false" onAction="#menuFetchFromERPHandler" text="Genindlæs fra ERP" />
                     <MenuItem mnemonicParsing="false" text="Afslut" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Redigere">
+                <Menu mnemonicParsing="false" text="Redigér">
                   <items>
                     <MenuItem mnemonicParsing="false" text="Slet" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Hjælp">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Om" />
+                    <MenuItem mnemonicParsing="false" text="Om.." />
                   </items>
                 </Menu>
               </menus>
@@ -236,7 +236,7 @@
                               </Button>
                            </children>
                         </HBox>
-                        <ListView fx:id="lvProducts" onMouseClicked="#lvClickedHandler" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ListView fx:id="lvProducts" onMouseClicked="#lvClickedHandler" prefHeight="200.0" prefWidth="200.0" stylesheets="@FXMLDocument.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </children>

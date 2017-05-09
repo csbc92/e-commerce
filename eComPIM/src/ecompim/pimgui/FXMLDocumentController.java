@@ -144,7 +144,8 @@ public class FXMLDocumentController implements Initializable {
                             if (matchFound) {
                                 setText(item.getName());
                                 Double rowHeight = lvProducts.getHeight();
-                                setGraphic(buildTextFlow(item.getProductID() + " - " + item.getName(), searchTextField.getText()));
+                                String formattedText = String.format("%-5s%-40s kr. %s,-", item.getProductID(), item.getName(), item.getSalePrice());
+                                setGraphic(buildTextFlow(formattedText, searchTextField.getText()));
                                 setHeight(rowHeight);
                                 setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
 //                                setText(item.getProductID() + " - " + item.getName());
@@ -197,7 +198,8 @@ public class FXMLDocumentController implements Initializable {
             tblView.setItems(technicalDetailsEntries);
             // Add the columns to the TableView
             tblView.getColumns().setAll(techProperty, techDescription);
-
+        } else {
+            tblView.getColumns().clear();
         }
 
     }
