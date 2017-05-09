@@ -25,7 +25,7 @@ public class PIMManager implements IPIM {
     Thread netHandler;
     public PIMManager() {
         persistance = new PIMPersistenceFacade("data/file.dat");
-        //saveERPProducts();
+        saveERPProducts();
         netHandler = new Thread(new NetHandler(this));
         netHandler.setDaemon(true);
         netHandler.start();
