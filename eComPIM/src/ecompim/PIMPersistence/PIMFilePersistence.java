@@ -39,6 +39,21 @@ public class PIMFilePersistence implements IPIMPersistence {
 
     }
 
+
+    @Override
+    public HashMap<Integer, Product> fetchProductOverview() {
+        HashMap<Integer, Product> products = new HashMap<>();
+        products.putAll(fetchDetailedProducts());
+
+        return products;
+    }
+
+    @Override
+    public DetailedProduct fetchProduct(int productID) {
+        return fetchDetailedProducts().get(productID);
+    }
+
+
     public HashMap<Integer, DetailedProduct> fetchDetailedProducts() {
         HashMap<Integer, DetailedProduct> products = new HashMap<>();
 
@@ -61,18 +76,6 @@ public class PIMFilePersistence implements IPIMPersistence {
         return products;
     }
 
-    @Override
-    public HashMap<Integer, Product> fetchProductOverview() {
-        HashMap<Integer, Product> products = new HashMap<>();
-        products.putAll(fetchDetailedProducts());
-
-        return products;
-    }
-
-    @Override
-    public DetailedProduct fetchProduct(int productID) {
-        return fetchDetailedProducts().get(productID);
-    }
 
     /**
      * @param products takes map in and writes it to product file
@@ -105,7 +108,7 @@ public class PIMFilePersistence implements IPIMPersistence {
             Product p = entry.getValue();
             Integer key = entry.getKey();
             if (String.valueOf(p.getProductID()).toLowerCase().contains(value.toLowerCase()) || p.getName().toLowerCase().contains(value.toLowerCase())
-                    || String.valueOf(p.getProductID()).toLowerCase().contains(value.toLowerCase())) { // TODO more criteria support
+                    || String.valueOf(p.getShortDescription()).toLowerCase().contains(value.toLowerCase())) { // TODO more criteria support
 
                 toReturn.put(key,p);
             }

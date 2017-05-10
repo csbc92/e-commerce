@@ -44,13 +44,19 @@ public class WebHandlerThread extends Thread {
             // Get messages from the client, line by line; return them
             // capitalized
             while (true) {
+                System.out.println("reading input");
                 String input = in.readLine();
                 if (input == null || input.equals(".")) {
                     break;
                 }
+                System.out.println("input = " + input);
+                System.out.println("fetching product");
                 DetailedProduct product = fetcher.fetchProduct(Integer.parseInt(input));
+                System.out.println("sending name");
                 out.println(product.getName());
+                System.out.println("sending product");
                 oos.writeObject(product);
+                System.out.println("product sent");
             }
         } catch (IOException e) {
             log("Error handling client# " + clientNumber + ": " + e);

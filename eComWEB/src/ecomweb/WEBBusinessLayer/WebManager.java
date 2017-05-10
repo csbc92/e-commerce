@@ -44,13 +44,20 @@ public class WebManager implements IWebManager{
     @Override
     public DetailedProduct getProduct(int productID){
 
+        System.out.println("Sending \"1\"");
         out.println("1");
+        System.out.println("sent 1");
         try {
             sleep(1);
+            System.out.println("reading name");
             String productName = in.readLine();
+            System.out.println("name read");
            sleep(1);
             System.out.println(productName);
-            return (DetailedProduct) ois.readObject();
+            System.out.println("reading product");
+            DetailedProduct a = (DetailedProduct) ois.readObject();
+            System.out.println("product read");
+            return a;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
