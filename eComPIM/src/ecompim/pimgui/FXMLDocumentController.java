@@ -2,7 +2,11 @@ package ecompim.pimgui;
 
 import java.net.URL;
 import java.util.*;
+
+import ecompim.Product.DetailedProduct;
 import ecompim.Product.Product;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,7 +19,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.util.Callback;
+import jdk.nashorn.internal.ir.IfNode;
 
 
 /**
@@ -48,7 +58,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField tfAddTag;
     @FXML
-    private ListView lvTechDetails;
+    public TableView<Map.Entry<String, String>> tblViewTechDetails;
     @FXML
     private ListView<Product> lvProducts;
     @FXML
@@ -102,9 +112,17 @@ public class FXMLDocumentController implements Initializable {
      */
     private void setListViewProducts(HashMap<Integer, Product> products) {
         ArrayList<Product> productList = new ArrayList<>();
-        productList.addAll(products.values());
-        lvProducts.setItems(FXCollections.observableList(productList));
-
+        boolean matchFound;
+        if (products.isEmpty()) {
+            //TODO: Find en mere elegant måde at håndtere ingen resultater.
+            lvProducts.getItems().clear();
+            lvProducts.getItems().add(new Product(0, "", 0, "Ingen produkter", 0));
+            matchFound = false;
+        } else {
+            productList.addAll(products.values());
+            lvProducts.setItems(FXCollections.observableList(productList));
+            matchFound = true;
+        }
         // Set the CellFactory that is resposible for rendering the data in each TableCell of the ListView
         // Callback<P, R> where P is the argument type and R is the return type of the callback.
         lvProducts.setCellFactory(new Callback<ListView<Product>, ListCell<Product>>() {
@@ -123,10 +141,20 @@ public class FXMLDocumentController implements Initializable {
                             setText(null);
                             setGraphic(null);
                         } else {
-                            setText(item.getProductID() + " - " + item.getName());
+                            if (matchFound) {
+                                setText(item.getName());
+                                Double rowHeight = lvProducts.getHeight();
+                                String formattedText = String.format("%-5s%-40s kr. %s,-", item.getProductID(), item.getName(), item.getSalePrice());
+                                setGraphic(buildTextFlow(formattedText, searchTextField.getText()));
+                                setHeight(rowHeight);
+                                setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+//                                setText(item.getProductID() + " - " + item.getName());
+                            } else {
 
+
+                                setText(item.getName());
+                            }
                         }
-
                     }
                 };
             }
@@ -134,15 +162,46 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Adds the contents of a collection to a listview
+     * Populates technical details into the specified TableView
      *
-     * @param listView the listView in which to add the products
-     * @param col      the collection to add
+     * @param tblView
+     * @param product
      */
-    private void setListViewStrings(ListView<String> listView, Collection<String> col) {
-        ObservableList<String> ol = FXCollections.observableArrayList();
-        ol.setAll(col);
-        listView.setItems(ol);
+    private void populateTechnicalDetails(TableView<Map.Entry<String, String>> tblView, DetailedProduct product) {
+        // First string is the technical property, second string is the technical description
+        Map<String, String> techDetailsMap = product.getTechnicalDetails();
+
+        //region Column definitions..
+        // See this for reference: http://stackoverflow.com/questions/18618653/binding-hashmap-with-tableview-javafx
+        TableColumn<Map.Entry<String, String>, String> techProperty = new TableColumn<>("Egenskab");
+        techProperty.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Map.Entry<String, String>, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Map.Entry<String, String>, String> p) {
+                // use the key as first column
+                return new ReadOnlyStringWrapper(p.getValue().getKey());
+            }
+        });
+
+        TableColumn<Map.Entry<String, String>, String> techDescription = new TableColumn<>("Beskrivelse");
+        techDescription.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Map.Entry<String, String>, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Map.Entry<String, String>, String> p) {
+                // use the value as second column
+                return new ReadOnlyStringWrapper(p.getValue().getValue());
+            }
+        });
+        //endregion
+
+        // Add the technical details to an observable list and to the TableView
+        if (!techDetailsMap.isEmpty()) {
+            ObservableList<Map.Entry<String, String>> technicalDetailsEntries = FXCollections.observableArrayList(techDetailsMap.entrySet());
+            tblView.setItems(technicalDetailsEntries);
+            // Add the columns to the TableView
+            tblView.getColumns().setAll(techProperty, techDescription);
+        } else {
+            tblView.getColumns().clear();
+        }
+
     }
 
     /**
@@ -181,7 +240,7 @@ public class FXMLDocumentController implements Initializable {
         tfSalesPrice.setText(String.valueOf(manager.getCurrentProduct().getSalePrice()));
         lvTags.setItems(FXCollections.observableList(new ArrayList<>(manager.getCurrentProduct().getTags())));
         tfAddTag.clear();
-        setListViewStrings(lvTechDetails, manager.getCurrentProduct().getTechnicalDetails().keySet());
+        populateTechnicalDetails(tblViewTechDetails, manager.getCurrentProduct());
     }
 
     /**
@@ -317,5 +376,33 @@ public class FXMLDocumentController implements Initializable {
             manager.getCurrentProduct().removeTag(tag);
             lvTags.setItems(FXCollections.observableList(new ArrayList<>(manager.getCurrentProduct().getTags())));
         }
+    }
+    /**
+     * Build TextFlow with selected text. Return "case" dependent.
+     *
+     * @param text - string with text
+     * @param filter - string to select in text
+     * @return - TextFlow
+     */
+    private TextFlow buildTextFlow(String text, String filter) {
+
+        try {
+            if (filter.isEmpty()) {
+                return new TextFlow(new Text(text));
+            }
+            //TODO: Error ved søgning af flere ord, som IKKE er i samme rækkefølge
+            // Spørg Vinge
+
+            int filterIndex = text.toLowerCase().indexOf(filter.toLowerCase());
+            Text textBefore = new Text(text.substring(0, filterIndex));
+            Text textAfter = new Text(text.substring(filterIndex + filter.length()));
+            Text textFilter = new Text(text.substring(filterIndex,  filterIndex + filter.length())); //instead of "filter" to keep "case"
+            textFilter.setFill(Color.BLACK);
+            textFilter.setFont(Font.font("Helvetica", FontWeight.BOLD, 14));
+            return new TextFlow(textBefore, textFilter, textAfter);
+        } catch (IndexOutOfBoundsException ie) {
+
+        }
+        return null;
     }
 }

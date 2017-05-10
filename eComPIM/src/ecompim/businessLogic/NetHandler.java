@@ -21,7 +21,7 @@ public class NetHandler implements Runnable {
 
         try {
             while (true) {
-                new WebHandlerThread(fetcher, listener.accept(), clientNumber++).start();
+               new Thread(new WebHandlerThread(fetcher, listener.accept(), clientNumber++)).start();
             }
         } finally {
             listener.close();

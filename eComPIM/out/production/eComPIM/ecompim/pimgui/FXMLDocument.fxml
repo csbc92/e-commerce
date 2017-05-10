@@ -8,6 +8,8 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -24,26 +26,26 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecompim.pimgui.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="728.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecompim.pimgui.FXMLDocumentController">
    <children>
       <VBox prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <MenuBar>
               <menus>
-                <Menu mnemonicParsing="false" text="File">
+                <Menu mnemonicParsing="false" text="Filer">
                   <items>
                         <MenuItem mnemonicParsing="false" onAction="#menuFetchFromERPHandler" text="Genindlæs fra ERP" />
-                    <MenuItem mnemonicParsing="false" text="Close" />
+                    <MenuItem mnemonicParsing="false" text="Afslut" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
+                <Menu mnemonicParsing="false" text="Redigér">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
+                    <MenuItem mnemonicParsing="false" text="Slet" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Help">
+                <Menu mnemonicParsing="false" text="Hjælp">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
+                    <MenuItem mnemonicParsing="false" text="Om.." />
                   </items>
                 </Menu>
               </menus>
@@ -194,7 +196,12 @@
                         <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
                               <Label text="Tekniske detaljer" />
-                              <ListView fx:id="lvTechDetails" prefHeight="200.0" prefWidth="200.0" />
+                              <TableView fx:id="tblViewTechDetails" prefHeight="200.0" prefWidth="200.0">
+                                <columns>
+                                  <TableColumn editable="false" prefWidth="289.0" sortable="false" text="Egenskab" />
+                                  <TableColumn prefWidth="366.0" text="Beskrivelse" />
+                                </columns>
+                              </TableView>
                            </children>
                         </VBox>
                      </children>
@@ -229,7 +236,7 @@
                               </Button>
                            </children>
                         </HBox>
-                        <ListView fx:id="lvProducts" onMouseClicked="#lvClickedHandler" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ListView fx:id="lvProducts" onMouseClicked="#lvClickedHandler" prefHeight="200.0" prefWidth="200.0" stylesheets="@FXMLDocument.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </children>

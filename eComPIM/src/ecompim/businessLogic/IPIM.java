@@ -32,7 +32,7 @@ public interface IPIM extends IProductFetcher {
 
     /**
      *
-     * @return the product that is being modiied
+     * @return the product that is being modified
      */
     public DetailedProduct getCurrentProduct();
 
