@@ -3,16 +3,7 @@ package ecompim.businessLogic;
 
 import ecompim.ERPAccess.ERPFetcher;
 import Product.*;
-import ecompim.PIMPersistence.PIMPersistenceFacade;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.lang.annotation.Inherited;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -20,16 +11,16 @@ import java.util.HashMap;
  */
 public class PIMManager implements IPIM {
 
-    private PIMPersistenceFacade persistance;
     private DetailedProduct currentProduct;
+    private ProductCatalogue productCatalogue;
     Thread netHandler;
 
     /**
      * initializes the PIMManager
      */
     public PIMManager() {
-        persistance = new PIMPersistenceFacade("data/file.dat");
-        saveERPProducts();
+        productCatalogue = new ProductCatalogue();
+        collectERPProducts();
         netHandler = new Thread(new NetHandler(this));
         netHandler.setDaemon(true);
         netHandler.start();
@@ -37,30 +28,25 @@ public class PIMManager implements IPIM {
 
     @Override
     public DetailedProduct fetchProduct(int productID) {
-        return  persistance.fetchProduct(productID);
-    }
-
-
-    public DetailedProduct fetchProductNet(int productID) {
-        return  persistance.fetchProduct(productID);
+        return  productCatalogue.fetchProduct(productID);
     }
 
     @Override
-    public HashMap<Integer, Product> searchProducts(String searchCriteria) {return persistance.searchProducts(searchCriteria);}
+    public HashMap<Integer, Product> searchProducts(String searchCriteria) {return productCatalogue.searchProducts(searchCriteria);}
 
     @Override
     public HashMap<Integer, Product> fetchProductOverview() {
-        return persistance.fetchProductOverview();
+        return productCatalogue.fetchProductOverview();
     }
 
     @Override
     public void saveChanges() {
-        persistance.saveProduct(currentProduct);
+        productCatalogue.saveChanges(currentProduct);
     }
 
     @Override
-    public void saveERPProducts() {
-        persistance.storeProducts(new ERPFetcher().getProducts());
+    public void collectERPProducts() {
+       productCatalogue.saveProductsFromERP(new ERPFetcher().getProducts());
     }
 
     @Override

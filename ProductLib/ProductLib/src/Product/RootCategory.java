@@ -5,6 +5,7 @@
  */
 package Product;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author JV
  */
-public class RootCategory {
+public class RootCategory implements Serializable {
    
     protected String name;
     protected ArrayList<Category> categoryList;

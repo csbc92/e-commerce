@@ -45,4 +45,8 @@ public interface  IPIMPersistence {
      */
     HashMap<Integer, Product> searchProducts(String value);
 
+    void saveRootCategory(RootCategory rootCategory);
+
+    RootCategory fetchRootCategory();
+
 }

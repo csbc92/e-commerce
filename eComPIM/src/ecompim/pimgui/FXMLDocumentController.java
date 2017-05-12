@@ -24,7 +24,6 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Callback;
-import jdk.nashorn.internal.ir.IfNode;
 
 
 /**
@@ -356,7 +355,7 @@ public class FXMLDocumentController implements Initializable {
      * Overwrites any existing data
      */
     public void menuFetchFromERPHandler(ActionEvent actionEvent) {
-        manager.saveERPProducts();
+        manager.collectERPProducts();
     }
 
     @FXML

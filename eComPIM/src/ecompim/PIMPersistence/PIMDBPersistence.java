@@ -54,5 +54,15 @@ public class PIMDBPersistence implements IPIMPersistence{
         throw new UnsupportedOperationException();
     }
 
+    @Override
+    public RootCategory fetchRootCategory() {
+        return null;
+    }
+
+    @Override
+    public void saveRootCategory(RootCategory rootCategory) {
+
+    }
+
 
 }
