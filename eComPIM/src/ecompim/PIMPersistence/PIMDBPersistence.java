@@ -1,7 +1,6 @@
 package ecompim.PIMPersistence;
 
-import ecompim.Product.DetailedProduct;
-import ecompim.Product.Product;
+import Product.*;
 import ecompim.SQL.SQL;
 
 import java.sql.Connection;
@@ -53,6 +52,16 @@ public class PIMDBPersistence implements IPIMPersistence{
     @Override
     public HashMap<Integer,Product> searchProducts(String value) {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public RootCategory fetchRootCategory() {
+        return null;
+    }
+
+    @Override
+    public void saveRootCategory(RootCategory rootCategory) {
+
     }
 
 

@@ -1,7 +1,6 @@
 package ecompim.businessLogic;
 
-import ecompim.Product.DetailedProduct;
-import ecompim.Product.Product;
+import Product.*;
 
 import java.util.HashMap;
 
@@ -26,7 +25,7 @@ public interface IPIM extends IProductFetcher {
      * Fetch a fresh list of products from the ERP system and save them to persistance.
      * Overwrites any existing data
      */
-    public void saveERPProducts();
+    public void collectERPProducts();
 
     /**
      *

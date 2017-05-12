@@ -21,7 +21,7 @@ import static java.lang.Thread.sleep;
  * Created by Vedsted on 24-04-2017.
  */
 public class WebManager implements IWebManager{
-    private IProductFetcher productFetcher;
+//    private IProductFetcher productFetcher;
     private BufferedReader in;
     private PrintWriter out;
     private ObjectInputStream ois;

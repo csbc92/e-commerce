@@ -1,7 +1,6 @@
 package ecompim.PIMPersistence;
 
-import ecompim.Product.DetailedProduct;
-import ecompim.Product.Product;
+import Product.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,5 +44,9 @@ public interface  IPIMPersistence {
      * @return a map of the products that match the search value, with Integers as keys and Products as values
      */
     HashMap<Integer, Product> searchProducts(String value);
+
+    void saveRootCategory(RootCategory rootCategory);
+
+    RootCategory fetchRootCategory();
 
 }

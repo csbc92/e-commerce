@@ -3,8 +3,7 @@ package ecompim.pimgui;
 import java.net.URL;
 import java.util.*;
 
-import ecompim.Product.DetailedProduct;
-import ecompim.Product.Product;
+import Product.*;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -25,7 +24,6 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Callback;
-import jdk.nashorn.internal.ir.IfNode;
 
 
 /**
@@ -357,7 +355,7 @@ public class FXMLDocumentController implements Initializable {
      * Overwrites any existing data
      */
     public void menuFetchFromERPHandler(ActionEvent actionEvent) {
-        manager.saveERPProducts();
+        manager.collectERPProducts();
     }
 
     @FXML
