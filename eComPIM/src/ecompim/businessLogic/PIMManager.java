@@ -2,7 +2,7 @@ package ecompim.businessLogic;
 
 
 import ecompim.ERPAccess.ERPFetcher;
-import ecompim.Product.*;
+import Product.*;
 import ecompim.PIMPersistence.PIMPersistenceFacade;
 
 import java.io.BufferedReader;

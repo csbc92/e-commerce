@@ -1,6 +1,6 @@
 package ecompim.businessLogic;
 
-import ecompim.Product.*;
+import Product.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;

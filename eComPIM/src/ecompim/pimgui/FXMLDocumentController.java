@@ -3,8 +3,7 @@ package ecompim.pimgui;
 import java.net.URL;
 import java.util.*;
 
-import ecompim.Product.DetailedProduct;
-import ecompim.Product.Product;
+import Product.*;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;

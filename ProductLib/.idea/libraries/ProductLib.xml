@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="ProductLib">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../ProductLib/ProductLib/dist/ProductLib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ProductLib/dist/ProductLib.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

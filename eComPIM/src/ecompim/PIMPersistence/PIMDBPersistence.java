@@ -1,7 +1,6 @@
 package ecompim.PIMPersistence;
 
-import ecompim.Product.DetailedProduct;
-import ecompim.Product.Product;
+import Product.*;
 import ecompim.SQL.SQL;
 
 import java.sql.Connection;
