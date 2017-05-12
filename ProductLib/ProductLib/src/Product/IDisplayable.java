@@ -1,4 +1,4 @@
-package ecompim.Product;
+package Product;
 
 /**
  * Created by JV on 24-04-2017.

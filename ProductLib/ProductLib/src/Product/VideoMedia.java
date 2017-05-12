@@ -1,4 +1,4 @@
-package ecompim.Product;
+package Product;
 
 
 public class VideoMedia implements IDisplayable {

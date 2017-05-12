@@ -1,4 +1,4 @@
-package ecompim.Product;
+package Product;
 
 import java.io.Serializable;
 import java.util.HashMap;
