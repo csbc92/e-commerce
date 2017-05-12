@@ -69,7 +69,7 @@ public class WebManager implements IWebManager{
     public void connectToServer() throws IOException {
 
         // Get the server address from a dialog box.
-        String serverAddress = "localhost";
+        String serverAddress = "10.126.119.25";
 
         // Make connection and initialize streams
         Socket socket = new Socket(serverAddress, 9898);
