@@ -6,6 +6,10 @@ public class Category extends RootCategory {
 
     private Category parent;
 
+    public Category(String name) {
+        super(name);
+    }
+
     /**
      * Initializes a category with a parent
      * @param name the name of the category

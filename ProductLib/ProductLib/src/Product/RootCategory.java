@@ -32,6 +32,10 @@ public class RootCategory implements Serializable {
         this.level = 0;
     }
 
+    public String getName() {
+        return name;
+    }
+
     /**
      * Adds a child category to this category
      * @param child the child category

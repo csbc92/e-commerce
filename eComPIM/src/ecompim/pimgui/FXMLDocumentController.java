@@ -74,7 +74,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button searchButton;
     @FXML
-    private TreeView categoryTreeView;
+    private TreeView<String> categoryTreeView;
 
 
     /**
@@ -89,6 +89,7 @@ public class FXMLDocumentController implements Initializable {
         setListViewProducts(manager.fetchProductOverview());
         gpviewPoduct.setVisible(false);
         gpOverview.setVisible(true);
+        categoryTreeView.setRoot(manager.categoryOverview());
     }
 
     /**

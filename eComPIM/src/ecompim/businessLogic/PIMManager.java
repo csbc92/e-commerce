@@ -3,6 +3,7 @@ package ecompim.businessLogic;
 
 import ecompim.ERPAccess.ERPFetcher;
 import Product.*;
+import javafx.scene.control.TreeItem;
 
 import java.util.HashMap;
 
@@ -57,5 +58,10 @@ public class PIMManager implements IPIM {
     @Override
     public void setCurrentProduct(int productID) {
         currentProduct = fetchProduct(productID);
+    }
+
+    @Override
+    public TreeItem<String> categoryOverview() {
+        return  productCatalogue.categoryOverview();
     }
 }

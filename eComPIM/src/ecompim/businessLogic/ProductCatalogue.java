@@ -3,6 +3,7 @@ package ecompim.businessLogic;
 import Product.*;
 import ecompim.ERPAccess.ERPFetcher;
 import ecompim.PIMPersistence.PIMPersistenceFacade;
+import javafx.scene.control.TreeItem;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,8 +14,20 @@ import java.util.Map;
 public class ProductCatalogue implements IProductCatalogue {
 
     private PIMPersistenceFacade persistance;
+    private RootCategory rootCategory;
 
     public ProductCatalogue() {
+        rootCategory = new RootCategory("Produkter");
+
+        rootCategory.addChild(new Category("TV"));
+        rootCategory.addChild(new Category("Hvidevarer"));
+        Category cat = new Category("Computer dele");
+        rootCategory.addChild(cat);
+        cat.addChild(new Category("RAM",cat));
+        cat.addChild(new Category("CPU",cat));
+        cat.addChild(new Category("Grafikkort",cat));
+        cat.addChild(new Category("Motherboard",cat));
+
         persistance = new PIMPersistenceFacade("data/file.dat","data/category.dat");
     }
     @Override
@@ -68,6 +81,25 @@ public class ProductCatalogue implements IProductCatalogue {
     @Override
     public void addProductToCategory(Product product, String categoryName) {
         throw new UnsupportedOperationException(); //TODO
+    }
+
+    @Override
+    public TreeItem<String> categoryOverview() {
+        TreeItem<String> root = new TreeItem<>(rootCategory.getName());
+        root.setExpanded(true);
+        for (Category cat : rootCategory.getChildren() ) {
+            root.getChildren().add(getCategories(cat));
+
+        }
+        return root;
+    }
+
+    private TreeItem<String> getCategories(Category category){
+        TreeItem<String> item = new TreeItem<>(category.getName());
+        for (Category cat : category.getChildren()) {
+            item.getChildren().add(getCategories(cat));
+        }
+        return item;
     }
 
 

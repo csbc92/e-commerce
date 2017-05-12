@@ -1,6 +1,7 @@
 package ecompim.businessLogic;
 
 import Product.*;
+import javafx.scene.control.TreeItem;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,5 +38,7 @@ public interface IProductCatalogue extends IProductFetcher {
     void fetchRootCategory();
 
     void addProductToCategory(Product product,String categoryName);
+
+    TreeItem<String> categoryOverview();
 
 }

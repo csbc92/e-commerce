@@ -1,6 +1,7 @@
 package ecompim.businessLogic;
 
 import Product.*;
+import javafx.scene.control.TreeItem;
 
 import java.util.HashMap;
 
@@ -40,4 +41,6 @@ public interface IPIM extends IProductFetcher {
      * @param productID ID of the product to be modified
      */
     public void setCurrentProduct(int productID);
+
+    public TreeItem<String> categoryOverview();
 }
