@@ -10,7 +10,10 @@ import java.util.Map;
  * Created by Vedsted on 24-04-2017.
  */
 public class ERPDummyDB {
-
+    /**
+     * Generates a map of static products
+     * @return a map with integers as key and DetailedProducts as values
+     */
     public static Map<Integer, DetailedProduct> getProducts() {
         Map<Integer, DetailedProduct> products = new HashMap<>();
 

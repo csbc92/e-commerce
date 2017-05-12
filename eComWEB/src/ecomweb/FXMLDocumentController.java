@@ -71,6 +71,10 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    /**
+     * displays a product based on the id given
+     * @param productID the id of the product to display
+     */
     private void displayProduct(int productID){
         //Test code to see the GUI works, and fetching products work
         DetailedProduct product = webManager.getProduct(productID);

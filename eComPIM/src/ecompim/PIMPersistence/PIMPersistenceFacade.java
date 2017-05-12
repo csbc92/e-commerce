@@ -38,7 +38,6 @@ public class PIMPersistenceFacade {
         ipimPersistence.saveProduct(product);
     }
 
-    //TODO Skal tilføjes til klassediagrammerne.
     public HashMap<Integer, Product> searchProducts(String value){
         return ipimPersistence.searchProducts(value);
     }

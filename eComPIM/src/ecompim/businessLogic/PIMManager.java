@@ -23,15 +23,16 @@ public class PIMManager implements IPIM {
     private PIMPersistenceFacade persistance;
     private DetailedProduct currentProduct;
     Thread netHandler;
+
+    /**
+     * initializes the PIMManager
+     */
     public PIMManager() {
         persistance = new PIMPersistenceFacade("data/file.dat");
         saveERPProducts();
         netHandler = new Thread(new NetHandler(this));
         netHandler.setDaemon(true);
         netHandler.start();
-
-
-
     }
 
     @Override
@@ -45,38 +46,11 @@ public class PIMManager implements IPIM {
     }
 
     @Override
-    public HashMap<Integer, Product> searchProducts(String searchCriteria) {
-        return persistance.searchProducts(searchCriteria);
-
-
-//       HashMap<Integer,Product> products = persistance.fetchProductOverview();
-//       ArrayList<Product> toReturn = new ArrayList<>();
-//        for (Product p: products.values() ) {
-//            if (String.valueOf(p.getProductID()).contains(searchCriteria) || p.getName().contains(searchCriteria)){ // TODO more criteria support
-//
-//                toReturn.add(p);
-//            }
-//        }
-//        //Hvorfor ikke bare anvende en Arrayliste?
-////        Product[] returnArray = new Product[toReturn.size()];
-////        for (int i = 0; i < toReturn.size(); i++) {
-////            returnArray[i] = toReturn.get(i);
-////        }
-//
-//        return toReturn;
-////        return returnArray;
-}
+    public HashMap<Integer, Product> searchProducts(String searchCriteria) {return persistance.searchProducts(searchCriteria);}
 
     @Override
     public HashMap<Integer, Product> fetchProductOverview() {
         return persistance.fetchProductOverview();
-    }
-
-
-
-    @Override
-    public void changeProductAttribute(int productID, String attribute, String newValue) {
-        throw new UnsupportedOperationException();
     }
 
     @Override

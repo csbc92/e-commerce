@@ -27,7 +27,7 @@ public class WebManager implements IWebManager{
     private ObjectInputStream ois;
 
     public WebManager() {
-        productFetcher = new PIMManager();
+      //  productFetcher = new PIMManager();
 
 
         try {
@@ -66,10 +66,14 @@ public class WebManager implements IWebManager{
        }
     }
 
+    /**
+     * Connects to a PIM server
+     * @throws IOException
+     */
     public void connectToServer() throws IOException {
 
         // Get the server address from a dialog box.
-        String serverAddress = "10.126.119.25";
+        String serverAddress = "localhost";
 
         // Make connection and initialize streams
         Socket socket = new Socket(serverAddress, 9898);

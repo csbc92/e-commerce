@@ -17,6 +17,13 @@ import java.util.Map;
 public class PIMDBPersistence implements IPIMPersistence{
 
     private SQL DB;
+
+    /**
+     * Initializes the database persistence. This requires the url, username and password for the database
+     * @param connectionString the URL to the database to connect to
+     * @param username the username to login with
+     * @param password the password to login with
+     */
     public PIMDBPersistence(String connectionString, String username, String password) {
         DB = new SQL(connectionString,username,password);
 

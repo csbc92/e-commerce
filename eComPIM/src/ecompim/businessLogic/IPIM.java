@@ -17,8 +17,6 @@ public interface IPIM extends IProductFetcher {
     public HashMap<Integer,Product> fetchProductOverview();
 
 
-    public void changeProductAttribute(int productID, String attribute, String newValue);
-
     /**
      * Store the changes in the current product to persistance
      */
