@@ -3,6 +3,7 @@ package ecompim.businessLogic;
 import Product.*;
 import ecompim.ERPAccess.ERPFetcher;
 import ecompim.PIMPersistence.PIMPersistenceFacade;
+import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.TreeItem;
 
 import java.util.HashMap;
@@ -17,18 +18,23 @@ public class ProductCatalogue implements IProductCatalogue {
     private RootCategory rootCategory;
 
     public ProductCatalogue() {
+        persistance = new PIMPersistenceFacade("data/file.dat","data/category.dat");
+        testCategories();
+    }
+
+    public void testCategories(){
         rootCategory = new RootCategory("Produkter");
 
         rootCategory.addChild(new Category("TV"));
         rootCategory.addChild(new Category("Hvidevarer"));
         Category cat = new Category("Computer dele");
         rootCategory.addChild(cat);
-        cat.addChild(new Category("RAM",cat));
+        Category cat2 = new Category("RAM",cat);
+        cat.addChild(cat2);
+        cat2.addChild(new Category("Corsair"));
         cat.addChild(new Category("CPU",cat));
         cat.addChild(new Category("Grafikkort",cat));
         cat.addChild(new Category("Motherboard",cat));
-
-        persistance = new PIMPersistenceFacade("data/file.dat","data/category.dat");
     }
     @Override
     public DetailedProduct fetchProduct(int productID) {
@@ -84,8 +90,8 @@ public class ProductCatalogue implements IProductCatalogue {
     }
 
     @Override
-    public TreeItem<String> categoryOverview() {
-        TreeItem<String> root = new TreeItem<>(rootCategory.getName());
+    public CheckBoxTreeItem<String> categoryOverview() {
+        CheckBoxTreeItem<String> root = new CheckBoxTreeItem<>(rootCategory.getName());
         root.setExpanded(true);
         for (Category cat : rootCategory.getChildren() ) {
             root.getChildren().add(getCategories(cat));
@@ -94,8 +100,13 @@ public class ProductCatalogue implements IProductCatalogue {
         return root;
     }
 
+    @Override
+    public TreeItem<String> searchCategory(String value) {
+        throw new UnsupportedOperationException(); //TODO
+    }
+
     private TreeItem<String> getCategories(Category category){
-        TreeItem<String> item = new TreeItem<>(category.getName());
+        CheckBoxTreeItem<String> item = new CheckBoxTreeItem<>(category.getName());
         for (Category cat : category.getChildren()) {
             item.getChildren().add(getCategories(cat));
         }

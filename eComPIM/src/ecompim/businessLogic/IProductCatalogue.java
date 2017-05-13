@@ -1,6 +1,7 @@
 package ecompim.businessLogic;
 
 import Product.*;
+import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.TreeItem;
 
 import java.util.HashMap;
@@ -39,6 +40,8 @@ public interface IProductCatalogue extends IProductFetcher {
 
     void addProductToCategory(Product product,String categoryName);
 
-    TreeItem<String> categoryOverview();
+    CheckBoxTreeItem<String> categoryOverview();
+
+    TreeItem<String> searchCategory(String value);
 
 }

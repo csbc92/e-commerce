@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import ecompim.businessLogic.PIMManager;
 import ecompim.businessLogic.IPIM;
+import javafx.scene.control.cell.CheckBoxTreeCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -89,7 +90,12 @@ public class FXMLDocumentController implements Initializable {
         setListViewProducts(manager.fetchProductOverview());
         gpviewPoduct.setVisible(false);
         gpOverview.setVisible(true);
+        initCategories();
+    }
+
+    private void initCategories(){
         categoryTreeView.setRoot(manager.categoryOverview());
+        categoryTreeView.setCellFactory(CheckBoxTreeCell.forTreeView());
     }
 
     /**
