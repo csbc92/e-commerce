@@ -87,10 +87,14 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         manager = new PIMManager();
-        setListViewProducts(manager.fetchProductOverview());
+
+
+        initCategories();
         gpviewPoduct.setVisible(false);
         gpOverview.setVisible(true);
-        initCategories();
+
+        setListViewProducts(manager.fetchProductOverview());
+
     }
 
     private void initCategories(){

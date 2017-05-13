@@ -71,4 +71,8 @@ public class RootCategory implements Serializable {
     public void addProductID(Integer ID){
         productIDSet.add(ID);
     }
+
+    public HashSet<Integer> getProductIDSet() {
+        return productIDSet;
+    }
 }

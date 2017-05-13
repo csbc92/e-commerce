@@ -5,6 +5,7 @@ import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.TreeItem;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 /**
@@ -30,7 +31,7 @@ public interface IProductCatalogue extends IProductFetcher {
      */
     void saveProductsFromERP(Map<Integer, DetailedProduct> products);
 
-    HashMap<Integer, Product> fetchProductsByCategory(String categoryName);
+    HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories);
 
     RootCategory getRootCategory();
 
