@@ -17,7 +17,7 @@ import java.util.Map;
 public class ProductCatalogue implements IProductCatalogue {
 
     private PIMPersistenceFacade persistance;
-    private RootCategory rootCategory;
+    private Category rootCategory;
     private HashSet<Category> testCat = new HashSet<Category>();
 
     public ProductCatalogue() {
@@ -26,7 +26,7 @@ public class ProductCatalogue implements IProductCatalogue {
     }
 
     public void testCategories() {
-        rootCategory = new RootCategory("Produkter");
+        rootCategory = new Category("Produkter");
 
         rootCategory.addChild(new Category("TV"));
         rootCategory.addChild(new Category("Hvidevarer"));
@@ -81,9 +81,16 @@ public class ProductCatalogue implements IProductCatalogue {
     }
 
 
+    /**
+     * @param categories
+     * @return
+     */
     @Override
     public HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories) {
-        HashMap<Integer, Product> productList = new HashMap<Integer, Product>();
+        if (categories.isEmpty()) {
+            return fetchProductOverview();
+        }
+        HashMap<Integer, Product> productList = new HashMap<>();
         for (Category cat : categories) {
             for (Integer id : cat.getProductIDSet()) {
                 productList.put(id, fetchProduct(id));
@@ -118,8 +125,8 @@ public class ProductCatalogue implements IProductCatalogue {
      * @return
      */
     @Override
-    public CheckBoxTreeItem<String> categoryOverview() {
-        CheckBoxTreeItem<String> root = new CheckBoxTreeItem<>(rootCategory.getName());
+    public CheckBoxTreeItem<Category> categoryOverview() {
+        CheckBoxTreeItem<Category> root = new CheckBoxTreeItem<>(rootCategory);
         root.setExpanded(true);
         for (Category cat : rootCategory.getChildren()) {
             root.getChildren().add(getCategories(cat));
@@ -132,8 +139,8 @@ public class ProductCatalogue implements IProductCatalogue {
         throw new UnsupportedOperationException(); //TODO
     }
 
-    private CheckBoxTreeItem<String> getCategories(Category category) {
-        CheckBoxTreeItem<String> item = new CheckBoxTreeItem<>(category.getName());
+    private CheckBoxTreeItem<Category> getCategories(Category category) {
+        CheckBoxTreeItem<Category> item = new CheckBoxTreeItem<>(category);
         for (Category cat : category.getChildren()) {
             item.getChildren().add(getCategories(cat));
         }

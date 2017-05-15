@@ -75,4 +75,9 @@ public class RootCategory implements Serializable {
     public HashSet<Integer> getProductIDSet() {
         return productIDSet;
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

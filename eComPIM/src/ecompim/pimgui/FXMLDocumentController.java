@@ -40,7 +40,7 @@ import javafx.util.Callback;
 public class FXMLDocumentController implements Initializable {
 
     private IPIM manager;
-    private HashSet<String> selectedCategories;
+    private HashSet<Category> selectedCategories;
 
     @FXML
     public ImageView imgvPic;
@@ -79,7 +79,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button searchButton;
     @FXML
-    private TreeView<String> categoryTreeView;
+    private TreeView<Category> categoryTreeView;
 
 
     /**
@@ -102,14 +102,21 @@ public class FXMLDocumentController implements Initializable {
     }
 
     private void initCategories(){
-        CheckBoxTreeItem<String> catItem = manager.categoryOverview();
-
-        catItem.addEventHandler(CheckBoxTreeItem.<String>checkBoxSelectionChangedEvent(), event -> {
-            System.out.println("Test");
-//            setListViewProducts(manager.fetchProductsByCategory(selectedCategories));
-        });
+        selectedCategories = new HashSet<>();
+        CheckBoxTreeItem<Category> catItem = manager.categoryOverview();
         categoryTreeView.setRoot(catItem);
         categoryTreeView.setCellFactory(CheckBoxTreeCell.forTreeView());
+
+        catItem.addEventHandler(CheckBoxTreeItem.<Category>checkBoxSelectionChangedEvent(), event -> {
+            System.out.println("Cat");
+            if (event.getTreeItem().isSelected()) {
+                selectedCategories.add(event.getTreeItem().getValue());
+            } else {
+                selectedCategories.remove(event.getTreeItem().getValue());
+            }
+            setListViewProducts(manager.fetchProductsByCategory(selectedCategories));
+        });
+
 
     }
 

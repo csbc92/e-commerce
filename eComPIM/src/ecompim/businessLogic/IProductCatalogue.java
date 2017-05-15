@@ -41,7 +41,7 @@ public interface IProductCatalogue extends IProductFetcher {
 
     void addProductToCategory(Product product,String categoryName);
 
-    CheckBoxTreeItem<String> categoryOverview();
+    CheckBoxTreeItem<Category> categoryOverview();
 
     CheckBoxTreeItem<String> searchCategory(String value);
 

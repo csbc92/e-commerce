@@ -44,7 +44,7 @@ public interface IPIM extends IProductFetcher {
      */
     public void setCurrentProduct(int productID);
 
-    public CheckBoxTreeItem<String> categoryOverview();
+    public CheckBoxTreeItem<Category> categoryOverview();
 
     public HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories);
 }

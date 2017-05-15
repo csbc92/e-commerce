@@ -63,12 +63,12 @@ public class PIMManager implements IPIM {
     }
 
     @Override
-    public CheckBoxTreeItem<String> categoryOverview() {
+    public CheckBoxTreeItem<Category> categoryOverview() {
         return  productCatalogue.categoryOverview();
     }
 
     @Override
     public HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories) {
-        return null;
+        return productCatalogue.fetchProductsByCategory(categories);
     }
 }
