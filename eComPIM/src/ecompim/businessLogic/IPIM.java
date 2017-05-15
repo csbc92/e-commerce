@@ -1,9 +1,11 @@
 package ecompim.businessLogic;
 
 import Product.*;
+import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.TreeItem;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * Created by victo on 2017-04-24.
@@ -42,5 +44,7 @@ public interface IPIM extends IProductFetcher {
      */
     public void setCurrentProduct(int productID);
 
-    public TreeItem<String> categoryOverview();
+    public CheckBoxTreeItem<String> categoryOverview();
+
+    public HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories);
 }

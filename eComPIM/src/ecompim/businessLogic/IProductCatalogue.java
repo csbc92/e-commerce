@@ -43,6 +43,6 @@ public interface IProductCatalogue extends IProductFetcher {
 
     CheckBoxTreeItem<String> categoryOverview();
 
-    TreeItem<String> searchCategory(String value);
+    CheckBoxTreeItem<String> searchCategory(String value);
 
 }

@@ -5,10 +5,13 @@ import java.util.*;
 
 import Product.*;
 import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -37,6 +40,7 @@ import javafx.util.Callback;
 public class FXMLDocumentController implements Initializable {
 
     private IPIM manager;
+    private HashSet<String> selectedCategories;
 
     @FXML
     public ImageView imgvPic;
@@ -98,9 +102,19 @@ public class FXMLDocumentController implements Initializable {
     }
 
     private void initCategories(){
-        categoryTreeView.setRoot(manager.categoryOverview());
+        CheckBoxTreeItem<String> catItem = manager.categoryOverview();
+
+        catItem.addEventHandler(CheckBoxTreeItem.<String>checkBoxSelectionChangedEvent(), event -> {
+            System.out.println("Test");
+//            setListViewProducts(manager.fetchProductsByCategory(selectedCategories));
+        });
+        categoryTreeView.setRoot(catItem);
         categoryTreeView.setCellFactory(CheckBoxTreeCell.forTreeView());
+
     }
+
+
+
 
     /**
      * NOT DONE

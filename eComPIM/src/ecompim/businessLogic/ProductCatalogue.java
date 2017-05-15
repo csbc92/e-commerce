@@ -128,11 +128,11 @@ public class ProductCatalogue implements IProductCatalogue {
     }
 
     @Override
-    public TreeItem<String> searchCategory(String value) {
+    public CheckBoxTreeItem<String> searchCategory(String value) {
         throw new UnsupportedOperationException(); //TODO
     }
 
-    private TreeItem<String> getCategories(Category category) {
+    private CheckBoxTreeItem<String> getCategories(Category category) {
         CheckBoxTreeItem<String> item = new CheckBoxTreeItem<>(category.getName());
         for (Category cat : category.getChildren()) {
             item.getChildren().add(getCategories(cat));
