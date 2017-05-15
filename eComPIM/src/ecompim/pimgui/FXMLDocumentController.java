@@ -108,7 +108,6 @@ public class FXMLDocumentController implements Initializable {
         categoryTreeView.setCellFactory(CheckBoxTreeCell.forTreeView());
 
         catItem.addEventHandler(CheckBoxTreeItem.<Category>checkBoxSelectionChangedEvent(), event -> {
-            System.out.println("Cat");
             if (event.getTreeItem().isSelected()) {
                 selectedCategories.add(event.getTreeItem().getValue());
             } else {
@@ -116,11 +115,7 @@ public class FXMLDocumentController implements Initializable {
             }
             setListViewProducts(manager.fetchProductsByCategory(selectedCategories));
         });
-
-
     }
-
-
 
 
     /**
@@ -131,7 +126,12 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     public void searchButtonHandler(ActionEvent actionEvent) {
-        setListViewProducts(manager.searchProducts(searchTextField.getText()));
+        if (searchTextField.getText().isEmpty()) {
+            setListViewProducts(manager.fetchProductsByCategory(selectedCategories));
+        } else {
+            setListViewProducts(manager.searchProducts(searchTextField.getText()));
+        }
+
     }
 
     /**
