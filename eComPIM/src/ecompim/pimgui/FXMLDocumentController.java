@@ -5,13 +5,10 @@ import java.util.*;
 
 import Product.*;
 import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -93,7 +90,7 @@ public class FXMLDocumentController implements Initializable {
         manager = new PIMManager();
 
 
-        initCategories();
+        initCategoryOverview();
         gpviewPoduct.setVisible(false);
         gpOverview.setVisible(true);
 
@@ -101,9 +98,13 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    private void initCategories(){
+    /**
+     * Initializes the product category overview
+     */
+    private void initCategoryOverview(){
         selectedCategories = new HashSet<>();
-        CheckBoxTreeItem<Category> catItem = manager.categoryOverview();
+        Category rootCategory = manager.getRootCategory();
+        CheckBoxTreeItem<Category> catItem = this.createCategoryCheckBoxTreeItem(rootCategory, true);
         categoryTreeView.setRoot(catItem);
         categoryTreeView.setCellFactory(CheckBoxTreeCell.forTreeView());
 
@@ -115,6 +116,33 @@ public class FXMLDocumentController implements Initializable {
             }
             setListViewProducts(manager.fetchProductsByCategory(selectedCategories));
         });
+    }
+
+    /**
+     * Create a Category CheckBoxTreeItem
+     * @param parentCategory Creates the category CheckBoxTreeItem by using this parameter as parent category
+     * @return
+     */
+    private CheckBoxTreeItem<Category> createCategoryCheckBoxTreeItem(Category parentCategory, boolean setExpanded) {
+        CheckBoxTreeItem<Category> parentCheckBoxTreeItem = new CheckBoxTreeItem<>(parentCategory);
+        parentCheckBoxTreeItem.setExpanded(setExpanded);
+        for (Category cat : parentCategory.getChildren()) {
+            parentCheckBoxTreeItem.getChildren().add(createCategoryCheckBoxTreeItem(cat, false));
+        }
+        return parentCheckBoxTreeItem;
+    }
+
+    /**
+     *
+     * @param category
+     * @return
+     */
+    private CheckBoxTreeItem<Category> getCategories(Category category) {
+        CheckBoxTreeItem<Category> item = new CheckBoxTreeItem<>(category);
+        for (Category cat : category.getChildren()) {
+            item.getChildren().add(getCategories(cat));
+        }
+        return item;
     }
 
 
