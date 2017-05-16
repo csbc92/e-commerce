@@ -12,11 +12,11 @@ import java.util.Map;
  */
 public class ProductCatalogue implements IProductCatalogue {
 
-    private PIMPersistenceFacade persistance;
+    private PIMPersistenceFacade persistence;
     private HashSet<Category> testCat = new HashSet<Category>();
 
     public ProductCatalogue() {
-        persistance = new PIMPersistenceFacade("data/file.dat", "data/category.dat");
+        persistence = new PIMPersistenceFacade("data/file.dat", "data/category.dat");
         //      testCategories();
     }
     //public void testCategories() {
@@ -94,12 +94,12 @@ public class ProductCatalogue implements IProductCatalogue {
 
     @Override
     public void saveRootCategory(Category rootCategory) {
-        persistance.saveRootCategory(rootCategory);
+        persistence.saveRootCategory(rootCategory);
     }
 
     @Override
     public Category fetchRootCategory() {
-        return persistance.getRootCategory();
+        return persistence.getRootCategory();
     }
 
     @Override

@@ -65,7 +65,7 @@ public class PIMManager implements IPIM {
 
     @Override
     public Category getRootCategory() {
-        return  productCatalogue.getRootCategory();
+        return  productCatalogue.fetchRootCategory();
     }
 
     @Override
