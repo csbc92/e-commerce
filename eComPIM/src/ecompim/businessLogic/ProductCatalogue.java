@@ -109,20 +109,18 @@ public class ProductCatalogue implements IProductCatalogue {
     @Override
     public void addNewCategory(String categoryName, String parent) {
         Category root = fetchRootCategory();
-        Category parentCategory = findCategory(root,parent);
-        parentCategory.addChild(new Category(categoryName,parentCategory));
+        addNewChildCategory(root,parent,categoryName);
         saveRootCategory(root);
     }
 
-    private Category findCategory(Category parent, String categoryName) {
+    private void addNewChildCategory(Category parent, String categoryName,String newCategoryName) {
         for(Category cat : parent.getChildren()){
             if(cat.getName().equalsIgnoreCase(categoryName)){
-                return cat;
+                cat.addChild(new Category(newCategoryName,cat));
             } else {
-                return findCategory(cat,categoryName);
+                addNewChildCategory(cat,categoryName,newCategoryName);
             }
         }
-        return new Category("null"); //TODO find a pretty solution
     }
 
     private void addChildrenCategoriesToList(List<Category> returnList, Category parent) {

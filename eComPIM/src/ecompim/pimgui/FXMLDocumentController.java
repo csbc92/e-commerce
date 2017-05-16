@@ -336,6 +336,7 @@ public class FXMLDocumentController implements Initializable {
     private void viewOverview() {
         gpOverview.setVisible(true);
         gpviewPoduct.setVisible(false);
+        this.initCategoryOverview();
     }
 
     /**
@@ -490,9 +491,10 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void butAddNewCategoryHandler(ActionEvent event) {
-        manager.addNewCategory(tfCategoryName.getText(),cbCategories.getSelectionModel().getSelectedItem().getName());
-        for(Category s : manager.getAllCategories()){
+        manager.addNewCategory(tfCategoryName.getText(), cbCategories.getSelectionModel().getSelectedItem().getName());
+        for (Category s : manager.getAllCategories()) {
             System.out.println(s.getName());
         }
+        cbCategories.setItems(FXCollections.observableArrayList(manager.getAllCategories()));
     }
 }
