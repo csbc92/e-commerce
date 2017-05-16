@@ -33,11 +33,10 @@ public interface IProductCatalogue extends IProductFetcher {
 
     HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories);
 
-    Category getRootCategory();
 
-    void saveRootCategory();
+    void saveRootCategory(Category rootCategory);
 
-    void fetchRootCategory();
+    Category fetchRootCategory();
 
     void addProductToCategory(Product product,String categoryName);
 

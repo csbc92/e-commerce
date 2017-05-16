@@ -17,38 +17,36 @@ import java.util.Map;
 public class ProductCatalogue implements IProductCatalogue {
 
     private PIMPersistenceFacade persistance;
-    private Category rootCategory;
     private HashSet<Category> testCat = new HashSet<Category>();
 
     public ProductCatalogue() {
         persistance = new PIMPersistenceFacade("data/file.dat", "data/category.dat");
-        testCategories();
+        //      testCategories();
     }
+    //public void testCategories() {
+      //  rootCategory = new Category("Produkter");
 
-    public void testCategories() {
-        rootCategory = new Category("Produkter");
+//        rootCategory.addChild(new Category("TV"));
+  //      rootCategory.addChild(new Category("Hvidevarer"));
+    //    Category cat = new Category("Computer dele");
+      //  rootCategory.addChild(cat);
+        //Category cat2 = new Category("CPU", cat);
+        //cat.addChild(cat2);
+        //Category cat3 = new Category("CASE", cat);
+        //cat.addChild(cat3);
+        //cat.addChild(new Category("Grafikkort", cat));
+        //cat.addChild(new Category("Motherboard", cat));
 
-        rootCategory.addChild(new Category("TV"));
-        rootCategory.addChild(new Category("Hvidevarer"));
-        Category cat = new Category("Computer dele");
-        rootCategory.addChild(cat);
-        Category cat2 = new Category("CPU", cat);
-        cat.addChild(cat2);
-        Category cat3 = new Category("CASE", cat);
-        cat.addChild(cat3);
-        cat.addChild(new Category("Grafikkort", cat));
-        cat.addChild(new Category("Motherboard", cat));
+//        cat2.addProductID(7);
+//        cat2.addProductID(8);
+//        cat2.addProductID(9);
 
-        cat2.addProductID(7);
-        cat2.addProductID(8);
-        cat2.addProductID(9);
+//        cat3.addProductID(3);
+//        cat3.addProductID(6);
 
-        cat3.addProductID(3);
-        cat3.addProductID(6);
-
-        testCat.add(cat2);
-        testCat.add(cat3);
-    }
+  //      testCat.add(cat2);
+    //    testCat.add(cat3);
+    //}
 
     @Override
     public DetailedProduct fetchProduct(int productID) {
@@ -96,19 +94,16 @@ public class ProductCatalogue implements IProductCatalogue {
         return productList;
     }
 
+
+
     @Override
-    public Category getRootCategory() {
-        throw new UnsupportedOperationException(); //TODO
+    public void saveRootCategory(Category rootCategory) {
+        persistance.saveRootCategory(rootCategory);
     }
 
     @Override
-    public void saveRootCategory() {
-        throw new UnsupportedOperationException(); //TODO
-    }
-
-    @Override
-    public void fetchRootCategory() {
-
+    public Category fetchRootCategory() {
+        return persistance.getRootCategory();
     }
 
     @Override

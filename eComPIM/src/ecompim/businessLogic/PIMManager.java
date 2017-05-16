@@ -27,6 +27,7 @@ public class PIMManager implements IPIM {
         netHandler = new Thread(new NetHandler(this));
         netHandler.setDaemon(true);
         netHandler.start();
+
     }
 
     @Override
