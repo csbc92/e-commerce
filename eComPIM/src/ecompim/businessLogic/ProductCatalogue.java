@@ -87,9 +87,6 @@ public class ProductCatalogue implements IProductCatalogue {
      */
     @Override
     public HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories) {
-        if (categories.isEmpty()) {
-            return fetchProductOverview();
-        }
         HashMap<Integer, Product> productList = new HashMap<>();
         for (Category cat : categories) {
             for (Integer id : cat.getProductIDSet()) {
