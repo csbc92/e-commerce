@@ -6,6 +6,7 @@ import javafx.scene.control.TreeItem;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * Created by victo on 2017-04-24.
@@ -45,6 +46,10 @@ public interface IPIM extends IProductFetcher {
     public void setCurrentProduct(int productID);
 
     public Category getRootCategory();
+
+    public void addProductToCategory(String categoryName);
+
+    public List<Category> getAllCategories();
 
     public HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories);
 }

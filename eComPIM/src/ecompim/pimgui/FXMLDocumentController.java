@@ -82,9 +82,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button butRemoveTag;
     @FXML
-    private ListView<?> lvCategories;
+    private ListView<Category> lvCategories;
     @FXML
-    private ComboBox<?> cbCategories;
+    private ComboBox<Category> cbCategories;
     @FXML
     private Button butAddCategory;
 
@@ -295,7 +295,24 @@ public class FXMLDocumentController implements Initializable {
         lvTags.setItems(FXCollections.observableList(new ArrayList<>(manager.getCurrentProduct().getTags())));
         tfAddTag.clear();
         populateTechnicalDetails(tblViewTechDetails, manager.getCurrentProduct());
+        cbCategories.setItems(FXCollections.observableArrayList(manager.getAllCategories()));
+
+        lvCategories.setItems(populateCategoryListView());
     }
+    private ObservableList<Category> populateCategoryListView(){
+        ObservableList<Category> allCategories = FXCollections.observableArrayList(manager.getAllCategories());
+        ObservableList<Category> productCategories = FXCollections.observableArrayList();
+        for(Category cat : allCategories){
+            for(Integer id : cat.getProductIDSet()){
+                if(id == manager.getCurrentProduct().getProductID()){
+                    productCategories.add(cat);
+                }
+            }
+        }
+        return productCategories;
+    }
+
+
 
     /**
      * Returns to the product overview.
@@ -463,5 +480,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void butAddCategoryHandler(ActionEvent event) {
+        manager.addProductToCategory(cbCategories.getSelectionModel().getSelectedItem().getName());
+        lvCategories.setItems(populateCategoryListView());
     }
 }

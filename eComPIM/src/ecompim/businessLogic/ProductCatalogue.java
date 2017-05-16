@@ -3,9 +3,7 @@ package ecompim.businessLogic;
 import Product.*;
 import ecompim.PIMPersistence.PIMPersistenceFacade;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by JV on 12-05-2017.
@@ -97,6 +95,24 @@ public class ProductCatalogue implements IProductCatalogue {
     @Override
     public Category fetchRootCategory() {
         return persistence.getRootCategory();
+    }
+
+    @Override
+    public List<Category> getAllCategories() {
+        List<Category> returnList = new ArrayList<>();
+        Category root = fetchRootCategory();
+        returnList.add(root);
+        addChildrenCategoriesToList(returnList,root);
+        return returnList;
+    }
+
+    private void addChildrenCategoriesToList(List<Category> returnList, Category parent) {
+        for(Category cat : parent.getChildren()){
+            if(cat != null) {
+                returnList.add(cat);
+                addChildrenCategoriesToList(returnList, cat);
+            }
+        }
     }
 
     @Override

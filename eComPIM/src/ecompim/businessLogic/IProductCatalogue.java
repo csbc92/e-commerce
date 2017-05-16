@@ -6,6 +6,7 @@ import javafx.scene.control.TreeItem;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -37,6 +38,8 @@ public interface IProductCatalogue extends IProductFetcher {
     void saveRootCategory(Category rootCategory);
 
     Category fetchRootCategory();
+
+    List<Category> getAllCategories();
 
     void addProductToCategory(Product product,String categoryName);
 }

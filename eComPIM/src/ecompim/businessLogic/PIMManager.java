@@ -8,6 +8,7 @@ import javafx.scene.control.TreeItem;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * Created by victo on 2017-04-24.
@@ -66,6 +67,16 @@ public class PIMManager implements IPIM {
     @Override
     public Category getRootCategory() {
         return  productCatalogue.fetchRootCategory();
+    }
+
+    @Override
+    public void addProductToCategory(String categoryName) {
+        productCatalogue.addProductToCategory(currentProduct,categoryName);
+    }
+
+    @Override
+    public List<Category> getAllCategories() {
+        return productCatalogue.getAllCategories();
     }
 
     @Override
