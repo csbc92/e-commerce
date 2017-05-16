@@ -55,12 +55,12 @@ public class PIMDBPersistence implements IPIMPersistence{
     }
 
     @Override
-    public RootCategory fetchRootCategory() {
+    public Category fetchRootCategory() {
         return null;
     }
 
     @Override
-    public void saveRootCategory(RootCategory rootCategory) {
+    public void saveRootCategory(Category rootCategory) {
 
     }
 

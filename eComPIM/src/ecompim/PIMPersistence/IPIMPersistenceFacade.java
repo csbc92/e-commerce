@@ -20,7 +20,7 @@ public interface IPIMPersistenceFacade{
 
         public HashMap<Integer, Product> searchProducts(String value);
 
-        public RootCategory getRootCategory();
+        public Category getRootCategory();
 
-        public void saveRootCategory(RootCategory rootCategory);
+        public void saveRootCategory(Category rootCategory);
 }

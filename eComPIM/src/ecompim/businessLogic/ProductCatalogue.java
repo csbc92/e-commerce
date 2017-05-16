@@ -97,7 +97,7 @@ public class ProductCatalogue implements IProductCatalogue {
     }
 
     @Override
-    public RootCategory getRootCategory() {
+    public Category getRootCategory() {
         throw new UnsupportedOperationException(); //TODO
     }
 

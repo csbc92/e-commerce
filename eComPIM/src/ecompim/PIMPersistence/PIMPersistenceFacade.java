@@ -1,7 +1,7 @@
 package ecompim.PIMPersistence;
 
 import Product.*;
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,12 +41,12 @@ public class PIMPersistenceFacade implements IPIMPersistenceFacade {
     }
 
     @Override
-    public RootCategory getRootCategory() {
-       throw new UnsupportedOperationException(); //TODO
+    public Category getRootCategory() {
+       return ipimPersistence.fetchRootCategory(); //TODO
     }
 
     @Override
-    public void saveRootCategory(RootCategory rootCategory) {
+    public void saveRootCategory(Category rootCategory) {
         ipimPersistence.saveRootCategory(rootCategory); //TODO
     }
 
