@@ -77,6 +77,16 @@ public class FXMLDocumentController implements Initializable {
     private Button searchButton;
     @FXML
     private TreeView<Category> categoryTreeView;
+    @FXML
+    private Button butAddTag;
+    @FXML
+    private Button butRemoveTag;
+    @FXML
+    private ListView<?> lvCategories;
+    @FXML
+    private ComboBox<?> cbCategories;
+    @FXML
+    private Button butAddCategory;
 
 
     /**
@@ -400,6 +410,7 @@ public class FXMLDocumentController implements Initializable {
      * <p>
      * Overwrites any existing data
      */
+    @FXML
     public void menuFetchFromERPHandler(ActionEvent actionEvent) {
         manager.collectERPProducts();
     }
@@ -448,5 +459,9 @@ public class FXMLDocumentController implements Initializable {
 
         }
         return null;
+    }
+
+    @FXML
+    private void butAddCategoryHandler(ActionEvent event) {
     }
 }

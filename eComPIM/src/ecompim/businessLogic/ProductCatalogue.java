@@ -17,32 +17,29 @@ public class ProductCatalogue implements IProductCatalogue {
 
     public ProductCatalogue() {
         persistence = new PIMPersistenceFacade("data/file.dat", "data/category.dat");
-        //      testCategories();
+        //     testCategories(); //For creating a standard.
     }
-    //public void testCategories() {
-      //  rootCategory = new Category("Produkter");
-
-//        rootCategory.addChild(new Category("TV"));
-  //      rootCategory.addChild(new Category("Hvidevarer"));
-    //    Category cat = new Category("Computer dele");
-      //  rootCategory.addChild(cat);
-        //Category cat2 = new Category("CPU", cat);
-        //cat.addChild(cat2);
-        //Category cat3 = new Category("CASE", cat);
-        //cat.addChild(cat3);
-        //cat.addChild(new Category("Grafikkort", cat));
-        //cat.addChild(new Category("Motherboard", cat));
-
-//        cat2.addProductID(7);
-//        cat2.addProductID(8);
-//        cat2.addProductID(9);
-
-//        cat3.addProductID(3);
-//        cat3.addProductID(6);
-
-  //      testCat.add(cat2);
-    //    testCat.add(cat3);
-    //}
+ public void testCategories() {
+    Category rootCategory = new Category("Produkter");
+    rootCategory.addChild(new Category("TV"));
+    rootCategory.addChild(new Category("Hvidevarer"));
+    Category cat = new Category("Computer dele");
+    rootCategory.addChild(cat);
+    Category cat2 = new Category("CPU", cat);
+    cat.addChild(cat2);
+    Category cat3 = new Category("CASE", cat);
+    cat.addChild(cat3);
+    cat.addChild(new Category("Grafikkort", cat));
+    cat.addChild(new Category("Motherboard", cat));
+    cat2.addProductID(7);
+    cat2.addProductID(8);
+    cat2.addProductID(9);
+    cat3.addProductID(3);
+    cat3.addProductID(6);
+    testCat.add(cat2);
+    testCat.add(cat3);
+    saveRootCategory(rootCategory);
+}
 
     @Override
     public DetailedProduct fetchProduct(int productID) {
@@ -104,8 +101,18 @@ public class ProductCatalogue implements IProductCatalogue {
 
     @Override
     public void addProductToCategory(Product product, String categoryName) {
-        throw new UnsupportedOperationException(); //TODO
+        Category rootCategory = fetchRootCategory();
+        goThroughCategories(rootCategory, categoryName, product);
+        saveRootCategory(rootCategory);
     }
-
-
+    private void goThroughCategories(Category parent, String categoryName, Product product){
+        for(Category cat : parent.getChildren()){
+            if(!cat.getName().equalsIgnoreCase(categoryName)){
+                goThroughCategories(cat,categoryName,product);
+            } else {
+                cat.addProductID(product.getProductID());
+                return;
+            }
+        }
+    }
 }
