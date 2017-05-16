@@ -133,20 +133,6 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     *
-     * @param category
-     * @return
-     */
-    private CheckBoxTreeItem<Category> getCategories(Category category) {
-        CheckBoxTreeItem<Category> item = new CheckBoxTreeItem<>(category);
-        for (Category cat : category.getChildren()) {
-            item.getChildren().add(getCategories(cat));
-        }
-        return item;
-    }
-
-
-    /**
      * NOT DONE
      * Does something when the search button is pressed
      *
