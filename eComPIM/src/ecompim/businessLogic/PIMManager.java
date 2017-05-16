@@ -15,7 +15,7 @@ import java.util.HashSet;
 public class PIMManager implements IPIM {
 
     private DetailedProduct currentProduct;
-    private ProductCatalogue productCatalogue;
+    private IProductCatalogue productCatalogue;
     Thread netHandler;
 
     /**
@@ -64,8 +64,8 @@ public class PIMManager implements IPIM {
     }
 
     @Override
-    public CheckBoxTreeItem<Category> categoryOverview() {
-        return  productCatalogue.categoryOverview();
+    public Category getRootCategory() {
+        return  productCatalogue.getRootCategory();
     }
 
     @Override
