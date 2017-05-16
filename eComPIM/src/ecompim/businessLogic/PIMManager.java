@@ -80,6 +80,11 @@ public class PIMManager implements IPIM {
     }
 
     @Override
+    public void addNewCategory(String categoryName, String parent) {
+        productCatalogue.addNewCategory(categoryName,parent);
+    }
+
+    @Override
     public HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories) {
         return productCatalogue.fetchProductsByCategory(categories);
     }

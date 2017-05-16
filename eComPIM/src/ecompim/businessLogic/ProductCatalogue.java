@@ -15,7 +15,7 @@ public class ProductCatalogue implements IProductCatalogue {
 
     public ProductCatalogue() {
         persistence = new PIMPersistenceFacade("data/file.dat", "data/category.dat");
-        //     testCategories(); //For creating a standard.
+        //    testCategories(); //For creating a standard.
     }
  public void testCategories() {
     Category rootCategory = new Category("Produkter");
@@ -104,6 +104,25 @@ public class ProductCatalogue implements IProductCatalogue {
         returnList.add(root);
         addChildrenCategoriesToList(returnList,root);
         return returnList;
+    }
+
+    @Override
+    public void addNewCategory(String categoryName, String parent) {
+        Category root = fetchRootCategory();
+        Category parentCategory = findCategory(root,parent);
+        parentCategory.addChild(new Category(categoryName,parentCategory));
+        saveRootCategory(root);
+    }
+
+    private Category findCategory(Category parent, String categoryName) {
+        for(Category cat : parent.getChildren()){
+            if(cat.getName().equalsIgnoreCase(categoryName)){
+                return cat;
+            } else {
+                return findCategory(cat,categoryName);
+            }
+        }
+        return new Category("null"); //TODO find a pretty solution
     }
 
     private void addChildrenCategoriesToList(List<Category> returnList, Category parent) {

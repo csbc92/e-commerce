@@ -87,6 +87,10 @@ public class FXMLDocumentController implements Initializable {
     private ComboBox<Category> cbCategories;
     @FXML
     private Button butAddCategory;
+    @FXML
+    private TextField tfCategoryName;
+    @FXML
+    private Button butAddNewCategory;
 
 
     /**
@@ -482,5 +486,13 @@ public class FXMLDocumentController implements Initializable {
     private void butAddCategoryHandler(ActionEvent event) {
         manager.addProductToCategory(cbCategories.getSelectionModel().getSelectedItem().getName());
         lvCategories.setItems(populateCategoryListView());
+    }
+
+    @FXML
+    private void butAddNewCategoryHandler(ActionEvent event) {
+        manager.addNewCategory(tfCategoryName.getText(),cbCategories.getSelectionModel().getSelectedItem().getName());
+        for(Category s : manager.getAllCategories()){
+            System.out.println(s.getName());
+        }
     }
 }

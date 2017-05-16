@@ -41,5 +41,7 @@ public interface IProductCatalogue extends IProductFetcher {
 
     List<Category> getAllCategories();
 
+    void addNewCategory(String categoryName, String parent);
+
     void addProductToCategory(Product product,String categoryName);
 }

@@ -51,5 +51,7 @@ public interface IPIM extends IProductFetcher {
 
     public List<Category> getAllCategories();
 
+    public void addNewCategory(String categoryName, String parent); //TODO parent as object or parent as a string?
+
     public HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories);
 }

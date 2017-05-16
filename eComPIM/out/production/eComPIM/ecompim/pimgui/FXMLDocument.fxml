@@ -215,10 +215,16 @@
                            <children>
                               <Label text="Kategorier:" />
                               <ListView fx:id="lvCategories" prefHeight="288.0" prefWidth="346.0" />
-                              <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                              <HBox alignment="TOP_CENTER" prefHeight="37.0" prefWidth="346.0" spacing="10.0">
                                  <children>
                                     <ComboBox fx:id="cbCategories" prefWidth="150.0" promptText="Kategorier" />
                                     <Button fx:id="butAddCategory" mnemonicParsing="false" onAction="#butAddCategoryHandler" text="Tilføj Kategori" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
+                                    <TextField fx:id="tfCategoryName" />
+                                    <Button fx:id="butAddNewCategory" mnemonicParsing="false" onAction="#butAddNewCategoryHandler" text="Tilføj ny kategori" />
                                  </children>
                               </HBox>
                            </children>
