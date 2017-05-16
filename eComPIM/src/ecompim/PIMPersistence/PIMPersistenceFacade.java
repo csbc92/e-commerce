@@ -46,8 +46,8 @@ public class PIMPersistenceFacade implements IPIMPersistenceFacade {
     }
 
     @Override
-    public void saveRootCategory() {
-        throw new UnsupportedOperationException(); //TODO
+    public void saveRootCategory(RootCategory rootCategory) {
+        ipimPersistence.saveRootCategory(rootCategory); //TODO
     }
 
 

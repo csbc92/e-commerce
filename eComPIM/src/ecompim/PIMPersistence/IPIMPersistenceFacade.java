@@ -22,5 +22,5 @@ public interface IPIMPersistenceFacade{
 
         public RootCategory getRootCategory();
 
-        public void saveRootCategory();
+        public void saveRootCategory(RootCategory rootCategory);
 }
