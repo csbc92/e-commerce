@@ -11,13 +11,13 @@ import java.util.*;
 public class ProductCatalogue implements IProductCatalogue {
 
     private PIMPersistenceFacade persistence;
-    private HashSet<Category> testCat = new HashSet<Category>();
 
     public ProductCatalogue() {
         persistence = new PIMPersistenceFacade("data/file.dat", "data/category.dat");
         //    testCategories(); //For creating a standard.
     }
  public void testCategories() {
+    HashSet<Category> testCat = new HashSet<Category>();
     Category rootCategory = new Category("Produkter");
     rootCategory.addChild(new Category("TV"));
     rootCategory.addChild(new Category("Hvidevarer"));
@@ -41,11 +41,6 @@ public class ProductCatalogue implements IProductCatalogue {
 
     @Override
     public DetailedProduct fetchProduct(int productID) {
-        return persistence.fetchProduct(productID);
-    }
-
-
-    public DetailedProduct fetchProductNet(int productID) {
         return persistence.fetchProduct(productID);
     }
 
