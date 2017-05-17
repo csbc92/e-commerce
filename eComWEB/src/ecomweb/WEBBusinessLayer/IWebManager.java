@@ -1,7 +1,7 @@
 package ecomweb.WEBBusinessLayer;
 
-import ecompim.Product.DetailedProduct;
-import ecompim.Product.Product;
+
+import Product.DetailedProduct;
 
 /**
  * Created by Vedsted on 24-04-2017.

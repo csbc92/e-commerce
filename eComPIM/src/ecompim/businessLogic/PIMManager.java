@@ -25,7 +25,7 @@ public class PIMManager implements IPIM {
     public PIMManager() {
         productCatalogue = new ProductCatalogue();
         collectERPProducts();
-        netHandler = new Thread(new NetHandler(this));
+        netHandler = new Thread(new ServerHandler(this));
         netHandler.setDaemon(true);
         netHandler.start();
 

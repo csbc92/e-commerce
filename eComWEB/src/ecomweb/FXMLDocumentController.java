@@ -9,7 +9,7 @@ import java.net.URL;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import ecompim.Product.DetailedProduct;
+import Product.DetailedProduct;
 import ecomweb.WEBBusinessLayer.*;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.value.ObservableValue;
