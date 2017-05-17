@@ -77,6 +77,20 @@ public class FXMLDocumentController implements Initializable {
     private Button searchButton;
     @FXML
     private TreeView<Category> categoryTreeView;
+    @FXML
+    private Button butAddTag;
+    @FXML
+    private Button butRemoveTag;
+    @FXML
+    private ListView<Category> lvCategories;
+    @FXML
+    private ComboBox<Category> cbCategories;
+    @FXML
+    private Button butAddCategory;
+    @FXML
+    private TextField tfCategoryName;
+    @FXML
+    private Button butAddNewCategory;
 
 
     /**
@@ -285,7 +299,24 @@ public class FXMLDocumentController implements Initializable {
         lvTags.setItems(FXCollections.observableList(new ArrayList<>(manager.getCurrentProduct().getTags())));
         tfAddTag.clear();
         populateTechnicalDetails(tblViewTechDetails, manager.getCurrentProduct());
+        cbCategories.setItems(FXCollections.observableArrayList(manager.getAllCategories()));
+
+        lvCategories.setItems(populateCategoryListView());
     }
+    private ObservableList<Category> populateCategoryListView(){
+        ObservableList<Category> allCategories = FXCollections.observableArrayList(manager.getAllCategories());
+        ObservableList<Category> productCategories = FXCollections.observableArrayList();
+        for(Category cat : allCategories){
+            for(Integer id : cat.getProductIDSet()){
+                if(id == manager.getCurrentProduct().getProductID()){
+                    productCategories.add(cat);
+                }
+            }
+        }
+        return productCategories;
+    }
+
+
 
     /**
      * Returns to the product overview.
@@ -305,6 +336,7 @@ public class FXMLDocumentController implements Initializable {
     private void viewOverview() {
         gpOverview.setVisible(true);
         gpviewPoduct.setVisible(false);
+        this.initCategoryOverview();
     }
 
     /**
@@ -400,6 +432,7 @@ public class FXMLDocumentController implements Initializable {
      * <p>
      * Overwrites any existing data
      */
+    @FXML
     public void menuFetchFromERPHandler(ActionEvent actionEvent) {
         manager.collectERPProducts();
     }
@@ -448,5 +481,20 @@ public class FXMLDocumentController implements Initializable {
 
         }
         return null;
+    }
+
+    @FXML
+    private void butAddCategoryHandler(ActionEvent event) {
+        manager.addProductToCategory(cbCategories.getSelectionModel().getSelectedItem().getName());
+        lvCategories.setItems(populateCategoryListView());
+    }
+
+    @FXML
+    private void butAddNewCategoryHandler(ActionEvent event) {
+        manager.addNewCategory(tfCategoryName.getText(), cbCategories.getSelectionModel().getSelectedItem().getName());
+        for (Category s : manager.getAllCategories()) {
+            System.out.println(s.getName());
+        }
+        cbCategories.setItems(FXCollections.observableArrayList(manager.getAllCategories()));
     }
 }
