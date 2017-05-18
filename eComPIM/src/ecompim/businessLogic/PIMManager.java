@@ -3,9 +3,8 @@ package ecompim.businessLogic;
 
 import ecompim.ERPAccess.ERPFetcher;
 import Product.*;
-import javafx.scene.control.CheckBoxTreeItem;
-import javafx.scene.control.TreeItem;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -25,9 +24,14 @@ public class PIMManager implements IPIM {
     public PIMManager() {
         productCatalogue = new ProductCatalogue();
         collectERPProducts();
-        netHandler = new Thread(new ServerHandler(this));
-        netHandler.setDaemon(true);
-        netHandler.start();
+        try {
+            netHandler = new Thread(new ServerHandler(this,6789 ));
+            netHandler.setDaemon(true);
+            netHandler.start();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

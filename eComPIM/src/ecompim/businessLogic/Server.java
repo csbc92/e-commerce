@@ -5,37 +5,45 @@
  */
 package ecompim.businessLogic;
 
-import java.io.*;
-import java.net.*;
+import java.io.IOException;
+import java.net.Socket;
+import java.util.Arrays;
 
-public class Server {
+/**
+ *
+ * @author JV
+ */
+public class Server implements Runnable {
 
-    private ServerSocket serverSocket;
-    private Socket connectionSocket;
-    private DataInputStream fromClient;
-    private DataOutputStream stringToClient;
-    private ObjectOutputStream objToClient;
+    private ServerTool serverTool;
+    private IProductFetcher fetcher;
 
-    public synchronized void createSever(int port) throws IOException {
-        serverSocket = new ServerSocket(port);
-        System.out.println("Server");
-        connectionSocket = serverSocket.accept();
-        fromClient = new DataInputStream(connectionSocket.getInputStream());
-        stringToClient = new DataOutputStream(connectionSocket.getOutputStream());
-        objToClient = new ObjectOutputStream(connectionSocket.getOutputStream());
+    public Server(Socket connectionSocket, IProductFetcher fetcher) {
+        this.fetcher = fetcher;
+        try {
+            serverTool = new ServerTool(connectionSocket);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public synchronized void sendObj(Object value) throws IOException {
-        objToClient.writeObject(value);
-    }
-    public synchronized void sendString(String value) throws IOException {
-        stringToClient.writeUTF(value);
-    }
+    @Override
+    public void run() {
+        try {
+                while (true) {
+                System.out.println("waiting for client");
+                String[] clientCmd = serverTool.ReadString().split(":");
+                System.out.println("Received: " + Arrays.toString(clientCmd));
 
-    public synchronized String ReadString() throws IOException {
-        String clientInput = fromClient.readUTF();
-        return clientInput;
+                if (clientCmd[0].trim().equalsIgnoreCase("pro")) {
+                    int productID = Integer.parseInt(clientCmd[1]);
+                    serverTool.sendObj(fetcher.fetchProduct(productID));
+                }
+            }
+        } catch (IOException ex) {
+//            Logger.getLogger(ServerTool.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

@@ -1,48 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ecompim.businessLogic;
 
-import Product.Product;
-
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.net.ServerSocket;
 
 /**
- *
- * @author JV
+ * Created by victo on 2017-05-18.
  */
 public class ServerHandler implements Runnable {
-
-    private Server server;
     private IProductFetcher fetcher;
+    private ServerSocket listener;
 
-    public ServerHandler(IProductFetcher fetcher) {
-        this.fetcher = fetcher;
-        server = new Server();
+    public ServerHandler(IProductFetcher f, int port) throws IOException {
+        fetcher = f;
+        listener = new ServerSocket(port);
+
     }
-
     @Override
     public void run() {
-        try {
-            server.createSever(6789);
-
-            while (true) {
-                System.out.println("waiting for client");
-                String[] clientCmd = server.ReadString().split(":");
-                System.out.println("Received: " + clientCmd);
-
-                if (clientCmd[0].trim().equalsIgnoreCase("pro")) {
-                    int productID = Integer.parseInt(clientCmd[1]);
-                    server.sendObj(fetcher.fetchProduct(productID));
-                }
-            }
-        } catch (IOException ex) {
-//            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        System.out.println("The server is running.");
+       try {
+           try {
+               while (true) {
+                   new Thread(new Server(listener.accept(), fetcher)).start();
+               }
+           } finally {
+               listener.close();
+           }
+       }catch (IOException ex){
+           ex.printStackTrace();
+       }
     }
-
 }
