@@ -26,7 +26,7 @@ public class DAMDBPersistence implements IDAMPersistence {
 
     @Override
     public IDisplayable fetchMedia(String mediaID) {
-        IDisplayable media;
+        IDisplayable media = null;
 
         try {
             Statement st = connection.createStatement();
@@ -43,7 +43,7 @@ public class DAMDBPersistence implements IDAMPersistence {
         }
 
 
-        return null;
+        return media;
     }
 
     @Override

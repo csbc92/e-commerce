@@ -14,7 +14,7 @@ public class DAMManager implements IMediaFetcher {
     private IDAMPersistence persistence;
 
     public DAMManager() {
-        persistence = null;
+        persistence = DAMDBPersistence();
     }
     
 
