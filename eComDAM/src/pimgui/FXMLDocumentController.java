@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -23,9 +24,13 @@ public class FXMLDocumentController implements Initializable {
 
     private IMediaFetcher manager;
 
+    @FXML
+    private ImageView ivTest;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.manager = new DAMManager();
-    }    
+        ivTest.setImage(manager.fetchMedia("1").getMedia());
+    }
     
 }
