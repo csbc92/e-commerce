@@ -14,7 +14,10 @@ public class DAMManager implements IMediaFetcher {
     private IDAMPersistence persistence;
 
     public DAMManager() {
-        persistence = DAMDBPersistence();
+        String url = "jdbc:postgresql://localhost:5432/eComDAM";
+        String user = "postgres";
+        String password = "1234";
+        persistence = new DAMDBPersistence(url,user,password);
     }
     
 

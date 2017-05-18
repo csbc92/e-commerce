@@ -30,10 +30,12 @@ public class DAMDBPersistence implements IDAMPersistence {
 
         try {
             Statement st = connection.createStatement();
+            System.out.println("fetching from db");
             String query = "SELECT * FROM media WHERE id = " + mediaID +";";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
+                System.out.println(rs.getInt(1) + rs.getString(2));
                 media = new PictureMedia(rs.getInt("id"), rs.getString("path"));
             }
 
