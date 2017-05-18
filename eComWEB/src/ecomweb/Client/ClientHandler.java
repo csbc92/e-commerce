@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ecomweb.WEBBusinessLayer;
+package ecomweb.Client;
 
 
 import Product.DetailedProduct;
@@ -29,8 +29,8 @@ public class ClientHandler {
         }
     }
 
-    public DetailedProduct getProduct() throws IOException, ClassNotFoundException {
-        client.sendString("pro:2");
+    public DetailedProduct getProduct( int productId) throws IOException, ClassNotFoundException {
+        client.sendString("pro:" + productId);
         DetailedProduct product = (DetailedProduct) client.readObj();
         return product;
     }

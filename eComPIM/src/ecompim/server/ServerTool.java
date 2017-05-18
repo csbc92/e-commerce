@@ -3,23 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ecompim.businessLogic;
+package ecompim.server;
 
 import java.io.*;
 import java.net.*;
 
-public class Server {
+public class ServerTool {
 
-    private ServerSocket serverSocket;
+
+
     private Socket connectionSocket;
     private DataInputStream fromClient;
     private DataOutputStream stringToClient;
     private ObjectOutputStream objToClient;
 
-    public synchronized void createSever(int port) throws IOException {
-        serverSocket = new ServerSocket(port);
-        System.out.println("Server");
-        connectionSocket = serverSocket.accept();
+    public ServerTool(Socket connectionSocket) throws IOException {
+        this.connectionSocket = connectionSocket;
+        System.out.println("ServerTool");
         fromClient = new DataInputStream(connectionSocket.getInputStream());
         stringToClient = new DataOutputStream(connectionSocket.getOutputStream());
         objToClient = new ObjectOutputStream(connectionSocket.getOutputStream());
@@ -37,5 +37,6 @@ public class Server {
         String clientInput = fromClient.readUTF();
         return clientInput;
     }
+
 
 }
