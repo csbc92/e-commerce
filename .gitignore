@@ -113,3 +113,7 @@ eComWEB/nbproject/private/private\.xml
 /eComDAM/eComDAM/nbproject/private/
 /eComDAM/nbproject/private/
 eComDAM/\.idea/workspace\.xml
+
+eComDAM/out/production/eComDAM/pimgui/FXMLDocument\.fxml
+
+ProductLib/\.idea/workspace\.xml
