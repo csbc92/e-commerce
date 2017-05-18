@@ -1,6 +1,8 @@
 package Product;
 
 
+import javafx.scene.image.Image;
+
 public class VideoMedia implements IDisplayable {
 
     private String url;
@@ -10,8 +12,9 @@ public class VideoMedia implements IDisplayable {
         this.url = url;
     }
 
+
     @Override
-    public void show() {
-        throw new UnsupportedOperationException();
+    public Image getMedia() {
+        return null;
     }
 }

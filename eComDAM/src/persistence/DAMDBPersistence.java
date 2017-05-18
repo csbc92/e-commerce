@@ -1,10 +1,9 @@
 package persistence;
 
 import Product.IDisplayable;
+import Product.PictureMedia;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Set;
 
 /**
@@ -22,11 +21,29 @@ public class DAMDBPersistence implements IDAMPersistence {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
     @Override
     public IDisplayable fetchMedia(String mediaID) {
-        return null;
+        IDisplayable media = null;
+
+        try {
+            Statement st = connection.createStatement();
+            String query = "SELECT * FROM media WHERE id = " + mediaID +";";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                media = new PictureMedia(rs.getInt("id"), rs.getString("path"));
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return media;
     }
 
     @Override
