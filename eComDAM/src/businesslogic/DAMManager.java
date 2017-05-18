@@ -1,6 +1,8 @@
 package businesslogic;
 
 import Product.IDisplayable;
+import persistence.DAMDBPersistence;
+import persistence.IDAMPersistence;
 
 import java.util.Set;
 
@@ -9,13 +11,20 @@ import java.util.Set;
  */
 public class DAMManager implements IMediaFetcher {
 
+    private IDAMPersistence persistence;
+
+    public DAMManager() {
+        persistence = null;
+    }
+    
+
     @Override
     public IDisplayable fetchMedia(String mediaID) {
-        return null;
+        return persistence.fetchMedia(mediaID);
     }
 
     @Override
     public Set<IDisplayable> fetchMediaOverview() {
-        return null;
+        return persistence.fetchMediaOverview();
     }
 }

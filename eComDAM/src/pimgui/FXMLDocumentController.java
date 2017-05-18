@@ -7,6 +7,9 @@ package pimgui;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import businesslogic.DAMManager;
+import businesslogic.IMediaFetcher;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,11 +20,12 @@ import javafx.scene.control.Label;
  * @author Vedsted
  */
 public class FXMLDocumentController implements Initializable {
-    
+
+    private IMediaFetcher manager;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        this.manager = new DAMManager();
     }    
     
 }
