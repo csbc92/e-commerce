@@ -3,6 +3,7 @@ package ecompim.businessLogic;
 
 import ecompim.ERPAccess.ERPFetcher;
 import Product.*;
+import ecompim.server.ServerHandler;
 
 import java.io.IOException;
 import java.util.HashMap;
