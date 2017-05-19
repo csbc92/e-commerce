@@ -42,7 +42,7 @@ import javafx.util.Callback;
  */
 public class FXMLDocumentController implements Initializable {
 
-    private IPIM manager;
+    static IPIM manager;
     private HashSet<Category> selectedCategories;
 
     @FXML

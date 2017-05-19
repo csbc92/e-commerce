@@ -112,6 +112,7 @@
                                           <Image url="@../../../lone.jpg" />
                                        </image>
                                     </ImageView>
+                                    <Pane prefHeight="20.0" />
                                     <Button mnemonicParsing="false" onAction="#butChangePicHandler" text="Ændr billede" />
                                     <HBox alignment="CENTER_LEFT" spacing="10.0">
                                        <children>
