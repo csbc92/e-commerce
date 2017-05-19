@@ -1,6 +1,7 @@
-package server;
+package networking;
 
 import businesslogic.IMediaFetcher;
+import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -30,14 +31,17 @@ public class Server extends Thread {
     public void run() {
         try {
 
-            System.out.println("A Client is connected to the Digital Asset Management System server");
+            System.out.println("A Client is connected to the Digital Asset Management System networking");
 
             while (true) {
                 String input = tool.ReadString();
+                System.out.println(input);
                 if (input == null || input.equals(".")) {
                     break;
                 }
                 //TODO something with the input from client
+                Image a =fetcher.fetchMedia(input).getMedia();
+               tool.sendObj(a);
             }
         } catch (IOException e) {
 

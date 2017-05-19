@@ -3,7 +3,9 @@ package ecompim.businessLogic;
 
 import ecompim.ERPAccess.ERPFetcher;
 import Product.*;
-import ecompim.server.ServerHandler;
+import ecompim.networking.ClientTool;
+import ecompim.networking.ServerHandler;
+import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,7 +19,8 @@ public class PIMManager implements IPIM {
 
     private DetailedProduct currentProduct;
     private IProductCatalogue productCatalogue;
-    Thread netHandler;
+    private Thread netHandler;
+    private ClientTool cTool;
 
     /**
      * initializes the PIMManager
@@ -34,7 +37,16 @@ public class PIMManager implements IPIM {
             e.printStackTrace();
         }
 
+        try {
+            cTool = new ClientTool("localhost",5678);
+          //  cTool.sendString("Bob's your auntie");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
+
+
 
     @Override
     public DetailedProduct fetchProduct(int productID) {
@@ -92,5 +104,20 @@ public class PIMManager implements IPIM {
     @Override
     public HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories) {
         return productCatalogue.fetchProductsByCategory(categories);
+    }
+
+    @Override
+    public Image fetchMedia(int i) {
+        Image toReturn = null;
+        try {
+            cTool.sendString(String.valueOf(i));
+            toReturn = (Image) cTool.readObj();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return toReturn;
     }
 }

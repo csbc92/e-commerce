@@ -302,6 +302,8 @@ public class FXMLDocumentController implements Initializable {
         cbCategories.setItems(FXCollections.observableArrayList(manager.getAllCategories()));
 
         lvCategories.setItems(populateCategoryListView());
+
+        imgvPic.setImage(manager.fetchMedia(1));
     }
     private ObservableList<Category> populateCategoryListView(){
         ObservableList<Category> allCategories = FXCollections.observableArrayList(manager.getAllCategories());
