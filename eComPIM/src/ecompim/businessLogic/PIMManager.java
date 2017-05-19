@@ -3,6 +3,7 @@ package ecompim.businessLogic;
 
 import ecompim.ERPAccess.ERPFetcher;
 import Product.*;
+import ecompim.server.ClientTool;
 import ecompim.server.ServerHandler;
 
 import java.io.IOException;
@@ -17,6 +18,7 @@ public class PIMManager implements IPIM {
 
     private DetailedProduct currentProduct;
     private IProductCatalogue productCatalogue;
+    private ClientTool cTool;
     Thread netHandler;
 
     /**
@@ -33,6 +35,17 @@ public class PIMManager implements IPIM {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        try {
+            cTool=new ClientTool("localhost",5678);
+            cTool.sendString("1");
+            System.out.println(((IDisplayable)cTool.readObj()).getMedia().getPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
 
     }
 

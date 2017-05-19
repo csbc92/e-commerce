@@ -23,7 +23,9 @@ public class ServerHandler implements Runnable {
         try {
             try {
                 while (true) {
-                    new Thread(new Server(listener.accept(), fetcher)).start();
+                  Thread t =  new Thread(new Server(listener.accept(), fetcher));
+                  t.setDaemon(true);
+                  t.start();
                 }
             } finally {
                 listener.close();

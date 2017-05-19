@@ -1,7 +1,7 @@
 package Product;
 
 
-import javafx.scene.image.Image;
+import java.io.File;
 
 public class VideoMedia implements IDisplayable {
 
@@ -14,7 +14,7 @@ public class VideoMedia implements IDisplayable {
 
 
     @Override
-    public Image getMedia() {
+    public File getMedia() {
         return null;
     }
 }

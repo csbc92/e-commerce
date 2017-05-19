@@ -1,11 +1,12 @@
 package Product;
 
 import java.io.File;
+import java.io.Serializable;
 
 /**
  * Created by JV on 24-04-2017.
  */
-public interface IDisplayable {
+public interface IDisplayable extends Serializable{
 
     public File getMedia();
 }
