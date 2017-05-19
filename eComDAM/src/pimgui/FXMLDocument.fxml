@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pimgui.FXMLDocumentController">
    <children>
-      <ImageView fx:id="ivTest" layoutX="200.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../Pictures/Wallpapers%20fra%20kamera/k.jpg" />
-         </image></ImageView>
+      <ImageView fx:id="ivTest" fitHeight="300.0" fitWidth="400.0" layoutX="101.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

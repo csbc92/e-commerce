@@ -6,10 +6,7 @@
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
-<<<<<<< HEAD
-=======
       <secret-storage>master_key</secret-storage>
->>>>>>> develop
       <user-name>postgres</user-name>
       <introspection-schemas>eComDAM:public</introspection-schemas>
     </data-source>
