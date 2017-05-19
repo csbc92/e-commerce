@@ -1,8 +1,11 @@
 package networking;
 
 import businesslogic.IMediaFetcher;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.Socket;
 
@@ -11,9 +14,11 @@ import java.net.Socket;
  */
 public class Server extends Thread {
     private ServerTool tool;
+    private Socket socket;
     private IMediaFetcher fetcher;
 
     public Server(Socket socket, IMediaFetcher f) {
+        this.socket = socket;
         fetcher = f;
         try {
             tool = new ServerTool(socket);
@@ -41,10 +46,12 @@ public class Server extends Thread {
                 }
                 //TODO something with the input from client
                 Image a =fetcher.fetchMedia(input).getMedia();
-               tool.sendObj(a);
+                BufferedImage b = SwingFXUtils.fromFXImage(a,null);
+                ImageIO.write(b,"jpg",socket.getOutputStream());
+                socket.close();
             }
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
     }
 

@@ -5,8 +5,12 @@ import ecompim.ERPAccess.ERPFetcher;
 import Product.*;
 import ecompim.networking.ClientTool;
 import ecompim.networking.ServerHandler;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 
+import javax.imageio.ImageIO;
+import javax.print.attribute.standard.Media;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -111,10 +115,10 @@ public class PIMManager implements IPIM {
         Image toReturn = null;
         try {
             cTool.sendString(String.valueOf(i));
-            toReturn = (Image) cTool.readObj();
+            BufferedImage temp = ImageIO.read(cTool.clientSocket.getInputStream());
+
+           toReturn = SwingFXUtils.toFXImage(temp,null);
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 

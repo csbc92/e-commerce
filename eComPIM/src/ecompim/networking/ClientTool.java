@@ -21,7 +21,7 @@ import java.net.*;
 public class ClientTool {
 
 
-    private Socket clientSocket;
+    public Socket clientSocket;
     private DataOutputStream toServer;
     private DataInputStream stringFromServer;
     private ObjectInputStream objFromServer;
