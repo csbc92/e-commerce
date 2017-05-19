@@ -12,7 +12,7 @@ public class PictureMedia implements IDisplayable {
     private int mediaID;
 
     public PictureMedia(int mediaID, String path) {
-        this.image = new Image(new File(path).toURI().toString());
+        this.image = new MediaTest(new File(path).toURI().toString());
         this.mediaID = mediaID;
     }
 
