@@ -38,6 +38,7 @@ public class Server extends Thread {
                     break;
                 }
                 //TODO something with the input from client
+                tool.sendObj(fetcher.fetchMedia(input));
             }
         } catch (IOException e) {
 
