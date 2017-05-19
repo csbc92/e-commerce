@@ -1,5 +1,6 @@
 package ecompim.pimgui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
@@ -15,6 +16,7 @@ import javafx.scene.control.*;
 import ecompim.businessLogic.PIMManager;
 import ecompim.businessLogic.IPIM;
 import javafx.scene.control.cell.CheckBoxTreeCell;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -302,6 +304,14 @@ public class FXMLDocumentController implements Initializable {
         cbCategories.setItems(FXCollections.observableArrayList(manager.getAllCategories()));
 
         lvCategories.setItems(populateCategoryListView());
+
+        try {
+            imgvPic.setImage(new Image(manager.fetchMedia(productID).toURI().toString()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
     private ObservableList<Category> populateCategoryListView(){
         ObservableList<Category> allCategories = FXCollections.observableArrayList(manager.getAllCategories());

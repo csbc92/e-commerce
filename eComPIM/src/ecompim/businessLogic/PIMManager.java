@@ -6,6 +6,7 @@ import Product.*;
 import ecompim.server.ClientTool;
 import ecompim.server.ServerHandler;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -56,6 +57,12 @@ public class PIMManager implements IPIM {
 
     @Override
     public HashMap<Integer, Product> searchProducts(String searchCriteria) {return productCatalogue.searchProducts(searchCriteria);}
+
+    @Override
+    public File fetchMedia(int productID) throws IOException, ClassNotFoundException {
+        cTool.sendString(String.valueOf(productID));
+        return ((PictureMedia) cTool.readObj()).getMedia();
+    }
 
     @Override
     public HashMap<Integer, Product> fetchProductOverview() {
