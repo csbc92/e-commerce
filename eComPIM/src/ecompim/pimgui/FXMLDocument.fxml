@@ -105,13 +105,15 @@
                         </HBox>
                         <HBox spacing="20.0" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="SOMETIMES">
                            <children>
-                              <VBox>
+                              <VBox alignment="TOP_CENTER">
                                  <children>
                                     <ImageView fx:id="imgvPic" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true">
                                        <image>
                                           <Image url="@../../../lone.jpg" />
                                        </image>
                                     </ImageView>
+                                    <Pane prefHeight="20.0" />
+                                    <Button mnemonicParsing="false" onAction="#butChangePicHandler" text="Ændr billede" />
                                     <HBox alignment="CENTER_LEFT" spacing="10.0">
                                        <children>
                                           <Label text="Indkøbspris:" />
