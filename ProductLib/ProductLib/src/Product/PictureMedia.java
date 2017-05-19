@@ -8,25 +8,17 @@ import java.io.File;
 
 public class PictureMedia implements IDisplayable {
 
-    private Image image;
+    private File file;
     private int mediaID;
 
     public PictureMedia(int mediaID, String path) {
-        this.image = new Image(new File(path).toURI().toString());
+        this.file = new File(path);
         this.mediaID = mediaID;
-    }
-
-    public Image getImage() {
-        return image;
-    }
-
-    public int getMediaID() {
-        return mediaID;
     }
 
 
     @Override
-    public Image getMedia() {
-        return this.getImage();
+    public File getMedia() {
+        return this.file;
     }
 }
