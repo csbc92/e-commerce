@@ -16,6 +16,10 @@ public class PictureMedia implements IDisplayable {
         this.mediaID = mediaID;
     }
 
+    public PictureMedia(Image image) {
+        this.image = image;
+    }
+
     public Image getImage() {
         return image;
     }
