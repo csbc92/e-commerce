@@ -55,13 +55,13 @@ public class FTPTool {
         }
     }
 
-    public InputStream retrieveFile(){
+    public InputStream retrieveFile(String path){
         try {
             login();
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
             ftpClient.enterLocalPassiveMode();
             if (ftpClient.isConnected()) {
-               return ftpClient.retrieveFileStream("htdocs/Files/victor.jpg");
+               return ftpClient.retrieveFileStream(path);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -90,22 +90,4 @@ public class FTPTool {
         }
     }
 
-    public void getfile(){
-        try {
-            login();
-            ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
-            ftpClient.enterLocalPassiveMode();
-            if (ftpClient.isConnected()) {
-                try (FileOutputStream fos = new FileOutputStream("victor.jpg")) {
-                    ftpClient.retrieveFile("htdocs/Files/victor.jpg", fos);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            logout();
-        }
-    }
 }

@@ -75,7 +75,9 @@ public class SQLTool {
      */
     public void close(){
         try {
-            this.myResultSet.close();
+            if (myResultSet != null) {
+                this.myResultSet.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
