@@ -3,12 +3,15 @@ package ecompim.pimgui;
 import Product.IDisplayable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 
@@ -77,5 +80,17 @@ public class FXMLPicOverviewPopupController implements Initializable {
 
         oList.setAll(picList);
         lvPicOverview.setItems(oList);
+    }
+
+    @FXML
+    private void butChangePicHandler(ActionEvent actionEvent) {
+        IDisplayable tmp = lvPicOverview.getSelectionModel().getSelectedItem();
+        if (tmp != null) {
+            FXMLDocumentController.manager.getCurrentProduct().addMedia(tmp);
+        }
+        Node source = (Node)  actionEvent.getSource();
+        Stage stage  = (Stage) source.getScene().getWindow();
+        stage.close();
+        FXMLDocumentController.cont.updateImage();
     }
 }

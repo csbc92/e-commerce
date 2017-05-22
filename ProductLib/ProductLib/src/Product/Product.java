@@ -26,6 +26,7 @@ public class Product implements Serializable{
      * @param stock the stock
      */
     public Product(int productID, String shortDescription, double salePrice, String productName, int stock) {
+        mediaList = new ArrayList<>();
         this.productID = productID;
         this.shortDescription = shortDescription;
         this.salePrice = salePrice;
@@ -155,6 +156,11 @@ public class Product implements Serializable{
     public void addCategory(String name, Category parent) {
         this.categoryList.add(new Category(name, parent));
 
+    }
+
+    public void addMedia(IDisplayable media){
+
+        this.mediaList.add(0,media);
     }
 
 }

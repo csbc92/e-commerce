@@ -43,8 +43,6 @@ import javafx.util.Callback;
 public class FXMLDocumentController implements Initializable {
 
     static IPIM manager;
-    private HashSet<Category> selectedCategories;
-
     @FXML
     public ImageView imgvPic;
     @FXML
@@ -60,11 +58,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public RadioButton rbHidden;
     @FXML
+    public TableView<Map.Entry<String, String>> tblViewTechDetails;
+    private HashSet<Category> selectedCategories;
+    @FXML
     private ListView<String> lvTags;
     @FXML
     private TextField tfAddTag;
-    @FXML
-    public TableView<Map.Entry<String, String>> tblViewTechDetails;
     @FXML
     private ListView<Product> lvProducts;
     @FXML
@@ -99,6 +98,7 @@ public class FXMLDocumentController implements Initializable {
     private Button butAddNewCategory;
 
 
+    static FXMLDocumentController cont;
     /**
      * Initialises the PIM-system, displays the product overview.
      *
@@ -107,6 +107,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        cont = this;
         manager = new PIMManager();
 
 
@@ -121,7 +122,7 @@ public class FXMLDocumentController implements Initializable {
     /**
      * Initializes the product category overview
      */
-    private void initCategoryOverview(){
+    private void initCategoryOverview() {
         selectedCategories = new HashSet<>();
         Category rootCategory = manager.getRootCategory();
         CheckBoxTreeItem<Category> catItem = this.createCategoryCheckBoxTreeItem(rootCategory, true);
@@ -140,6 +141,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * Create a Category CheckBoxTreeItem
+     *
      * @param parentCategory Creates the category CheckBoxTreeItem by using this parameter as parent category
      * @return
      */
@@ -309,27 +311,36 @@ public class FXMLDocumentController implements Initializable {
 
         lvCategories.setItems(populateCategoryListView());
 
+        updateImage();
+    }
+
+     void updateImage() {
         try {
-            imgvPic.setImage(new Image(manager.fetchMedia(productID).getMedia().toURI().toString()));
+            if (!manager.getCurrentProduct().getMediaList().isEmpty()) {
+                imgvPic.setImage(new Image(manager.fetchMedia(manager.getCurrentProduct().getMediaList().get(0).getID()).getMedia().toURI().toString()));
+            } else {
+                imgvPic.setImage(null);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
-    private ObservableList<Category> populateCategoryListView(){
+
+    private ObservableList<Category> populateCategoryListView() {
         ObservableList<Category> allCategories = FXCollections.observableArrayList(manager.getAllCategories());
         ObservableList<Category> productCategories = FXCollections.observableArrayList();
-        for(Category cat : allCategories){
-            for(Integer id : cat.getProductIDSet()){
-                if(id == manager.getCurrentProduct().getProductID()){
+        for (Category cat : allCategories) {
+            for (Integer id : cat.getProductIDSet()) {
+                if (id == manager.getCurrentProduct().getProductID()) {
                     productCategories.add(cat);
                 }
             }
         }
         return productCategories;
     }
-
 
 
     /**
@@ -468,10 +479,11 @@ public class FXMLDocumentController implements Initializable {
             lvTags.setItems(FXCollections.observableList(new ArrayList<>(manager.getCurrentProduct().getTags())));
         }
     }
+
     /**
      * Build TextFlow with selected text. Return "case" dependent.
      *
-     * @param text - string with text
+     * @param text   - string with text
      * @param filter - string to select in text
      * @return - TextFlow
      */
@@ -487,7 +499,7 @@ public class FXMLDocumentController implements Initializable {
             int filterIndex = text.toLowerCase().indexOf(filter.toLowerCase());
             Text textBefore = new Text(text.substring(0, filterIndex));
             Text textAfter = new Text(text.substring(filterIndex + filter.length()));
-            Text textFilter = new Text(text.substring(filterIndex,  filterIndex + filter.length())); //instead of "filter" to keep "case"
+            Text textFilter = new Text(text.substring(filterIndex, filterIndex + filter.length())); //instead of "filter" to keep "case"
             textFilter.setFill(Color.BLACK);
             textFilter.setFont(Font.font("Helvetica", FontWeight.BOLD, 14));
             return new TextFlow(textBefore, textFilter, textAfter);
