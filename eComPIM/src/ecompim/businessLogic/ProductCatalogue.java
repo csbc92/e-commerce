@@ -3,7 +3,6 @@ package ecompim.businessLogic;
 import Product.*;
 import ecompim.PIMPersistence.PIMPersistenceFacade;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -52,7 +51,7 @@ public class ProductCatalogue implements IProductCatalogue {
     }
 
     @Override
-    public File fetchMedia(int productID) throws IOException, ClassNotFoundException {
+    public IDisplayable fetchMedia(int productID) throws IOException, ClassNotFoundException {
         return null;
     }
 

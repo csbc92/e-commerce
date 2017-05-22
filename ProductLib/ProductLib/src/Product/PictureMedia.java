@@ -21,4 +21,9 @@ public class PictureMedia implements IDisplayable {
     public File getMedia() {
         return this.file;
     }
+
+    @Override
+    public int getID() {
+        return mediaID;
+    }
 }

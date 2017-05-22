@@ -310,7 +310,7 @@ public class FXMLDocumentController implements Initializable {
         lvCategories.setItems(populateCategoryListView());
 
         try {
-            imgvPic.setImage(new Image(manager.fetchMedia(productID).toURI().toString()));
+            imgvPic.setImage(new Image(manager.fetchMedia(productID).getMedia().toURI().toString()));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

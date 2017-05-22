@@ -17,4 +17,9 @@ public class VideoMedia implements IDisplayable {
     public File getMedia() {
         return null;
     }
+
+    @Override
+    public int getID() {
+        return 0;
+    }
 }

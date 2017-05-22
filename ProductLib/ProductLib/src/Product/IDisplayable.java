@@ -9,4 +9,6 @@ import java.io.Serializable;
 public interface IDisplayable extends Serializable{
 
     public File getMedia();
+
+    public int getID();
 }
