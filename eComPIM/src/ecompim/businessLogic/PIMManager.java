@@ -115,9 +115,9 @@ public class PIMManager implements IPIM {
         Image toReturn = null;
         try {
             cTool.sendString(String.valueOf(i));
-            BufferedImage temp = ImageIO.read(cTool.clientSocket.getInputStream());
-
-           toReturn = SwingFXUtils.toFXImage(temp,null);
+//            BufferedImage temp = ImageIO.read(cTool.clientSocket.getInputStream());
+            toReturn = new Image(cTool.clientSocket.getInputStream());
+//           toReturn = SwingFXUtils.toFXImage(temp,null);
         } catch (IOException e) {
             e.printStackTrace();
         }
