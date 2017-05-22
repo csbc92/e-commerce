@@ -3,6 +3,7 @@ package ecompim.businessLogic;
 import Product.*;
 import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.TreeItem;
+import javafx.scene.image.Image;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -54,4 +55,6 @@ public interface IPIM extends IProductFetcher {
     public void addNewCategory(String categoryName, String parent); //TODO parent as object or parent as a string?
 
     public HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories);
+
+    Image fetchMedia(int i);
 }
