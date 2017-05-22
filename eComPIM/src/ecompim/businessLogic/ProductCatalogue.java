@@ -3,6 +3,7 @@ package ecompim.businessLogic;
 import Product.*;
 import ecompim.PIMPersistence.PIMPersistenceFacade;
 
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -47,6 +48,11 @@ public class ProductCatalogue implements IProductCatalogue {
     @Override
     public HashMap<Integer, Product> searchProducts(String searchCriteria) {
         return persistence.searchProducts(searchCriteria);
+    }
+
+    @Override
+    public IDisplayable fetchMedia(int productID) throws IOException, ClassNotFoundException {
+        return null;
     }
 
     @Override

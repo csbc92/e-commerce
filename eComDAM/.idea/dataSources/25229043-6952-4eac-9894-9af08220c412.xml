@@ -3,14 +3,23 @@
   <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.1">
     <root id="1"/>
     <database id="2" parent="1" name="eComDAM">
+<<<<<<< HEAD
+      <ObjectId>25961</ObjectId>
+=======
       <ObjectId>17429</ObjectId>
+>>>>>>> develop
       <Current>1</Current>
       <Visible>1</Visible>
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-05-19.08:55:46.582</IntrospectionTimestamp>
-      <IntrospectionStateNumber>1018</IntrospectionStateNumber>
+<<<<<<< HEAD
+      <IntrospectionTimestamp>2017-05-18.14:43:39.545</IntrospectionTimestamp>
+      <IntrospectionStateNumber>894</IntrospectionStateNumber>
+=======
+      <IntrospectionTimestamp>2017-05-18.13:38:36.411</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1014</IntrospectionStateNumber>
+>>>>>>> develop
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -30,8 +39,33 @@
       <ObjectId>12113</ObjectId>
     </schema>
     <table id="9" parent="3" name="media">
+<<<<<<< HEAD
+      <ObjectId>25962</ObjectId>
+      <StateNumber>894</StateNumber>
+    </table>
+    <column id="10" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>894</StateNumber>
+    </column>
+    <column id="11" parent="9" name="path">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+      <StateNumber>894</StateNumber>
+    </column>
+    <index id="12" parent="9" name="media_id_key">
+      <ObjectId>25965</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="13" parent="9" name="media_id_key">
+      <ObjectId>25966</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>media_id_key</UnderlyingIndexName>
+    </key>
+=======
       <ObjectId>17430</ObjectId>
-      <StateNumber>1018</StateNumber>
+      <StateNumber>1013</StateNumber>
     </table>
     <column id="10" parent="9" name="path">
       <Position>1</Position>
@@ -41,12 +75,39 @@
     <column id="11" parent="9" name="id">
       <Position>2</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>1018</StateNumber>
+      <StateNumber>1013</StateNumber>
     </column>
     <index id="12" parent="9" name="media_id_uindex">
-      <ObjectId>17445</ObjectId>
+      <ObjectId>17436</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
+>>>>>>> develop
   </database-model>
 </dataSource>
+      <ObjectId>25961</ObjectId>
+      <IntrospectionTimestamp>2017-05-19.13:07:51.035</IntrospectionTimestamp>
+      <IntrospectionStateNumber>894</IntrospectionStateNumber>
+      <ObjectId>25962</ObjectId>
+      <StateNumber>894</StateNumber>
+    </table>
+    <column id="10" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>894</StateNumber>
+    </column>
+    <column id="11" parent="9" name="path">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+      <StateNumber>894</StateNumber>
+    </column>
+    <index id="12" parent="9" name="media_id_key">
+      <ObjectId>25965</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="13" parent="9" name="media_id_key">
+      <ObjectId>25966</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>media_id_key</UnderlyingIndexName>
+    </key>

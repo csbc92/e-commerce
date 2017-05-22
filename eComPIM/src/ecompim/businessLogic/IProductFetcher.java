@@ -2,7 +2,7 @@ package ecompim.businessLogic;
 
 import Product.*;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -25,4 +25,5 @@ public interface IProductFetcher {
      */
     public HashMap<Integer, Product> searchProducts(String searchCriteria);
 
+    IDisplayable fetchMedia(int productID) throws IOException, ClassNotFoundException;
 }

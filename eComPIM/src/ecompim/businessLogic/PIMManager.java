@@ -3,6 +3,7 @@ package ecompim.businessLogic;
 
 import ecompim.ERPAccess.ERPFetcher;
 import Product.*;
+import ecompim.server.ClientTool;
 import ecompim.server.ServerHandler;
 
 import java.io.IOException;
@@ -17,6 +18,7 @@ public class PIMManager implements IPIM {
 
     private DetailedProduct currentProduct;
     private IProductCatalogue productCatalogue;
+    private ClientTool cTool;
     Thread netHandler;
 
     /**
@@ -24,7 +26,6 @@ public class PIMManager implements IPIM {
      */
     public PIMManager() {
         productCatalogue = new ProductCatalogue();
-        collectERPProducts();
         try {
             netHandler = new Thread(new ServerHandler(this,6789 ));
             netHandler.setDaemon(true);
@@ -33,6 +34,17 @@ public class PIMManager implements IPIM {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        try {
+            cTool=new ClientTool("localhost",5678);
+            cTool.sendString("1");
+            System.out.println(((IDisplayable)cTool.readObj()).getMedia().getPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
@@ -43,6 +55,12 @@ public class PIMManager implements IPIM {
 
     @Override
     public HashMap<Integer, Product> searchProducts(String searchCriteria) {return productCatalogue.searchProducts(searchCriteria);}
+
+    @Override
+    public IDisplayable fetchMedia(int productID) throws IOException, ClassNotFoundException {
+        cTool.sendString(String.valueOf(productID));
+        return ((PictureMedia) cTool.readObj());
+    }
 
     @Override
     public HashMap<Integer, Product> fetchProductOverview() {

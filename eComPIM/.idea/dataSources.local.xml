@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="eComDAM@localhost" uuid="25229043-6952-4eac-9894-9af08220c412">
-<<<<<<< HEAD
+    <data-source name="postgres@localhost" uuid="4e6d6e41-0a49-431c-aebf-3c9160fa1c01">
       <database-info product="PostgreSQL" version="9.6.2" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>postgres</user-name>
-      <introspection-schemas>eComDAM:public</introspection-schemas>
+      <introspection-schemas>postgres:public</introspection-schemas>
     </data-source>
-    <data-source name="eComDAM@localhost" uuid="25229043-6952-4eac-9894-9af08220c412">
+    <data-source name="eComDAM@localhost" uuid="cec0b0f6-d102-4486-a37b-00407abe5126">
       <database-info product="PostgreSQL" version="9.6.2" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
@@ -19,9 +18,6 @@
       <secret-storage>master_key</secret-storage>
       <user-name>postgres</user-name>
       <introspection-schemas>eComDAM:public</introspection-schemas>
-=======
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
->>>>>>> DamPimCommonFile
     </data-source>
   </component>
 </project>
