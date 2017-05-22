@@ -6,28 +6,28 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff:
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/dictionaries
+**/.idea/**/workspace.xml
+**/.idea/**/tasks.xml
+**/.idea/dictionaries
 
 # Sensitive or high-churn files:
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.xml
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
+**/.idea/**/dataSources/
+**/.idea/**/dataSources.ids
+**/.idea/**/dataSources.xml
+**/.idea/**/dataSources.local.xml
+**/.idea/**/sqlDataSources.xml
+**/.idea/**/dynamic.xml
+**/.idea/**/uiDesigner.xml
 
 # Gradle:
-.idea/**/gradle.xml
-.idea/**/libraries
+**/.idea/**/gradle.xml
+**/.idea/**/libraries
 
 # CMake
 cmake-build-debug/
 
 # Mongo Explorer plugin:
-.idea/**/mongoSettings.xml
+**/.idea/**/mongoSettings.xml
 
 ## File-based project format:
 *.iws
@@ -35,16 +35,17 @@ cmake-build-debug/
 ## Plugin-specific files:
 
 # IntelliJ
-/out/production
+**/
+**/out/production
 
 # mpeltonen/sbt-idea plugin
-.idea_modules/
+**/.idea_modules/
 
 # JIRA plugin
 atlassian-ide-plugin.xml
 
 # Cursive Clojure plugin
-.idea/replstate.xml
+**/.idea/replstate.xml
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
@@ -61,7 +62,7 @@ fabric.properties
 # *.ipr
 
 # Sonarlint plugin
-.idea/sonarlint
+**/.idea/sonarlint
 
 ### Java ###
 # Compiled class file
@@ -74,7 +75,7 @@ fabric.properties
 *.ctxt
 
 # Mobile Tools for Java (J2ME)
-.mtj.tmp/
+**/.mtj.tmp/
 
 # Package Files #
 *.war
@@ -87,35 +88,11 @@ fabric.properties
 hs_err_pid*
 
 ### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
+**/nbproject/private/
+**/build/
+**/nbbuild/
+**/dist/
+**/nbdist/
+**/.nb-gradle/
 
 # End of https://www.gitignore.io/api/java,netbeans,intellij
-
-eComWEB/\.idea/workspace\.xml
-
-eComPIM/\.idea/workspace\.xml
-
-eComPIM/nbproject/private/configs/Run_in_Browser\.properties
-
-eComPIM/nbproject/private/private\.properties
-
-eComWEB/nbproject/private/configs/Run_in_Browser\.properties
-
-eComWEB/nbproject/private/private\.properties
-
-eComWEB/nbproject/private/private\.xml
-/ProductLib/ProductLib/nbproject/private/
-/eComDAM/eComDAM/nbproject/private/
-/eComDAM/nbproject/private/
-eComDAM/\.idea/workspace\.xml
-
-eComDAM/out/production/eComDAM/pimgui/FXMLDocument\.fxml
-
-ProductLib/\.idea/workspace\.xml
-
-ProductLib/out/artifacts/ProductLib_jar/ProductLib\.jar
