@@ -27,8 +27,8 @@ public class DetailedProduct extends Product implements Serializable {
      * @param length the length
      * @param width the width
      */
-    public DetailedProduct(int productID, String shortDescription, double costPrice, String productName, int stock, double weight, double height, double length, double width) {
-        super(productID, shortDescription, costPrice, productName, stock);
+    public DetailedProduct(int productID, String shortDescription, double salesPrice, String productName, int stock, double costPrice) {
+        super(productID, shortDescription, salesPrice, productName, stock);
         this.weight = weight;
         this.height = height;
         this.length = length;

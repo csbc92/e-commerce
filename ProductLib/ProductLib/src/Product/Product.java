@@ -36,6 +36,7 @@ public class Product implements Serializable{
         this.tags = new TreeSet<>();
     }
 
+
     /**
      * returns the productID
      * @return the productID
@@ -154,7 +155,7 @@ public class Product implements Serializable{
      * @param parent the parent category to this category
      */
     public void addCategory(String name, Category parent) {
-        this.categoryList.add(new Category(name, parent));
+        this.categoryList.add(new Category(name, parent,-1));
 
     }
 

@@ -3,7 +3,6 @@
     <output-path>$PROJECT_DIR$/out/artifacts/eComPIM_jar</output-path>
     <root id="archive" name="eComPIM.jar">
       <element id="module-output" name="eComPIM" />
-      <element id="library" level="project" name="postgresql-42.0.0" />
     </root>
   </artifact>
 </component>

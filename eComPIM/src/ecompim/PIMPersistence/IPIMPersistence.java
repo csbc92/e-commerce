@@ -15,7 +15,7 @@ public interface  IPIMPersistence {
      * Gets a map of non-detailed products
      * @return A map with Product IDs as key and non-detailed products as values.
      */
-    HashMap<Integer, Product> fetchProductOverview();
+    HashMap<Integer, Product> fetchProductOverview(String value);
 
     /**
      * Fetches a product from persistance
