@@ -10,25 +10,14 @@ public class PictureMedia implements IDisplayable {
 
     private File file;
     private int mediaID;
-
     public PictureMedia(int mediaID, String path) {
-        this.image = new MediaTest(new File(path).toURI().toString());
+        this.file = new File(path);
         this.mediaID = mediaID;
     }
-
-    public PictureMedia(Image image) {
-        this.image = image;
-    }
-
-    public Image getImage() {
-        return image;
-    }
-
     @Override
     public File getMedia() {
         return this.file;
     }
-
     @Override
     public int getID() {
         return mediaID;
