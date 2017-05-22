@@ -15,7 +15,7 @@ public interface  IPIMPersistence {
      * Gets a map of non-detailed products
      * @return A map with Product IDs as key and non-detailed products as values.
      */
-    HashMap<Integer, Product> fetchProductOverview(String value);
+    HashMap<Integer, Product> fetchProductOverview();
 
     /**
      * Fetches a product from persistance
@@ -44,6 +44,13 @@ public interface  IPIMPersistence {
      * @return a map of the products that match the search value, with Integers as keys and Products as values
      */
     HashMap<Integer, Product> searchProducts(String value);
+
+    /**
+     * Gets overview of products from a given category
+     * @param category the category to look for
+     * @return a map of product from the category chosen
+     */
+    HashMap<Integer, Product> getCategoryOverview(Category category);
 
     void saveRootCategory(Category rootCategory);
 

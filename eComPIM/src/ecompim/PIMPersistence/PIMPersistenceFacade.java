@@ -21,7 +21,7 @@ public class PIMPersistenceFacade implements IPIMPersistenceFacade {
     }
     @Override
     public HashMap<Integer, Product> fetchProductOverview() {
-       return ipimPersistence.fetchProductOverview("");
+       return ipimPersistence.fetchProductOverview();
     }
     @Override
     public DetailedProduct fetchProduct(int productID) {
@@ -38,6 +38,11 @@ public class PIMPersistenceFacade implements IPIMPersistenceFacade {
     @Override
     public HashMap<Integer, Product> searchProducts(String value){
         return ipimPersistence.searchProducts(value);
+    }
+
+    @Override
+    public HashMap<Integer, Product> fetchCategoryOverview(Category category) {
+        return ipimPersistence.getCategoryOverview(category);
     }
 
     @Override

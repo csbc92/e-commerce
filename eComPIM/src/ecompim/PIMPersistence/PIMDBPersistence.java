@@ -28,35 +28,9 @@ public class PIMDBPersistence implements IPIMPersistence{
 
 
     @Override
-    public HashMap<Integer, Product> fetchProductOverview(String value) {
-        HashMap<Integer, Product> products = new HashMap<>();
-
-        if (value.equals("")) {
-            DB.add("SELECT * FROM product ORDER BY productid LIMIT 50;");
-        } else {
-            DB.add("SELECT * FROM product WHERE CAST(productId AS TEXT)  LIKE '" + value + "%' ORDER BY Productid LIMIT 50;");
-        }
-
-        DB.open();
-        ResultSet rs = DB.getResultSet();
-        try {
-            while(rs.next()) {
-                products.put( rs.getInt("productid"), new Product(rs.getInt("productid"),
-                        rs.getString("shortdescription"),
-                        rs.getDouble("costprice") * rs.getDouble("salesMargin"),
-                        rs.getString("name"),
-                        rs.getInt("stock")));
-
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            DB.close();
-            DB.clear();
-        }
-
-        return products;
+    public HashMap<Integer, Product> fetchProductOverview() {
+        String query = "SELECT * FROM product ORDER BY productid LIMIT 50;";
+        return getProducts(query);
     }
 
     @Override
@@ -128,7 +102,6 @@ public class PIMDBPersistence implements IPIMPersistence{
         try {
             while(rs.next()){
                 product.setTag(rs.getString("tagname"));
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -136,7 +109,6 @@ public class PIMDBPersistence implements IPIMPersistence{
             DB.close();
             DB.clear();
         }
-
 
         return product;
     }
@@ -168,7 +140,15 @@ public class PIMDBPersistence implements IPIMPersistence{
     @Override
     public HashMap<Integer,Product> searchProducts(String value) {
 
-        return fetchProductOverview(value);
+        String query = "SELECT * FROM product WHERE CAST(productId AS TEXT)  LIKE '" + value + "%' ORDER BY Productid LIMIT 50;";
+        return getProducts(query);
+    }
+
+    @Override
+    public HashMap<Integer, Product> getCategoryOverview(Category category) {
+
+        String query = "SELECT * FROM product NATURAL JOIN productincategory WHERE categoryid = " + category.getId() + " ORDER BY productid LIMIT 50;";
+        return getProducts(query);
     }
 
     @Override
@@ -246,6 +226,32 @@ public class PIMDBPersistence implements IPIMPersistence{
     @Override
     public void saveRootCategory(Category rootCategory) {
         throw new UnsupportedOperationException();
+    }
+
+
+    private HashMap<Integer, Product> getProducts(String query) {
+        HashMap<Integer, Product> products = new HashMap<>();
+
+        DB.add(query);
+
+        DB.open();
+        ResultSet rs = DB.getResultSet();
+        try {
+            while(rs.next()) {
+                products.put( rs.getInt("productid"), new Product(rs.getInt("productid"),
+                        rs.getString("shortdescription"),
+                        rs.getDouble("costprice") * rs.getDouble("salesMargin"),
+                        rs.getString("name"),
+                        rs.getInt("stock")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close();
+            DB.clear();
+        }
+
+        return products;
     }
 
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="postgres@localhost" uuid="4e6d6e41-0a49-431c-aebf-3c9160fa1c01">
+    <data-source source="LOCAL" name="postgres@localhost" uuid="defe6b33-62dc-4f41-9015-ae921d2c3a80">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="eComDAM@localhost" uuid="cec0b0f6-d102-4486-a37b-00407abe5126">
+    <data-source source="LOCAL" name="eComDAM@localhost" uuid="3de202a7-2ad1-47bf-9546-2072db7327f9">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>

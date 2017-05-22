@@ -15,7 +15,7 @@ public class ERPDummyDB {
      */
     public static Map<Integer, DetailedProduct> getProducts() {
         Map<Integer, DetailedProduct> products = new HashMap<>();
-
+/*
 
         products.put(1, new DetailedProduct(1, "MSI Z270I Gaming Pro Carbon AC, S-1151" +
                 " Bundkort, mini-ITX, Z270, DDR4, 1xPCIe-x16, M.2, WiFi, Mystic Light Sync", 1649, "MSI Z270I Gaming Pro Carbon AC", 50,3,4,5,5));
@@ -74,7 +74,7 @@ public class ERPDummyDB {
                 " LGA1151, 6-Core, 16-Thread, 3.0/3.7GHz, 65W, inkl. køler", 1690, "Intel i5 6500K", 34,43,56,22,1));
         details = new HashMap<>();
         products.get(9).setTechnicalDetails(details);
-
+*/
         //TODO Products may be added here
         return products;
     }

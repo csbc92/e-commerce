@@ -78,9 +78,10 @@ public class ProductCatalogue implements IProductCatalogue {
      */
     @Override
     public HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories) {
-        HashMap<Integer, Product> productList = new HashMap<>();
+        HashMap<Integer, Product> products = new HashMap<>();
         for (Category cat : categories) {
 
+            /*
             int i = 0;
 
             for (Integer id : cat.getProductIDSet()) {
@@ -92,9 +93,13 @@ public class ProductCatalogue implements IProductCatalogue {
                 if (i > 0) {
                     return productList;
                 }
-            }
+            }*/
+
+            //if (cat.getParent().getParent() != null){
+                products.putAll(persistence.fetchCategoryOverview(cat));
+            //}
         }
-        return productList;
+        return products;
     }
 
 
