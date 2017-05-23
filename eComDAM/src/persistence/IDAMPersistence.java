@@ -9,7 +9,16 @@ import java.util.Set;
  */
 public interface IDAMPersistence {
 
+    /**
+     * fetches media by media id
+     * @param mediaID id of desired media
+     * @return media
+     */
     IDisplayable fetchMedia(String mediaID);
 
+    /**
+     * fetches overview of media
+     * @return a set of IDisplayable
+     */
     Set<IDisplayable> fetchMediaOverview();
 }

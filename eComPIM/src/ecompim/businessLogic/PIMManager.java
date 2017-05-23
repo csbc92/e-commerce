@@ -38,7 +38,7 @@ public class PIMManager implements IPIM {
         try {
             cTool=new ClientTool("localhost",5678);
             cTool.sendString("1");
-            System.out.println(((IDisplayable)cTool.readObj()).getMedia().getPath());
+            System.out.println(((IDisplayable)cTool.readObj()).getPath());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
