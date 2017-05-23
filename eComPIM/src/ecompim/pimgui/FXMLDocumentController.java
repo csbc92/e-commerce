@@ -1,5 +1,6 @@
 package ecompim.pimgui;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -317,7 +318,7 @@ public class FXMLDocumentController implements Initializable {
      void updateImage() {
         try {
             if (!manager.getCurrentProduct().getMediaList().isEmpty()) {
-                imgvPic.setImage(new Image(manager.fetchMedia(manager.getCurrentProduct().getMediaList().get(0).getID()).getMedia().toURI().toString()));
+                imgvPic.setImage(new Image( new File(manager.fetchMedia(manager.getCurrentProduct().getMediaList().get(0).getID()).getPath()).toURI().toString()));
             } else {
                 imgvPic.setImage(null);
             }

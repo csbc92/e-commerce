@@ -1,19 +1,21 @@
 package Product;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.TreeSet;
 
 
 public class DetailedProduct extends Product implements Serializable {
 
     private String longDescription;
     private HashMap<String,String> technicalDetails;
-    private double weight;
-    private double height;
-    private double length;
-    private double width;
     private double margin;
     private double costPrice;
+    private ArrayList<IDisplayable> mediaList;
+    private ArrayList<Category> categoryList;
+    private TreeSet<String> tags;
+
 
     /**
      * Initializes the DetailedProduct
@@ -22,20 +24,15 @@ public class DetailedProduct extends Product implements Serializable {
      * @param costPrice the cost price
      * @param productName the product name
      * @param stock the current stock of the product
-     * @param weight the weight
-     * @param height the height
-     * @param length the length
-     * @param width the width
      */
-    public DetailedProduct(int productID, String shortDescription, double salesPrice, String productName, int stock, double costPrice) {
-        super(productID, shortDescription, salesPrice, productName, stock);
-        this.weight = weight;
-        this.height = height;
-        this.length = length;
-        this.width = width;
+    public DetailedProduct(int productID, String shortDescription, double margin, String productName, int stock, double costPrice) {
+        super(productID, shortDescription, costPrice*(margin/100 + 1), productName, stock);
         this.costPrice = costPrice;
-        this.margin = 0;
+        this.margin = margin;
         this.longDescription = shortDescription;
+        this.mediaList = new ArrayList<>();
+        this.tags = new TreeSet<>();
+
     }
 
     /**
@@ -71,38 +68,6 @@ public class DetailedProduct extends Product implements Serializable {
     }
 
     /**
-     * returns the weight
-     * @return the weight
-     */
-    public double getWeight() {
-        return weight;
-    }
-
-    /**
-     * returns the height
-     * @return the height
-     */
-    public double getHeight() {
-        return height;
-    }
-
-    /**
-     * returns the length
-     * @return the length
-     */
-    public double getLength() {
-        return length;
-    }
-
-    /**
-     * returns the width
-     * @return the width
-     */
-    public double getWidth() {
-        return width;
-    }
-
-    /**
      * returns the margin
      * @return the margin
      */
@@ -126,4 +91,64 @@ public class DetailedProduct extends Product implements Serializable {
         this.margin = margin;
         this.salePrice = costPrice + costPrice * margin/100;
     }
+
+    /**
+     * returns the tags
+     * @return a TreeSet containing strings of tags
+     */
+    public TreeSet<String> getTags() {
+        return tags;
+    }
+
+    /**
+     * adds a tag
+     * @param tag
+     */
+    public void setTag(String tag) {
+        this.tags.add(tag);
+    }
+
+    /**
+     * removes a tag
+     * @param tag
+     */
+    public void removeTag(String tag) {
+        this.tags.remove(tag);
+    }
+
+    /**
+     * returns an ArrayList of displayable media
+     * @return an ArrayList containing IDisplayable objects
+     */
+    public ArrayList<IDisplayable> getMediaList() {
+        return new ArrayList<>(mediaList);
+    }
+
+
+    /**
+     * returns an ArrayList of categories
+     * @return an ArrayList containing categories
+     */
+    /*public ArrayList<Category> getCategoryList() {
+        return new ArrayList<>(categoryList);
+    }*/
+
+    /**
+     * adds a category to the categoryList based on the name and teh parent category
+     * @param name the name of the category
+     * @param parent the parent category to this category
+     */
+    /*public void addCategory(String name, Category parent) {
+        this.categoryList.add(new Category(name, parent,-1));
+    } */
+
+    /**
+     * adds a media of IDIsplayable to the medialist
+     * @param media
+     */
+    public void addMedia(IDisplayable media){
+        this.mediaList.add(0,media);
+    }
+
+
 }
