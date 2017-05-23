@@ -23,6 +23,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
@@ -61,12 +62,15 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<?, ?> tcSpecifications1;
     @FXML
     private TableColumn<?, ?> tcSpecifications2;
+
+    private int productID;
     
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        webManager = new WebManager();
-       displayProduct(1);
+       productID = 10000;
+       displayProduct(productID);
 
 
     }
@@ -78,11 +82,13 @@ public class FXMLDocumentController implements Initializable {
     private void displayProduct(int productID){
         //Test code to see the GUI works, and fetching products work
         DetailedProduct product = webManager.getProduct(productID);
-        lPrice.setText(""+product.getSalePrice()); // Is this really the best way of converting a number to a string?
+        lPrice.setText("Pris: " + product.getSalePrice() + " dkk"); // Is this really the best way of converting a number to a string?
         lProductName.setText(product.getName());
-        lProductID.setText(""+product.getProductID());
+        lProductID.setText("ID: " + product.getProductID());
         taLongDescription.setText(product.getLongDescription());
         populateTechnicalDetails(tblViewTechDetails, product);
+        ivProductImg.setImage(new Image(product.getMediaList().get(0).getMedia().toURI().toString()));
+        taShortDescription.setText(product.getShortDescription());
     }
 
     /**
@@ -127,6 +133,6 @@ public class FXMLDocumentController implements Initializable {
     // For testing purposes the page will refresh, when the add to cart button is pressed
     @FXML
     public void displayProduct(ActionEvent actionEvent) {
-        displayProduct(1);
+        displayProduct(productID);
     }
 }

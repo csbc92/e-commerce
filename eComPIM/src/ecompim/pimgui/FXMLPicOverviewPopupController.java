@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public class FXMLPicOverviewPopupController implements Initializable {
                             setText(null);
                             setGraphic(null);
                         } else {
-                            iv.setImage(new Image(item.getMedia().toURI().toString()));
+                            iv.setImage(new Image(new File(item.getPath()).toURI().toString()));
                             iv.setFitHeight(100);
                             iv.setPreserveRatio(true);
                             setGraphic(iv);

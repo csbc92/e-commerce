@@ -41,6 +41,11 @@ public class PIMPersistenceFacade implements IPIMPersistenceFacade {
     }
 
     @Override
+    public HashMap<Integer, Product> fetchCategoryOverview(Category category) {
+        return ipimPersistence.getCategoryOverview(category);
+    }
+
+    @Override
     public Category getRootCategory() {
        return ipimPersistence.fetchRootCategory(); //TODO
     }

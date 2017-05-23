@@ -9,13 +9,11 @@ public class Product implements Serializable{
     private int productID;
     private double rating;
     private boolean isHidden;
-    private TreeSet<String> tags;
     private String shortDescription;
     protected double salePrice;
     private String productName;
     private int stock;
-    private ArrayList<IDisplayable> mediaList;
-    private ArrayList<Category> categoryList;
+
 
     /**
      * initializes a product
@@ -26,15 +24,14 @@ public class Product implements Serializable{
      * @param stock the stock
      */
     public Product(int productID, String shortDescription, double salePrice, String productName, int stock) {
-        mediaList = new ArrayList<>();
         this.productID = productID;
         this.shortDescription = shortDescription;
         this.salePrice = salePrice;
         this.productName = productName;
         this.stock = stock;
         this.isHidden = true;
-        this.tags = new TreeSet<>();
     }
+
 
     /**
      * returns the productID
@@ -60,13 +57,6 @@ public class Product implements Serializable{
         return isHidden;
     }
 
-    /**
-     * returns the tags
-     * @return a TreeSet containing strings of tags
-     */
-    public TreeSet<String> getTags() {
-        return tags;
-    }
 
     /**
      * returns the short description
@@ -116,51 +106,5 @@ public class Product implements Serializable{
         isHidden = hidden;
     }
 
-    /**
-     * adds a tag
-     * @param tag
-     */
-    public void setTag(String tag) {
-        this.tags.add(tag);
-    }
-
-    /**
-     * removes a tag
-     * @param tag
-     */
-    public void removeTag(String tag) {
-        this.tags.remove(tag);
-    }
-
-    /**
-     * returns an ArrayList of displayable media
-     * @return an ArrayList containing IDisplayable objects
-     */
-    public ArrayList<IDisplayable> getMediaList() {
-        return new ArrayList<>(mediaList);
-    }
-
-    /**
-     * returns an ArrayList of categories
-     * @return an ArrayList containing categories
-     */
-    public ArrayList<Category> getCategoryList() {
-        return new ArrayList<>(categoryList);
-    }
-
-    /**
-     * adds a category to the categoryList based on the name and teh parent category
-     * @param name the name of the category
-     * @param parent the parent category to this category
-     */
-    public void addCategory(String name, Category parent) {
-        this.categoryList.add(new Category(name, parent));
-
-    }
-
-    public void addMedia(IDisplayable media){
-
-        this.mediaList.add(0,media);
-    }
 
 }

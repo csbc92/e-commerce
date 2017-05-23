@@ -45,6 +45,13 @@ public interface  IPIMPersistence {
      */
     HashMap<Integer, Product> searchProducts(String value);
 
+    /**
+     * Gets overview of products from a given category
+     * @param category the category to look for
+     * @return a map of product from the category chosen
+     */
+    HashMap<Integer, Product> getCategoryOverview(Category category);
+
     void saveRootCategory(Category rootCategory);
 
     Category fetchRootCategory();

@@ -11,6 +11,7 @@ public class Category implements Serializable{
     private String name;
     private ArrayList<Category> categoryList;
     private HashSet<Integer> productIDSet;
+    private int id;
     private int level; // root == 0
 
 
@@ -19,19 +20,26 @@ public class Category implements Serializable{
      * @param name the name of the category
      * @param parent the parent category
      */
-    public Category(String name, Category parent) {
+    public Category(String name, Category parent, int id) {
         this.name = name;
+        this.id = id;
         this.categoryList = new ArrayList<>();
         this.productIDSet = new HashSet<>();
         this.parent = parent;
         this.level = parent.getLevel() + 1;
     }
 
-    public Category(String name) {
+    public Category(String name, int id) {
         this.name = name;
+        this.id = id;
         this.categoryList = new ArrayList<>();
         this.productIDSet = new HashSet<>();
         this.level = 0;
+    }
+
+
+    public int getId() {
+        return id;
     }
 
     /**

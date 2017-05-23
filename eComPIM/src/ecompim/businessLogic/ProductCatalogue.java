@@ -14,31 +14,32 @@ public class ProductCatalogue implements IProductCatalogue {
     private PIMPersistenceFacade persistence;
 
     public ProductCatalogue() {
-        persistence = new PIMPersistenceFacade("data/file.dat", "data/category.dat");
+        //persistence = new PIMPersistenceFacade("data/file.dat", "data/category.dat");
+        persistence = new PIMPersistenceFacade("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
         //    testCategories(); //For creating a standard.
     }
- public void testCategories() {
-    HashSet<Category> testCat = new HashSet<Category>();
-    Category rootCategory = new Category("Produkter");
-    rootCategory.addChild(new Category("TV"));
-    rootCategory.addChild(new Category("Hvidevarer"));
-    Category cat = new Category("Computer dele");
-    rootCategory.addChild(cat);
-    Category cat2 = new Category("CPU", cat);
-    cat.addChild(cat2);
-    Category cat3 = new Category("CASE", cat);
-    cat.addChild(cat3);
-    cat.addChild(new Category("Grafikkort", cat));
-    cat.addChild(new Category("Motherboard", cat));
-    cat2.addProductID(7);
-    cat2.addProductID(8);
-    cat2.addProductID(9);
-    cat3.addProductID(3);
-    cat3.addProductID(6);
-    testCat.add(cat2);
-    testCat.add(cat3);
-    saveRootCategory(rootCategory);
-}
+// public void testCategories() {
+//    HashSet<Category> testCat = new HashSet<Category>();
+//    Category rootCategory = new Category("Produkter");
+//    rootCategory.addChild(new Category("TV"));
+//    rootCategory.addChild(new Category("Hvidevarer"));
+//    Category cat = new Category("Computer dele");
+//    rootCategory.addChild(cat);
+//    Category cat2 = new Category("CPU", cat);
+//    cat.addChild(cat2);
+//    Category cat3 = new Category("CASE", cat);
+//    cat.addChild(cat3);
+//    cat.addChild(new Category("Grafikkort", cat));
+//    cat.addChild(new Category("Motherboard", cat));
+//    cat2.addProductID(7);
+//    cat2.addProductID(8);
+//    cat2.addProductID(9);
+//    cat3.addProductID(3);
+//    cat3.addProductID(6);
+//    testCat.add(cat2);
+//    testCat.add(cat3);
+//    saveRootCategory(rootCategory);
+//}
 
     @Override
     public DetailedProduct fetchProduct(int productID) {
@@ -77,13 +78,15 @@ public class ProductCatalogue implements IProductCatalogue {
      */
     @Override
     public HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories) {
-        HashMap<Integer, Product> productList = new HashMap<>();
+        HashMap<Integer, Product> products = new HashMap<>();
         for (Category cat : categories) {
-            for (Integer id : cat.getProductIDSet()) {
-                productList.put(id, fetchProduct(id));
+
+            if (products.size() < 60) {
+                products.putAll(persistence.fetchCategoryOverview(cat));
             }
+
         }
-        return productList;
+        return products;
     }
 
 
@@ -104,7 +107,7 @@ public class ProductCatalogue implements IProductCatalogue {
         Category root = fetchRootCategory();
         returnList.add(root);
         addChildrenCategoriesToList(returnList,root);
-        return returnList;
+    return returnList;
     }
 
     @Override
@@ -117,7 +120,7 @@ public class ProductCatalogue implements IProductCatalogue {
     private void addNewChildCategory(Category parent, String categoryName,String newCategoryName) {
         for(Category cat : parent.getChildren()){
             if(cat.getName().equalsIgnoreCase(categoryName)){
-                cat.addChild(new Category(newCategoryName,cat));
+                cat.addChild(new Category(newCategoryName,cat,-1));
             } else {
                 addNewChildCategory(cat,categoryName,newCategoryName);
             }

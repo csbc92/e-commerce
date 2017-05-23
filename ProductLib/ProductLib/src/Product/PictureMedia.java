@@ -18,8 +18,8 @@ public class PictureMedia implements IDisplayable {
         this.mediaID = mediaID;
     }
     @Override
-    public File getMedia() {
-        return this.file;
+    public String getPath() {
+        return this.path;
     }
     @Override
     public int getID() {
