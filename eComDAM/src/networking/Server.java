@@ -44,10 +44,7 @@ public class Server extends Thread {
                 if (input == null || input.equals(".")) {
                     break;
                 }
-                //TODO something with the input from client
-//                Image a = fetcher.fetchMedia(input).getMedia();
-//                BufferedImage b = SwingFXUtils.fromFXImage(a,null);
-//                ImageIO.write(b,"jpg",socket.getOutputStream());
+                tool.sendObj(fetcher.fetchMedia(input));
                 socket.close();
             }
         } catch (IOException e) {

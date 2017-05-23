@@ -30,6 +30,7 @@ public class SQL {
         }
         this.myStatement = null;
         this.query = new StringBuilder();
+
     }
 
 
@@ -78,7 +79,9 @@ public class SQL {
      */
     public void close(){
         try {
-            this.myResultSet.close();
+            if (this.myResultSet != null) {
+                this.myResultSet.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

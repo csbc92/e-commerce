@@ -8,7 +8,7 @@ import java.io.Serializable;
  */
 public interface IDisplayable extends Serializable{
 
-    public String getPath();
+    public File getMedia();
 
     public int getID();
 
