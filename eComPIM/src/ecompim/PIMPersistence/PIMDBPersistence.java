@@ -48,7 +48,7 @@ public class PIMDBPersistence implements IPIMPersistence {
             while (rs.next()) {
                 product = new DetailedProduct(rs.getInt("productid"),
                         rs.getString("shortdescription"),
-                        rs.getDouble("costprice") * rs.getDouble("salesMargin"),
+                        rs.getDouble("salesMargin"),
                         rs.getString("name"),
                         rs.getInt("stock"),
                         rs.getDouble("costprice"));
@@ -125,7 +125,7 @@ public class PIMDBPersistence implements IPIMPersistence {
     public void saveProduct(DetailedProduct product) {
         DB.add("UPDATE product SET salesmargin = " + product.getMargin() + " WHERE productid = " + product.getProductID() + "; ");
         DB.add("DELETE FROM media WHERE productId =" + product.getProductID() + ";");
-        DB.add("INSERT INTO media VALUES('" + product.getMediaList().get(0).getMedia().getPath() + "', " + product.getProductID() + ", " +
+        DB.add("INSERT INTO media VALUES('" + product.getMediaList().get(0).getPath() + "', " + product.getProductID() + ", " +
                 "" + product.getMediaList().get(0).getID() + ", 0); ");
         DB.add("DELETE FROM tags WHere productID =" + product.getProductID() + ";");
         for (String tag : product.getTags()
@@ -175,9 +175,7 @@ public class PIMDBPersistence implements IPIMPersistence {
 
         addChildren(cat);
 
-
         addProducts(cat);
-
 
         return cat;
     }
@@ -362,7 +360,7 @@ public class PIMDBPersistence implements IPIMPersistence {
             while (rs.next()) {
                 products.put(rs.getInt("productid"), new Product(rs.getInt("productid"),
                         rs.getString("shortdescription"),
-                        rs.getDouble("costprice") * rs.getDouble("salesMargin"),
+                        rs.getDouble("costprice") * (rs.getDouble("salesMargin")/100 + 1),
                         rs.getString("name"),
                         rs.getInt("stock")));
             }
