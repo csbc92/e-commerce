@@ -18,6 +18,7 @@ public class Category implements Serializable{
     /**
      * Initializes a category with a parent
      * @param name the name of the category
+     * @param id the id of the category
      * @param parent the parent category
      */
     public Category(String name, Category parent, int id) {
@@ -29,6 +30,11 @@ public class Category implements Serializable{
         this.level = parent.getLevel() + 1;
     }
 
+    /**
+     * initializes a root category
+     * @param name the name of the category
+     * @param id the id of the category
+     */
     public Category(String name, int id) {
         this.name = name;
         this.id = id;
@@ -38,6 +44,10 @@ public class Category implements Serializable{
     }
 
 
+    /**
+     * returns the id of the category
+     * @return the id of the category as a int
+     */
     public int getId() {
         return id;
     }
@@ -96,6 +106,7 @@ public class Category implements Serializable{
     public List<Category> getChildren() {
         return categoryList;
     }
+
 
     public void addProductID(Integer ID){
         productIDSet.add(ID);
