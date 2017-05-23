@@ -27,6 +27,12 @@ public class ClientTool {
     private ObjectInputStream objFromServer;
 
 
+    /**
+     * A client tool to socket communication.
+     * @param ip The IP-address of the server
+     * @param port The communication port
+     * @throws IOException
+     */
     public ClientTool(String ip,int port) throws IOException {
         System.out.println("Client");
         clientSocket = new Socket(ip, port);
@@ -35,16 +41,31 @@ public class ClientTool {
         stringFromServer = new DataInputStream(clientSocket.getInputStream());
 
     }
-
+    /**
+     * Send a given string to the server
+     * @param value The String to be send
+     * @throws IOException
+     */
     public synchronized void sendString(String value) throws IOException {
         toServer.writeUTF(value);
     }
 
+    /**
+     * Read a given string send from the server
+     * @return
+     * @throws IOException
+     */
     public synchronized String readString() throws IOException {
         String clientInput = stringFromServer.readUTF();
         return clientInput;
     }
 
+    /**
+     * Read a given object send from the server
+     * @return
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public synchronized Object readObj() throws ClassNotFoundException, IOException {
         Object clientInput = objFromServer.readObject();
         return clientInput;

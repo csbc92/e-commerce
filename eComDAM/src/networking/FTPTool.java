@@ -21,6 +21,11 @@ public class FTPTool {
     String password = "ecom1234";
     String hostname = "ftp.byethost33.com";
 
+    /**
+     * Tool to communicate with a FTP server.
+     * @param user the username
+     * @param password the password
+     */
     public FTPTool(String user, String password) {
 
         ftpClient = new FTPClient();
@@ -34,6 +39,10 @@ public class FTPTool {
 //
 //    }
 
+    /**
+     * Sign-in with the given username and password.
+     * Must be done before interacting with the server.
+     */
     private void login() {
         try {
             ftpClient.connect(this.hostname);
@@ -44,6 +53,9 @@ public class FTPTool {
         }
     }
 
+    /**
+     * Logout after interacting with the server
+     */
     private void logout() {
         try {
             ftpClient.logout();
@@ -53,6 +65,11 @@ public class FTPTool {
         }
     }
 
+    /**
+     * Returns the parent of the current working directory, and combines it with the given path.
+     * @param path The path which is combined with the current working directory.
+     * @return a file with the resulting path.
+     */
     private File getParentDir(String path) {
         File currentDir;
         File newDir;
@@ -61,11 +78,18 @@ public class FTPTool {
         return newDir;
     }
 
+    /**
+     * Retrieve a specific file from the FTP server.
+     * @param path The path of the file to be downloaded.
+     * @return the path where the file has been downloaded to.
+     */
     public String retrieveFile(String path) {
         try {
             login();
+            // Important to set the fileType and the mode before downloading files.
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
             ftpClient.enterLocalPassiveMode();
+            //
             if (ftpClient.isConnected()) {
                 String directory = getParentDir(path).getAbsolutePath();
                 FileOutputStream fos = new FileOutputStream(directory);
@@ -80,25 +104,6 @@ public class FTPTool {
             logout();
         }
         return null;
-    }
-
-    public void retrieveist() {
-        login();
-        ftpClient.enterLocalPassiveMode();
-        try {
-            ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (ftpClient.isConnected()) {
-            try {
-                for (FTPFile ftpFile : ftpClient.listFiles("htdocs/files/")) {
-                    System.out.println(ftpFile.getName());
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
 }
