@@ -22,4 +22,9 @@ public class VideoMedia implements IDisplayable {
     public int getID() {
         return 0;
     }
+
+    @Override
+    public String getPath() {
+        throw new UnsupportedOperationException();
+    }
 }

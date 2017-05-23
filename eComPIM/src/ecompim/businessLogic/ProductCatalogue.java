@@ -51,7 +51,7 @@ public class ProductCatalogue implements IProductCatalogue {
     }
 
     @Override
-    public IDisplayable fetchMedia(int productID) throws IOException, ClassNotFoundException {
+    public IDisplayable fetchMedia(int productID) {
         return null;
     }
 

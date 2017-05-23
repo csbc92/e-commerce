@@ -45,9 +45,9 @@ public class Server extends Thread {
                     break;
                 }
                 //TODO something with the input from client
-                Image a =fetcher.fetchMedia(input).getMedia();
-                BufferedImage b = SwingFXUtils.fromFXImage(a,null);
-                ImageIO.write(b,"jpg",socket.getOutputStream());
+//                Image a = fetcher.fetchMedia(input).getMedia();
+//                BufferedImage b = SwingFXUtils.fromFXImage(a,null);
+//                ImageIO.write(b,"jpg",socket.getOutputStream());
                 socket.close();
             }
         } catch (IOException e) {

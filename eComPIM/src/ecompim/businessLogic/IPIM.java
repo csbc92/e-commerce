@@ -56,5 +56,5 @@ public interface IPIM extends IProductFetcher {
 
     public HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories);
 
-    Image fetchMedia(int i);
+    IDisplayable fetchMedia(int i);
 }

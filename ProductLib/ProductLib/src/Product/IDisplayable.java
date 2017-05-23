@@ -11,4 +11,6 @@ public interface IDisplayable extends Serializable{
     public File getMedia();
 
     public int getID();
+
+    public String getPath();
 }

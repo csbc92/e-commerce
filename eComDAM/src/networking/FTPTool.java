@@ -5,10 +5,7 @@
  */
 package networking;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -31,8 +28,9 @@ public class FTPTool {
     }
 
 //    public static void main(String[] args) {
-//        FTPTool tool = new FTPTool("","");
-//        tool.getfile();
+//        FTPTool tool = new FTPTool("", "");
+////        tool.retrieveist();
+//        tool.retrieveFile("htdocs/files/victor.jpg");
 //
 //    }
 
@@ -55,23 +53,36 @@ public class FTPTool {
         }
     }
 
-    public InputStream retrieveFile(String path){
+    private File getParentDir(String path) {
+        File currentDir;
+        File newDir;
+        currentDir = new File(System.getProperty("user.dir"));
+        newDir = new File(currentDir.getParentFile(), path);
+        return newDir;
+    }
+
+    public String retrieveFile(String path) {
         try {
             login();
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
             ftpClient.enterLocalPassiveMode();
             if (ftpClient.isConnected()) {
-               return ftpClient.retrieveFileStream(path);
+                String directory = getParentDir(path).getAbsolutePath();
+                FileOutputStream fos = new FileOutputStream(directory);
+                if (ftpClient.retrieveFile(path, fos)) {
+                    return directory;
+                }
+                throw new FileNotFoundException("Filen kunne ikke downloades");
             }
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-//            logout();
+            logout();
         }
         return null;
     }
 
-    public void retrieveist(){
+    public void retrieveist() {
         login();
         ftpClient.enterLocalPassiveMode();
         try {
@@ -81,7 +92,7 @@ public class FTPTool {
         }
         if (ftpClient.isConnected()) {
             try {
-                for (FTPFile ftpFile : ftpClient.listFiles("/htdocs/Files")) {
+                for (FTPFile ftpFile : ftpClient.listFiles("htdocs/files/")) {
                     System.out.println(ftpFile.getName());
                 }
             } catch (IOException e) {
