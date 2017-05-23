@@ -15,7 +15,7 @@ public class ProductCatalogue implements IProductCatalogue {
 
     public ProductCatalogue() {
         //persistence = new PIMPersistenceFacade("data/file.dat", "data/category.dat");
-        persistence = new PIMPersistenceFacade("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+        persistence = new PIMPersistenceFacade("jdbc:postgresql://localhost:5432/eCommerce", "postgres", "1234");
         //    testCategories(); //For creating a standard.
     }
 // public void testCategories() {
@@ -55,6 +55,7 @@ public class ProductCatalogue implements IProductCatalogue {
     public IDisplayable fetchMedia(int productID) throws IOException, ClassNotFoundException {
         return null;
     }
+
 
     @Override
     public HashMap<Integer, Product> fetchProductOverview() {

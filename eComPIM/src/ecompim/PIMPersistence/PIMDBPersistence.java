@@ -123,7 +123,7 @@ public class PIMDBPersistence implements IPIMPersistence{
         DB.add("UPDATE product SET salesmargin = " + product.getMargin() + " WHERE productid = " + product.getProductID() + "; ");
         DB.add("DELETE FROM media WHERE productId =" +  product.getProductID()+";");
         DB.add("INSERT INTO media VALUES('" + product.getMediaList().get(0).getMedia().getPath() + "', " + product.getProductID() + ", " +
-                ""+ product.getMediaList().get(0).getID() + ", 0); ");
+                ""+ product.getMediaList().get(0).getID() + ", 0); ");//TODO Lortet crasher hvis der ikke er noget billede.
         DB.add("DELETE FROM tags WHere productID =" + product.getProductID()+";");
         for (String tag: product.getTags()
              ) {
