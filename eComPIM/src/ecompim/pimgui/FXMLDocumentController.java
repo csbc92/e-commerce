@@ -518,9 +518,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void butAddNewCategoryHandler(ActionEvent event) {
         manager.addNewCategory(tfCategoryName.getText(), cbCategories.getSelectionModel().getSelectedItem().getName());
-        for (Category s : manager.getAllCategories()) {
-            System.out.println(s.getName());
-        }
+//        for (Category s : manager.getAllCategories()) {
+//            System.out.println(s.getName());
+//        }
         cbCategories.setItems(FXCollections.observableArrayList(manager.getAllCategories()));
     }
 

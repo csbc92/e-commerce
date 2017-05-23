@@ -2,6 +2,8 @@ package ecompim.PIMPersistence;
 
 import Product.*;
 import ecompim.SQL.SQL;
+import org.postgresql.util.PSQLException;
+import org.postgresql.util.PSQLState;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -229,7 +231,123 @@ public class PIMDBPersistence implements IPIMPersistence {
 
     @Override
     public void saveRootCategory(Category rootCategory) {
-        throw new UnsupportedOperationException();
+        try {
+            saveToCatTable(rootCategory);
+            saveCatRelationships(rootCategory);
+            saveProductsInCat(rootCategory);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void saveProductsInCat(Category rootCategory) throws SQLException {
+
+        for (Integer id : rootCategory.getProductIDSet()
+             ) {
+//            if (id == 10000)
+//                System.out.println("GR8");
+
+            DB.add("SELECT * FROM productInCategory WHERE categoryId = "+ rootCategory.getId() + " AND productId = "+id+";");
+            DB.open();
+            ResultSet rs = DB.getResultSet();
+
+            try {
+                rs.next();
+                rs.getInt(1); // Only to trigger an exception
+                DB.clear();
+            }catch (PSQLException e) {
+
+
+                DB.close();
+                DB.clear();
+                //System.out.println("NO WORKY WORKY");
+
+                DB.add("INSERT INTO productInCategory VALUES(" + rootCategory.getId() + "," + id + ");");
+                DB.execute();
+                DB.clear();
+            }
+        }
+
+        for (Category child : rootCategory.getChildren()
+             ) {
+            saveProductsInCat(child);
+        }
+    }
+
+    private void saveCatRelationships(Category rootCategory) throws SQLException {
+
+        for (Category child : rootCategory.getChildren()
+             ) {
+            DB.add("SELECT * FROM categoryrelationship WHERE parentcategory = "+ rootCategory.getId() + " AND childcategory = "+child.getId()+";");
+            DB.open();
+            ResultSet rs = DB.getResultSet();
+
+            try {
+                rs.next();
+                rs.getInt(1); // Only to trigger an exception
+                DB.close();
+                DB.clear();
+
+            } catch (PSQLException e) {
+                DB.close();
+                DB.clear();
+
+
+                DB.add("INSERT INTO categoryrelationship VALUES(" + rootCategory.getId()+","+ child.getId()+");");
+                DB.execute();
+                DB.clear();
+
+            }
+
+
+        }
+
+
+
+
+
+        for (Category child : rootCategory.getChildren()
+                ) {
+           saveCatRelationships(child);
+        }
+
+    }
+
+    private void saveToCatTable(Category root) throws SQLException {
+
+
+
+        DB.add("SELECT * FROM category WHERE categoryid = "+ root.getId()+";");
+        DB.open();
+        ResultSet rs = DB.getResultSet();
+
+        try {
+            rs.next();
+            rs.getInt(1); // Only to trigger exception
+
+            DB.close();
+            DB.clear();
+
+        }catch (PSQLException e ) {
+            DB.close();
+            DB.clear();
+
+            System.out.println(root.getId());
+                DB.add("INSERT INTO category VALUES (" + root.getId() + ",'" + root.getName() + "');");
+                DB.execute();
+                DB.clear();
+
+
+
+        }
+
+
+        for (Category c : root.getChildren()
+             ) {
+            saveToCatTable(c);
+
+        }
     }
 
 

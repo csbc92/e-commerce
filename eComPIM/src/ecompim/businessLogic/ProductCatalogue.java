@@ -12,10 +12,12 @@ import java.util.*;
 public class ProductCatalogue implements IProductCatalogue {
 
     private PIMPersistenceFacade persistence;
+    private Category rootCategory;
 
     public ProductCatalogue() {
         //persistence = new PIMPersistenceFacade("data/file.dat", "data/category.dat");
         persistence = new PIMPersistenceFacade("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+        rootCategory = fetchRootCategory();
         //    testCategories(); //For creating a standard.
     }
 // public void testCategories() {
@@ -64,6 +66,7 @@ public class ProductCatalogue implements IProductCatalogue {
     @Override
     public void saveChanges(DetailedProduct product) {
         persistence.saveProduct(product);
+        saveRootCategory(rootCategory);
     }
 
     @Override
@@ -117,27 +120,27 @@ public class ProductCatalogue implements IProductCatalogue {
     @Override
     public List<Category> getAllCategories() {
         List<Category> returnList = new ArrayList<>();
-        Category root = fetchRootCategory();
-        returnList.add(root);
-        addChildrenCategoriesToList(returnList,root);
+        returnList.add(rootCategory);
+        addChildrenCategoriesToList(returnList,rootCategory);
         return returnList;
     }
 
     @Override
     public void addNewCategory(String categoryName, String parent) {
-        Category root = fetchRootCategory();
-        addNewChildCategory(root,parent,categoryName);
-        saveRootCategory(root);
+
+        addNewChildCategory(rootCategory,parent,categoryName);
+
     }
 
     private void addNewChildCategory(Category parent, String categoryName,String newCategoryName) {
         for(Category cat : parent.getChildren()){
             if(cat.getName().equalsIgnoreCase(categoryName)){
-                cat.addChild(new Category(newCategoryName,cat,-1));
+                cat.addChild(new Category(newCategoryName,cat,301));
             } else {
                 addNewChildCategory(cat,categoryName,newCategoryName);
             }
         }
+        //System.out.println("We don did add a cat");
     }
 
     private void addChildrenCategoriesToList(List<Category> returnList, Category parent) {
@@ -151,9 +154,9 @@ public class ProductCatalogue implements IProductCatalogue {
 
     @Override
     public void addProductToCategory(Product product, String categoryName) {
-        Category rootCategory = fetchRootCategory();
         goThroughCategories(rootCategory, categoryName, product);
-        saveRootCategory(rootCategory);
+//        saveRootCategory(rootCategory);
+
     }
     private void goThroughCategories(Category parent, String categoryName, Product product){
         for(Category cat : parent.getChildren()){
@@ -161,6 +164,7 @@ public class ProductCatalogue implements IProductCatalogue {
                 goThroughCategories(cat,categoryName,product);
             } else {
                 cat.addProductID(product.getProductID());
+               // System.out.println("IT IS ADDED");
                 return;
             }
         }
