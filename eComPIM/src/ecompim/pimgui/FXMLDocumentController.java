@@ -163,11 +163,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     public void searchButtonHandler(ActionEvent actionEvent) {
-        if (searchTextField.getText().isEmpty()) {
-            setListViewProducts(manager.fetchProductsByCategory(selectedCategories));
-        } else {
             setListViewProducts(manager.searchProducts(searchTextField.getText()));
-        }
 
     }
 
