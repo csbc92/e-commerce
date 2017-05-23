@@ -29,13 +29,21 @@ public class PIMDBPersistence implements IPIMPersistence {
 
     }
 
-
+    /**
+     * fetches a product overview of 50 products
+     * @return a HasMap with products
+     */
     @Override
     public HashMap<Integer, Product> fetchProductOverview() {
         String query = "SELECT * FROM product ORDER BY productid LIMIT 50;";
         return getProducts(query);
     }
 
+    /**
+     * fetches a detailed product
+     * @param productID the ID of the detailed product to fetch
+     * @return detailed product
+     */
     @Override
     public DetailedProduct fetchProduct(int productID) {
         DetailedProduct product = null;
@@ -116,11 +124,19 @@ public class PIMDBPersistence implements IPIMPersistence {
         return product;
     }
 
+    /**
+     * Unsupported operation
+     * @param products the products to save
+     */
     @Override
     public void storeProducts(Map<Integer, DetailedProduct> products) {
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * saves á products changes to the Database
+     * @param product the product that is to be saved.
+     */
     @Override
     public void saveProduct(DetailedProduct product) {
         DB.add("UPDATE product SET salesmargin = " + product.getMargin() + " WHERE productid = " + product.getProductID() + "; ");
@@ -140,6 +156,11 @@ public class PIMDBPersistence implements IPIMPersistence {
 
     }
 
+    /**
+     * Search for products
+     * @param value the value to search for
+     * @return a overview of a max of 50 products matching the search criteria
+     */
     @Override
     public HashMap<Integer, Product> searchProducts(String value) {
 
@@ -147,6 +168,11 @@ public class PIMDBPersistence implements IPIMPersistence {
         return getProducts(query);
     }
 
+    /**
+     * returns products from a category. max 50 products
+     * @param category the category to look for
+     * @return a HashMap of products
+     */
     @Override
     public HashMap<Integer, Product> getCategoryOverview(Category category) {
 
@@ -154,6 +180,10 @@ public class PIMDBPersistence implements IPIMPersistence {
         return getProducts(query);
     }
 
+    /**
+     * fetcches root category
+     * @return root category
+     */
     @Override
     public Category fetchRootCategory() {
         Category cat = null;
@@ -180,6 +210,10 @@ public class PIMDBPersistence implements IPIMPersistence {
         return cat;
     }
 
+    /**
+     * adds children to category and to all sub categories
+     * @param cat category
+     */
     private void addChildren(Category cat) {
         DB.add("SELECT * FROM category NATURAL JOIN (SELECT parentcategory, childcategory AS categoryID FROM categoryrelationship)as foo WHERE parentcategory = " + cat.getId() + ";");
         DB.open();
@@ -203,6 +237,10 @@ public class PIMDBPersistence implements IPIMPersistence {
         }
     }
 
+    /**
+     * places products in categories
+     * @param cat category
+     */
     private void addProducts(Category cat) {
 
         DB.add("SELECT productid FROM productInCategory WHERE categoryid =" + cat.getId());
@@ -227,6 +265,10 @@ public class PIMDBPersistence implements IPIMPersistence {
         }
     }
 
+    /**
+     * Unsupported Opertion
+     * @param rootCategory
+     */
     @Override
     public void saveRootCategory(Category rootCategory) {
         try {
@@ -348,7 +390,11 @@ public class PIMDBPersistence implements IPIMPersistence {
         }
     }
 
-
+    /**
+     * fetches products from database from a given query
+     * @param query
+     * @return a HashMap of products
+     */
     private HashMap<Integer, Product> getProducts(String query) {
         HashMap<Integer, Product> products = new HashMap<>();
 

@@ -16,13 +16,18 @@ public class DAMFilePersistence implements IDAMPersistence {
         this.mediaFolder = new File(mediaFolderPath);
     }
 
+    /**
+     * Unsupported Operation
+     * @param mediaID id of desired media
+     * @return
+     */
     @Override
     public IDisplayable fetchMedia(String mediaID) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public Set<IDisplayable> fetchMediaOverview() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 }
