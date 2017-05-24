@@ -457,6 +457,10 @@ public class FXMLDocumentController implements Initializable {
         manager.collectERPProducts();
     }
 
+    /**
+     * sets the tags from the recieved string
+     * @param actionEvent
+     */
     @FXML
     public void addTagHandler(ActionEvent actionEvent) {
         String tag = tfAddTag.getText();
@@ -466,6 +470,10 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     * Removes the specified tags
+     * @param actionEvent
+     */
     @FXML
     public void removeTagHandler(ActionEvent actionEvent) {
         String tag = lvTags.getSelectionModel().getSelectedItem();
@@ -504,12 +512,20 @@ public class FXMLDocumentController implements Initializable {
         return null;
     }
 
+    /**
+     * Adds the products to categories
+     * @param event
+     */
     @FXML
     private void butAddCategoryHandler(ActionEvent event) {
         manager.addProductToCategory(cbCategories.getSelectionModel().getSelectedItem().getName());
         lvCategories.setItems(populateCategoryListView());
     }
 
+    /**
+     * Creates a new category
+     * @param event
+     */
     @FXML
     private void butAddNewCategoryHandler(ActionEvent event) {
         manager.addNewCategory(tfCategoryName.getText(), cbCategories.getSelectionModel().getSelectedItem().getName());
@@ -518,6 +534,7 @@ public class FXMLDocumentController implements Initializable {
 //        }
         cbCategories.setItems(FXCollections.observableArrayList(manager.getAllCategories()));
     }
+
 
     public void butChangePicHandler(ActionEvent actionEvent) {
         Parent root = null;
