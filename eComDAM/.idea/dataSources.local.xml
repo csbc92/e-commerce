@@ -3,6 +3,7 @@
   <component name="dataSourceStorageLocal">
     <data-source name="eComDAM@localhost" uuid="25229043-6952-4eac-9894-9af08220c412">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <introspection-schemas>eComDAM:public</introspection-schemas>
     </data-source>
   </component>
 </project>

@@ -3,11 +3,9 @@ package ecompim.businessLogic;
 
 
 import Product.Product;
-import ecompim.businessLogic.PIMManager;
-import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 /**
  * Created by danie on 23-05-2017.
@@ -15,7 +13,6 @@ import static org.junit.Assert.assertTrue;
 
 public class PIMManagerTest {
     PIMManager pimManager = new PIMManager();
-
 
 
     @Test

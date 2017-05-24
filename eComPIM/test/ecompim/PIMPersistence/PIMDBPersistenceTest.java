@@ -6,8 +6,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -17,7 +15,7 @@ class PIMDBPersistenceTest {
     PIMDBPersistence pimdbPersistence;
     @BeforeEach
     void setUp() {
-        pimdbPersistence = new PIMDBPersistence("jdbc:postgresql://localhost:5432/eCommerce", "postgres", "1234");
+        pimdbPersistence = new PIMDBPersistence("jdbc:postgresql://localhost:5432/eComPIM", "postgres", "1234");
     }
 
     @AfterEach
