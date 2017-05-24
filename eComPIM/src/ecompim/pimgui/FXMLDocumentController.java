@@ -312,7 +312,8 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * send help
+     * Set the image to the first image in the current product's media list, if an image is available.
+     * Otherwise set the image to null.
      */
      void updateImage() {
          if (!manager.getCurrentProduct().getMediaList().isEmpty()) {
