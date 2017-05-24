@@ -25,5 +25,13 @@ public interface IProductFetcher {
      */
     public HashMap<Integer, Product> searchProducts(String searchCriteria);
 
-    IDisplayable fetchMedia(int productID) ;
+
+    /**
+     * Gets the media from a specific product
+     * @param productID
+     * @return ?
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    IDisplayable fetchMedia(int productID) throws IOException, ClassNotFoundException;
 }

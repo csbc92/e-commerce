@@ -27,21 +27,47 @@ public interface IProductCatalogue extends IProductFetcher {
     void saveChanges(DetailedProduct product);
 
     /**
-     * Fetch a fresh list of products from the ERP system and save them to persistance.
+     * Fetch a fresh list of products from the ERP system and save them to persistence.
      * Overwrites any existing data
      */
     void saveProductsFromERP(Map<Integer, DetailedProduct> products);
 
+    /**
+     * Fetch a map of products.
+     * @param categories a set of categories, from which products will be found.
+     * @return a Hashmap containing products grouped by category.
+     */
     HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories);
 
-
+    /**
+     *
+     * @param rootCategory
+     */
     void saveRootCategory(Category rootCategory);
 
+    /**
+     * Obtains the source category of the category tree system.
+     * @return The root of the category tree
+     */
     Category fetchRootCategory();
 
+    /**
+     * Returns a list of contianing all avialable categories.
+     * @return a list of categories.
+     */
     List<Category> getAllCategories();
 
+    /**
+     * Create a new category
+     * @param categoryName the name of the category to be created.
+     * @param parent the parent of the category to be created (parent must exist)
+     */
     void addNewCategory(String categoryName, String parent);
 
+    /**
+     * adds a specific product to a specific category
+     * @param product the product to be added to a category
+     * @param categoryName the category to which a product is to be added
+     */
     void addProductToCategory(Product product,String categoryName);
 }
