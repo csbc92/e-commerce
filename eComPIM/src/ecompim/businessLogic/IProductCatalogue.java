@@ -27,13 +27,13 @@ public interface IProductCatalogue extends IProductFetcher {
     void saveChanges(DetailedProduct product);
 
     /**
-     * Fetch a fresh list of products from the ERP system and save them to persistance.
+     * Fetch a fresh list of products from the ERP system and save them to persistence.
      * Overwrites any existing data
      */
     void saveProductsFromERP(Map<Integer, DetailedProduct> products);
 
     /**
-     * Fetch a map of product
+     * Fetch a map of products.
      * @param categories a set of categories, from which products will be found.
      * @return a Hashmap containing products grouped by category.
      */

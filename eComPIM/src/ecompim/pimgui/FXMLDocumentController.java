@@ -315,19 +315,13 @@ public class FXMLDocumentController implements Initializable {
      * send help
      */
      void updateImage() {
-        try {
-            if (!manager.getCurrentProduct().getMediaList().isEmpty()) {
-                imgvPic.setImage(new Image( new File(manager.fetchMedia(manager.getCurrentProduct().getMediaList().get(0).getID()).getPath()).toURI().toString()));
-            } else {
-                imgvPic.setImage(null);
-            }
+         if (!manager.getCurrentProduct().getMediaList().isEmpty()) {
+             imgvPic.setImage(new Image( new File(manager.fetchMedia(manager.getCurrentProduct().getMediaList().get(0).getID()).getPath()).toURI().toString()));
+         } else {
+             imgvPic.setImage(null);
+         }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+     }
 
     private ObservableList<Category> populateCategoryListView() {
         ObservableList<Category> allCategories = FXCollections.observableArrayList(manager.getAllCategories());
