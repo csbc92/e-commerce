@@ -24,6 +24,12 @@ public class Product implements Serializable{
      * @param stock the stock
      */
     public Product(int productID, String shortDescription, double salePrice, String productName, int stock) {
+        if (productID < 0) {
+            throw new IllegalArgumentException("productID must not be negative.");
+        }
+        if (stock < 0) {
+            throw new IllegalArgumentException("stock must not be negative");
+        }
         this.productID = productID;
         this.shortDescription = shortDescription;
         this.salePrice = salePrice;
