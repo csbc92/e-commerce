@@ -5,6 +5,7 @@
  */
 package ecompim.networking;
 
+import Product.DetailedProduct;
 import ecompim.businessLogic.IProductFetcher;
 
 import java.io.IOException;
@@ -40,7 +41,11 @@ public class Server implements Runnable {
 
                 if (clientCmd[0].trim().equalsIgnoreCase("pro")) {
                     int productID = Integer.parseInt(clientCmd[1]);
-                    serverTool.sendObj(fetcher.fetchProduct(productID));
+                    if(fetcher.fetchProduct(productID) != null) {
+                        serverTool.sendObj(fetcher.fetchProduct(productID));
+                    } else {
+                        serverTool.sendObj(new DetailedProduct(-1,"error",0,"error",0,0));
+                    }
                 }
             }
         } catch (IOException ex) {
