@@ -52,8 +52,16 @@ public interface  IPIMPersistence {
      */
     HashMap<Integer, Product> getCategoryOverview(Category category);
 
+    /**
+     * saves the given category as the root of the category tree
+     * @param rootCategory Category object to be saved as root.
+     */
     void saveRootCategory(Category rootCategory);
 
+    /**
+     * Gets the root of the category tree.
+     * @return category object that is the root.
+     */
     Category fetchRootCategory();
 
 }
