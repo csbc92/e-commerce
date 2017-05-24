@@ -17,16 +17,10 @@ import java.util.logging.Logger;
  */
 public class ClientHandler {
 
-    private Client client;
+    private ClientTool client;
 
     public ClientHandler() {
-        try {
-            client = new Client();
-            client.createClient(6789);
-
-        } catch (IOException ex) {
-            Logger.getLogger(ClientHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            client = new ClientTool("localhost",6789);
     }
 
     public DetailedProduct getProduct( int productId) throws IOException, ClassNotFoundException {
