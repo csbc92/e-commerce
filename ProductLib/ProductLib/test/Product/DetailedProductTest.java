@@ -194,7 +194,7 @@ class DetailedProductTest {
         String productName = "Product name";
         int stock = 30;
         double costPrice = 350.75;
-
+        //TODO et produkt kan godt oprettes med mindre end 0% i margin. Dette er vel også meningen så længe costprice og sales price ikke er under 0.
         assertThrows(IllegalArgumentException.class, () -> {
             DetailedProduct p =  new DetailedProduct(id, shortDescription, margin, productName, stock, costPrice);
         });
