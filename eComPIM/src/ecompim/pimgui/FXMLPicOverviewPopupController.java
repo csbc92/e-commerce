@@ -33,14 +33,14 @@ public class FXMLPicOverviewPopupController implements Initializable {
         ArrayList<IDisplayable> picList = new ArrayList<>();
         ObservableList<IDisplayable> oList = FXCollections.observableArrayList();
 
-//        for (int i = 1; i < 10; i++) {
-                IDisplayable temp = FXMLDocumentController.manager.fetchMedia(1);
+        for (int i = 1; i < 10; i++) {
+                IDisplayable temp = FXMLDocumentController.manager.fetchMedia(i);
         //TODO FEJL
                 if (temp.getID() != 0) {
                     picList.add(temp);
                 }
 
-//        }
+       }
 
         lvPicOverview.setCellFactory(new Callback<ListView<IDisplayable>, ListCell<IDisplayable>>() {
             // Implementation of the Callback-method that renders the data.

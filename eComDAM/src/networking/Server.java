@@ -45,7 +45,7 @@ public class Server extends Thread {
                     break;
                 }
                 tool.sendObj(fetcher.fetchMedia(input));
-                socket.close();
+                //socket.close();
             }
         } catch (IOException e) {
             e.printStackTrace();
