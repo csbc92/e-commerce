@@ -20,6 +20,4 @@ public interface IDisplayable extends Serializable{
      * @return id of media
      */
     public int getID();
-
-    public String getPath();
 }

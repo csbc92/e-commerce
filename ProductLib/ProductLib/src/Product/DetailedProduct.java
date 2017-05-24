@@ -24,14 +24,19 @@ public class DetailedProduct extends Product implements Serializable {
      * @param costPrice the cost price
      * @param productName the product name
      * @param stock the current stock of the product
+     * @param margin the margin in whole positive/negative number e.g. 20 if the sale price on the product is (cost price + 20%). Or -90 for a sale price price of (cost price -90%)
      */
     public DetailedProduct(int productID, String shortDescription, double margin, String productName, int stock, double costPrice) {
         super(productID, shortDescription, costPrice*(margin/100 + 1), productName, stock);
+        if (costPrice < 0) {
+            throw new IllegalArgumentException("costPrice must not be negative.");
+        }
         this.costPrice = costPrice;
-        this.margin = margin;
+        this.setMargin(margin);
         this.longDescription = shortDescription;
         this.mediaList = new ArrayList<>();
         this.tags = new TreeSet<>();
+        this.technicalDetails = new HashMap<>();
 
     }
 
@@ -52,11 +57,37 @@ public class DetailedProduct extends Product implements Serializable {
     }
 
     /**
-     * returns the tecnical details as a HashMap
+     * Returns a copy of the tecnical details as a HashMap
      * @return the technical details as a HashMap with strings as keys and strings as values
      */
     public HashMap<String, String> getTechnicalDetails() {
-        return technicalDetails;
+        return new HashMap<>(technicalDetails);
+    }
+
+    /**
+     * Adds the specified key and value to the technical details.
+     * If the key already exists, the value will be overridden.
+     * @param key
+     * @param value
+     */
+    public String addTechnicalDetail(String key, String value) {
+        if (key == null) {
+            throw new IllegalArgumentException("The key must not be null");
+        }
+        if (value == null) {
+            throw new IllegalArgumentException("The value must not be null");
+        }
+
+        return this.technicalDetails.put(key, value);
+    }
+
+    /**
+     * Removes the technical detail with the specified key, if it exists.
+     * @param key
+     * @return The value that was removed or null if the key does not exist.
+     */
+    public String removeTechnicalDetail(String key) {
+        return this.technicalDetails.remove(key);
     }
 
     /**
@@ -85,9 +116,12 @@ public class DetailedProduct extends Product implements Serializable {
 
     /**
      * sets the margin and new sales price
-     * @param margin the value of the new margin
+     * @param margin the margin in whole positive/negative number e.g. 20 if the sale price on the product is (cost price + 20%). Or -90 for a sale price price of (cost price -90%)
      */
     public void setMargin(double margin) {
+        if (margin < -90) {
+            throw new IllegalArgumentException("margin must not be less than -90.");
+        }
         this.margin = margin;
         this.salePrice = costPrice + costPrice * margin/100;
     }
@@ -147,7 +181,47 @@ public class DetailedProduct extends Product implements Serializable {
      * @param media
      */
     public void addMedia(IDisplayable media){
-        this.mediaList.add(0,media);
+        if (media == null) {
+            throw new IllegalArgumentException("media must not be null");
+        }
+
+        this.mediaList.add(media);
+    }
+
+    /**
+     * Removes a media with the specified id
+     * @param id
+     */
+    public boolean removeMedia(int id) {
+
+        IDisplayable result = this.getMedia(id);
+
+        // If no entry was found, always return null.
+        if (result == null) {
+            return false;
+        }
+
+        // Remove the media and return the result.
+        return this.mediaList.remove(result);
+    }
+
+    /**
+     * Search for a specific IDisplayable
+     * @param id The ID to search for
+     * @return Return the IDisplayable or null if not found.
+     */
+    public IDisplayable getMedia(int id) {
+        IDisplayable result = null;
+
+        // Linear search since the datastructure is an unsorted List
+        for (IDisplayable displayable : this.mediaList) {
+            if (id == displayable.getID()) {
+                result = displayable;
+                break;
+            }
+        }
+
+        return result;
     }
 
 
