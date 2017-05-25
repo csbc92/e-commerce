@@ -2,10 +2,12 @@ package Networking;
 
 import Product.IDisplayable;
 
+import java.io.Serializable;
+
 /**
  * Created by danie on 25-05-2017.
  */
-public class DisplayableFrame {
+public class DisplayableFrame implements Serializable {
     private StatusCode statusCode;
     private IDisplayable media;
 

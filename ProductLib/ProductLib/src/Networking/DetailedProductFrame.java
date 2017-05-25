@@ -2,10 +2,12 @@ package Networking;
 
 import Product.DetailedProduct;
 
+import java.io.Serializable;
+
 /**
  * Created by danie on 25-05-2017.
  */
-public class DetailedProductFrame {
+public class DetailedProductFrame implements Serializable {
 
     private StatusCode statusCode;
     private DetailedProduct product;
