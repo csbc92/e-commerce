@@ -83,44 +83,52 @@ public class FXMLDocumentController implements Initializable {
     private void displayProduct(int productID){
         //Test code to see the GUI works, and fetching products work
         DetailedProduct product = webManager.getProduct(productID);
-        lPrice.setText("Pris: " + product.getSalePrice() + " dkk"); // Is this really the best way of converting a number to a string?
-        lProductName.setText(product.getName());
-        lProductID.setText("ID: " + product.getProductID());
-        taLongDescription.setText(product.getLongDescription());
-        populateTechnicalDetails(tblViewTechDetails, product);
+
+        if(product != null) {
+
+            lPrice.setText("Pris: " + product.getSalePrice() + " dkk"); // Is this really the best way of converting a number to a string?
+            lProductName.setText(product.getName());
+            lProductID.setText("ID: " + product.getProductID());
+            taLongDescription.setText(product.getLongDescription());
+            populateTechnicalDetails(tblViewTechDetails, product);
 
 
-        //File file = new File(webManager.getMediaPath(product.getMediaList().get(0).getPath()));
+            //File file = new File(webManager.getMediaPath(product.getMediaList().get(0).getPath()));
 
-        //String path = "../htdocs/files/victor.jpg";
-        //File file = new File(path);
+            //String path = "../htdocs/files/victor.jpg";
+            //File file = new File(path);
 
-        String path = product.getMediaList().get(0).getPath();
-        System.out.println(path);
-        File file = new File(path);
+            String path = product.getMediaList().get(0).getPath();
+            System.out.println(path);
+            File file = new File(path);
 
 
-        //File file = product.getMediaList().get(0).getMedia();
-        Image image;
+            //File file = product.getMediaList().get(0).getMedia();
+            Image image;
 
-        if (file.exists()) {
-            System.out.println("image exists");
-            image = new Image(file.toURI().toString());
+            if (file.exists()) {
+                System.out.println("image exists");
+                image = new Image(file.toURI().toString());
+            } else {
+                System.out.println("fetching image");
+                String[] strings = product.getMediaList().get(0).getPath().split("htdocs");
+                System.out.println("path controller: " + strings[1]);
+
+                String ultPath = webManager.getMediaPath(strings[1]);
+                System.out.println(ultPath);
+                file = new File(ultPath);
+                image = new Image(file.toURI().toString());
+            }
+
+            ivProductImg.setImage(image);
+
+
+            taShortDescription.setText(product.getShortDescription());
         } else {
-            System.out.println("fetching image");
-            String[] strings = product.getMediaList().get(0).getPath().split("htdocs");
-            System.out.println("path controller: " + strings[1]);
-
-            String ultPath = webManager.getMediaPath(strings[1]);
-            System.out.println(ultPath);
-            file = new File(ultPath);
-            image = new Image(file.toURI().toString());
+            lProductName.setText("Error in getting the product");
         }
 
-        ivProductImg.setImage(image);
 
-
-        taShortDescription.setText(product.getShortDescription());
     }
 
     /**
