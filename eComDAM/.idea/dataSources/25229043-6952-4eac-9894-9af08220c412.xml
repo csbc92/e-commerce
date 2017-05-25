@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-05-23.11:38:57.827</IntrospectionTimestamp>
-      <IntrospectionStateNumber>882</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-05-25.10:19:14.164</IntrospectionTimestamp>
+      <IntrospectionStateNumber>975</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -30,28 +30,31 @@
       <ObjectId>12113</ObjectId>
     </schema>
     <table id="9" parent="3" name="media">
-      <ObjectId>32942</ObjectId>
-      <StateNumber>882</StateNumber>
+      <ObjectId>33957</ObjectId>
+      <StateNumber>973</StateNumber>
     </table>
-    <column id="10" parent="9" name="id">
+    <column id="10" parent="9" name="path">
       <Position>1</Position>
-      <DataType>integer|0</DataType>
-      <StateNumber>882</StateNumber>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>973</StateNumber>
     </column>
-    <column id="11" parent="9" name="path">
+    <column id="11" parent="9" name="id">
       <Position>2</Position>
-      <DataType>varchar|0</DataType>
-      <StateNumber>882</StateNumber>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>973</StateNumber>
     </column>
-    <index id="12" parent="9" name="media_id_key">
-      <ObjectId>32948</ObjectId>
+    <index id="12" parent="9" name="media_pkey">
+      <ObjectId>33963</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="13" parent="9" name="media_id_key">
-      <ObjectId>32949</ObjectId>
+    <key id="13" parent="9" name="media_pkey">
+      <ObjectId>33964</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>media_id_key</UnderlyingIndexName>
+      <UnderlyingIndexName>media_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
     </key>
   </database-model>
 </dataSource>

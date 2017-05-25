@@ -317,7 +317,9 @@ public class FXMLDocumentController implements Initializable {
      */
      void updateImage() {
          if (!manager.getCurrentProduct().getMediaList().isEmpty()) {
-             imgvPic.setImage(new Image( new File(manager.fetchMedia(manager.getCurrentProduct().getMediaList().get(0).getID()).getPath()).toURI().toString()));
+             File file = manager.getCurrentProduct().getMediaList().get(0).getMedia();
+             imgvPic.setImage(new Image(file.toURI().toString()));
+//             imgvPic.setImage(new Image( new File(manager.fetchMedia(manager.getCurrentProduct().getMediaList().get(0).getID()).getPath()).toURI().toString()));
          } else {
              imgvPic.setImage(null);
          }
