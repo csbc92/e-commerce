@@ -4,10 +4,8 @@ import Product.*;
 import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.TreeItem;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * Created by danie on 12-05-2017.
@@ -70,4 +68,13 @@ public interface IProductCatalogue extends IProductFetcher {
      * @param categoryName the category to which a product is to be added
      */
     void addProductToCategory(Product product,String categoryName);
+
+    /**
+     * Gets the media from a specific product
+     * @param productID
+     * @return ?
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    Set<IDisplayable> fetchMedia(int productID) throws IOException, ClassNotFoundException;
 }

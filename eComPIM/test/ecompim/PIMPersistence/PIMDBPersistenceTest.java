@@ -6,6 +6,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -47,6 +49,13 @@ class PIMDBPersistenceTest {
         assertEquals(0,pimdbPersistence.searchProducts("我").size());
         assertEquals(0,pimdbPersistence.searchProducts(null).size());
         assertEquals(50,pimdbPersistence.searchProducts("").size());
+    }
+
+    @Test
+    void getMediaIDs() {
+        int expectedAmountOfMedia = 1;
+        Set<Integer> mediaIDs = pimdbPersistence.getMediaIDs(10000);
+        assertEquals(expectedAmountOfMedia, mediaIDs.size());
     }
 
     @Test

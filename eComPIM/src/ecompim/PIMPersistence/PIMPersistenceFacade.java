@@ -4,6 +4,7 @@ import Product.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Vedsted on 24-04-2017.
@@ -58,6 +59,11 @@ public class PIMPersistenceFacade implements IPIMPersistenceFacade {
     @Override
     public void saveRootCategory(Category rootCategory) {
         ipimPersistence.saveRootCategory(rootCategory); //TODO
+    }
+
+    @Override
+    public Set<Integer> getMediaIDs(int productID) {
+        return ipimPersistence.getMediaIDs(productID);
     }
 
 

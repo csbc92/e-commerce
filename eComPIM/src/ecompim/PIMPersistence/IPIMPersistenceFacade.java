@@ -4,6 +4,7 @@ import Product.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by danie on 12-05-2017.
@@ -60,4 +61,11 @@ public interface IPIMPersistenceFacade{
          * @param rootCategory
          */
         public void saveRootCategory(Category rootCategory);
+
+        /**
+         * Gets a set of media IDs associated with the given product
+         * @param productID
+         * @return
+         */
+        Set<Integer> getMediaIDs(int productID);
 }

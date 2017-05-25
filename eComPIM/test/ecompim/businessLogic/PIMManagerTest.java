@@ -27,11 +27,11 @@ public class PIMManagerTest {
         assertEquals(10,pimManager.searchProducts("1000").size());
     }
 
-    @Test
-    public void fetchMedia() throws Exception {
-
-        pimManager.fetchMedia(10000).getID(); //TODO
-    }
+//    @Test
+//    public void fetchMedia() throws Exception {
+//
+//        pimManager.fetchMedia(10000).getID(); //TODO
+//    }
 
     @Test
     public void fetchProductOverview() throws Exception {

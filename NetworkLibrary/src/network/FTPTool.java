@@ -1,15 +1,16 @@
-/*
+package network;/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ecompim.networking;
-
-import java.io.*;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
-import org.apache.commons.net.ftp.FTPFile;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * @author JV
@@ -17,9 +18,9 @@ import org.apache.commons.net.ftp.FTPFile;
 public class FTPTool {
 
     FTPClient ftpClient;
-    String username = "b33_20125183";
-    String password = "ecom1234";
-    String hostname = "ftp.byethost33.com";
+    public static final String username = "b33_20125183";
+    public static final String password = "ecom1234";
+    public static final String hostname = "ftp.byethost33.com";
 
     /**
      * Tool to communicate with a FTP server.
@@ -33,7 +34,7 @@ public class FTPTool {
     }
 
 //    public static void main(String[] args) {
-//        FTPTool tool = new FTPTool("", "");
+//        network.FTPTool tool = new network.FTPTool("", "");
 ////        tool.retrieveist();
 //        tool.retrieveFile("htdocs/files/victor.jpg");
 //
@@ -91,7 +92,7 @@ public class FTPTool {
             ftpClient.enterLocalPassiveMode();
             //
             if (ftpClient.isConnected()) {
-                String directory = getParentDir(path).getAbsolutePath();
+                String directory = new File(System.getProperty("user.dir"), path).getAbsolutePath();
                 FileOutputStream fos = new FileOutputStream(directory);
                 if (ftpClient.retrieveFile(path, fos)) {
                     return directory;

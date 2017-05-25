@@ -1,27 +1,26 @@
 package networking;
 
+import Product.IDisplayable;
 import businesslogic.IMediaFetcher;
-import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.image.Image;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
+import network.*;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Set;
 
 /**
  * Created by victo on 2017-05-18.
  */
 public class Server extends Thread {
-    private ServerTool tool;
+    private ServerTool serverTool;
     private Socket socket;
-    private IMediaFetcher fetcher;
+    private IMediaFetcher mediaFetcher;
 
     public Server(Socket socket, IMediaFetcher f) {
         this.socket = socket;
-        fetcher = f;
+        this.mediaFetcher = f;
         try {
-            tool = new ServerTool(socket);
+            serverTool = new ServerTool(socket);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -39,15 +38,30 @@ public class Server extends Thread {
             System.out.println("A Client is connected to the Digital Asset Management System networking");
 
             while (true) {
-                String input = tool.ReadString();
+                CommandRequest input = (CommandRequest)serverTool.readObject();
+
                 System.out.println(input);
-                if (input == null || input.equals(".")) {
-                    break;
+
+                if (input.getCommand().trim().equalsIgnoreCase("overview")) {
+                    // todo input.getCommandObject();
+                } else if (input.getCommand().trim().equalsIgnoreCase("mediapaths")) {
+                    Set<Integer> mediaIDs = (Set<Integer>)input.getCommandObject();
+                    Set<IDisplayable> displayables = mediaFetcher.fetchMedia(mediaIDs);
+                    CommandResponse response = new CommandResponse(0, displayables);
+
+                    if (displayables.size() == 0) {
+                        response.setResponseMessage("No displayables media found.");
+                    }
+
+                    serverTool.sendObj(response);
                 }
-                tool.sendObj(fetcher.fetchMedia(input));
                 //socket.close();
             }
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (ClassCastException e) {
             e.printStackTrace();
         }
     }

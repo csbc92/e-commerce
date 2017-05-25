@@ -1,6 +1,4 @@
-package ecompim.networking;
-
-/**
+package network; /**
  * Created by victo on 2017-05-18.
  */
 /*
@@ -10,19 +8,16 @@ package ecompim.networking;
  */
 
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
-
-import java.io.*;
-import java.net.*;
 
 public class ClientTool {
 
 
     public Socket clientSocket;
-    private DataOutputStream toServer;
+    private ObjectOutputStream objectToServer;
     private DataInputStream stringFromServer;
     private ObjectInputStream objFromServer;
     private String IP;
@@ -45,7 +40,7 @@ public class ClientTool {
         try {
             if (clientSocket == null || clientSocket.isClosed()) {
                 clientSocket = new Socket(this.IP, this.port);
-                toServer = new DataOutputStream(clientSocket.getOutputStream());
+                objectToServer = new ObjectOutputStream(clientSocket.getOutputStream());
                 objFromServer = new ObjectInputStream(clientSocket.getInputStream());
                 stringFromServer = new DataInputStream(clientSocket.getInputStream());
             } else {
@@ -57,14 +52,13 @@ public class ClientTool {
     }
 
     /**
-     * Send a given string to the server
-     * @param value The String to be send
+     * Send a given object to the server
+     * @param object The object to be send
      * @throws IOException
      */
-    public synchronized void sendString(String value) throws IOException {
-
+    public synchronized void sendObject(Object object) throws IOException {
         if (connect()) {
-            toServer.writeUTF(value);
+            objectToServer.writeObject(object);
         }
     }
 

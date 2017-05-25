@@ -4,6 +4,7 @@ import Product.*;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Created by victo on 2017-04-24.
@@ -24,14 +25,4 @@ public interface IProductFetcher {
      * @return an arrayList of non-detailed products
      */
     public HashMap<Integer, Product> searchProducts(String searchCriteria);
-
-
-    /**
-     * Gets the media from a specific product
-     * @param productID
-     * @return ?
-     * @throws IOException
-     * @throws ClassNotFoundException
-     */
-    IDisplayable fetchMedia(int productID) throws IOException, ClassNotFoundException;
 }

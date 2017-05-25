@@ -1,9 +1,6 @@
-package ecompim.networking;
+package network;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
 
 /**
@@ -11,7 +8,8 @@ import java.net.Socket;
  */
 public class ServerTool {
     private Socket connectionSocket;
-    private DataInputStream fromClient;
+    private DataInputStream primitiveFromClient;
+    private ObjectInputStream objectFromClient;
     private DataOutputStream stringToClient;
     private ObjectOutputStream objToClient;
 
@@ -22,7 +20,8 @@ public class ServerTool {
      */
     public ServerTool(Socket connectionSocket) throws IOException {
         this.connectionSocket = connectionSocket;
-        fromClient = new DataInputStream(connectionSocket.getInputStream());
+        primitiveFromClient = new DataInputStream(connectionSocket.getInputStream());
+        objectFromClient = new ObjectInputStream((connectionSocket.getInputStream()));
         stringToClient = new DataOutputStream(connectionSocket.getOutputStream());
         objToClient = new ObjectOutputStream(connectionSocket.getOutputStream());
     }
@@ -50,8 +49,19 @@ public class ServerTool {
      * @return The string send from the client
      * @throws IOException
      */
-    public synchronized String ReadString() throws IOException {
-        String clientInput = fromClient.readUTF();
+    public synchronized String readString() throws IOException {
+        String clientInput = primitiveFromClient.readUTF();
         return clientInput;
+    }
+
+    /**
+     * Reads an object from the input stream.
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public synchronized Object readObject() throws IOException, ClassNotFoundException {
+        Object object = objectFromClient.readObject();
+        return object;
     }
 }

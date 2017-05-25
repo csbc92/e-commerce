@@ -22,12 +22,17 @@ public class DAMFilePersistence implements IDAMPersistence {
      * @return
      */
     @Override
-    public IDisplayable fetchMedia(String mediaID) {
+    public IDisplayable fetchMedia(Integer mediaID) {
         throw new UnsupportedOperationException();
     }
 
     @Override
     public Set<IDisplayable> fetchMediaOverview() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Set<IDisplayable> fetchMedia(Set<Integer> mediaIDs) {
         throw new UnsupportedOperationException();
     }
 }

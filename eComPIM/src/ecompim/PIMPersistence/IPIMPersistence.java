@@ -2,9 +2,9 @@ package ecompim.PIMPersistence;
 
 import Product.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Vedsted on 24-04-2017.
@@ -63,5 +63,12 @@ public interface  IPIMPersistence {
      * @return category object that is the root.
      */
     Category fetchRootCategory();
+
+    /**
+     * Gets a set of media IDs associated with the given product
+     * @param productID
+     * @return
+     */
+    Set<Integer> getMediaIDs(int productID);
 
 }

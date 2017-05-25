@@ -7,6 +7,7 @@ package ecompim.networking;
 
 import Product.DetailedProduct;
 import ecompim.businessLogic.IProductFetcher;
+import network.ServerTool;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -36,7 +37,7 @@ public class Server implements Runnable {
         try {
                 while (true) {
                 System.out.println("waiting for client");
-                String[] clientCmd = serverTool.ReadString().split(":");
+                String[] clientCmd = serverTool.readString().split(":");
                 System.out.println("Received: " + Arrays.toString(clientCmd));
 
                 if (clientCmd[0].trim().equalsIgnoreCase("pro")) {

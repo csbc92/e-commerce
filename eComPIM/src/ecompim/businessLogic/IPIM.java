@@ -81,5 +81,11 @@ public interface IPIM extends IProductFetcher {
      */
     public HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories);
 
-    IDisplayable fetchMedia(int i);
+    /**
+     * Fetch the media path for the current product.
+     * @return
+     */
+    public String fetchMediaPathForCurrentProduct();
+
+
 }
