@@ -1,0 +1,25 @@
+package Networking;
+
+import Product.DetailedProduct;
+
+/**
+ * Created by danie on 25-05-2017.
+ */
+public class DetailedProductFrame {
+
+    private StatusCode statusCode;
+    private DetailedProduct product;
+
+    public DetailedProductFrame(StatusCode statusCode, DetailedProduct product) {
+        this.statusCode = statusCode;
+        this.product = product;
+    }
+
+    public StatusCode getStatusCode() {
+        return statusCode;
+    }
+
+    public DetailedProduct getProduct() {
+        return product;
+    }
+}

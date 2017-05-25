@@ -5,6 +5,8 @@
  */
 package ecompim.networking;
 
+import Networking.DetailedProductFrame;
+import Networking.StatusCode;
 import Product.DetailedProduct;
 import ecompim.businessLogic.IProductFetcher;
 
@@ -41,11 +43,20 @@ public class Server implements Runnable {
 
                 if (clientCmd[0].trim().equalsIgnoreCase("pro")) {
                     int productID = Integer.parseInt(clientCmd[1]);
-                    if(fetcher.fetchProduct(productID) != null) {
-                        serverTool.sendObj(fetcher.fetchProduct(productID));
-                    } else {
-                        serverTool.sendObj(new DetailedProduct(-1,"error",0,"error",0,0));
-                    }
+                        DetailedProduct product = fetcher.fetchProduct(productID);
+
+                        //Sending a statuscode a long with the product.
+                        StatusCode statusCode;
+                        if(product == null) {
+                            statusCode = StatusCode.PRODUCTNOTFOUND;
+                        } else if(product.getProductID() != productID){
+                            statusCode = StatusCode.ERRORINPIM;
+                        } else {
+                            statusCode = StatusCode.OK;
+                        }
+                        DetailedProductFrame detailedProductFrame = new DetailedProductFrame(statusCode,product);
+                        serverTool.sendObj(detailedProductFrame);
+
                 }
             }
         } catch (IOException ex) {

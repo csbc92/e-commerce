@@ -82,13 +82,17 @@ public class FXMLDocumentController implements Initializable {
     private void displayProduct(int productID){
         //Test code to see the GUI works, and fetching products work
         DetailedProduct product = webManager.getProduct(productID);
-        lPrice.setText("Pris: " + product.getSalePrice() + " dkk"); // Is this really the best way of converting a number to a string?
-        lProductName.setText(product.getName());
-        lProductID.setText("ID: " + product.getProductID());
-        taLongDescription.setText(product.getLongDescription());
-        populateTechnicalDetails(tblViewTechDetails, product);
-        ivProductImg.setImage(new Image(product.getMediaList().get(0).getMedia().toURI().toString()));
-        taShortDescription.setText(product.getShortDescription());
+        if(product != null) {
+            lPrice.setText("Pris: " + product.getSalePrice() + " dkk"); // Is this really the best way of converting a number to a string?
+            lProductName.setText(product.getName());
+            lProductID.setText("ID: " + product.getProductID());
+            taLongDescription.setText(product.getLongDescription());
+            populateTechnicalDetails(tblViewTechDetails, product);
+            ivProductImg.setImage(new Image(product.getMediaList().get(0).getMedia().toURI().toString()));
+            taShortDescription.setText(product.getShortDescription());
+        } else {
+            lProductName.setText("Error in getting the product");
+        }
     }
 
     /**

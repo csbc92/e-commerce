@@ -1,5 +1,8 @@
 package networking;
 
+import Networking.DisplayableFrame;
+import Networking.StatusCode;
+import Product.IDisplayable;
 import businesslogic.IMediaFetcher;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
@@ -44,7 +47,17 @@ public class Server extends Thread {
                 if (input == null || input.equals(".")) {
                     break;
                 }
-                tool.sendObj(fetcher.fetchMedia(input));
+                IDisplayable displayable = fetcher.fetchMedia(input);
+                StatusCode statusCode;
+                if(displayable == null) {
+                    statusCode = StatusCode.PRODUCTNOTFOUND;
+                } else if(displayable.getID() != Integer.parseInt(input)){
+                    statusCode = StatusCode.ERRORINDAM;
+                } else {
+                    statusCode = StatusCode.OK;
+                }
+                DisplayableFrame displayableFrame = new DisplayableFrame(statusCode,displayable);
+                tool.sendObj(displayableFrame);
                 //socket.close();
             }
         } catch (IOException e) {
