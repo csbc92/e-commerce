@@ -85,7 +85,7 @@ public interface IPIM extends IProductFetcher {
      * Fetch the media path for the current product.
      * @return
      */
-    public String fetchMediaPathForCurrentProduct();
+    public String fetchThumbnailPathForCurrentProduct();
 
 
 }
