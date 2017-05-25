@@ -8,9 +8,11 @@
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>postgres</user-name>
+      <introspection-schemas>eComDAM:public</introspection-schemas>
     </data-source>
     <data-source name="eCommerce@localhost" uuid="069c2f7b-f0f2-4f5b-be0a-6022fe66a5ff">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <introspection-schemas>eComPIM:public</introspection-schemas>
     </data-source>
   </component>
 </project>
