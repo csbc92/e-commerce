@@ -506,7 +506,7 @@ public class FXMLDocumentController implements Initializable {
             Text textAfter = new Text(text.substring(filterIndex + filter.length()));
             Text textFilter = new Text(text.substring(filterIndex, filterIndex + filter.length())); //instead of "filter" to keep "case"
             textFilter.setFill(Color.BLACK);
-            textFilter.setFont(Font.font("Helvetica", FontWeight.BOLD, 14));
+            textFilter.setFont(Font.font("Helvetica", FontWeight.BOLD, 11));
             return new TextFlow(textBefore, textFilter, textAfter);
         } catch (IndexOutOfBoundsException ie) {
 
