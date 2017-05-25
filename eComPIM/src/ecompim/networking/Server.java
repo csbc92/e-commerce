@@ -9,6 +9,8 @@ import Networking.DetailedProductFrame;
 import Networking.StatusCode;
 import Product.DetailedProduct;
 import ecompim.businessLogic.IProductFetcher;
+import network.CommandRequest;
+import network.CommandResponse;
 import network.ServerTool;
 
 import java.io.IOException;
@@ -37,32 +39,22 @@ public class Server implements Runnable {
     @Override
     public void run() {
         try {
-                while (true) {
-                System.out.println("waiting for client");
-                String[] clientCmd = serverTool.readString().split(":");
-                System.out.println("Received: " + Arrays.toString(clientCmd));
+            while (true) {
+                CommandRequest input = (CommandRequest) serverTool.readObject();
+                System.out.println(input);
 
-                if (clientCmd[0].trim().equalsIgnoreCase("pro")) {
-                    int productID = Integer.parseInt(clientCmd[1]);
-                        DetailedProduct product = fetcher.fetchProduct(productID);
-
-                        //Sending a statuscode a long with the product.
-                        StatusCode statusCode;
-                        if(product == null) {
-                            statusCode = StatusCode.PRODUCTNOTFOUND;
-                        } else if(product.getProductID() != productID){
-                            statusCode = StatusCode.ERRORINPIM;
-                        } else {
-                            statusCode = StatusCode.OK;
-                        }
-                        DetailedProductFrame detailedProductFrame = new DetailedProductFrame(statusCode,product);
-                        serverTool.sendObj(detailedProductFrame);
-
+                if (input.getCommand().trim().equalsIgnoreCase("product")) {
+                    Integer productID = (Integer) input.getCommandObject();
+                    DetailedProduct detailedProduct = fetcher.fetchProduct(productID);
+                    CommandResponse commandResponse = new CommandResponse(0, detailedProduct);
+                    serverTool.sendObj(commandResponse);
                 }
             }
-        } catch (IOException ex) {
-//            Logger.getLogger(ServerTool.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
-    }
 
+    }
 }
