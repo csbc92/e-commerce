@@ -5,6 +5,6 @@ package Networking;
  */
 public enum StatusCode {
 
-    OK, PRODUCTNOTFOUND, ERRORINPIM, NULLPRODUCT;
+    OK, PRODUCTNOTFOUND, ERRORINPIM, ERRORINDAM, NULLPRODUCT;
 
 }
