@@ -10,9 +10,9 @@ import java.io.InputStream;
  */
 public interface IWebManager {
     /**
-     * Returns a product based on the id that is given as a parameter
+     * Returns a product based on the id that is given as a parameter. If there is an error in getting the product, the method returns null
      * @param productID the id of the product to return
-     * @return a DetailedProduct
+     * @return a DetailedProduct or null if the product cannot be found
      */
     public DetailedProduct getProduct(int productID);
 

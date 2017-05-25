@@ -6,6 +6,7 @@
 package ecomweb.network;
 
 
+import Networking.DetailedProductFrame;
 import Product.DetailedProduct;
 
 import java.io.IOException;
@@ -21,10 +22,10 @@ public class ClientHandler {
             client = new ClientTool("localhost",6789);
     }
 
-    public DetailedProduct getProduct( int productId) throws IOException, ClassNotFoundException {
+    public DetailedProductFrame getProduct( int productId) throws IOException, ClassNotFoundException {
         client.sendString("pro:" + productId);
-        DetailedProduct product = (DetailedProduct) client.readObj();
-        return product;
+        DetailedProductFrame detailedProductFrame = (DetailedProductFrame) client.readObj();
+        return detailedProductFrame;
     }
 
 }

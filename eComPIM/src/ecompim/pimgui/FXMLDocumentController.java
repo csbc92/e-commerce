@@ -317,7 +317,9 @@ public class FXMLDocumentController implements Initializable {
      */
      void updateImage() {
          if (!manager.getCurrentProduct().getMediaList().isEmpty()) {
-             imgvPic.setImage(new Image( new File(manager.fetchMedia(manager.getCurrentProduct().getMediaList().get(0).getID()).getPath()).toURI().toString()));
+             File file = manager.getCurrentProduct().getMediaList().get(0).getMedia();
+             imgvPic.setImage(new Image(file.toURI().toString()));
+//             imgvPic.setImage(new Image( new File(manager.fetchMedia(manager.getCurrentProduct().getMediaList().get(0).getID()).getPath()).toURI().toString()));
          } else {
              imgvPic.setImage(null);
          }
@@ -504,7 +506,7 @@ public class FXMLDocumentController implements Initializable {
             Text textAfter = new Text(text.substring(filterIndex + filter.length()));
             Text textFilter = new Text(text.substring(filterIndex, filterIndex + filter.length())); //instead of "filter" to keep "case"
             textFilter.setFill(Color.BLACK);
-            textFilter.setFont(Font.font("Helvetica", FontWeight.BOLD, 14));
+            textFilter.setFont(Font.font("Helvetica", FontWeight.BOLD, 11));
             return new TextFlow(textBefore, textFilter, textAfter);
         } catch (IndexOutOfBoundsException ie) {
 
