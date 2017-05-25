@@ -3,6 +3,8 @@ package ecomweb.WEBBusinessLayer;
 
 import Product.DetailedProduct;
 
+import java.io.InputStream;
+
 /**
  * Created by Vedsted on 24-04-2017.
  */
@@ -13,4 +15,11 @@ public interface IWebManager {
      * @return a DetailedProduct
      */
     public DetailedProduct getProduct(int productID);
+
+    /**
+     * returns the path of the media
+     * @param mediaPath
+     * @return
+     */
+    public String getMediaPath(String mediaPath);
 }

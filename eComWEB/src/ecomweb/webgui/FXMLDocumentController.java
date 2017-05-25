@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ecomweb;
+package ecomweb.webgui;
 
+import java.io.File;
 import java.net.URL;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -87,7 +88,38 @@ public class FXMLDocumentController implements Initializable {
         lProductID.setText("ID: " + product.getProductID());
         taLongDescription.setText(product.getLongDescription());
         populateTechnicalDetails(tblViewTechDetails, product);
-        ivProductImg.setImage(new Image(product.getMediaList().get(0).getMedia().toURI().toString()));
+
+
+        //File file = new File(webManager.getMediaPath(product.getMediaList().get(0).getPath()));
+
+        //String path = "../htdocs/files/victor.jpg";
+        //File file = new File(path);
+
+        String path = product.getMediaList().get(0).getPath();
+        System.out.println(path);
+        File file = new File(path);
+
+
+        //File file = product.getMediaList().get(0).getMedia();
+        Image image;
+
+        if (file.exists()) {
+            System.out.println("image exists");
+            image = new Image(file.toURI().toString());
+        } else {
+            System.out.println("fetching image");
+            String[] strings = product.getMediaList().get(0).getPath().split("htdocs");
+            System.out.println("path controller: " + strings[1]);
+
+            String ultPath = webManager.getMediaPath(strings[1]);
+            System.out.println(ultPath);
+            file = new File(ultPath);
+            image = new Image(file.toURI().toString());
+        }
+
+        ivProductImg.setImage(image);
+
+
         taShortDescription.setText(product.getShortDescription());
     }
 
