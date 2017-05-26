@@ -40,14 +40,9 @@
                     <MenuItem mnemonicParsing="false" onAction="#onMouseClickedExit" text="Afslut" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Redigér">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Slet" />
-                  </items>
-                </Menu>
                 <Menu mnemonicParsing="false" text="Hjælp">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Om.." />
+                    <MenuItem mnemonicParsing="false" onAction="#showAboutWindow" text="Om.." />
                   </items>
                 </Menu>
               </menus>

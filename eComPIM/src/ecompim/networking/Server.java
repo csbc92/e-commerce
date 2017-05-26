@@ -5,8 +5,6 @@
  */
 package ecompim.networking;
 
-import Networking.DetailedProductFrame;
-import Networking.StatusCode;
 import Product.DetailedProduct;
 import ecompim.businessLogic.IProductFetcher;
 import network.CommandRequest;
@@ -16,7 +14,6 @@ import network.ServerTool;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketException;
-import java.util.Arrays;
 
 /**
  *
