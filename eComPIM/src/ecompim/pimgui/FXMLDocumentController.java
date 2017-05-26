@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -22,6 +23,7 @@ import ecompim.businessLogic.IPIM;
 import javafx.scene.control.cell.CheckBoxTreeCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.InputEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -97,6 +99,8 @@ public class FXMLDocumentController implements Initializable {
     private TextField tfCategoryName;
     @FXML
     private Button butAddNewCategory;
+    @FXML
+    private MenuBar topMenuBar;
 
 
     static FXMLDocumentController cont;
@@ -465,6 +469,21 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * Clears the cache
+     * @param actionEvent
+     */
+    @FXML
+    public void menuClearCache(ActionEvent actionEvent) {
+        int filesDeleted = manager.clearCache();
+
+        Alert alertDialog = new Alert(Alert.AlertType.INFORMATION);
+        alertDialog.setTitle("Information");
+        alertDialog.setHeaderText("Cachen blev tømt");
+        alertDialog.setContentText(filesDeleted + " filer blev sletten fra cachen.");
+        alertDialog.show();
+    }
+
+    /**
      * sets the tags from the recieved string
      * @param actionEvent
      */
@@ -555,5 +574,15 @@ public class FXMLDocumentController implements Initializable {
 
         stage.setScene(scene);
         stage.show();
+    }
+
+    /**
+     * Action to perform when the exit button is clicked.
+     * @param e
+     */
+    @FXML
+    private void onMouseClickedExit(ActionEvent e) {
+        Stage stage = (Stage) topMenuBar.getScene().getWindow();
+        stage.close();
     }
 }

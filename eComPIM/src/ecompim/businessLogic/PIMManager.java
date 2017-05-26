@@ -23,6 +23,7 @@ public class PIMManager implements IPIM {
     private IProductCatalogue productCatalogue;
     private Thread netHandler;
     private ClientTool cTool;
+    private String cachePath = System.getProperty("user.dir") + "/htdocs/files";
 
     /**
      * initializes the PIMManager
@@ -179,6 +180,45 @@ public class PIMManager implements IPIM {
             FTPTool ftpTool = new FTPTool(FTPTool.username, FTPTool.password);
             return ftpTool.retrieveFile(currentProductThumbnail);
         }
+    }
+
+    /**
+     * Clears the cache in PIM
+     * @return The number of files deleted.
+     */
+    @Override
+    public int clearCache() {
+        File cache = new File(cachePath);
+
+        int filesDeletedAmount = deleteFilesRecursive(cache);
+
+        return filesDeletedAmount;
+    }
+
+    /**
+     * Util method to delete files recursively given the directory.
+     * @param directory
+     * @return The number of files deleted. Does not count the directories deleted.
+     */
+    private int deleteFilesRecursive(File directory) {
+
+        int deletedFilesAmount = 0;
+
+        if (!directory.isDirectory()) {
+            throw new IllegalArgumentException("The provided File must be a directory.");
+        }
+
+        for (File entry : directory.listFiles()) {
+            if (entry.isDirectory()) {
+                deletedFilesAmount += deleteFilesRecursive(entry);
+                entry.delete(); // Delete the directory after it has been emptied.
+            } else if (entry.isFile()) {
+                entry.delete(); // Delete the file.
+                deletedFilesAmount++;
+            }
+        }
+
+        return deletedFilesAmount;
     }
 
 //    /**

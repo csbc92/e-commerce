@@ -87,5 +87,10 @@ public interface IPIM extends IProductFetcher {
      */
     public String fetchThumbnailPathForCurrentProduct();
 
+    /**
+     * Clears the PIM cache.
+     */
+    public int clearCache();
+
 
 }
