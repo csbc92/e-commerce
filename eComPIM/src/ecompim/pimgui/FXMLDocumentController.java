@@ -32,7 +32,6 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import network.FTPTool;
 
 
 /**
@@ -322,7 +321,7 @@ public class FXMLDocumentController implements Initializable {
              //imgvPic.setImage(new Image(file.toURI().toString()));
 //             imgvPic.setImage(new Image( new File(manager.fetchMedia(manager.getCurrentProduct().getMediaList().get(0).getID()).getPath()).toURI().toString()));
 
-             String path = manager.fetchMediaPathForCurrentProduct();
+             String path = manager.fetchThumbnailPathForCurrentProduct();
              File imageFile = new File(path);
              Image image = new Image(imageFile.toURI().toString());
              imgvPic.setImage(image);

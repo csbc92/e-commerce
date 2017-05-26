@@ -1,1 +1,42 @@
-package ecomweb.WEBBusinessLayer;import Networking.DetailedProductFrame;import Product.DetailedProduct;import ecomweb.network.ClientHandler;import ecomweb.network.FTPTool;import java.io.*;/** * Created by Vedsted on 24-04-2017. */public class WebManager implements IWebManager {    private ClientHandler client;    private FTPTool ftpTool;    public WebManager() {        client = new ClientHandler();        ftpTool = new FTPTool("", "");    }    @Override    public DetailedProduct getProduct(int productID) {        try {            DetailedProductFrame detailedProductFrame = client.getProduct(productID);            switch(detailedProductFrame.getStatusCode()){                case OK:                    return detailedProductFrame.getProduct();                case ERRORINPIM:                    return null;                case PRODUCTNOTFOUND:                    return null;                default:                    return null;            }        } catch (IOException e) {            e.printStackTrace();        } catch (ClassNotFoundException e) {            e.printStackTrace();        }        return null;    }    @Override    public String getMediaPath(String mediaPath) {        String path = "htdocs" + mediaPath;        System.out.println("manager path: " + path);        return ftpTool.retrieveFile(path.trim());    }}
+package ecomweb.WEBBusinessLayer;
+
+
+import Networking.DetailedProductFrame;
+import Product.DetailedProduct;
+import ecomweb.network.ClientHandler;
+import network.FTPTool;
+
+import java.io.*;
+
+
+/**
+ * Created by Vedsted on 24-04-2017.
+ */
+
+public class WebManager implements IWebManager {
+
+    private ClientHandler client;
+    private FTPTool ftpTool;
+
+    public WebManager() {
+
+        client = new ClientHandler();
+        ftpTool = new FTPTool(FTPTool.username, FTPTool.password);
+    }
+
+
+    @Override
+    public DetailedProduct getProduct(int productID) {
+        DetailedProduct detailedProduct = client.getProduct(productID);
+        return detailedProduct;
+    }
+
+    @Override
+    public String getMediaPath(String mediaPath) {
+        System.out.println("manager path: " + mediaPath);
+        return ftpTool.retrieveFile(mediaPath.trim());
+    }
+
+
+}
+
