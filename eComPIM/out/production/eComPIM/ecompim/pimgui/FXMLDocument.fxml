@@ -31,12 +31,13 @@
    <children>
       <VBox prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <MenuBar>
+            <MenuBar fx:id="topMenuBar">
               <menus>
                 <Menu mnemonicParsing="false" text="Filer">
                   <items>
                         <MenuItem mnemonicParsing="false" onAction="#menuFetchFromERPHandler" text="Genindlæs fra ERP" />
-                    <MenuItem mnemonicParsing="false" text="Afslut" />
+                        <MenuItem mnemonicParsing="false" onAction="#menuClearCache" text="Tøm cache" />
+                    <MenuItem mnemonicParsing="false" onAction="#onMouseClickedExit" text="Afslut" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Redigér">
