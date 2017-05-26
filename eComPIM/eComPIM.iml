@@ -33,5 +33,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="NetworkLibrary" level="project" />
+    <orderEntry type="library" name="NetworkLibrary_jar" level="project" />
   </component>
 </module>
