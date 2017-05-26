@@ -185,7 +185,7 @@ public class DetailedProduct extends Product implements Serializable {
             throw new IllegalArgumentException("media must not be null");
         }
 
-        this.mediaList.add(media);
+        this.mediaList.add(0,media);
     }
 
     /**
