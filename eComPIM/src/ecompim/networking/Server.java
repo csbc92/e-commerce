@@ -15,6 +15,7 @@ import network.ServerTool;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.Arrays;
 
 /**
@@ -50,6 +51,8 @@ public class Server implements Runnable {
                     serverTool.sendObj(commandResponse);
                 }
             }
+        } catch (SocketException e) {
+            System.out.println("Client closed the connection");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

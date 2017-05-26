@@ -63,7 +63,6 @@ public class Server extends Thread {
 
                     serverTool.sendObj(response);
                 }
-                //socket.close();
             }
         } catch (SocketException e) {
             System.out.println("Client closed the connection");

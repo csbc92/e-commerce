@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -181,24 +182,22 @@ public class PIMManager implements IPIM {
         }
     }
 
-//    /**
-//     * Fetches the media from the specific product.
-//     * @param productID ID of the product from which media should be received.
-//     * @return A displayable object from the chosen product.
-//     */
-//    @Override
-//    public IDisplayable fetchMedia(int productID) {
-//        try {
-//            cTool.sendString(String.valueOf(productID));
-//            return ((PictureMedia) cTool.readObj());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-////        return productCatalogue.fetchMedia(productID);
-//    }
+    @Override
+    public Set<IDisplayable> fetchMediaOverview() {
+
+        Set<IDisplayable> displayables = productCatalogue.fetchMediaOverview();
+        if (displayables != null) {
+            if (displayables.size() > 0) {
+                Set<String> paths = new HashSet<>();
+                for (IDisplayable displayable : displayables) {
+                    paths.add(displayable.getPath());
+                }
+                FTPTool ftpTool = new FTPTool(FTPTool.username, FTPTool.password);
+                ftpTool.retrieveFiles(paths);
+            }
+        }
+        return displayables;
+    }
 
 }
 

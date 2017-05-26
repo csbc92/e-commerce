@@ -19,7 +19,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 /**
  * Created by victo on 2017-05-19.
@@ -32,16 +34,6 @@ public class FXMLPicOverviewPopupController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         ArrayList<IDisplayable> picList = new ArrayList<>();
         ObservableList<IDisplayable> oList = FXCollections.observableArrayList();
-
-        // Fetch media
-//        for (int i = 1; i < 10; i++) {
-//                IDisplayable temp = FXMLDocumentController.manager.fetchMedia(i);
-//        //TODO FEJL
-//                if (temp.getID() != 0) {
-//                    picList.add(temp);
-//                }
-//
-//       }
 
         lvPicOverview.setCellFactory(new Callback<ListView<IDisplayable>, ListCell<IDisplayable>>() {
             // Implementation of the Callback-method that renders the data.
@@ -74,9 +66,11 @@ public class FXMLPicOverviewPopupController implements Initializable {
             }
         });
 
+        Set<IDisplayable> displayables = FXMLDocumentController.manager.fetchMediaOverview();
 
-
-        oList.setAll(picList);
+        if (displayables != null) {
+            oList.setAll(displayables);
+        }
         lvPicOverview.setItems(oList);
     }
 

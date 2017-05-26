@@ -40,10 +40,13 @@ public class ClientHandler {
 
 
         CommandResponse commandResponse = (CommandResponse)client.readObj();
-        System.out.println(commandResponse.getResponseMessage());
-        if (commandResponse.getResponseCode() == 0) {
-            detailedProduct = (DetailedProduct)commandResponse.getResponseObject();
-        }
+
+            if (commandResponse != null) {
+                System.out.println(commandResponse.getResponseMessage());
+                if (commandResponse.getResponseCode() == 0) {
+                    detailedProduct = (DetailedProduct)commandResponse.getResponseObject();
+                }
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

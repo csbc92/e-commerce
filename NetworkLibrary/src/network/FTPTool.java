@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author JV
@@ -32,13 +34,6 @@ public class FTPTool {
         ftpClient = new FTPClient();
 
     }
-
-//    public static void main(String[] args) {
-//        network.FTPTool tool = new network.FTPTool("", "");
-////        tool.retrieveist();
-//        tool.retrieveFile("htdocs/files/victor.jpg");
-//
-//    }
 
     /**
      * Sign-in with the given username and password.
@@ -98,6 +93,37 @@ public class FTPTool {
                     return directory;
                 }
                 throw new FileNotFoundException("Filen kunne ikke downloades");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            logout();
+        }
+        return null;
+    }
+
+    /**
+     * Retrieve a specific file from the FTP server.
+     * @param paths The path of the file to be downloaded.
+     * @return the path where the file has been downloaded to.
+     */
+    public Set<String> retrieveFiles(Set<String> paths) {
+        try {
+            login();
+            // Important to set the fileType and the mode before downloading files.
+            ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
+            ftpClient.enterLocalPassiveMode();
+            //
+            if (ftpClient.isConnected()) {
+                Set<String> returnPaths = new HashSet<>();
+                for (String path : paths) {
+                    String directory = new File(System.getProperty("user.dir"), path).getAbsolutePath();
+                    FileOutputStream fos = new FileOutputStream(directory);
+                    if (ftpClient.retrieveFile(path, fos)) {
+                        returnPaths.add(directory);
+                    }
+                }
+                return returnPaths;
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by victo on 2017-04-24.
@@ -86,6 +87,9 @@ public interface IPIM extends IProductFetcher {
      * @return
      */
     public String fetchThumbnailPathForCurrentProduct();
+
+
+    public Set<IDisplayable> fetchMediaOverview();
 
 
 }

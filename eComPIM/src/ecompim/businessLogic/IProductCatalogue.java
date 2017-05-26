@@ -77,4 +77,6 @@ public interface IProductCatalogue extends IProductFetcher {
      * @throws ClassNotFoundException
      */
     Set<IDisplayable> fetchMedia(int productID) throws IOException, ClassNotFoundException;
+
+    public Set<IDisplayable> fetchMediaOverview();
 }
