@@ -585,4 +585,21 @@ public class FXMLDocumentController implements Initializable {
         Stage stage = (Stage) topMenuBar.getScene().getWindow();
         stage.close();
     }
+
+    @FXML
+    private void showAboutWindow(ActionEvent actionEvent) {
+        Alert alertDialog = new Alert(Alert.AlertType.NONE, "", ButtonType.OK);
+        alertDialog.setTitle("Om");
+        alertDialog.setHeaderText("Software Engineering Projekt 2. Semester");
+        alertDialog.setContentText("Udviklet af Gruppe 1:\n\n" +
+                                    "Christian Clausen\n" +
+                                    "Daniel Johansen\n" +
+                                    "Jacob Vinge\n" +
+                                    "Jonas Vedsted\n" +
+                                    "Markus Barrow\n" +
+                                    "Victor Steenfeldt\n");
+        alertDialog.show();
+
+    }
+
 }
