@@ -44,13 +44,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label lProductID;
     @FXML
-    private Label lRating;
-    @FXML
     private Label lPrice;
-    @FXML
-    private Button btnAddToCart;
-    @FXML
-    private Label lStock;
     @FXML
     private TextArea taShortDescription;
     @FXML
@@ -59,12 +53,10 @@ public class FXMLDocumentController implements Initializable {
     private TextArea taLongDescription;
     @FXML
     public TableView<Map.Entry<String, String>> tblViewTechDetails;
-    @FXML
-    private TableColumn<?, ?> tcSpecifications1;
-    @FXML
-    private TableColumn<?, ?> tcSpecifications2;
 
     private int productID;
+    @FXML
+    private Button btnRefresh;
     
 
     @Override

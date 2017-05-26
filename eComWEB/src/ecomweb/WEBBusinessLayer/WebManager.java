@@ -1,12 +1,10 @@
 package ecomweb.WEBBusinessLayer;
 
 
-import Networking.DetailedProductFrame;
 import Product.DetailedProduct;
 import ecomweb.network.ClientHandler;
 import network.FTPTool;
 
-import java.io.*;
 
 
 /**

@@ -6,7 +6,6 @@
 package ecomweb.network;
 
 
-import Networking.DetailedProductFrame;
 import Product.DetailedProduct;
 import network.ClientTool;
 import network.CommandRequest;

@@ -54,7 +54,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnAddToCart" mnemonicParsing="false" onAction="#displayProduct" prefHeight="40.0" prefWidth="162.0" text="Tilføj til kurv" />
+                  <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#displayProduct" prefHeight="40.0" prefWidth="162.0" text="Genindlæs" />
                   <TextArea fx:id="taShortDescription" editable="false" prefHeight="245.0" prefWidth="420.0" text="Beskrivelse kort" wrapText="true" />
                </children>
                <padding>
