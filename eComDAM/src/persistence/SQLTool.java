@@ -1,11 +1,6 @@
 package persistence;
 
-import java.sql.Connection;
-import java.lang.String;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class SQLTool {
 
@@ -15,13 +10,15 @@ public class SQLTool {
     private StringBuilder query;
 
     /**
-     * @param connection
-     * @param user
-     * @param password
+     * Tool to execute SQL queries and statements to a database.
+     *
+     * @param connection The connection string
+     * @param user       The username
+     * @param password   The password
      */
-    public SQLTool(String connection, String user, String password){
+    public SQLTool(String connection, String user, String password) {
         try {
-            con = DriverManager.getConnection(connection,user,password);
+            con = DriverManager.getConnection(connection, user, password);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -32,16 +29,17 @@ public class SQLTool {
 
     /**
      * Add a SQLTool statement or just a part of one to the SQLTool Script
+     *
      * @param value The statement
      */
-    public void add(String value){
+    public void add(String value) {
         query.append(value);
     }
 
     /**
      * Clear the SQLTool script
      */
-    public void clear(){
+    public void clear() {
         query = new StringBuilder();
     }
 
@@ -73,7 +71,7 @@ public class SQLTool {
     /**
      * Close the current resultset
      */
-    public void close(){
+    public void close() {
         try {
             if (myResultSet != null) {
                 this.myResultSet.close();
@@ -85,6 +83,7 @@ public class SQLTool {
 
     /**
      * Return the resultset generated from the Open()-method.
+     *
      * @return A resultset
      */
     public ResultSet getResultSet() {

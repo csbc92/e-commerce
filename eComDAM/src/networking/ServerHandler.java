@@ -5,9 +5,6 @@ import businesslogic.IMediaFetcher;
 import java.io.IOException;
 import java.net.ServerSocket;
 
-/**
- * Created by victo on 2017-05-18.
- */
 public class ServerHandler implements Runnable {
     private IMediaFetcher fetcher;
     private ServerSocket listener;
@@ -17,6 +14,7 @@ public class ServerHandler implements Runnable {
         listener = new ServerSocket(port);
 
     }
+
     @Override
     public void run() {
         System.out.println("The networking is running.");
@@ -30,7 +28,7 @@ public class ServerHandler implements Runnable {
             } finally {
                 listener.close();
             }
-        }catch (IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
