@@ -1,4 +1,4 @@
-package ecompim.networking;
+package ecompim.servers;
 
 import ecompim.businessLogic.IProductFetcher;
 
@@ -19,7 +19,7 @@ public class ServerHandler implements Runnable {
     }
     @Override
     public void run() {
-        System.out.println("The networking is running.");
+        System.out.println("The servers is running.");
        try {
            try {
                while (true) {

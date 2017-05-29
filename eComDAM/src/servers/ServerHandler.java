@@ -1,4 +1,4 @@
-package networking;
+package servers;
 
 import businesslogic.IMediaFetcher;
 

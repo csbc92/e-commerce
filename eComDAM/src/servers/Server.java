@@ -1,4 +1,4 @@
-package networking;
+package servers;
 
 import Product.IDisplayable;
 import businesslogic.IMediaFetcher;
@@ -36,7 +36,7 @@ public class Server extends Thread {
     public void run() {
         try {
 
-            System.out.println("A Client is connected to the Digital Asset Management System networking");
+            System.out.println("A Client is connected to the Digital Asset Management System servers");
 
             while (true) {
                 CommandRequest input = (CommandRequest)serverTool.readObject();

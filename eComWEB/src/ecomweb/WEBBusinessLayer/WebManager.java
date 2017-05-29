@@ -2,7 +2,7 @@ package ecomweb.WEBBusinessLayer;
 
 
 import Product.DetailedProduct;
-import ecomweb.network.ClientHandler;
+import ecomweb.networkclients.ClientHandler;
 import network.FTPTool;
 
 

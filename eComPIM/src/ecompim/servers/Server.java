@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ecompim.networking;
+package ecompim.servers;
 
 import Product.DetailedProduct;
 import ecompim.businessLogic.IProductFetcher;
