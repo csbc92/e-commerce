@@ -103,9 +103,9 @@ public class FTPTool {
     }
 
     /**
-     * Retrieve a specific file from the FTP server.
-     * @param paths The path of the file to be downloaded.
-     * @return the path where the file has been downloaded to.
+     * Retrieve a set of specific files from the FTP server.
+     * @param paths The path of the files to be downloaded.
+     * @return the path where the files have been downloaded to.
      */
     public Set<String> retrieveFiles(Set<String> paths) {
         try {
