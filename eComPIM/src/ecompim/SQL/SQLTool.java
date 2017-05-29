@@ -1,11 +1,7 @@
-package persistence;
+package ecompim.SQL;
 
 import java.sql.*;
-import java.lang.String;
 
-/**
- * Created by JV on 15-02-2017.
- */
 public class SQLTool {
 
     private PreparedStatement myStatement;
@@ -18,9 +14,9 @@ public class SQLTool {
      * @param user
      * @param password
      */
-    public SQLTool(String connection, String user, String password){
+    public SQLTool(String connection, String user, String password) {
         try {
-            con = DriverManager.getConnection(connection,user,password);
+            con = DriverManager.getConnection(connection, user, password);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -32,16 +28,17 @@ public class SQLTool {
 
     /**
      * Add a SQLTool statement or just a part of one to the SQLTool Script
+     *
      * @param value The statement
      */
-    public void add(String value){
+    public void add(String value) {
         query.append(value);
     }
 
     /**
      * Prepare the statement for parameters.
      */
-    public void prepareStatement(){
+    public void prepareStatement() {
         try {
             this.myStatement = con.prepareStatement(query.toString());
         } catch (SQLException e) {
@@ -52,10 +49,11 @@ public class SQLTool {
     /**
      * Add a parameter to the prepared statement
      * Important: call prepareStatement() before use
+     *
      * @param index paramter index
      * @param value an int
      */
-    public void addParameter(int index,int value){
+    public void addParameter(int index, int value) {
         try {
             if (myStatement != null) {
                 myStatement.setInt(index, value);
@@ -68,10 +66,11 @@ public class SQLTool {
     /**
      * Add a parameter to the prepared statement
      * Important: call prepareStatement() before use
+     *
      * @param index paramter index
      * @param value a Boolean
      */
-    public void addParameter(int index,Boolean value){
+    public void addParameter(int index, Boolean value) {
         try {
             if (myStatement != null) {
                 myStatement.setBoolean(index, value);
@@ -84,10 +83,11 @@ public class SQLTool {
     /**
      * Add a parameter to the prepared statement
      * Important: call prepareStatement() before use
+     *
      * @param index parameter index
      * @param value a String
      */
-    public void addParameter(int index,String value){
+    public void addParameter(int index, String value) {
         try {
             if (myStatement != null) {
                 myStatement.setString(index, value);
@@ -100,7 +100,7 @@ public class SQLTool {
     /**
      * Clear the SQLTool script
      */
-    public void clear(){
+    public void clear() {
         query = new StringBuilder();
     }
 
@@ -130,7 +130,7 @@ public class SQLTool {
     /**
      * Close the current resultset
      */
-    public void close(){
+    public void close() {
         try {
             if (this.myResultSet != null) {
                 this.myResultSet.close();
@@ -142,6 +142,7 @@ public class SQLTool {
 
     /**
      * Return the resultset generated from the Open()-method.
+     *
      * @return A resultset
      */
     public ResultSet getResultSet() {
