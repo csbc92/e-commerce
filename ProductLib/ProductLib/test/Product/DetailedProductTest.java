@@ -26,26 +26,20 @@ class DetailedProductTest {
 
     @Test
     void marginAndSalePriceTest() {
+        // Instantiate the product
         int id = 1;
         String shortDescription = "short description";
         double margin = 20;
         String productName = "Product name";
         int stock = 30;
         double costPrice = 1748;
-
         DetailedProduct p =  new DetailedProduct(id, shortDescription, margin, productName, stock, costPrice);
 
-
+        // Test sale price
         assertEquals(2097.6, p.getSalePrice());
 
         p.setMargin(25); // Set the margin to something else
         assertEquals(2185, p.getSalePrice());
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            p.setMargin(-91); // This should not be allowed - will result in a sale price of less than -90%
-        });
-
-
     }
 
     @Test
@@ -95,7 +89,7 @@ class DetailedProductTest {
     }
 
     @Test
-    void addMediaTest() {
+    void mediaTest() {
         DetailedProduct p = getPerfectDetailedProduct();
         String mediaExtension = ".png";
         int mediaAmount = 100;
@@ -187,16 +181,25 @@ class DetailedProductTest {
     }
 
     @Test
-    void createProductMarginLessThanZero() {
+    void createProductMarginLessThanNinety() {
+        // Instantiate the product.
         int id = 1;
         String shortDescription = "short description";
-        double margin = -20;
+        double illegalMargin = -91;
+        double legalMargin = 20;
         String productName = "Product name";
         int stock = 30;
         double costPrice = 350.75;
-        //TODO et produkt kan godt oprettes med mindre end 0% i margin. Dette er vel også meningen så længe costprice og sales price ikke er under 0.
+
+        // Instantiate the product with illegal margin.
         assertThrows(IllegalArgumentException.class, () -> {
-            DetailedProduct p =  new DetailedProduct(id, shortDescription, margin, productName, stock, costPrice);
+            DetailedProduct p =  new DetailedProduct(id, shortDescription, illegalMargin, productName, stock, costPrice);
+        });
+
+        // Set illegal margin after instantiation.
+        assertThrows(IllegalArgumentException.class, () -> {
+            DetailedProduct p =  new DetailedProduct(id, shortDescription, legalMargin, productName, stock, costPrice);
+            p.setMargin(-91); // This should not be allowed - will result in a sale price of less than -90%
         });
     }
 }
