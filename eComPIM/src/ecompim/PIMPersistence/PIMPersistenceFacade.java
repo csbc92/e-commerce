@@ -66,5 +66,10 @@ public class PIMPersistenceFacade implements IPIMPersistenceFacade {
         return ipimPersistence.getMediaIDs(productID);
     }
 
+    @Override
+    public int getMaxCatId() {
+       return ipimPersistence.getMaxCatId();
+    }
+
 
 }

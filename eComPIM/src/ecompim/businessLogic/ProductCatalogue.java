@@ -191,7 +191,8 @@ public class ProductCatalogue implements IProductCatalogue {
     private void addNewChildCategory(Category parent, String categoryName,String newCategoryName) {
         for(Category cat : parent.getChildren()){
             if(cat.getName().equalsIgnoreCase(categoryName)){
-                cat.addChild(new Category(newCategoryName,cat,-1));
+                int max = persistence.getMaxCatId();
+                cat.addChild(new Category(newCategoryName,cat,max+1)); // one above the maximum must be a unique id
             } else {
                 addNewChildCategory(cat,categoryName,newCategoryName);
             }

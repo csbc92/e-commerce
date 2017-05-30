@@ -71,4 +71,5 @@ public interface  IPIMPersistence {
      */
     Set<Integer> getMediaIDs(int productID);
 
+    int getMaxCatId();
 }

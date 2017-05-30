@@ -68,4 +68,6 @@ public interface IPIMPersistenceFacade{
          * @return
          */
         Set<Integer> getMediaIDs(int productID);
+
+    int getMaxCatId();
 }
