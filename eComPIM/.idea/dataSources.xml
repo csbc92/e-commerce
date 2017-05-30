@@ -7,7 +7,7 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/eComDAM</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="eComPIM@localhost" uuid="069c2f7b-f0f2-4f5b-be0a-6022fe66a5ff">
+    <data-source source="LOCAL" name="eComPIM@localhost" uuid="4fe6d748-692b-4764-a811-ed3b34fea4c4">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>

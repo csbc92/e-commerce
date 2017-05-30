@@ -426,7 +426,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     public void taDescOnKeyTypedHandler(KeyEvent keyEvent) {
-        manager.getCurrentProduct().setLongDescription(taDesc.getText());
+        manager.getCurrentProduct().setLongDescription(taDesc.getText()+keyEvent.getCharacter());
     }
 
     /**
