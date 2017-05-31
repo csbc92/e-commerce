@@ -41,7 +41,6 @@ public class ClientTool {
                 objectToServer = new ObjectOutputStream(clientSocket.getOutputStream());
                 objFromServer = new ObjectInputStream(clientSocket.getInputStream());
                 stringFromServer = new DataInputStream(clientSocket.getInputStream());
-            } else {
             }
             return clientSocket.isConnected();
         } catch (IOException e) {
