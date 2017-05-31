@@ -60,12 +60,12 @@ public class FXMLDocumentController implements Initializable {
      * @param productID the id of the product to display
      */
     private void displayProduct(int productID) {
-        //Test code to see the GUI works, and fetching products work
         DetailedProduct product = webManager.getProduct(productID);
 
         if (product != null) {
 
-            lPrice.setText("Pris: " + product.getSalePrice() + " dkk"); // Is this really the best way of converting a number to a string?
+            // Assign values to GUI elements
+            lPrice.setText("Pris: " + product.getSalePrice() + " dkk");
             lProductName.setText(product.getName());
             lProductID.setText("ID: " + product.getProductID());
             taLongDescription.setText(product.getLongDescription());
