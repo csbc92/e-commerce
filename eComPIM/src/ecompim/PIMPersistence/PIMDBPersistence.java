@@ -329,8 +329,6 @@ public class PIMDBPersistence implements IPIMPersistence {
             {
                 db.close();
                 db.clear();
-                // System.out.println("NO WORKY WORKY");
-                //TODO: Hvad sker der lige her?????
                 db.add("INSERT INTO productInCategory VALUES(?,?);");
                 db.prepareStatement();
                 db.addParameter(1, rootCategory.getId());
@@ -403,8 +401,6 @@ public class PIMDBPersistence implements IPIMPersistence {
             System.out.println("WOOOP");
             db.close();
             db.clear();
-            // System.out.println(root.getId());
-            //TODO: Hvad sker der lige her?????
             db.add("INSERT INTO category VALUES (?,?);");
             db.prepareStatement();
             db.addParameter(1, root.getId());
@@ -462,7 +458,6 @@ public class PIMDBPersistence implements IPIMPersistence {
         db.prepareStatement();
         db.open();
         try {
-
             ResultSet rs = db.getResultSet();
             rs.next();
             return rs.getInt("id");

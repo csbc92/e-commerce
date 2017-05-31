@@ -122,7 +122,12 @@ public class PIMFilePersistence implements IPIMPersistence {
         return toReturn;
     }
 
-
+    /**
+     * Gets overview of products from a given category
+     *
+     * @param category the category to look for
+     * @return a map of product from the category chosen
+     */
     @Override
     public HashMap<Integer, Product> getCategoryOverview(Category category) {
         throw new UnsupportedOperationException();

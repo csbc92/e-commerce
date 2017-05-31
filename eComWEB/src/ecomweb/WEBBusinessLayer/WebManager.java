@@ -16,7 +16,6 @@ public class WebManager implements IWebManager {
     private FTPTool ftpTool;
 
     public WebManager() {
-
         client = new ClientHandler();
         ftpTool = new FTPTool(FTPHOST, FTPUSER, FTPPASS);
     }

@@ -75,7 +75,10 @@ public interface IPIMPersistenceFacade {
      * @param productID
      * @return
      */
-    Set<Integer> getMediaIDs(int productID);
-
-    int getMaxCatId();
+    public Set<Integer> getMediaIDs(int productID);
+    /**
+     * Returns the highest category id
+     * @return the highest category id
+     */
+    public int getMaxCatId();
 }

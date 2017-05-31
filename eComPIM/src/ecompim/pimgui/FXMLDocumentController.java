@@ -321,10 +321,6 @@ public class FXMLDocumentController implements Initializable {
      */
     void updateImage() {
         if (!manager.getCurrentProduct().getMediaList().isEmpty()) {
-            //File file = manager.getCurrentProduct().getMediaList().get(0).getMedia();
-            //imgvPic.setImage(new Image(file.toURI().toString()));
-//             imgvPic.setImage(new Image( new File(manager.fetchMedia(manager.getCurrentProduct().getMediaList().get(0).getID()).getPath()).toURI().toString()));
-
             String path = manager.fetchThumbnailPathForCurrentProduct();
             File imageFile = new File(path);
             Image image = new Image(imageFile.toURI().toString());
@@ -525,9 +521,6 @@ public class FXMLDocumentController implements Initializable {
             if (filter.isEmpty()) {
                 return new TextFlow(new Text(text));
             }
-            //TODO: Error ved søgning af flere ord, som IKKE er i samme rækkefølge
-            // Spørg Vinge
-
             int filterIndex = text.toLowerCase().indexOf(filter.toLowerCase());
             Text textBefore = new Text(text.substring(0, filterIndex));
             Text textAfter = new Text(text.substring(filterIndex + filter.length()));
@@ -561,14 +554,15 @@ public class FXMLDocumentController implements Initializable {
     private void butAddNewCategoryHandler(ActionEvent event) {
         if ((cbCategories.getSelectionModel().getSelectedItem() != null)) {
             manager.addNewCategory(tfCategoryName.getText(), cbCategories.getSelectionModel().getSelectedItem().getName());
-//        for (Category s : manager.getAllCategories()) {
-//            System.out.println(s.getName());
-//        }
+
             cbCategories.setItems(FXCollections.observableArrayList(manager.getAllCategories()));
         }
     }
 
-
+    /**
+     * Creates the popup window that lets you select a new image/media for the product
+     * @param actionEvent
+     */
     public void butChangePicHandler(ActionEvent actionEvent) {
         Parent root = null;
         try {
@@ -594,6 +588,10 @@ public class FXMLDocumentController implements Initializable {
         stage.close();
     }
 
+    /**
+     * Shows the about window
+     * @param actionEvent
+     */
     @FXML
     private void showAboutWindow(ActionEvent actionEvent) {
         Alert alertDialog = new Alert(Alert.AlertType.NONE, "", ButtonType.OK);

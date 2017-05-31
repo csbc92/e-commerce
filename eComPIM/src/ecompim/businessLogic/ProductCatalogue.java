@@ -21,7 +21,6 @@ public class ProductCatalogue implements IProductCatalogue {
      * Creates a new instance of ProductCatalogue with a connection string.
      */
     public ProductCatalogue() {
-        //persistence = new PIMPersistenceFacade("data/file.dat", "data/category.dat");
         persistence = new PIMPersistenceFacade("jdbc:postgresql://localhost:5432/eComPIM", "postgres", "1234");
         cTool = new ClientTool("localhost", 5678);
     }
@@ -34,9 +33,7 @@ public class ProductCatalogue implements IProductCatalogue {
      */
     @Override
     public DetailedProduct fetchProduct(int productID) {
-
         DetailedProduct product = persistence.fetchProduct(productID);
-
         if (product != null) {
             Set<IDisplayable> media = this.fetchMedia(product.getProductID());
             if (media != null) {

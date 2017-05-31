@@ -68,6 +68,10 @@ public class FXMLPicOverviewPopupController implements Initializable {
         lvPicOverview.setItems(oList);
     }
 
+    /**
+     * Changes the picture for a product
+     * @param actionEvent
+     */
     @FXML
     private void butChangePicHandler(ActionEvent actionEvent) {
         IDisplayable tmp = lvPicOverview.getSelectionModel().getSelectedItem();
