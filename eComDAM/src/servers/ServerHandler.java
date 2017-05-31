@@ -15,6 +15,10 @@ public class ServerHandler implements Runnable {
 
     }
 
+    /**
+     * Handles all clients trying to connect to the server.
+     * A new thread is instantiated when a new client connects to the server.
+     */
     @Override
     public void run() {
         try {

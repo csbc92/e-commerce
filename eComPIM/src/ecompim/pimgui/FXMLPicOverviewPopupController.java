@@ -14,18 +14,12 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-/**
- * Created by victo on 2017-05-19.
- */
 public class FXMLPicOverviewPopupController implements Initializable {
     @FXML
     private ListView<IDisplayable> lvPicOverview;
@@ -80,8 +74,8 @@ public class FXMLPicOverviewPopupController implements Initializable {
         if (tmp != null) {
             FXMLDocumentController.manager.getCurrentProduct().addMedia(tmp);
         }
-        Node source = (Node)  actionEvent.getSource();
-        Stage stage  = (Stage) source.getScene().getWindow();
+        Node source = (Node) actionEvent.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
         FXMLDocumentController.cont.updateImage();
     }

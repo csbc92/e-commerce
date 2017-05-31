@@ -1,13 +1,11 @@
 package ecompim.networkclients;
 
-import Product.DetailedProduct;
 import Product.IDisplayable;
 import network.ClientTool;
 import network.CommandRequest;
 import network.CommandResponse;
 
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.Set;
 
 public class ClientHandler {
@@ -15,15 +13,16 @@ public class ClientHandler {
     private ClientTool clientTool;
 
     public ClientHandler() {
-            clientTool = new ClientTool("localhost",5678);
+        clientTool = new ClientTool("localhost", 5678);
     }
 
     /**
-     *  Fethes media from DAM based on the given media IDs
+     * Fethes media from DAM based on the given media IDs
+     *
      * @param mediaIDs A set of Media IDs
      * @return Returns a Set of IDisplayable
      */
-    public Set<IDisplayable> fetchMedia(Set<Integer> mediaIDs){
+    public Set<IDisplayable> fetchMedia(Set<Integer> mediaIDs) {
 
         Set<IDisplayable> result = null;
 
@@ -34,12 +33,12 @@ public class ClientHandler {
             clientTool.sendObject(commandRequest);
 
             // Receive command
-            CommandResponse commandResponse = (CommandResponse)clientTool.readObj();
+            CommandResponse commandResponse = (CommandResponse) clientTool.readObj();
             if (commandResponse != null) {
                 System.out.println(commandResponse.getResponseMessage());
 
                 if (commandResponse.getResponseCode() == 0) {
-                    result = (Set<IDisplayable>)commandResponse.getResponseObject();
+                    result = (Set<IDisplayable>) commandResponse.getResponseObject();
                 }
             }
 
@@ -53,7 +52,8 @@ public class ClientHandler {
     }
 
     /**
-     *  Fetches a media overview from DAM.
+     * Fetches a media overview from DAM.
+     *
      * @return Returns a Set of IDisplayables
      */
     public Set<IDisplayable> fetchMediaOverview() {
@@ -67,12 +67,12 @@ public class ClientHandler {
             clientTool.sendObject(commandRequest);
 
             // Receive command
-            CommandResponse commandResponse = (CommandResponse)clientTool.readObj();
+            CommandResponse commandResponse = (CommandResponse) clientTool.readObj();
             if (commandResponse != null) {
                 System.out.println(commandResponse.getResponseMessage());
 
                 if (commandResponse.getResponseCode() == 0) {
-                    result = (Set<IDisplayable>)commandResponse.getResponseObject();
+                    result = (Set<IDisplayable>) commandResponse.getResponseObject();
                 }
             }
 

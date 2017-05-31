@@ -1,31 +1,27 @@
 package ecompim.businessLogic;
 
 
+import Product.Category;
+import Product.DetailedProduct;
+import Product.IDisplayable;
+import Product.Product;
 import ecompim.ERPAccess.ERPFetcher;
-
-import Product.*;
-
-import network.ClientTool;
-
 import ecompim.servers.ServerHandler;
-
+import network.ClientTool;
 import network.FTPTool;
 
-
 import java.io.File;
-
 import java.io.IOException;
-
 import java.util.HashMap;
-
 import java.util.HashSet;
-
 import java.util.List;
-
 import java.util.Set;
 
 public class PIMManager implements IPIM {
 
+    public static final String FTPUSER = "b33_20125183";
+    public static final String FTPPASS = "ecom1234";
+    public static final String FTPHOST = "ftp.byethost33.com";
 
     private DetailedProduct currentProduct;
 
@@ -270,7 +266,7 @@ public class PIMManager implements IPIM {
 
             // Connect to the FTP server and save the image to the cache.
 
-            FTPTool ftpTool = new FTPTool(FTPTool.username, FTPTool.password);
+            FTPTool ftpTool = new FTPTool(FTPHOST, FTPUSER, FTPPASS);
 
             return ftpTool.retrieveFile(currentProductThumbnail);
 
@@ -362,8 +358,7 @@ public class PIMManager implements IPIM {
 
                 }
 
-                FTPTool ftpTool = new FTPTool(FTPTool.username, FTPTool.password);
-
+                FTPTool ftpTool = new FTPTool(FTPHOST, FTPUSER, FTPPASS);
                 ftpTool.retrieveFiles(paths);
 
             }

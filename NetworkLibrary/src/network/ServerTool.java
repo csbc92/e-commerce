@@ -3,9 +3,6 @@ package network;
 import java.io.*;
 import java.net.Socket;
 
-/**
- * Created by victo on 2017-05-18.
- */
 public class ServerTool {
     private Socket connectionSocket;
     private DataInputStream primitiveFromClient;
@@ -15,6 +12,7 @@ public class ServerTool {
 
     /**
      * A server tool to socket communication.
+     *
      * @param connectionSocket The socket connection
      * @throws IOException
      */
@@ -28,6 +26,7 @@ public class ServerTool {
 
     /**
      * Send a given object the client
+     *
      * @param value The object to be send.
      * @throws IOException
      */
@@ -37,6 +36,7 @@ public class ServerTool {
 
     /**
      * Send a given string to the client
+     *
      * @param value The String to be send
      * @throws IOException
      */
@@ -46,6 +46,7 @@ public class ServerTool {
 
     /**
      * Read a given String from the client
+     *
      * @return The string send from the client
      * @throws IOException
      */
@@ -56,6 +57,7 @@ public class ServerTool {
 
     /**
      * Reads an object from the input stream.
+     *
      * @return
      * @throws IOException
      * @throws ClassNotFoundException

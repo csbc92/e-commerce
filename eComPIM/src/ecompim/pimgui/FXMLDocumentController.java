@@ -1,11 +1,10 @@
 package ecompim.pimgui;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.*;
-
-import Product.*;
+import Product.Category;
+import Product.DetailedProduct;
+import Product.Product;
+import ecompim.businessLogic.IPIM;
+import ecompim.businessLogic.PIMManager;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -14,16 +13,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import ecompim.businessLogic.PIMManager;
-import ecompim.businessLogic.IPIM;
 import javafx.scene.control.cell.CheckBoxTreeCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.InputEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -35,13 +30,17 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.*;
+
 
 /**
  * Responsible for managing every interaction between the user and the PIM-system.
  * <p>
  * Initialises the business Logic.
  *
- * @author JV
  */
 public class FXMLDocumentController implements Initializable {
 
@@ -104,6 +103,7 @@ public class FXMLDocumentController implements Initializable {
 
 
     static FXMLDocumentController cont;
+
     /**
      * Initialises the PIM-system, displays the product overview.
      *
@@ -167,7 +167,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     public void searchButtonHandler(ActionEvent actionEvent) {
-            setListViewProducts(manager.searchProducts(searchTextField.getText()));
+        setListViewProducts(manager.searchProducts(searchTextField.getText()));
 
     }
 
@@ -319,21 +319,21 @@ public class FXMLDocumentController implements Initializable {
      * Set the image to the first image in the current product's media list, if an image is available.
      * Otherwise set the image to null.
      */
-     void updateImage() {
-         if (!manager.getCurrentProduct().getMediaList().isEmpty()) {
-             //File file = manager.getCurrentProduct().getMediaList().get(0).getMedia();
-             //imgvPic.setImage(new Image(file.toURI().toString()));
+    void updateImage() {
+        if (!manager.getCurrentProduct().getMediaList().isEmpty()) {
+            //File file = manager.getCurrentProduct().getMediaList().get(0).getMedia();
+            //imgvPic.setImage(new Image(file.toURI().toString()));
 //             imgvPic.setImage(new Image( new File(manager.fetchMedia(manager.getCurrentProduct().getMediaList().get(0).getID()).getPath()).toURI().toString()));
 
-             String path = manager.fetchThumbnailPathForCurrentProduct();
-             File imageFile = new File(path);
-             Image image = new Image(imageFile.toURI().toString());
-             imgvPic.setImage(image);
-         } else {
-             imgvPic.setImage(null);
-         }
+            String path = manager.fetchThumbnailPathForCurrentProduct();
+            File imageFile = new File(path);
+            Image image = new Image(imageFile.toURI().toString());
+            imgvPic.setImage(image);
+        } else {
+            imgvPic.setImage(null);
+        }
 
-     }
+    }
 
     private ObservableList<Category> populateCategoryListView() {
         ObservableList<Category> allCategories = FXCollections.observableArrayList(manager.getAllCategories());
@@ -426,7 +426,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     public void taDescOnKeyTypedHandler(KeyEvent keyEvent) {
-        manager.getCurrentProduct().setLongDescription(taDesc.getText()+keyEvent.getCharacter());
+        manager.getCurrentProduct().setLongDescription(taDesc.getText() + keyEvent.getCharacter());
     }
 
     /**
@@ -470,6 +470,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * Clears the cache
+     *
      * @param actionEvent
      */
     @FXML
@@ -485,6 +486,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * sets the tags from the recieved string
+     *
      * @param actionEvent
      */
     @FXML
@@ -498,6 +500,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * Removes the specified tags
+     *
      * @param actionEvent
      */
     @FXML
@@ -540,6 +543,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * Adds the products to categories
+     *
      * @param event
      */
     @FXML
@@ -550,11 +554,12 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * Creates a new category
+     *
      * @param event
      */
     @FXML
     private void butAddNewCategoryHandler(ActionEvent event) {
-        if((cbCategories.getSelectionModel().getSelectedItem() != null)) {
+        if ((cbCategories.getSelectionModel().getSelectedItem() != null)) {
             manager.addNewCategory(tfCategoryName.getText(), cbCategories.getSelectionModel().getSelectedItem().getName());
 //        for (Category s : manager.getAllCategories()) {
 //            System.out.println(s.getName());
@@ -580,6 +585,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * Action to perform when the exit button is clicked.
+     *
      * @param e
      */
     @FXML
@@ -594,12 +600,12 @@ public class FXMLDocumentController implements Initializable {
         alertDialog.setTitle("Om");
         alertDialog.setHeaderText("Software Engineering Projekt 2. Semester");
         alertDialog.setContentText("Udviklet af Gruppe 1:\n\n" +
-                                    "Christian Clausen\n" +
-                                    "Daniel Johansen\n" +
-                                    "Jacob Vinge\n" +
-                                    "Jonas Vedsted\n" +
-                                    "Markus Barrow\n" +
-                                    "Victor Steenfeldt\n");
+                "Christian Clausen\n" +
+                "Daniel Johansen\n" +
+                "Jacob Vinge\n" +
+                "Jonas Vedsted\n" +
+                "Markus Barrow\n" +
+                "Victor Steenfeldt\n");
         alertDialog.show();
 
     }

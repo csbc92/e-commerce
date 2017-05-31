@@ -1,13 +1,10 @@
 package ecompim.ERPAccess;
 
-import Product.*;
+import Product.DetailedProduct;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Vedsted on 24-04-2017.
- */
 public class ERPFetcher {
 
     private Map<Integer, DetailedProduct> productMap;
@@ -21,6 +18,7 @@ public class ERPFetcher {
 
     /**
      * Fetches products from the ERP
+     *
      * @return a map with Integers as key and DetailedProducts as values
      */
     public Map<Integer, DetailedProduct> getProducts() {

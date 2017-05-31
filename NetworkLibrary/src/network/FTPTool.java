@@ -1,8 +1,4 @@
-package network;/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package network;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -14,25 +10,27 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * @author JV
- */
 public class FTPTool {
 
     FTPClient ftpClient;
-    public static final String username = "b33_20125183";
-    public static final String password = "ecom1234";
-    public static final String hostname = "ftp.byethost33.com";
+
+    public String username;
+    public String password;
+    public String hostname;
 
     /**
      * Tool to communicate with a FTP server.
-     * @param user the username
+     *
+     * @param username the username
+     * @param hostname the hostname of the file server
      * @param password the password
      */
-    public FTPTool(String user, String password) {
 
+    public FTPTool(String hostname, String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.hostname = hostname;
         ftpClient = new FTPClient();
-
     }
 
     /**
@@ -63,6 +61,7 @@ public class FTPTool {
 
     /**
      * Returns the parent of the current working directory, and combines it with the given path.
+     *
      * @param path The path which is combined with the current working directory.
      * @return a file with the resulting path.
      */
@@ -76,6 +75,7 @@ public class FTPTool {
 
     /**
      * Retrieve a specific file from the FTP server.
+     *
      * @param path The path of the file to be downloaded.
      * @return the path where the file has been downloaded to.
      */
@@ -104,6 +104,7 @@ public class FTPTool {
 
     /**
      * Retrieve a set of specific files from the FTP server.
+     *
      * @param paths The path of the files to be downloaded.
      * @return the path where the files have been downloaded to.
      */

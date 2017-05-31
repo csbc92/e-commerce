@@ -1,22 +1,21 @@
 package ecompim.businessLogic;
 
-import Product.*;
-import javafx.scene.control.CheckBoxTreeItem;
-import javafx.scene.control.TreeItem;
+import Product.Category;
+import Product.DetailedProduct;
+import Product.IDisplayable;
+import Product.Product;
 
 import java.io.IOException;
 import java.util.*;
 
-/**
- * Created by danie on 12-05-2017.
- */
 public interface IProductCatalogue extends IProductFetcher {
 
     /**
      * Gets a map of non-detailed products
+     *
      * @return A map with Product IDs as key and non-detailed products as values.
      */
-    HashMap<Integer,Product> fetchProductOverview();
+    HashMap<Integer, Product> fetchProductOverview();
 
 
     /**
@@ -32,45 +31,50 @@ public interface IProductCatalogue extends IProductFetcher {
 
     /**
      * Fetch a map of products.
+     *
      * @param categories a set of categories, from which products will be found.
      * @return a Hashmap containing products grouped by category.
      */
     HashMap<Integer, Product> fetchProductsByCategory(HashSet<Category> categories);
 
     /**
-     *
      * @param rootCategory
      */
     void saveRootCategory(Category rootCategory);
 
     /**
      * Obtains the source category of the category tree system.
+     *
      * @return The root of the category tree
      */
     Category fetchRootCategory();
 
     /**
      * Returns a list of contianing all avialable categories.
+     *
      * @return a list of categories.
      */
     List<Category> getAllCategories();
 
     /**
      * Create a new category
+     *
      * @param categoryName the name of the category to be created.
-     * @param parent the parent of the category to be created (parent must exist)
+     * @param parent       the parent of the category to be created (parent must exist)
      */
     void addNewCategory(String categoryName, String parent);
 
     /**
      * adds a specific product to a specific category
-     * @param product the product to be added to a category
+     *
+     * @param product      the product to be added to a category
      * @param categoryName the category to which a product is to be added
      */
-    void addProductToCategory(Product product,String categoryName);
+    void addProductToCategory(Product product, String categoryName);
 
     /**
      * Gets the media from a specific product
+     *
      * @param productID
      * @return ?
      * @throws IOException

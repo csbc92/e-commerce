@@ -1,17 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ecomweb.webgui;
 
-import java.io.File;
-import java.net.URL;
-import java.util.Map;
-import java.util.ResourceBundle;
-
 import Product.DetailedProduct;
-import ecomweb.WEBBusinessLayer.*;
+import ecomweb.WEBBusinessLayer.IWebManager;
+import ecomweb.WEBBusinessLayer.WebManager;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -19,23 +11,19 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
-/**
- *
- * @author JV
- */
+import java.io.File;
+import java.net.URL;
+import java.util.Map;
+import java.util.ResourceBundle;
+
 public class FXMLDocumentController implements Initializable {
 
     private IWebManager webManager;
-
 
     @FXML
     private ImageView ivProductImg;
@@ -57,26 +45,25 @@ public class FXMLDocumentController implements Initializable {
     private int productID;
     @FXML
     private Button btnRefresh;
-    
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       webManager = new WebManager();
-       productID = 10000;
-       displayProduct(productID);
-
-
+        webManager = new WebManager();
+        productID = 10000; // A specific product for testing
+        displayProduct(productID);
     }
 
     /**
      * displays a product based on the id given
+     *
      * @param productID the id of the product to display
      */
-    private void displayProduct(int productID){
+    private void displayProduct(int productID) {
         //Test code to see the GUI works, and fetching products work
         DetailedProduct product = webManager.getProduct(productID);
 
-        if(product != null) {
+        if (product != null) {
 
             lPrice.setText("Pris: " + product.getSalePrice() + " dkk"); // Is this really the best way of converting a number to a string?
             lProductName.setText(product.getName());
@@ -85,8 +72,7 @@ public class FXMLDocumentController implements Initializable {
             populateTechnicalDetails(tblViewTechDetails, product);
 
 
-
-            if(!product.getMediaList().isEmpty()) {
+            if (!product.getMediaList().isEmpty()) {
                 String path = webManager.getMediaPath(product.getMediaList().get(0).getPath());
                 System.out.println(path);
                 File file = new File(path);
@@ -120,6 +106,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * Populates technical details into the specified TableView
+     *
      * @param tblView
      * @param product
      */
@@ -157,7 +144,11 @@ public class FXMLDocumentController implements Initializable {
     }
 
 
-    // For testing purposes the page will refresh, when the add to cart button is pressed
+    /**
+     * Refresh the web-page
+     *
+     * @param actionEvent
+     */
     @FXML
     public void displayProduct(ActionEvent actionEvent) {
         displayProduct(productID);

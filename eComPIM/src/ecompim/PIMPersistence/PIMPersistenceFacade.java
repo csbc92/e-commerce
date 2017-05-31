@@ -1,14 +1,13 @@
 package ecompim.PIMPersistence;
 
-import Product.*;
+import Product.Category;
+import Product.DetailedProduct;
+import Product.Product;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Created by Vedsted on 24-04-2017.
- */
 public class PIMPersistenceFacade implements IPIMPersistenceFacade {
 
     private IPIMPersistence ipimPersistence;
@@ -68,7 +67,7 @@ public class PIMPersistenceFacade implements IPIMPersistenceFacade {
 
     @Override
     public int getMaxCatId() {
-       return ipimPersistence.getMaxCatId();
+        return ipimPersistence.getMaxCatId();
     }
 
 

@@ -2,16 +2,15 @@ package servers;
 
 import Product.IDisplayable;
 import businesslogic.IMediaFetcher;
+import network.CommandRequest;
+import network.CommandResponse;
+import network.ServerTool;
 
-import network.*;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketException;
 import java.util.Set;
 
-/**
- * Created by victo on 2017-05-18.
- */
 public class Server extends Thread {
     private ServerTool serverTool;
     private Socket socket;
@@ -29,9 +28,8 @@ public class Server extends Thread {
     }
 
     /**
-     * Services this thread's client by first sending the
-     * client a welcome message then repeatedly reading strings
-     * and sending back the capitalized version of the string.
+     * Listening for a CommandRequest from the client connected to the server, and response with a CommandResponse
+     * based on the received request.
      */
     public void run() {
         try {
@@ -39,7 +37,7 @@ public class Server extends Thread {
             System.out.println("A Client is connected to the Digital Asset Management System servers");
 
             while (true) {
-                CommandRequest input = (CommandRequest)serverTool.readObject();
+                CommandRequest input = (CommandRequest) serverTool.readObject();
 
                 System.out.println(input);
 
@@ -53,7 +51,7 @@ public class Server extends Thread {
 
                     serverTool.sendObj(response);
                 } else if (input.getCommand().trim().equalsIgnoreCase("mediapaths")) {
-                    Set<Integer> mediaIDs = (Set<Integer>)input.getCommandObject();
+                    Set<Integer> mediaIDs = (Set<Integer>) input.getCommandObject();
                     Set<IDisplayable> displayables = mediaFetcher.fetchMedia(mediaIDs);
                     CommandResponse response = new CommandResponse(0, displayables);
 

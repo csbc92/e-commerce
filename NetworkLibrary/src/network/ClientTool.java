@@ -1,11 +1,4 @@
-package network; /**
- * Created by victo on 2017-05-18.
- */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package network;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -14,7 +7,6 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class ClientTool {
-
 
     public Socket clientSocket;
     private ObjectOutputStream objectToServer;
@@ -26,7 +18,8 @@ public class ClientTool {
 
     /**
      * A client tool to socket communication.
-     * @param IP The IP-address of the server
+     *
+     * @param IP   The IP-address of the server
      * @param port The communication port
      * @throws IOException
      */
@@ -36,7 +29,12 @@ public class ClientTool {
         connect();
     }
 
-    private synchronized Boolean connect(){
+    /**
+     * Connect to the server with the IP-address and port specified in the constructor
+     *
+     * @return True if the client is connected to the server otherwise false.
+     */
+    private synchronized Boolean connect() {
         try {
             if (clientSocket == null || clientSocket.isClosed()) {
                 clientSocket = new Socket(this.IP, this.port);
@@ -53,6 +51,7 @@ public class ClientTool {
 
     /**
      * Send a given object to the server
+     *
      * @param object The object to be send
      * @throws IOException
      */
@@ -64,6 +63,7 @@ public class ClientTool {
 
     /**
      * Read a given string send from the server
+     *
      * @return
      * @throws IOException
      */
@@ -77,6 +77,7 @@ public class ClientTool {
 
     /**
      * Read a given object send from the server
+     *
      * @return
      * @throws ClassNotFoundException
      * @throws IOException

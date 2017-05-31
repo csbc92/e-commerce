@@ -6,12 +6,11 @@ import ecomweb.networkclients.ClientHandler;
 import network.FTPTool;
 
 
-
-/**
- * Created by Vedsted on 24-04-2017.
- */
-
 public class WebManager implements IWebManager {
+
+    public static final String FTPUSER = "b33_20125183";
+    public static final String FTPPASS = "ecom1234";
+    public static final String FTPHOST = "ftp.byethost33.com";
 
     private ClientHandler client;
     private FTPTool ftpTool;
@@ -19,9 +18,8 @@ public class WebManager implements IWebManager {
     public WebManager() {
 
         client = new ClientHandler();
-        ftpTool = new FTPTool(FTPTool.username, FTPTool.password);
+        ftpTool = new FTPTool(FTPHOST, FTPUSER, FTPPASS);
     }
-
 
     @Override
     public DetailedProduct getProduct(int productID) {

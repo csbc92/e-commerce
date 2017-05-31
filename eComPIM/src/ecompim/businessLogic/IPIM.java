@@ -1,25 +1,23 @@
 package ecompim.businessLogic;
 
-import Product.*;
-import javafx.scene.control.CheckBoxTreeItem;
-import javafx.scene.control.TreeItem;
-import javafx.scene.image.Image;
+import Product.Category;
+import Product.DetailedProduct;
+import Product.IDisplayable;
+import Product.Product;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by victo on 2017-04-24.
- */
 public interface IPIM extends IProductFetcher {
 
     /**
      * Gets a map of non-detailed products.
+     *
      * @return A map with Product IDs as key and non-detailed products as values.
      */
-    public HashMap<Integer,Product> fetchProductOverview();
+    public HashMap<Integer, Product> fetchProductOverview();
 
 
     /**
@@ -34,7 +32,6 @@ public interface IPIM extends IProductFetcher {
     public void collectERPProducts();
 
     /**
-     *
      * @return the product that is being modified
      */
     public DetailedProduct getCurrentProduct();
@@ -51,24 +48,26 @@ public interface IPIM extends IProductFetcher {
      * Retrieves the root category from persistence. This is effectively getting the entire DB, since the root cat
      * Knows its children categories, which recursively knows more children cats
      * all of which knows a bunch of products
+     *
      * @return
      */
     public Category getRootCategory();
 
     /**
      * Adds a produt to the category. Does not save it in persistence.
+     *
      * @param categoryName
      */
     public void addProductToCategory(String categoryName);
 
     /**
-     *
      * @return The root category, all its children, their children and so on.
      */
     public List<Category> getAllCategories();
 
     /**
      * Adds new category in the category tree. Does not save it in persistence.
+     *
      * @param categoryName
      * @param parent
      */
@@ -77,6 +76,7 @@ public interface IPIM extends IProductFetcher {
 
     /**
      * Returns a set of products in a category, with some limit. Probably at most 50 products.
+     *
      * @param categories
      * @return
      */
@@ -84,6 +84,7 @@ public interface IPIM extends IProductFetcher {
 
     /**
      * Fetch the media path for the current product.
+     *
      * @return
      */
     public String fetchThumbnailPathForCurrentProduct();
