@@ -59,7 +59,7 @@ public class DAMDBPersistence implements IDAMPersistence {
 
             }
             if (!aTupleWasFound) {
-                media = new PictureMedia(0, "../files/qmark.png");
+                media = new PictureMedia(0, "htdocs/files/qmark.png"); // If the requested picture does not exist, send a default media
             }
 
         } catch (SQLException e) {
