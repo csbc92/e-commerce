@@ -95,6 +95,10 @@ public interface IPIM extends IProductFetcher {
     public int clearCache();
 
 
+    /**
+     * fetches a Set of the type IDisplayable
+     * @return
+     */
     public Set<IDisplayable> fetchMediaOverview();
 
 

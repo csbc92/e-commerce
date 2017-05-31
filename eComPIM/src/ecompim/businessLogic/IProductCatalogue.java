@@ -76,11 +76,15 @@ public interface IProductCatalogue extends IProductFetcher {
      * Gets the media from a specific product
      *
      * @param productID
-     * @return ?
+     * @return a set of IDisplayable for a specific product
      * @throws IOException
      * @throws ClassNotFoundException
      */
     Set<IDisplayable> fetchMedia(int productID) throws IOException, ClassNotFoundException;
 
+    /**
+     * fetches a Set of the type IDisplayable
+     * @return
+     */
     public Set<IDisplayable> fetchMediaOverview();
 }

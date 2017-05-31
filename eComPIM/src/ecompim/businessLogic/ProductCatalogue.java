@@ -77,6 +77,10 @@ public class ProductCatalogue implements IProductCatalogue {
         return result;
     }
 
+    /**
+     * fetches a Set of the type IDisplayable
+     * @return
+     */
     @Override
     public Set<IDisplayable> fetchMediaOverview() {
         // Fetch the products media id's from the PIM DB.
