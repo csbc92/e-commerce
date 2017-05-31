@@ -105,7 +105,7 @@
                                  <children>
                                     <ImageView fx:id="imgvPic" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true">
                                        <image>
-                                          <Image url="@../../../lone.jpg" />
+                                          <Image url="@../../../picture.png" />
                                        </image>
                                     </ImageView>
                                     <Pane prefHeight="20.0" />

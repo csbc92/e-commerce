@@ -81,6 +81,6 @@ public class FXMLPicOverviewPopupController implements Initializable {
         Node source = (Node) actionEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
-        FXMLDocumentController.cont.updateImage();
+        FXMLDocumentController.controller.updateImage();
     }
 }

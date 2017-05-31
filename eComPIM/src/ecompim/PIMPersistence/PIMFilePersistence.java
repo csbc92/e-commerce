@@ -146,7 +146,7 @@ public class PIMFilePersistence implements IPIMPersistence {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return rootCategory; //TODO needs testing
+        return rootCategory;
     }
 
     @Override
