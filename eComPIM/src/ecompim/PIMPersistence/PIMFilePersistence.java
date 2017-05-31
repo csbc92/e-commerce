@@ -28,10 +28,6 @@ public class PIMFilePersistence implements IPIMPersistence {
         categoryFile = new File(categoryFilePath);
     }
 
-
-    /**
-     * @return
-     */
     @Override
     public HashMap<Integer, Product> fetchProductOverview() {
         HashMap<Integer, Product> products = new HashMap<>();
