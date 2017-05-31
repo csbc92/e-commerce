@@ -46,21 +46,21 @@ public class FXMLDocumentController implements Initializable {
 
     static IPIM manager;
     @FXML
-    public ImageView imgvPic;
+    private ImageView imgvPic;
     @FXML
-    public TextField tfCostPrice;
+    private TextField tfCostPrice;
     @FXML
-    public TextField tfMargin;
+    private TextField tfMargin;
     @FXML
-    public TextField tfSalesPrice;
+    private TextField tfSalesPrice;
     @FXML
-    public RadioButton rbPublic;
+    private RadioButton rbPublic;
     @FXML
-    public ToggleGroup publicityStatus;
+    private ToggleGroup publicityStatus;
     @FXML
-    public RadioButton rbHidden;
+    private RadioButton rbHidden;
     @FXML
-    public TableView<Map.Entry<String, String>> tblViewTechDetails;
+    private TableView<Map.Entry<String, String>> tblViewTechDetails;
     private HashSet<Category> selectedCategories;
     @FXML
     private ListView<String> lvTags;
@@ -102,7 +102,7 @@ public class FXMLDocumentController implements Initializable {
     private MenuBar topMenuBar;
 
 
-    static FXMLDocumentController cont;
+    static FXMLDocumentController controller;
 
     /**
      * Initialises the PIM-system, displays the product overview.
@@ -112,7 +112,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cont = this;
+        controller = this;
         manager = new PIMManager();
 
 
@@ -181,7 +181,6 @@ public class FXMLDocumentController implements Initializable {
         ArrayList<Product> productList = new ArrayList<>();
         boolean matchFound;
         if (products.isEmpty()) {
-            //TODO: Find en mere elegant måde at håndtere ingen resultater.
             lvProducts.getItems().clear();
             lvProducts.getItems().add(new Product(0, "", 0, "Ingen produkter", 0));
             matchFound = false;
@@ -211,7 +210,7 @@ public class FXMLDocumentController implements Initializable {
                             if (matchFound) {
                                 setText(item.getName());
                                 Double rowHeight = lvProducts.getHeight();
-                                String formattedText = String.format("%-5s%-40s kr. %s,-", item.getProductID(), item.getName(), item.getSalePrice());
+                                String formattedText = String.format("%-10s%-40s kr. %s,-", item.getProductID(), item.getName(), item.getSalePrice());
                                 setGraphic(buildTextFlow(formattedText, searchTextField.getText()));
                                 setHeight(rowHeight);
                                 setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
@@ -439,8 +438,9 @@ public class FXMLDocumentController implements Initializable {
             manager.getCurrentProduct().setMargin(0);
             tfSalesPrice.setText(String.valueOf(manager.getCurrentProduct().getSalePrice()));
         } else {
+            // If the entered char is not a number or a dot
             if (!Character.isDigit(keyEvent.getCharacter().charAt(0)) && !(keyEvent.getCharacter().charAt(0) == '.')) {
-                keyEvent.consume();
+                keyEvent.consume(); // Do nothing
                 manager.getCurrentProduct().setMargin(Double.parseDouble(tfMargin.getText()));
             } else {
                 try {
