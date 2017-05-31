@@ -196,7 +196,7 @@ public class DetailedProduct extends Product implements Serializable {
 
         IDisplayable result = this.getMedia(id);
 
-        // If no entry was found, always return null.
+        // If no entry was found, always return false.
         if (result == null) {
             return false;
         }
