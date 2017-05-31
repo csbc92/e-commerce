@@ -10,18 +10,11 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Created by danie on 23-05-2017.
- */
 class PIMDBPersistenceTest {
     PIMDBPersistence pimdbPersistence;
     @BeforeEach
     void setUp() {
         pimdbPersistence = new PIMDBPersistence("jdbc:postgresql://localhost:5432/eComPIM", "postgres", "1234");
-    }
-
-    @AfterEach
-    void tearDown() {
     }
 
     @Test
@@ -44,8 +37,8 @@ class PIMDBPersistenceTest {
 
     @Test
     void searchProducts() {
-        assertEquals(10,pimdbPersistence.searchProducts("1000").size());
-        assertEquals(0,pimdbPersistence.searchProducts("hej").size());
+        assertEquals(27,pimdbPersistence.searchProducts("1000").size());
+        assertEquals(2,pimdbPersistence.searchProducts("The Big Bang Theory").size());
         assertEquals(0,pimdbPersistence.searchProducts("我").size());
         assertEquals(0,pimdbPersistence.searchProducts(null).size());
         assertEquals(50,pimdbPersistence.searchProducts("").size());

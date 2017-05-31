@@ -14,9 +14,9 @@ import java.util.Set;
 
 public class DAMDBPersistence implements IDAMPersistence {
 
-    public static final String FTPUSER = "b33_20125183";
-    public static final String FTPPASS = "ecom1234";
-    public static final String FTPHOST = "ftp.byethost33.com";
+    private static final String FTPUSER = "b33_20125183";
+    private static final String FTPPASS = "ecom1234";
+    private static final String FTPHOST = "ftp.byethost33.com";
     private Connection connection;
     private SQLTool db;
     private FTPTool ftpTool;
