@@ -1,18 +1,25 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Product;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.HashMap;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-class DetailedProductTest {
-
-    /**
-     * Method used to create an error free product
-     * @return
-     */
-    DetailedProduct getPerfectDetailedProduct() {
+/**
+ *
+ * @author danie
+ */
+public class DetailedProductTest {
+    
+    public DetailedProductTest() {
+    }
+    
+     public DetailedProduct getPerfectDetailedProduct() {
         int id = 1;
         String shortDescription = "short description";
         double margin = 20;
@@ -23,9 +30,9 @@ class DetailedProductTest {
         DetailedProduct p =  new DetailedProduct(id, shortDescription, margin, productName, stock, costPrice);
         return p;
     }
-
-    @Test
-    void marginAndSalePriceTest() {
+     
+      @Test
+    public void marginAndSalePriceTest() {
         // Instantiate the product
         int id = 1;
         String shortDescription = "short description";
@@ -36,14 +43,13 @@ class DetailedProductTest {
         DetailedProduct p =  new DetailedProduct(id, shortDescription, margin, productName, stock, costPrice);
 
         // Test sale price
-        assertEquals(2097.6, p.getSalePrice());
+        assertEquals(2097.6, p.getSalePrice(),2);
 
         p.setMargin(25); // Set the margin to something else
-        assertEquals(2185, p.getSalePrice());
+        assertEquals(2185, p.getSalePrice(),2);
     }
-
-    @Test
-    void technicalDetailsTest() {
+ @Test(expected = IllegalArgumentException.class)
+   public void technicalDetailsTest() {
         DetailedProduct p = getPerfectDetailedProduct();
         int technicalDetailsAmount = 100;
 
@@ -55,15 +61,13 @@ class DetailedProductTest {
         // Test the size of technical details
         assertEquals(technicalDetailsAmount, p.getTechnicalDetails().size());
 
-        // Test insertion of null-key
-        assertThrows(IllegalArgumentException.class, () -> {
+        
             p.addTechnicalDetail(null, "MyNullValue");
-        });
+        
 
-        // Test insertion of null-value
-        assertThrows(IllegalArgumentException.class, () -> {
+        
             p.addTechnicalDetail("MyNullKey", null);
-        });
+        
 
         // Test retrieval on specific key
         String retrieveKey = "MyKey3";
@@ -87,9 +91,9 @@ class DetailedProductTest {
         int expectedSize = 0;
         assertEquals(expectedSize, p.getTechnicalDetails().size());
     }
-
-    @Test
-    void mediaTest() {
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void mediaTest() {
         DetailedProduct p = getPerfectDetailedProduct();
         String mediaExtension = ".png";
         int mediaAmount = 100;
@@ -104,9 +108,9 @@ class DetailedProductTest {
         assertEquals(mediaAmount, p.getMediaList().size());
 
         // Test insertion of null
-        assertThrows(IllegalArgumentException.class, () -> {
+        
             p.addMedia(null);
-        });
+        
 
         // Test retrieval on specific id
         assertEquals(mediaTestID, p.getMedia(mediaTestID).getID());
@@ -119,9 +123,8 @@ class DetailedProductTest {
         boolean result = p.removeMedia(200);
         assertEquals(result, false);
     }
-
     @Test
-    void createPerfectProduct() {
+    public void createPerfectProduct() {
         int id = 1;
         String shortDescription = "short description";
         double margin = 20;
@@ -133,13 +136,12 @@ class DetailedProductTest {
 
         assertEquals(id, p.getProductID());
         assertEquals(shortDescription, p.getShortDescription());
-        assertEquals(margin, p.getMargin());
-        assertEquals(stock, p.getStock());
-        assertEquals(costPrice, p.getCostPrice());
+        assertEquals(margin, p.getMargin(),2);
+        assertEquals(stock, p.getStock(),2);
+        assertEquals(costPrice, p.getCostPrice(),2);
     }
-
-    @Test
-    void createProductIDLessThan0() {
+     @Test(expected = IllegalArgumentException.class)
+    public void createProductIDLessThan0() {
         int id = -1;
         String shortDescription = "short description";
         double margin = 20;
@@ -147,13 +149,12 @@ class DetailedProductTest {
         int stock = 30;
         double costPrice = 350.75;
 
-        assertThrows(IllegalArgumentException.class, () -> {
+        
             DetailedProduct p =  new DetailedProduct(id, shortDescription, margin, productName, stock, costPrice);
-        });
+       
     }
-
-    @Test
-    void createProductStockLessThan0() {
+     @Test(expected = IllegalArgumentException.class)
+    public void createProductStockLessThan0() {
         int id = 1;
         String shortDescription = "short description";
         double margin = 20;
@@ -161,13 +162,11 @@ class DetailedProductTest {
         int stock = -1;
         double costPrice = 350.75;
 
-        assertThrows(IllegalArgumentException.class, () -> {
+        
             DetailedProduct p =  new DetailedProduct(id, shortDescription, margin, productName, stock, costPrice);
-        });
     }
-
-    @Test
-    void createProductCostPriceLessThan0() {
+     @Test(expected = IllegalArgumentException.class)
+    public void createProductCostPriceLessThan0() {
         int id = 1;
         String shortDescription = "short description";
         double margin = 20;
@@ -175,13 +174,12 @@ class DetailedProductTest {
         int stock = 30;
         double costPrice = -1;
 
-        assertThrows(IllegalArgumentException.class, () -> {
+        
             DetailedProduct p =  new DetailedProduct(id, shortDescription, margin, productName, stock, costPrice);
-        });
+       
     }
-
-    @Test
-    void createProductMarginLessThanNinety() {
+     @Test(expected = IllegalArgumentException.class)
+    public void createProductMarginLessThanNinety() {
         // Instantiate the product.
         int id = 1;
         String shortDescription = "short description";
@@ -192,14 +190,14 @@ class DetailedProductTest {
         double costPrice = 350.75;
 
         // Instantiate the product with illegal margin.
-        assertThrows(IllegalArgumentException.class, () -> {
-            DetailedProduct p =  new DetailedProduct(id, shortDescription, illegalMargin, productName, stock, costPrice);
-        });
+            DetailedProduct p;
+           p =  new DetailedProduct(id, shortDescription, illegalMargin, productName, stock, costPrice);
+        
 
         // Set illegal margin after instantiation.
-        assertThrows(IllegalArgumentException.class, () -> {
-            DetailedProduct p =  new DetailedProduct(id, shortDescription, legalMargin, productName, stock, costPrice);
+        
+           p =  new DetailedProduct(id, shortDescription, legalMargin, productName, stock, costPrice);
             p.setMargin(-91); // This should not be allowed - will result in a sale price of less than -90%
-        });
+        
     }
 }
