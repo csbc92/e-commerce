@@ -24,7 +24,7 @@ public class PictureMedia implements IDisplayable {
     }
 
     /**
-     *returns path to media
+     * returns File of the media
      * @return the media path
      */
     @Override
@@ -40,7 +40,10 @@ public class PictureMedia implements IDisplayable {
     public int getID() {
         return mediaID;
     }
-
+    /**
+     *returns path to media
+     * @return the media path
+     */
     @Override
     public String getPath() {
         return this.path;
