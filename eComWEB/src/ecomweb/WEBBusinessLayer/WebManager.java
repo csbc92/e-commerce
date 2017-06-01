@@ -5,12 +5,14 @@ import Product.DetailedProduct;
 import ecomweb.networkclients.ClientHandler;
 import network.FTPTool;
 
-
+/**
+ * This class provides implementations of the common interface for the Web system
+ */
 public class WebManager implements IWebManager {
 
-    public static final String FTPUSER = "b33_20125183";
-    public static final String FTPPASS = "ecom1234";
-    public static final String FTPHOST = "ftp.byethost33.com";
+    private static final String FTPUSER = "b33_20125183";
+    private static final String FTPPASS = "ecom1234";
+    private static final String FTPHOST = "ftp.byethost33.com";
 
     private ClientHandler client;
     private FTPTool ftpTool;
