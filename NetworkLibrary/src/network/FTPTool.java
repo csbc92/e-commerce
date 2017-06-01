@@ -14,9 +14,9 @@ public class FTPTool {
 
     FTPClient ftpClient;
 
-    public String username;
-    public String password;
-    public String hostname;
+    private String username;
+    private String password;
+    private String hostname;
 
     /**
      * Tool to communicate with a FTP server.
