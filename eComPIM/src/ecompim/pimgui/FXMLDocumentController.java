@@ -33,6 +33,7 @@ import javafx.util.Callback;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.*;
 
 
@@ -210,7 +211,7 @@ public class FXMLDocumentController implements Initializable {
                             if (matchFound) {
                                 setText(item.getName());
                                 Double rowHeight = lvProducts.getHeight();
-                                String formattedText = String.format("%-10s%-40s kr. %s,-", item.getProductID(), item.getName(), item.getSalePrice());
+                                String formattedText = String.format("%-10s%-80s kr. %s,-", item.getProductID(), item.getName(), new DecimalFormat("#.00").format(item.getSalePrice()));
                                 setGraphic(buildTextFlow(formattedText, searchTextField.getText()));
                                 setHeight(rowHeight);
                                 setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
