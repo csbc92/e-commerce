@@ -13,6 +13,7 @@ public class DetailedProduct extends Product implements Serializable {
     private double margin;
     private double costPrice;
     private ArrayList<IDisplayable> mediaList;
+    private ArrayList<Category> categoryList;
     private TreeSet<String> tags;
 
 
@@ -158,7 +159,22 @@ public class DetailedProduct extends Product implements Serializable {
     }
 
 
+    /**
+     * returns an ArrayList of categories
+     * @return an ArrayList containing categories
+     */
+    /*public ArrayList<Category> getCategoryList() {
+        return new ArrayList<>(categoryList);
+    }*/
 
+    /**
+     * adds a category to the categoryList based on the name and teh parent category
+     * @param name the name of the category
+     * @param parent the parent category to this category
+     */
+    /*public void addCategory(String name, Category parent) {
+        this.categoryList.add(new Category(name, parent,-1));
+    } */
 
     /**
      * adds a media of IDIsplayable to the medialist

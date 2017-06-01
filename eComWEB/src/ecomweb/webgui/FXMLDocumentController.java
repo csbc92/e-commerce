@@ -68,7 +68,6 @@ public class FXMLDocumentController implements Initializable {
             lPrice.setText("Pris: " + product.getSalePrice() + " dkk");
             lProductName.setText(product.getName());
             lProductID.setText("ID: " + product.getProductID());
-            lLongDescriptionSection.setText(product.getName());
             taLongDescription.setText(product.getLongDescription());
             populateTechnicalDetails(tblViewTechDetails, product);
 
