@@ -5,6 +5,9 @@ import Product.IDisplayable;
 import java.io.File;
 import java.util.Set;
 
+/**
+ * This class implements the IDAMPersistence and is responsible for File IO.
+ */
 public class DAMFilePersistence implements IDAMPersistence {
 
     private File mediaFolder;

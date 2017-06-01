@@ -4,6 +4,9 @@ import Product.IDisplayable;
 
 import java.util.Set;
 
+/**
+ * This interface defines the common CRUD methods in the DAM system.
+ */
 public interface IDAMPersistence {
 
     /**

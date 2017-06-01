@@ -2,6 +2,10 @@ package persistence;
 
 import java.sql.*;
 
+/**
+ * This class is a general tool used to communicate with databases.
+ * It is an abstraction over the java.sql library.
+ */
 public class SQLTool {
 
     private PreparedStatement myStatement;

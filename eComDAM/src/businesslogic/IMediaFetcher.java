@@ -4,6 +4,9 @@ import Product.IDisplayable;
 
 import java.util.Set;
 
+/**
+ * This interface defines the common methods for the DAM system
+ */
 public interface IMediaFetcher {
 
     /**
