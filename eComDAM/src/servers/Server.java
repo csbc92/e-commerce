@@ -12,6 +12,9 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.Set;
 
+/**
+ * This class provides the DAM API for network clients.
+ */
 public class Server extends Thread {
     private ServerTool serverTool;
     private Socket socket;

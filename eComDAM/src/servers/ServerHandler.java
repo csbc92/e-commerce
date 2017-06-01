@@ -5,6 +5,9 @@ import businesslogic.IMediaFetcher;
 import java.io.IOException;
 import java.net.ServerSocket;
 
+/**
+ * This class is resposible for handling clients that connects to the server.
+ */
 public class ServerHandler implements Runnable {
     private IMediaFetcher fetcher;
     private ServerSocket listener;
