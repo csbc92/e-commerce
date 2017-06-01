@@ -8,12 +8,17 @@ import network.CommandResponse;
 
 import java.io.IOException;
 
+/**
+ * This class is responsible for communicating with the PIM API.
+ */
 public class ClientHandler {
 
     private ClientTool client;
+    private final String pimServer = "localhost";
+    private final int pimPort = 6789;
 
     public ClientHandler() {
-        client = new ClientTool("localhost", 6789);
+        client = new ClientTool(pimServer, pimPort);
     }
 
     /**

@@ -5,6 +5,9 @@ import Product.DetailedProduct;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class is responsible for fetching products from the external ERP system.
+ */
 public class ERPFetcher {
 
     private Map<Integer, DetailedProduct> productMap;

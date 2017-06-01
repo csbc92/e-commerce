@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * This interface provides the common methods for PIM persistence.
+ */
 public interface IPIMPersistence {
 
     /**

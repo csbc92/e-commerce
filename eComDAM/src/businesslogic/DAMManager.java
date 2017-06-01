@@ -9,22 +9,23 @@ import servers.ServerHandler;
 import java.io.IOException;
 import java.util.Set;
 
-
+/**
+ * This class provides an implementation of the IMediaFetcher interface.
+ */
 public class DAMManager implements IMediaFetcher {
 
 
     private IDAMPersistence persistence;
-
+    private final String dbURI = "jdbc:postgresql://localhost:5432/eComDAM";
+    private final String dbUser = "postgres";
+    private final String dbPassword = "1234";
 
     /**
      * initializes DAMManageer
      * Establishes connection to database
      */
     public DAMManager() {
-        String url = "jdbc:postgresql://localhost:5432/eComDAM";
-        String user = "postgres";
-        String password = "1234";
-        persistence = new DAMDBPersistence(url, user, password);
+        persistence = new DAMDBPersistence(dbURI, dbUser, dbPassword);
 
         try {
             Thread t = new Thread(new ServerHandler(this, 5678));

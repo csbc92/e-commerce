@@ -8,12 +8,17 @@ import network.CommandResponse;
 import java.io.IOException;
 import java.util.Set;
 
+/**
+ * This class is responsible for communicating with the DAM API.
+ */
 public class ClientHandler {
 
     private ClientTool clientTool;
+    private final String damServer = "localhost";
+    private final int damPort = 5678;
 
     public ClientHandler() {
-        clientTool = new ClientTool("localhost", 5678);
+        clientTool = new ClientTool(damServer, damPort);
     }
 
     /**

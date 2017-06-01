@@ -3,6 +3,9 @@ package ecomweb.WEBBusinessLayer;
 
 import Product.DetailedProduct;
 
+/**
+ * This interface defines the common interface for the Websystem
+ */
 public interface IWebManager {
     /**
      * Returns a product based on the id that is given as a parameter. If there is an error in getting the product, the method returns null
