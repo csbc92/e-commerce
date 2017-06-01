@@ -48,6 +48,11 @@
                 <element signature="e#4687#4688#0" expanded="false" />
                 <element signature="e#4736#4737#0" expanded="false" />
               </folding>
+=======
+            <state relative-caret-position="1819">
+              <caret line="122" column="80" lean-forward="false" selection-start-line="122" selection-start-column="80" selection-end-line="122" selection-end-column="80" />
+              <folding />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -107,7 +112,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PictureMedia.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PictureMedia.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ProductLib/src/Product/PictureMedia.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
@@ -125,7 +130,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Product.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Product.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProductLib/src/Product/Product.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="363">
@@ -171,13 +176,16 @@
       <list>
         <option value="$PROJECT_DIR$/ProductLib/src/Product/MediaTest.java" />
         <option value="$PROJECT_DIR$/ProductLib/src/Product/VideoMedia.java" />
-        <option value="$PROJECT_DIR$/ProductLib/src/Product/PictureMedia.java" />
         <option value="$PROJECT_DIR$/ProductLib/src/Product/IDisplayable.java" />
         <option value="$PROJECT_DIR$/ProductLib/test/Product/DetailedProductTest.java" />
         <option value="$PROJECT_DIR$/ProductLib/src/Networking/DisplayableFrame.java" />
         <option value="$PROJECT_DIR$/ProductLib/src/Networking/DetailedProductFrame.java" />
+<<<<<<< Updated upstream
         <option value="$PROJECT_DIR$/ProductLib/src/Product/DetailedProduct.java" />
         <option value="$PROJECT_DIR$/ProductLib/src/Product/Product.java" />
+=======
+        <option value="$PROJECT_DIR$/ProductLib/src/Product/PictureMedia.java" />
+>>>>>>> Stashed changes
       </list>
     </option>
   </component>
@@ -1331,7 +1339,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProductLib/src/Product/PictureMedia.java">
+    <entry file="file://$PROJECT_DIR$/ProductLib/src/Product/Product.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
@@ -1347,7 +1355,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProductLib/src/Product/Product.java">
+    <entry file="file://$PROJECT_DIR$/ProductLib/src/Product/PictureMedia.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
           <caret line="75" column="30" lean-forward="false" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
