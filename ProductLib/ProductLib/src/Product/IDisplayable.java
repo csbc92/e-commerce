@@ -13,6 +13,10 @@ public interface IDisplayable extends Serializable{
      * @return path  to  media
      */
     public String getPath();
+    /**
+     * returns File of the media
+     * @return the media path
+     */
     public File getMedia();
 
     /**

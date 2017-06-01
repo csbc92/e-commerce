@@ -23,7 +23,10 @@ public class PictureMedia implements IDisplayable {
         this.mediaID = mediaID;
     }
 
-
+    /**
+     * returns File of the media
+     * @return the media path
+     */
     @Override
     public File getMedia() {
         return this.file;
