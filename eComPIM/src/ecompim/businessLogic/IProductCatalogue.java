@@ -8,6 +8,9 @@ import Product.Product;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * This interface provides common methods for a Product catalogue.
+ */
 public interface IProductCatalogue extends IProductFetcher {
 
     /**

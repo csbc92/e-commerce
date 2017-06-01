@@ -6,11 +6,15 @@ import network.CommandRequest;
 import network.CommandResponse;
 import network.ServerTool;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketException;
 import java.util.Set;
 
+/**
+ * This class provides the DAM API for network clients.
+ */
 public class Server extends Thread {
     private ServerTool serverTool;
     private Socket socket;
@@ -68,6 +72,9 @@ public class Server extends Thread {
             e.printStackTrace();
         } catch (ClassCastException e) {
             e.printStackTrace();
+        } catch (EOFException e){
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }

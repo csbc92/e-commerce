@@ -10,6 +10,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * This interface defines the common methods for the PIM system
+ */
 public interface IPIM extends IProductFetcher {
 
     /**

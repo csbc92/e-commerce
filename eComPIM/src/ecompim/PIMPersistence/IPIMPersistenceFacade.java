@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * This interface defines the common methods for a PIM facade.
+ */
 public interface IPIMPersistenceFacade {
 
     /**

@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketException;
 
+/**
+ * This class provides the PIM API for network clients.
+ */
 public class Server implements Runnable {
 
     private ServerTool serverTool;

@@ -12,11 +12,14 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * This class implements the IDAMPersistence interface and is responsible for queries to the DAM database.
+ */
 public class DAMDBPersistence implements IDAMPersistence {
 
-    public static final String FTPUSER = "b33_20125183";
-    public static final String FTPPASS = "ecom1234";
-    public static final String FTPHOST = "ftp.byethost33.com";
+    private static final String FTPUSER = "b33_20125183";
+    private static final String FTPPASS = "ecom1234";
+    private static final String FTPHOST = "ftp.byethost33.com";
     private Connection connection;
     private SQLTool db;
     private FTPTool ftpTool;

@@ -17,18 +17,22 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * This class is an implementation of the IPIM interface.
+ */
 public class PIMManager implements IPIM {
 
     private static final String FTPUSER = "b33_20125183";
     private static final String FTPPASS = "ecom1234";
     private static final String FTPHOST = "ftp.byethost33.com";
+    private static String cachePath = System.getProperty("user.dir") + "/htdocs/files";
+    private static final String DAMSERVER = "localhost";
+    private static final int DAMPORT = 5678;
 
     private DetailedProduct currentProduct;
     private IProductCatalogue productCatalogue;
     private Thread netHandler;
     private ClientTool cTool;
-    private String cachePath = System.getProperty("user.dir") + "/htdocs/files";
-
 
     /**
      * initializes the PIMManager
@@ -37,6 +41,7 @@ public class PIMManager implements IPIM {
 
         productCatalogue = new ProductCatalogue();
 
+        // Start the PIM server
         try {
             netHandler = new Thread(new ServerHandler(this, 6789));
             netHandler.setDaemon(true);
@@ -46,7 +51,8 @@ public class PIMManager implements IPIM {
             e.printStackTrace();
         }
 
-        cTool = new ClientTool("localhost", 5678);
+        // Initialize a new client for communication with the DAM system.
+        cTool = new ClientTool(DAMSERVER, DAMPORT);
     }
 
 
