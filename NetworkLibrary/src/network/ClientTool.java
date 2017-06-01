@@ -8,7 +8,7 @@ import java.net.Socket;
 
 public class ClientTool {
 
-    public Socket clientSocket;
+    private Socket clientSocket;
     private ObjectOutputStream objectToServer;
     private DataInputStream stringFromServer;
     private ObjectInputStream objFromServer;
