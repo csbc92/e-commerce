@@ -6,6 +6,7 @@ import network.CommandRequest;
 import network.CommandResponse;
 import network.ServerTool;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketException;
@@ -68,6 +69,9 @@ public class Server extends Thread {
             e.printStackTrace();
         } catch (ClassCastException e) {
             e.printStackTrace();
+        } catch (EOFException e){
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
