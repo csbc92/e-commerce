@@ -4,9 +4,6 @@ package persistence;
 
 import Product.IDisplayable;
 import Product.PictureMedia;
-import network.FTPTool;
-
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
@@ -17,18 +14,12 @@ import java.util.Set;
  */
 public class DAMDBPersistence implements IDAMPersistence {
 
-    private static final String FTPUSER = "b33_20125183";
-    private static final String FTPPASS = "ecom1234";
-    private static final String FTPHOST = "ftp.byethost33.com";
-    private Connection connection;
     private SQLTool db;
-    private FTPTool ftpTool;
 
 
     public DAMDBPersistence(String connectionString, String username, String password) {
 
         db = new SQLTool(connectionString, username, password);
-        ftpTool = new FTPTool(FTPHOST, FTPUSER, FTPPASS);
     }
 
     /**
