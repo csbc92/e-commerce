@@ -12,6 +12,9 @@ import network.ClientTool;
 import java.util.*;
 
 
+/**
+ * This class is an implementation of the interface IProductCatalogue.
+ */
 public class ProductCatalogue implements IProductCatalogue {
 
     private IPIMPersistenceFacade persistence;

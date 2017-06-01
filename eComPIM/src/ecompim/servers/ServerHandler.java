@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 
 /**
- * Created by victo on 2017-05-18.
+ * This class is resposible for handling clients that connects to the server.
  */
 public class ServerHandler implements Runnable {
     private IProductFetcher fetcher;

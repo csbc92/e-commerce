@@ -5,7 +5,9 @@ import Product.Product;
 
 import java.util.HashMap;
 
-
+/**
+ * This interface defines the common methods for fetching products.
+ */
 public interface IProductFetcher {
 
     /**

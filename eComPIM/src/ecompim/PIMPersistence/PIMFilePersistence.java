@@ -10,7 +10,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-
+/**
+ * This class is an implementation of the IPIMPersistence.
+ */
 public class PIMFilePersistence implements IPIMPersistence {
 
 
@@ -149,11 +151,20 @@ public class PIMFilePersistence implements IPIMPersistence {
         return rootCategory;
     }
 
+    /**
+     * Not supported.
+     * @param productID
+     * @return
+     */
     @Override
     public Set<Integer> getMediaIDs(int productID) {
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * Not supported.
+     * @return
+     */
     @Override
     public int getMaxCatId() {
         throw new UnsupportedOperationException();

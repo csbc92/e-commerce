@@ -214,7 +214,6 @@ public class FXMLDocumentController implements Initializable {
                                 setGraphic(buildTextFlow(formattedText, searchTextField.getText()));
                                 setHeight(rowHeight);
                                 setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-//                                setText(item.getProductID() + " - " + item.getName());
                             } else {
 
 

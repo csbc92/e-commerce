@@ -8,14 +8,28 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * This class simplifies how persistence is initialized.
+ */
 public class PIMPersistenceFacade implements IPIMPersistenceFacade {
 
     private IPIMPersistence ipimPersistence;
 
+    /**
+     * Constructor for initializing file persistence.
+     * @param productFilePath
+     * @param categoryFilePath
+     */
     public PIMPersistenceFacade(String productFilePath, String categoryFilePath) {
         ipimPersistence = new PIMFilePersistence(productFilePath, categoryFilePath);
     }
 
+    /**
+     * Constructor the initializing DB persistence.
+     * @param connectionString
+     * @param username
+     * @param password
+     */
     public PIMPersistenceFacade(String connectionString, String username, String password) {
         ipimPersistence = new PIMDBPersistence(connectionString, username, password);
     }
