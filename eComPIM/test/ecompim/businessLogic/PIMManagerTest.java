@@ -1,83 +1,52 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ecompim.businessLogic;
 
-
-
-import Product.Product;
-
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
- * Created by danie on 23-05-2017.
+ *
+ * @author danie
  */
-
 public class PIMManagerTest {
-    PIMManager pimManager = new PIMManager();
-
+    PIMManager pimManager;
+    public PIMManagerTest() {
+         pimManager = new PIMManager();
+    }
 
     @Test
-    public void fetchProduct() throws Exception {
-
+    public void testFetchProduct() {
         assertEquals(10000, pimManager.fetchProduct(10000).getProductID());
     }
 
     @Test
-    public void searchProducts() throws Exception {
-
+    public void testSearchProducts() {
         assertEquals(10,pimManager.searchProducts("1000").size());
     }
 
-//    @Test
-//    public void fetchMedia() throws Exception {
-//
-//        pimManager.fetchMedia(10000).getID(); //TODO
-//    }
-
     @Test
-    public void fetchProductOverview() throws Exception {
-
-        assertEquals(50,pimManager.fetchProductOverview().size());
+    public void testFetchProductOverview() {
+         assertEquals(50,pimManager.fetchProductOverview().size());
     }
 
     @Test
-    public void saveChanges() throws Exception {
-    }//Kan ses i webshop
-
-    @Test
-    public void getCurrentProduct() throws Exception {
-
-        pimManager.setCurrentProduct(10000);
+    public void testGetCurrentProduct() {
+         pimManager.setCurrentProduct(10000);
         assertEquals(10000, pimManager.getCurrentProduct().getProductID());
     }
 
     @Test
-    public void setCurrentProduct() throws Exception {
-
-        pimManager.setCurrentProduct(10000);
+    public void testSetCurrentProduct() {
+         pimManager.setCurrentProduct(10000);
         assertEquals(10000, pimManager.getCurrentProduct().getProductID());
     }
 
     @Test
-    public void getRootCategory() throws Exception {
-
-        assertTrue("Produkt".equalsIgnoreCase(pimManager.getRootCategory().getName()));
-    }
-
-    @Test
-    public void addProductToCategory() throws Exception {
-
-        Product dummy = new Product(1,"d",2,"test",5);
-
-        //TODO Kan ses i gui
-    }
-
-    @Test
-    public void addNewCategory() throws Exception {
-        //TODO kan ses i gui
-    }
-
-    @Test
-    public void fetchProductsByCategory() throws Exception {
-        //TODO kan ses i gui
+    public void testGetRootCategory() {
+          assertTrue("Produkt".equalsIgnoreCase(pimManager.getRootCategory().getName()));
     }
 }

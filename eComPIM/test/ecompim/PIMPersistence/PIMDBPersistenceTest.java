@@ -1,42 +1,46 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ecompim.PIMPersistence;
 
 import Product.DetailedProduct;
-import ecompim.PIMPersistence.PIMDBPersistence;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import java.util.Set;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class PIMDBPersistenceTest {
+/**
+ *
+ * @author danie
+ */
+public class PIMDBPersistenceTest {
     PIMDBPersistence pimdbPersistence;
-    @BeforeEach
-    void setUp() {
+    public PIMDBPersistenceTest() {
         pimdbPersistence = new PIMDBPersistence("jdbc:postgresql://localhost:5432/eComPIM", "postgres", "1234");
     }
 
     @Test
-    void fetchProductOverview() {
-        assertEquals(50,pimdbPersistence.fetchProductOverview().size()); //The method should only get the first 50 products
+    public void testFetchProductOverview() {
+         assertEquals(50,pimdbPersistence.fetchProductOverview().size()); //The method should only get the first 50 products
     }
 
     @Test
-    void fetchProduct() {
+    public void testFetchProduct() {
         assertEquals(10000, pimdbPersistence.fetchProduct(10000).getProductID());
     }
 
 
+
     @Test
-    void saveProduct() {
+    public void testSaveProduct() {
         DetailedProduct dummy = new DetailedProduct(1,"d",2,"test",5,500);
         pimdbPersistence.saveProduct(dummy);
         assertEquals(dummy,pimdbPersistence.fetchProduct(1));
     }
 
     @Test
-    void searchProducts() {
+    public void testSearchProducts() {
         assertEquals(27,pimdbPersistence.searchProducts("1000").size());
         assertEquals(2,pimdbPersistence.searchProducts("The Big Bang Theory").size());
         assertEquals(0,pimdbPersistence.searchProducts("我").size());
@@ -44,26 +48,19 @@ class PIMDBPersistenceTest {
         assertEquals(50,pimdbPersistence.searchProducts("").size());
     }
 
-    @Test
-    void getMediaIDs() {
-        int expectedAmountOfMedia = 1;
-        Set<Integer> mediaIDs = pimdbPersistence.getMediaIDs(10000);
-        assertEquals(expectedAmountOfMedia, mediaIDs.size());
-    }
+
 
     @Test
-    void getCategoryOverview() {
-       //TODO kan ses i gui
-    }
-
-    @Test
-    void fetchRootCategory() {
+    public void testFetchRootCategory() {
         assertTrue("Produkt".equalsIgnoreCase(pimdbPersistence.fetchRootCategory().getName()));
     }
 
     @Test
-    void saveRootCategory() {
-        //TODO kan ses virke vha. gui
+    public void testGetMediaIDs() {
+         int expectedAmountOfMedia = 1;
+        Set<Integer> mediaIDs = pimdbPersistence.getMediaIDs(10000);
+        assertEquals(expectedAmountOfMedia, mediaIDs.size());
     }
 
+    
 }

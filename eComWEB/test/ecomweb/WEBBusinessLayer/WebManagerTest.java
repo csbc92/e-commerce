@@ -1,15 +1,26 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ecomweb.WEBBusinessLayer;
 
-import org.junit.jupiter.api.*;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+/**
+ *
+ * @author danie
+ */
 public class WebManagerTest {
-    @Test
-    public void getProduct() throws Exception {
-        WebManager webManager = new WebManager();
-        assertEquals(10000,webManager.getProduct(10000).getProductID());
-        assertEquals(null,webManager.getProduct(-5));
+    WebManager webManager; 
+    public WebManagerTest() {
+        webManager = new WebManager();
     }
 
+    @Test
+    public void testGetProduct() {
+        assertEquals(10000,webManager.getProduct(10000).getProductID());
+        assertEquals(null,webManager.getProduct(-5));
+    }    
 }
