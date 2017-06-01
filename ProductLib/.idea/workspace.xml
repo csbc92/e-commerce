@@ -24,11 +24,17 @@
       <file leaf-file-name="DetailedProduct.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProductLib/src/Product/DetailedProduct.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="289">
               <caret line="198" column="53" lean-forward="false" selection-start-line="198" selection-start-column="53" selection-end-line="198" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+=======
+            <state relative-caret-position="1819">
+              <caret line="122" column="80" lean-forward="false" selection-start-line="122" selection-start-column="80" selection-end-line="122" selection-end-column="80" />
+              <folding />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -51,7 +57,11 @@
             <state relative-caret-position="204">
               <caret line="16" column="54" lean-forward="false" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
               <folding>
+<<<<<<< Updated upstream
                 <marker date="1496080674041" expanded="true" signature="6871:6889" ph="{...}" />
+=======
+                <marker date="1496137049663" expanded="true" signature="6871:6889" ph="{...}" />
+>>>>>>> Stashed changes
               </folding>
             </state>
           </provider>
@@ -67,21 +77,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PictureMedia.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PictureMedia.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ProductLib/src/Product/PictureMedia.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="612">
+              <caret line="42" column="7" lean-forward="false" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Product.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Product.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProductLib/src/Product/Product.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="260">
               <caret line="75" column="30" lean-forward="true" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
+=======
+            <state relative-caret-position="-386">
+              <caret line="30" column="74" lean-forward="false" selection-start-line="30" selection-start-column="74" selection-end-line="30" selection-end-column="74" />
+>>>>>>> Stashed changes
               <folding />
             </state>
           </provider>
@@ -99,13 +114,16 @@
       <list>
         <option value="$PROJECT_DIR$/ProductLib/src/Product/MediaTest.java" />
         <option value="$PROJECT_DIR$/ProductLib/src/Product/VideoMedia.java" />
-        <option value="$PROJECT_DIR$/ProductLib/src/Product/PictureMedia.java" />
         <option value="$PROJECT_DIR$/ProductLib/src/Product/IDisplayable.java" />
         <option value="$PROJECT_DIR$/ProductLib/test/Product/DetailedProductTest.java" />
         <option value="$PROJECT_DIR$/ProductLib/src/Networking/DisplayableFrame.java" />
         <option value="$PROJECT_DIR$/ProductLib/src/Networking/DetailedProductFrame.java" />
+<<<<<<< Updated upstream
         <option value="$PROJECT_DIR$/ProductLib/src/Product/DetailedProduct.java" />
         <option value="$PROJECT_DIR$/ProductLib/src/Product/Product.java" />
+=======
+        <option value="$PROJECT_DIR$/ProductLib/src/Product/PictureMedia.java" />
+>>>>>>> Stashed changes
       </list>
     </option>
   </component>
@@ -118,7 +136,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1932" />
+    <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
@@ -136,6 +154,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< Updated upstream
+=======
+      <pane id="Scratches" />
+>>>>>>> Stashed changes
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -168,9 +190,14 @@
           </PATH>
         </subPane>
       </pane>
+<<<<<<< Updated upstream
       <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
+=======
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+>>>>>>> Stashed changes
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -694,7 +721,11 @@
       <workItem from="1495700015406" duration="151000" />
       <workItem from="1495736579429" duration="838000" />
       <workItem from="1496224016417" duration="27000" />
+<<<<<<< Updated upstream
       <workItem from="1496258124891" duration="1262000" />
+=======
+      <workItem from="1496303388343" duration="26000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
@@ -722,10 +753,17 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="13975000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
+=======
+    <option name="totallyTimeSpent" value="12739000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+>>>>>>> Stashed changes
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -742,7 +780,11 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+<<<<<<< Updated upstream
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27136752" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27132195" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> Stashed changes
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1021,7 +1063,11 @@
         <state relative-caret-position="204">
           <caret line="16" column="54" lean-forward="false" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
           <folding>
+<<<<<<< Updated upstream
             <marker date="1496080674041" expanded="true" signature="6871:6889" ph="{...}" />
+=======
+            <marker date="1496137049663" expanded="true" signature="6871:6889" ph="{...}" />
+>>>>>>> Stashed changes
           </folding>
         </state>
       </provider>
@@ -1050,24 +1096,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ProductLib/src/Product/IDisplayable.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="221">
           <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProductLib/src/Product/PictureMedia.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+=======
+        <state relative-caret-position="1819">
+          <caret line="122" column="80" lean-forward="false" selection-start-line="122" selection-start-column="80" selection-end-line="122" selection-end-column="80" />
+>>>>>>> Stashed changes
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ProductLib/src/Product/Product.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-386">
+          <caret line="30" column="74" lean-forward="false" selection-start-line="30" selection-start-column="74" selection-end-line="30" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProductLib/src/Product/PictureMedia.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="260">
           <caret line="75" column="30" lean-forward="true" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
+=======
+        <state relative-caret-position="612">
+          <caret line="42" column="7" lean-forward="false" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
+>>>>>>> Stashed changes
           <folding />
         </state>
       </provider>
